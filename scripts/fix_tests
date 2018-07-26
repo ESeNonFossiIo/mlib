@@ -1,0 +1,8 @@
+#!/bin/bash
+
+FILES=$(ls ./tests/$1/*.cc | sed 's#./tests##' | sed 's#.cc##')
+
+for f in $FILES
+do
+  cp $2/tests/$f/output tests/$f.output
+done

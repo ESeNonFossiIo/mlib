@@ -1,0 +1,26 @@
+=================================================
+  TEST for utility - INIHandler
+=================================================
+section ..... section1
+  ->  entry : entry1
+        val : val1
+  ->  entry : entry2
+        val : val2
+section ..... section2
+  ->  entry : entry1
+        val : val1
+  ->  entry : entry2
+        val : val2
+section ..... section1
+  ->  entry : entry2
+        val : val2
+section ..... section2
+  ->  entry : entry1
+        val : val1
+  ->  entry : entry2
+        val : val2
+section ..... section2
+  ->  entry : entry1
+        val : val1
+  ->  entry : entry2
+        val : val2

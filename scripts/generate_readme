@@ -1,0 +1,41 @@
+#!/bin/bash
+
+README_FILE="README.md"
+
+cat ./scripts/README.txt > ${README_FILE}
+echo " " >> ${README_FILE}
+
+echo "# ChangeLog " >> ${README_FILE}
+echo " " >> ${README_FILE}
+
+OCCURENCY=0
+CURR_VERSION=-1
+
+git tag -l -n10 | sort  -t"." -k 1,1nr -k 2,2nr -k 3,3nr | while read line
+do
+  #  echo " -------------------------------------------------------------------- "
+   TAG=`echo ${line} | cut -f1 -d" "`
+   COMMIT=`echo ${line} | sed "s#${TAG} ##g" | xargs`
+  #  echo "   TAG :       "${TAG}
+  #  echo "   COMMIT :    "${COMMIT}
+   VERSION=`echo ${TAG} | cut -d. -f1 | sed "s#v##g" `
+   OCCURENCY=$(grep -o '.0.0' <<< "$TAG" | grep -c .)
+
+   if [[ ${CURR_VERSION} -ne ${VERSION} ]]; then
+     echo "## Version ${VERSION}" >> ${README_FILE}
+     echo "|TAG|COMMIT|" >> ${README_FILE}
+     echo "|---|------|" >> ${README_FILE}
+     CURR_VERSION=${VERSION}
+   fi
+
+   echo "|"${TAG}"|"${COMMIT}"|" >> ${README_FILE}
+
+   if [[ ${OCCURENCY} -eq 1 &&  ${VERSION} -ne 0 ]]; then
+     echo "___" >> ${README_FILE}
+   fi
+done
+
+echo " " >> ${README_FILE}
+echo "# TODO " >> ${README_FILE}
+echo " " >> ${README_FILE}
+cat ./scripts/TODO.txt >> ${README_FILE}

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+echo -n "Update? [MAJOR|MINOR|REVISION] ......... "
+read UPDATE
+echo -n "Commit? ................................ "
+read COMMIT
+
+# TAG=`git describe $(git rev-list --tags --max-count=1)`
+TAG=`git tag | tr "." " " | tr "v" " " | sort  -k 1n -k 2n -k 3n | tail -1`
+LAST_TAG=`echo ${TAG} | sed 's#v##g'`
+LAST_COMMIT=`git log | head -1 | sed 's#commit ##g'`
+STATUS="false"
+
+a=( ${LAST_TAG//./ } )
+if [ "${UPDATE}" == "MAJOR" ]
+then
+  ((a[0]++))                              # increment major (or other part)
+  a[1]=0
+  a[2]=0
+  STATUS="true"
+fi
+if [ "${UPDATE}" == "MINOR" ]
+then
+  ((a[1]++))                              # increment minor (or other part)
+  a[2]=0
+  STATUS="true"
+fi
+if [ "${UPDATE}" == "REVISION" ]
+then
+  ((a[2]++))                              # increment revision (or other part)
+  STATUS="true"
+fi
+
+DATE=`date`
+if [ "${STATUS}" == "true" ]
+then
+  echo "Version ............ ${a[0]}.${a[1]}.${a[2]}" | tee    "VERSION"
+  echo "Commit ............. ${LAST_COMMIT}"          | tee -a "VERSION"
+  echo "Commit msg ......... ${COMMIT}"               | tee -a "VERSION"
+  echo "Date ............... ${DATE}"                 | tee -a "VERSION"
+
+  git tag -a "v${a[0]}.${a[1]}.${a[2]}" -m "${COMMIT}"
+
+  ./scripts/generate_readme
+  git add "README.md" "VERSION"
+  git commit --amend
+fi

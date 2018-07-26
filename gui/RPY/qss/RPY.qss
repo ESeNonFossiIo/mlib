@@ -1,0 +1,4 @@
+QMessageBox
+{
+  background: #444
+}

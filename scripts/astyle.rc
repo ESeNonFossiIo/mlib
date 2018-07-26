@@ -1,0 +1,13 @@
+--style=gnu
+--convert-tabs
+--indent-preprocessor
+--indent=spaces=2
+--indent-namespaces
+--min-conditional-indent=0
+--unpad-paren
+--align-reference=type
+--max-code-length=80
+--max-instatement-indent=80
+--close-templates
+--suffix=none
+--quiet

@@ -1,0 +1,9 @@
+=================================================
+  TEST for utility - INIHandler
+=================================================
+[1;33m[          0.000]    SECTION - section1[0m
+[1;32m[          0.000]      VALUE -               entry1 =                 val1[0m
+[1;32m[          0.000]      VALUE -               entry2 =                 val2[0m
+[1;33m[          0.000]    SECTION - section2[0m
+[1;32m[          0.000]      VALUE -               entry1 =                 val1[0m
+[1;32m[          0.000]      VALUE -               entry2 =                 val2[0m

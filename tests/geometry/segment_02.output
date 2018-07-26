@@ -1,0 +1,14 @@
+
+=================================================
+  TEST for Segment - 01
+=================================================
+
+ are_aligned = 1
+ are_aligned = 0
+ are_aligned = 1
+ are_aligned = 0
+ ================================================ 
+ are_aligned = 1
+ are_aligned = 0
+ are_aligned = 1
+ are_aligned = 0

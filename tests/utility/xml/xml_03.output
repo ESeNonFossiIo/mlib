@@ -1,0 +1,15 @@
+=================================================
+  TEST for utility - XMLHandler
+=================================================
+<?xml encoding='ISO-8859-1' type='text/xsl' version='1.0' ?> 
+<?xml-stylesheet href='image_metadata_stylesheet.xsl' ?> 
+<dataset>
+  <name>  </name>
+  <comment>  </comment>
+  <images>
+    <image file="file_path">    </image>
+    <image file="file_path">    </image>
+    <image file="file_path">    </image>
+  </images>
+</dataset>
+====================

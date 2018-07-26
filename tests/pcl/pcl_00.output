@@ -1,0 +1,11 @@
+
+=================================================
+  TEST for PCL Wrapper
+=================================================
+
+Loaded 5 data points from test_pcd.pcd with the following fields: 
+    0 1 2
+    1 2 3
+    2 3 4
+    3 4 5
+    4 5 6

@@ -1,0 +1,11 @@
+=================================================
+  TEST for utility - INIHandler
+=================================================
+[section1]
+     entry1 =   val1
+     entry2 =   val2
+[section2]
+     entry1 =   val1
+     entry2 =   val2
+val2
+
