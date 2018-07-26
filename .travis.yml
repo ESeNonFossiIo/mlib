@@ -1,6 +1,7 @@
 before_install:
   - sudo apt-get install clang
   - sudo apt-get install cmake
+  - sudo apt-get install astyle
 
 language: cpp
 
@@ -13,4 +14,7 @@ install:
 script:
   - mkdir build
   - cd build
-  - cmake -D ENABLE_ALL_TESTS=ON .. && make
+  - cmake -D ENABLE_ALL_TESTS=ON .. && make -j
+  - ctest -R
+  - make indent
+  - git diff
