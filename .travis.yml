@@ -1,0 +1,16 @@
+before_install:
+  - sudo apt-get install clang
+  - sudo apt-get install cmake
+
+language: cpp
+
+# Compiler selection
+compiler:
+  - clang
+
+install:
+
+script:
+  - mkdir build
+  - cd build
+  - cmake .. && make
