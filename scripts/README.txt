@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/ESeNonFossiIo/mlib.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+
 # Configuration:
 
 ```bash
@@ -19,7 +22,6 @@ add to `.bash_profile`
 ## Tests:
 
  - To make test pass use   `make_test_pass("pcl/pcl_00");`
-
 
 ## Compilation:
 

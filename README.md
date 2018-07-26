@@ -1,3 +1,7 @@
+
+[![Build Status](https://travis-ci.org/ESeNonFossiIo/mlib.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+
+
 # Configuration:
 
 ```bash
@@ -28,12 +32,12 @@ add to `.bash_profile`
 - _MYLIB_USE_PCL_WITH_VTK
 - _MYLIB_USE_PCL
 - _MYLIB_USE_EIGEN3
- 
-# ChangeLog 
- 
- 
-# TODO 
- 
+
+# ChangeLog
+
+
+# TODO
+
 - [ ] compilare i test prima di runnarli in maniera automatica
 - [x] script per generare i test ed i confronti
 - [x] sistemare i test dopo l'aggiunta del namespace
