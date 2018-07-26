@@ -13,4 +13,4 @@ install:
 script:
   - mkdir build
   - cd build
-  - cmake .. && make
+  - cmake -D ENABLE_ALL_TESTS=ON .. && make
