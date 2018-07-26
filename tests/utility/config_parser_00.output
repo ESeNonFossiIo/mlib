@@ -1,0 +1,18 @@
+=================================================
+  TEST for utility - ParsedParameters
+=================================================
+section1.prova = 2
+section2.prova = 3
+section ..... section1
+  ->  entry : double1
+        val : 3.140000
+  ->  entry : prova
+        val :  2
+  ->  entry : test
+        val :  3
+section ..... section2
+  ->  entry : prova
+        val :  3
+section ..... section3
+  ->  entry : prova
+        val :  3

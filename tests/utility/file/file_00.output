@@ -1,0 +1,23 @@
+=================================================
+  TEST for utility - get_ext_and_name
+=================================================
+filename ......... test.cpp
+dir .............. ./
+name ............. test
+ext .............. cpp
+
+filename ......... /usr/bin/testt.cpp
+dir .............. /usr/bin
+name ............. testt
+ext .............. cpp
+
+filename ......... /usr/bin/testt
+dir .............. /usr/bin
+name ............. testt
+ext .............. 
+
+filename ......... /usr/bin/tes.tt.txt
+dir .............. /usr/bin
+name ............. tes.tt
+ext .............. txt
+

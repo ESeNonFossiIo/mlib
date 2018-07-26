@@ -1,0 +1,16 @@
+for dir in include tests main source;
+do
+  echo "--- Indenting ${dir}"
+  files=`find $dir | egrep '\.(cc|h)$'`
+    if test -n "$files" ; then
+      for file in $files
+      do
+        if test -n "$file" ; then
+          echo "  - $file"
+	        astyle --options=scripts/astyle.rc $file
+        fi
+      done
+    fi
+done
+
+wait

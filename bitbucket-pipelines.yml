@@ -1,0 +1,25 @@
+# This is a sample build configuration for C++.
+# Check our guides at https://confluence.atlassian.com/x/VYk8Lw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: ubuntu:16.10
+
+pipelines:
+  default:
+    - step:
+        script: # Modify the commands below to build your repository.
+          - apt-get update
+          - apt-get install -y cmake bash astyle clang git
+          - mkdir build
+          - cd build
+          - cmake -DENABLE_ALL_TESTS=ON ..
+          # - make setup_astyle
+          - make debug
+          - make check_indentation
+          - make
+          - ctest -R
+          - make release
+          - make check_indentation
+          - make
+          - ctest -R

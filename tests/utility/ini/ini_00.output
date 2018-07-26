@@ -1,0 +1,22 @@
+=================================================
+  TEST for utility - INIHandler
+=================================================
+--->section1
+--->section2
+--->section3
+--->prova
+--->test
+--->3
+--->2
+section ..... section1
+  ->  entry : prova
+        val : 2
+  ->  entry : test
+        val : 3
+continua
+section ..... section2
+  ->  entry : prova
+        val : 2
+section ..... section3
+  ->  entry : prova
+        val : 3
