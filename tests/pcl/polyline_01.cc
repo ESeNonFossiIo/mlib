@@ -4,11 +4,11 @@
 
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
   print_title("PCL polyline - 00");
   {
 
@@ -38,7 +38,7 @@ int main()
     for(auto q: *cloud)
       std::cout << q << std::endl;
   }
-#else //_MYLIB_USE_PCL_WITH_VTK
+#else //MLIB_USE_PCL_WITH_VTK
   make_test_pass("pcl/polyline_01");
-#endif //_MYLIB_USE_PCL_WITH_VTK
+#endif //MLIB_USE_PCL_WITH_VTK
 }

@@ -7,7 +7,7 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

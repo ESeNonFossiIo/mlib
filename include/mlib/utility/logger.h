@@ -1,5 +1,5 @@
-#ifndef __MYLIB_PCL_LOGGER
-#define __MYLIB_PCL_LOGGER
+#ifndef _MLIB_PCL_LOGGER
+#define _MLIB_PCL_LOGGER
 
 #include <fstream>
 #include <ctime>
@@ -8,7 +8,7 @@
 
 #include "mlib/utility/color.h"
 
-namespace _mlib
+namespace mlib
 {
 
   using namespace std;
@@ -55,4 +55,4 @@ namespace _mlib
 
 
 }
-#endif //__MYLIB_PCL_LOGGER
+#endif //_MLIB_PCL_LOGGER

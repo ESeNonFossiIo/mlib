@@ -1,5 +1,5 @@
-#ifndef __MYLIB__SEGMENT__H_
-#define __MYLIB__SEGMENT__H_
+#ifndef _MLIB__SEGMENT__H_
+#define _MLIB__SEGMENT__H_
 
 #include "mlib/math/point.h"
 
@@ -9,7 +9,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   class Segment
@@ -73,4 +73,4 @@ namespace _mlib
 };
 
 /** @}*/
-#endif //__MYLIB__SEGMENT__H_
+#endif //_MLIB__SEGMENT__H_

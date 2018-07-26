@@ -1,5 +1,5 @@
-#ifndef __MYLIB_STRING_UTILITY__
-#define __MYLIB_STRING_UTILITY__
+#ifndef _MLIB_STRING_UTILITY__
+#define _MLIB_STRING_UTILITY__
 
 // per std::string
 #include <string>
@@ -10,7 +10,7 @@
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   /**
    * Convert in string to lower case
@@ -112,4 +112,4 @@ namespace _mlib
 
 }
 /** @}*/
-#endif //__MYLIB_STRING_UTILITY__
+#endif //_MLIB_STRING_UTILITY__

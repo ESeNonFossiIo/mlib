@@ -1,12 +1,12 @@
-#ifndef __MYLIB_VECTOR_UTILITY__
-#define __MYLIB_VECTOR_UTILITY__
+#ifndef _MLIB_VECTOR_UTILITY__
+#define _MLIB_VECTOR_UTILITY__
 /** \addtogroup utility
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
 }
 /** @}*/
-#endif //__MYLIB_VECTOR_UTILITY__
+#endif //_MLIB_VECTOR_UTILITY__

@@ -1,5 +1,5 @@
-#ifndef __MYLIB_INI_MANAGER_FILE_H__
-#define __MYLIB_INI_MANAGER_FILE_H__
+#ifndef _MLIB_INI_MANAGER_FILE_H__
+#define _MLIB_INI_MANAGER_FILE_H__
 
 #include "mlib/utility/types.h"
 #include "mlib/utility/logger.h"
@@ -16,7 +16,7 @@
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   class INIHandler
   {
@@ -128,4 +128,4 @@ namespace _mlib
 
 }
 /** @}*/
-#endif //__MYLIB_INI_MANAGER_FILE_H__
+#endif //_MLIB_INI_MANAGER_FILE_H__

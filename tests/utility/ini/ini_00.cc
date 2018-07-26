@@ -12,7 +12,7 @@
 //   std::cout << std::endl;
 // }
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

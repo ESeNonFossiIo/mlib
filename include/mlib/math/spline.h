@@ -8,7 +8,7 @@
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
 
   template<int dim = 3>

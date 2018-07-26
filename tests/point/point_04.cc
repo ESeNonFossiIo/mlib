@@ -5,7 +5,7 @@
 #include <iostream>
 #include <tuple>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

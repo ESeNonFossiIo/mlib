@@ -1,8 +1,8 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
 #include "mlib/pcl/segmentation.h"
 
-namespace _mlib
+namespace mlib
 {
   pcl::ModelCoefficients fitting_plane(
     const pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
@@ -25,4 +25,4 @@ namespace _mlib
   }
 }
 
-#endif // _MYLIB_USE_PCL
+#endif // MLIB_USE_PCL

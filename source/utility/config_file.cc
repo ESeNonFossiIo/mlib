@@ -1,6 +1,6 @@
 #include "mlib/utility/config_file.h"
 
-namespace _mlib
+namespace mlib
 {
 
 // ParsedParameters

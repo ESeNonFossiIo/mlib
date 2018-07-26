@@ -1,10 +1,10 @@
-#ifndef __MYLIB_IO_H__
-#define __MYLIB_IO_H__
+#ifndef _MLIB_IO_H__
+#define _MLIB_IO_H__
 
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
 
   void
@@ -13,4 +13,4 @@ namespace _mlib
 }
 
 /** @}*/
-#endif //__MYLIB_IO__
+#endif //_MLIB_IO__

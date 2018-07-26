@@ -1,7 +1,7 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
-#ifndef __MYLIB_PCL_POLYLINE_
-#define __MYLIB_PCL_POLYLINE_
+#ifndef _MLIB_PCL_POLYLINE_
+#define _MLIB_PCL_POLYLINE_
 
 #include <mlib/math/angle.h>
 
@@ -13,7 +13,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   void remove_angles(pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud,
@@ -28,6 +28,6 @@ namespace _mlib
 };
 /** @}*/
 
-#endif //__MYLIB_PCL_POLYLINE_
+#endif //_MLIB_PCL_POLYLINE_
 
 #endif //MYLIB_USE_PCL

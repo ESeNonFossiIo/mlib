@@ -8,7 +8,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
   class Quadrature
   {

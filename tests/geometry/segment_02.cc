@@ -2,7 +2,7 @@
 
 #include "mlib/math/geometry/segment.h"
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

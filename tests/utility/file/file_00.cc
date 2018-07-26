@@ -3,7 +3,7 @@
 #include <iostream>
 #include <map>
 
-using namespace _mlib;
+using namespace mlib;
 
 void test(std::string filename)
 {

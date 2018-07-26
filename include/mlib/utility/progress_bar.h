@@ -1,5 +1,5 @@
-#ifndef __MYLIB_PROGRESS_BAR_H__
-#define __MYLIB_PROGRESS_BAR_H__
+#ifndef _MLIB_PROGRESS_BAR_H__
+#define _MLIB_PROGRESS_BAR_H__
 
 #include <iostream>
 #include <string>
@@ -8,7 +8,7 @@
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   class ProgressBar
   {
@@ -30,4 +30,4 @@ namespace _mlib
   };
 }
 /** @}*/
-#endif // __MYLIB_PROGRESS_BAR_H__
+#endif // _MLIB_PROGRESS_BAR_H__

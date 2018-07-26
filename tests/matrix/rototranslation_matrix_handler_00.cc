@@ -10,11 +10,11 @@
 #include <iostream>
 #include <vector>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {
-#ifdef _MYLIB_USE_EIGEN3
+#ifdef MLIB_USE_EIGEN3
   print_title("Roto-Translation Matrix");
 
   std::vector<Point> u, v;
@@ -60,8 +60,8 @@ int main()
                                                  rtmh.get_translation()).l_2_norm())
             << std::endl;
 
-#else //_MYLIB_USE_EIGEN3
+#else //MLIB_USE_EIGEN3
   make_test_pass("matrix/rototranslation_matrix_handler_00");
-#endif //_MYLIB_USE_EIGEN3                                         -rtmh.get_translation()).l_2_norm()) << std::endl;
+#endif //MLIB_USE_EIGEN3                                         -rtmh.get_translation()).l_2_norm()) << std::endl;
 
 }

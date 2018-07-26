@@ -3,7 +3,7 @@
 #include "mlib/math/arithmetic.h"
 #include "mlib/utility/output.h"
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

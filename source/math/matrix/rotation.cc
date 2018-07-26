@@ -1,7 +1,7 @@
 #include "mlib/math/matrix/rotation.h"
 #include <cmath>
 
-namespace _mlib
+namespace mlib
 {
 
   std::pair<Point, Angle>

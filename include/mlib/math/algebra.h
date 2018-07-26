@@ -10,7 +10,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
   class Polynomial
   {

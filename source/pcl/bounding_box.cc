@@ -1,4 +1,4 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
 #include "mlib/pcl/bounding_box.h"
 #include "mlib/pcl/math.h"
@@ -10,7 +10,7 @@
 
 #include <pcl/common/io.h>
 
-namespace _mlib
+namespace mlib
 {
 
   BoundingBox::
@@ -260,4 +260,4 @@ namespace _mlib
   }
 }
 
-#endif // _MYLIB_USE_PCL
+#endif // MLIB_USE_PCL

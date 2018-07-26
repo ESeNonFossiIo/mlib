@@ -4,11 +4,11 @@
 
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
   print_title("PCL Wrapper");
   {
     pcl::PointCloud<pcl::PointXYZ> cloud;
@@ -49,7 +49,7 @@ int main()
 
   }
 
-#else //_MYLIB_USE_PCL_WITH_VTK
+#else //MLIB_USE_PCL_WITH_VTK
   make_test_pass("pcl/pcl_00");
-#endif //_MYLIB_USE_PCL_WITH_VTK
+#endif //MLIB_USE_PCL_WITH_VTK
 }

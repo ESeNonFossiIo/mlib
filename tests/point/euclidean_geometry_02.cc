@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

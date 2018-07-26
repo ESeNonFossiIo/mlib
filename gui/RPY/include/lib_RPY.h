@@ -31,8 +31,8 @@ private slots:
 private:
     void reset();
     Ui::MainWindow *ui;
-    _mlib::RotationType rotation_type;
-    _mlib::AngleType    angle_type;
+    mlib::RotationType rotation_type;
+    mlib::AngleType    angle_type;
 };
 
 #endif // MAINWINDOW_H

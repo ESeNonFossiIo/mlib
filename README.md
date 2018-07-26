@@ -1,3 +1,7 @@
+
+[![Build Status](https://travis-ci.org/ESeNonFossiIo/mlib.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+
+
 # Configuration:
 
 ```bash
@@ -8,7 +12,7 @@
 
 add to `.bash_profile`
 ```
-  export LIB_MYLIB_DIR="path_to_installation_dir"
+  export LIBMLIB_DIR="path_to_installation_dir"
 ```
 #Note
 
@@ -25,15 +29,15 @@ add to `.bash_profile`
 
 ### Precompiler FLAGS:
 
-- _MYLIB_USE_PCL_WITH_VTK
-- _MYLIB_USE_PCL
-- _MYLIB_USE_EIGEN3
- 
-# ChangeLog 
- 
- 
-# TODO 
- 
+- MLIB_USE_PCL_WITH_VTK
+- MLIB_USE_PCL
+- MLIB_USE_EIGEN3
+
+# ChangeLog
+
+
+# TODO
+
 - [ ] compilare i test prima di runnarli in maniera automatica
 - [x] script per generare i test ed i confronti
 - [x] sistemare i test dopo l'aggiunta del namespace

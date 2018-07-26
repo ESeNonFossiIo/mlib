@@ -1,6 +1,6 @@
 #include "mlib/math/statistic.h"
 
-namespace _mlib
+namespace mlib
 {
 
   double

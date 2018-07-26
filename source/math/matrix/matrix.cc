@@ -5,7 +5,7 @@
 #include <cmath>
 #include <cassert>
 
-namespace _mlib
+namespace mlib
 {
 
   template<typename T>

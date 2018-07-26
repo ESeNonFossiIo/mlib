@@ -1,7 +1,7 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
-#ifndef __MYLIB_PCL_SEGMENTATION_
-#define __MYLIB_PCL_SEGMENTATION_
+#ifndef _MLIB_PCL_SEGMENTATION_
+#define _MLIB_PCL_SEGMENTATION_
 
 #include <iostream>
 #include <pcl/point_types.h>
@@ -14,7 +14,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
   pcl::ModelCoefficients fitting_plane(
     const pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
@@ -25,6 +25,6 @@ namespace _mlib
 
 /** @}*/
 
-#endif //__MYLIB_PCL_SEGMENTATION_
+#endif //_MLIB_PCL_SEGMENTATION_
 
 #endif //MYLIB_USE_PCL
