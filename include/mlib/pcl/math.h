@@ -1,7 +1,7 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
-#ifndef __MYLIB_PCL_MATH_
-#define __MYLIB_PCL_MATH_
+#ifndef _MLIB_PCL_MATH_
+#define _MLIB_PCL_MATH_
 
 #include <iostream>
 #include <pcl/point_types.h>
@@ -11,7 +11,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   template<typename PointType>
@@ -97,6 +97,6 @@ namespace _mlib
 
 /** @}*/
 
-#endif //__MYLIB_PCL_MATH_
+#endif //_MLIB_PCL_MATH_
 
 #endif //MYLIB_USE_PCL

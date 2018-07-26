@@ -4,7 +4,7 @@
 #include "mlib/utility/output.h"
 
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

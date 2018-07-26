@@ -1,5 +1,5 @@
-#ifndef __MYLIB_OUTPUT_H__
-#define __MYLIB_OUTPUT_H__
+#ifndef _MLIB_OUTPUT_H__
+#define _MLIB_OUTPUT_H__
 
 #include <iostream>
 #include <vector>
@@ -8,7 +8,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   /**

@@ -9,8 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    rotation_type = _mlib::RotationType::XYZ;
-    angle_type = _mlib::AngleType::deg;
+    rotation_type = mlib::RotationType::XYZ;
+    angle_type = mlib::AngleType::deg;
 
     reset();
 }
@@ -57,11 +57,11 @@ void MainWindow::on_reset_clicked()
 
 void MainWindow::on_compute_matrix_clicked()
 {
-    _mlib::Angle angle_roll(ui->roll->toPlainText().toDouble(), angle_type);
-    _mlib::Angle angle_pitch(ui->pitch->toPlainText().toDouble(), angle_type);
-    _mlib::Angle angle_yaw(ui->heading->toPlainText().toDouble(), angle_type);
-    _mlib::TaitBryanAngles angles(angle_roll, angle_pitch, angle_yaw);
-    _mlib::RotationMatrix RM(angles, rotation_type);
+    mlib::Angle angle_roll(ui->roll->toPlainText().toDouble(), angle_type);
+    mlib::Angle angle_pitch(ui->pitch->toPlainText().toDouble(), angle_type);
+    mlib::Angle angle_yaw(ui->heading->toPlainText().toDouble(), angle_type);
+    mlib::TaitBryanAngles angles(angle_roll, angle_pitch, angle_yaw);
+    mlib::RotationMatrix RM(angles, rotation_type);
     ui->m00->setText(QString::number(RM(0,0),'f',5));
     ui->m01->setText(QString::number(RM(0,1),'f',5));
     ui->m02->setText(QString::number(RM(0,2),'f',5));
@@ -76,7 +76,7 @@ void MainWindow::on_compute_matrix_clicked()
 void MainWindow::on_compute_angles_clicked()
 {
     double default_yaw = ui->heading->toPlainText().toDouble();
-    _mlib::Matrixd m(3,3);
+    mlib::Matrixd m(3,3);
     m(0,0) = ui->m00->toPlainText().toDouble();
     m(0,1) = ui->m01->toPlainText().toDouble();
     m(0,2) = ui->m02->toPlainText().toDouble();
@@ -90,7 +90,7 @@ void MainWindow::on_compute_angles_clicked()
     double det = m.det();
     if( std::abs(det - 1) < 1e-10)
 {
-    _mlib::TaitBryanAngles angles = get_roll_pitch_yaw(m, rotation_type, default_yaw);
+    mlib::TaitBryanAngles angles = get_roll_pitch_yaw(m, rotation_type, default_yaw);
     ui->roll->setText(QString::number(angles.roll(angle_type),'f',5));
     ui->pitch->setText(QString::number(angles.pitch(angle_type),'f',5));
     ui->heading->setText(QString::number(angles.yaw(angle_type),'f',5));
@@ -106,24 +106,24 @@ else
 
 void MainWindow::on_RPH_clicked(bool checked)
 {
-    rotation_type = checked ? _mlib::RotationType::ZYX : _mlib::RotationType::XYZ;
+    rotation_type = checked ? mlib::RotationType::ZYX : mlib::RotationType::XYZ;
     ui->HPR->setChecked(!checked);
 }
 
 void MainWindow::on_HPR_clicked(bool checked)
 {
-    rotation_type = checked ? _mlib::RotationType::XYZ : _mlib::RotationType::ZYX;
+    rotation_type = checked ? mlib::RotationType::XYZ : mlib::RotationType::ZYX;
     ui->RPH->setChecked(!checked);
 }
 
 void MainWindow::on_deg_clicked(bool checked)
 {
-    angle_type = checked ? _mlib::AngleType::deg : _mlib::AngleType::rad;
+    angle_type = checked ? mlib::AngleType::deg : mlib::AngleType::rad;
     ui->rad->setChecked(!checked);
 }
 
 void MainWindow::on_rad_clicked(bool checked)
 {
-        angle_type = checked ? _mlib::AngleType::rad : _mlib::AngleType::deg;
+        angle_type = checked ? mlib::AngleType::rad : mlib::AngleType::deg;
     ui->deg->setChecked(!checked);
 }

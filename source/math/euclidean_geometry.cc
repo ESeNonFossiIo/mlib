@@ -1,6 +1,6 @@
 #include "mlib/math/euclidean_geometry.h"
 
-namespace _mlib
+namespace mlib
 {
 
   HyperPlane::
@@ -99,13 +99,13 @@ namespace _mlib
 
 ////////////////////////////////////////////////////////////////////////////////
 
-  _mlib::
+  mlib::
   Point
-  get_hyperplanes_intersection(const _mlib::HyperPlane& p,
-                               const _mlib::HyperPlane& q)
+  get_hyperplanes_intersection(const mlib::HyperPlane& p,
+                               const mlib::HyperPlane& q)
   {
-    _mlib::Matrix<double> m(2, 2);
-    _mlib::Point b;
+    mlib::Matrix<double> m(2, 2);
+    mlib::Point b;
     b.resize(2);
 
     for(unsigned int i = 0; i<2; ++i)
@@ -189,9 +189,9 @@ namespace _mlib
       }
     else
       {
-        HyperPlane l1 = _mlib::middle_hyperplane_between_points(a,b);
-        HyperPlane l2 = _mlib::middle_hyperplane_between_points(b,c);
-        return _mlib::get_hyperplanes_intersection(l1,l2);
+        HyperPlane l1 = mlib::middle_hyperplane_between_points(a,b);
+        HyperPlane l2 = mlib::middle_hyperplane_between_points(b,c);
+        return mlib::get_hyperplanes_intersection(l1,l2);
       }
   };
 }

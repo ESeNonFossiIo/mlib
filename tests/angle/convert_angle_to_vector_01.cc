@@ -4,7 +4,7 @@
 // per std::setw
 #include <iomanip>
 
-using namespace _mlib;
+using namespace mlib;
 
 void test(const double& angle,
           const double& x,

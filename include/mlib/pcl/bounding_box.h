@@ -1,7 +1,7 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
-#ifndef __MYLIB_PCL_BOUNDING_BOX_
-#define __MYLIB_PCL_BOUNDING_BOX_
+#ifndef _MLIB_PCL_BOUNDING_BOX_
+#define _MLIB_PCL_BOUNDING_BOX_
 
 #include <mlib/utility/status.h>
 #include <mlib/math/geometry/segment.h>
@@ -14,7 +14,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   class BoundingBox
@@ -60,6 +60,6 @@ namespace _mlib
 
 /** @}*/
 
-#endif //__MYLIB_PCL_BOUNDING_BOX_
+#endif //_MLIB_PCL_BOUNDING_BOX_
 
 #endif //MYLIB_USE_PCL

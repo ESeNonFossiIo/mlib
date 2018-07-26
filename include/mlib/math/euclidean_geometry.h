@@ -7,7 +7,7 @@
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   class HyperPlane : public Point
   {

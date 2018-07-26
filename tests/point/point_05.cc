@@ -3,7 +3,7 @@
 #include "mlib/math/geometry/clothoid.h"
 #include "mlib/math/matrix/rotation.h"
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

@@ -12,7 +12,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
   /**
    * @brief The RotationType enum specifica il come vengono

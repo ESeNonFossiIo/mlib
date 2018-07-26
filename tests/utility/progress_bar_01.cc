@@ -1,7 +1,7 @@
 #include "mlib/utility/progress_bar.h"
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

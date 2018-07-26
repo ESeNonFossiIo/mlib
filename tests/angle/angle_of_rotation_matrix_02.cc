@@ -5,7 +5,7 @@
 #include <vector>
 #include <cmath>
 
-using namespace _mlib;
+using namespace mlib;
 
 void test_1(double roll_angle,
             double pitch_angle,

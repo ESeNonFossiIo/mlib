@@ -3,7 +3,7 @@
 #include "mlib/utility/config_file.h"
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

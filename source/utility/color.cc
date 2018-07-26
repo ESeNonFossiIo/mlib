@@ -1,6 +1,6 @@
 #include "mlib/utility/color.h"
 
-namespace _mlib
+namespace mlib
 {
   GeneralColor::
   GeneralColor(const int& color_, const int& style_)

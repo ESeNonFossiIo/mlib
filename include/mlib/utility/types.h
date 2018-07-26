@@ -1,11 +1,11 @@
-#ifndef __MYLIB_TYPES_H__
-#define __MYLIB_TYPES_H__
+#ifndef _MLIB_TYPES_H__
+#define _MLIB_TYPES_H__
 
 
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
 
   template<typename TYPE>

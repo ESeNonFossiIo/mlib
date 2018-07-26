@@ -3,7 +3,7 @@
 
 #include "mlib/math/angle.h"
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

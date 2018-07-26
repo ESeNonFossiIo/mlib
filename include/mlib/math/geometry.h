@@ -8,7 +8,7 @@ using namespace std;
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   std::vector<unsigned int>
   rectify(

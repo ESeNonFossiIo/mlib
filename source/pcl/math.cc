@@ -1,8 +1,8 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
 #include "mlib/pcl/math.h"
 
-namespace _mlib
+namespace mlib
 {
   double points_distance(const pcl::PointXYZI& p1, const pcl::PointXYZI& p2)
   {
@@ -157,4 +157,4 @@ namespace _mlib
 
 }
 
-#endif // _MYLIB_USE_PCL
+#endif // MLIB_USE_PCL

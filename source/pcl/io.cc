@@ -1,22 +1,22 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
 #include "mlib/pcl/io.h"
 
 #include "mlib/utility/string.h"
 
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
-#endif // _MYLIB_USE_PCL_WITH_VTK
+#endif // MLIB_USE_PCL_WITH_VTK
 
 #include <iostream>
 #include <fstream>
 #include <iomanip>      // std::setprecision
 
-namespace _mlib
+namespace mlib
 {
 
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
   void
   save_pcd(const std::string& filename,
            pcl::PointCloud<pcl::PointXYZI>& cloud)
@@ -38,7 +38,7 @@ namespace _mlib
       }
     return;
   }
-#endif // _MYLIB_USE_PCL_WITH_VTK
+#endif // MLIB_USE_PCL_WITH_VTK
 
   void load_TXT_file(const std::string& filename,
                      pcl::PointCloud<pcl::PointXYZI>& cloud,
@@ -48,10 +48,10 @@ namespace _mlib
     fs.open(filename.c_str(), std::ios::binary);
     if(!fs.is_open() || fs.fail())
       {
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
         PCL_ERROR("Could not open file '%s'! Error : %s\n", filename.c_str(),
                   strerror(errno));
-#endif // _MYLIB_USE_PCL_WITH_VTK
+#endif // MLIB_USE_PCL_WITH_VTK
         fs.close();
         return;
       }
@@ -64,7 +64,7 @@ namespace _mlib
 
         if(line == "")
           continue;
-        st = _mlib::split(line,separator,true);
+        st = mlib::split(line,separator,true);
 
         // This allows to read RGB, too
         if(st.size() < 4)
@@ -140,4 +140,4 @@ namespace _mlib
   }
 }
 
-#endif // _MYLIB_USE_PCL
+#endif // MLIB_USE_PCL

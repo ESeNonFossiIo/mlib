@@ -1,6 +1,6 @@
 #include "mlib/utility/progress_bar.h"
 
-namespace _mlib
+namespace mlib
 {
 
   ProgressBar::

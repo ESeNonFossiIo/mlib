@@ -11,7 +11,7 @@
 #include <fstream>
 #include <iostream>
 
-namespace _mlib
+namespace mlib
 {
   std::string lower_case(const std::string& in)
   {
@@ -120,7 +120,7 @@ namespace _mlib
         std::string token = str.substr(prev, pos-prev);
 
         if(remove_white_space)
-          _mlib::remove_white_spaces(token);
+          mlib::remove_white_spaces(token);
 
         if(!token.empty() || allow_empty_fields) tokens.push_back(token);
         prev = pos + delim.length();

@@ -1,9 +1,9 @@
 #include "../../test.h"
 
-#include "mlib/utility/parser/xml_old.h"
+#include "mlib/utility/parser/xml.h"
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

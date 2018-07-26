@@ -1,5 +1,5 @@
-#ifndef __MYLIB_LICENSE_HANDLER_H__
-#define __MYLIB_LICENSE_HANDLER_H__
+#ifndef _MLIB_LICENSE_HANDLER_H__
+#define _MLIB_LICENSE_HANDLER_H__
 
 #include "mlib/utility/string.h"
 
@@ -18,7 +18,7 @@
 #include <cipher/cipher.h>
 #include <algorithm>    // std::remove_if
 
-namespace _mlib
+namespace mlib
 {
   std::string get_serial_no()
   {
@@ -116,4 +116,4 @@ namespace _mlib
     CIPHER cipher;
   };
 }
-#endif //__MYLIB_LICENSE_HANDLER_H__
+#endif //_MLIB_LICENSE_HANDLER_H__

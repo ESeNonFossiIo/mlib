@@ -6,7 +6,7 @@
 /** \addtogroup geo
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   class TimeConverter
   {

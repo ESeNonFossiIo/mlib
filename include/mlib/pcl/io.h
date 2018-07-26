@@ -1,12 +1,12 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
-#ifndef __MYLIB_PCL_IO_WRAPPER_
-#define __MYLIB_PCL_IO_WRAPPER_
+#ifndef _MLIB_PCL_IO_WRAPPER_
+#define _MLIB_PCL_IO_WRAPPER_
 
 #include <iostream>
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
 #include <pcl/io/pcd_io.h>
-#endif //_MYLIB_USE_PCL_WITH_VTK
+#endif //MLIB_USE_PCL_WITH_VTK
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 
@@ -14,10 +14,10 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
   template<typename CLOUDTYPE = pcl::PointXYZ>
   void save_PCD(const std::string& filename,
                 const pcl::PointCloud<CLOUDTYPE>& cloud)
@@ -41,7 +41,7 @@ namespace _mlib
   save_ply(const std::string& qs_filename,
            pcl::PointCloud<pcl::PointXYZI>& cloud);
 
-#endif //_MYLIB_USE_PCL_WITH_VTK
+#endif //MLIB_USE_PCL_WITH_VTK
 
   void
   load_TXT_file(const std::string& filename,
@@ -62,6 +62,6 @@ namespace _mlib
 
 /** @}*/
 
-#endif //__MYLIB_PCL_IO_WRAPPER_
+#endif //_MLIB_PCL_IO_WRAPPER_
 
 #endif //MYLIB_USE_PCL

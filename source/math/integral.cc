@@ -3,7 +3,7 @@
 #include <assert.h>     /* assert */
 #include <iostream>
 
-namespace _mlib
+namespace mlib
 {
 
   Quadrature::

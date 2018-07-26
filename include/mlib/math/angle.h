@@ -10,7 +10,7 @@
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
 
   /**

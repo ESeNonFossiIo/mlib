@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/ESeNonFossiIo/mlib.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+
 # Configuration:
 
 ```bash
@@ -8,7 +11,7 @@
 
 add to `.bash_profile`
 ```
-  export LIB_MYLIB_DIR="path_to_installation_dir"
+  export LIBMLIB_DIR="path_to_installation_dir"
 ```
 #Note
 
@@ -20,17 +23,21 @@ add to `.bash_profile`
 
  - To make test pass use   `make_test_pass("pcl/pcl_00");`
 
-
 ## Compilation:
 
 ### Precompiler FLAGS:
 
-- _MYLIB_USE_PCL_WITH_VTK
-- _MYLIB_USE_PCL
-- _MYLIB_USE_EIGEN3
+- MLIB_USE_PCL_WITH_VTK
+- MLIB_USE_PCL
+- MLIB_USE_EIGEN3
  
 # ChangeLog 
  
+## Version 0
+|TAG|COMMIT|
+|---|------|
+|v0.1.0|Add Travis|
+|v0.0.0|First Tag|
  
 # TODO 
  

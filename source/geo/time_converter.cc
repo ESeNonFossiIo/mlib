@@ -1,6 +1,6 @@
 #include "mlib/geo/time_converter.h"
 
-namespace _mlib
+namespace mlib
 {
   TimeConverter::
   TimeConverter(double secs_, int mins_, int hours_, int day_, int month_,

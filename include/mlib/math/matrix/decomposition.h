@@ -7,7 +7,7 @@
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   void
   SVD(const Matrixd& A,

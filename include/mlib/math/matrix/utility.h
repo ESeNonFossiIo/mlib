@@ -11,7 +11,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
   /**
    *  Invert line l1 and l2

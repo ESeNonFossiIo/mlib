@@ -1,7 +1,7 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
-#ifndef __MYLIB_PCL_CLUSTER_
-#define __MYLIB_PCL_CLUSTER_
+#ifndef _MLIB_PCL_CLUSTER_
+#define _MLIB_PCL_CLUSTER_
 
 #include <iostream>
 #include <pcl/point_types.h>
@@ -11,7 +11,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   /**
@@ -32,6 +32,6 @@ namespace _mlib
 
 /** @}*/
 
-#endif //__MYLIB_PCL_CLUSTER_
+#endif //_MLIB_PCL_CLUSTER_
 
 #endif //MYLIB_USE_PCL
