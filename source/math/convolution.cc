@@ -1,7 +1,7 @@
 #include "mlib/math/convolution.h"
 #include "mlib/math/constants.h"
 
-namespace _mlib
+namespace mlib
 {
 
   std::vector<double>

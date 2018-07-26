@@ -7,14 +7,14 @@
 #include <cmath>     /* pow */
 #include <tuple>
 
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 #include <pcl/point_types.h>
-#endif //_MYLIB_USE_PCL
+#endif //MLIB_USE_PCL
 
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   /**
    * @brief The Point class
@@ -71,7 +71,7 @@ namespace _mlib
      */
     Point(const Point& q);
 
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
     Point(const pcl::PointXYZ& p);
 
     Point(const pcl::PointXYZI& p);
@@ -79,7 +79,7 @@ namespace _mlib
     // Point& Operator= (const pcl::PointXYZ& p);
     //
     // Point& Operator= (const pcl::PointXYZI& p);
-#endif //_MYLIB_USE_PCL
+#endif //MLIB_USE_PCL
 
     void resize(const size_t& n);
 

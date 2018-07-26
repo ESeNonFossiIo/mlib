@@ -2,7 +2,7 @@
 
 #include <cassert>  // std::assert
 
-namespace _mlib
+namespace mlib
 {
 
   Polynomial::

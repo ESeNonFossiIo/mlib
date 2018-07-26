@@ -3,7 +3,7 @@
 // std::sqrt
 #include <cmath>
 
-namespace _mlib
+namespace mlib
 {
   Point::
   Point(bool normalize)
@@ -75,7 +75,7 @@ namespace _mlib
       }
   }
 
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
   Point::
   Point(const pcl::PointXYZ& p)
     :
@@ -110,7 +110,7 @@ namespace _mlib
   //   return *this;
   // }
 
-#endif //_MYLIB_USE_PCL
+#endif //MLIB_USE_PCL
 
   Point::
   Point(const Matrix<double>& M)

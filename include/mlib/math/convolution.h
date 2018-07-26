@@ -8,7 +8,7 @@
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   std::vector<double>
   convolve(std::vector<double>& in, int sizeh,

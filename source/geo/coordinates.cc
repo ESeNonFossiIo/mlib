@@ -1,6 +1,6 @@
 #include "mlib/geo/coordinates.h"
 
-namespace _mlib
+namespace mlib
 {
   double arclen_of_a_meridian(const double& lat,
                               const ModelConstants& model)

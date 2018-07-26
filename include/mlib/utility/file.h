@@ -1,5 +1,5 @@
-#ifndef __MYLIB_FILE_H__
-#define __MYLIB_FILE_H__
+#ifndef _MLIB_FILE_H__
+#define _MLIB_FILE_H__
 
 #include <iostream>
 #include <string>
@@ -8,7 +8,7 @@
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
 
   /**

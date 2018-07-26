@@ -1,9 +1,9 @@
 #include <algorithm>
 
-#include "mlib/utility/parser/xml_old.h"
+#include "mlib/utility/parser/xml.h"
 #include "mlib/utility/string.h"
 
-namespace _mlib
+namespace mlib
 {
 
   XMLEntry::

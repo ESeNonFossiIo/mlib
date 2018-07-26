@@ -4,8 +4,8 @@
 
 #include <iostream>
 
-using namespace _mlib;
-using namespace _mlib::Color;
+using namespace mlib;
+using namespace mlib::Color;
 
 int main()
 {

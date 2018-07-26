@@ -4,7 +4,7 @@
 #include <cmath>
 #include <assert.h>     /* assert */
 
-namespace _mlib
+namespace mlib
 {
 
   template <typename T>
@@ -39,7 +39,7 @@ namespace _mlib
         it != v.end();
         ++it)
       {
-        *it = _mlib::truncate_decimals(*it,size);
+        *it = mlib::truncate_decimals(*it,size);
       }
     return v;
   }
@@ -70,7 +70,7 @@ namespace _mlib
     std::vector<T> v(vec);
     for(unsigned int i = 0; i < vec.size(); ++i)
       {
-        v[i] = _mlib::truncate<T> (vec[i], min, max);
+        v[i] = mlib::truncate<T> (vec[i], min, max);
       }
     return v;
   }

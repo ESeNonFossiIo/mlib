@@ -3,7 +3,7 @@
 #include <cmath>
 #include <iostream>
 
-namespace _mlib
+namespace mlib
 {
 
   std::vector<unsigned int>

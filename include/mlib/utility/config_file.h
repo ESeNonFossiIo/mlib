@@ -1,5 +1,5 @@
-#ifndef __MYLIB_CONFIG_FILE_H__
-#define __MYLIB_CONFIG_FILE_H__
+#ifndef _MLIB_CONFIG_FILE_H__
+#define _MLIB_CONFIG_FILE_H__
 
 #include "mlib/utility/string.h"
 #include "mlib/utility/parser/ini.h"
@@ -16,7 +16,7 @@
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
 
   /**
@@ -76,4 +76,4 @@ namespace _mlib
 }
 
 /** @}*/
-#endif //__MYLIB_CONFIG_FILE_H__
+#endif //_MLIB_CONFIG_FILE_H__

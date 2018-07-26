@@ -1,4 +1,4 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
 #include "mlib/pcl/cluster.h"
 
@@ -11,7 +11,7 @@
 #include <pcl/filters/radius_outlier_removal.h>
 #include <pcl/filters/conditional_removal.h>
 
-namespace _mlib
+namespace mlib
 {
 
   std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr>
@@ -66,4 +66,4 @@ namespace _mlib
 
 }
 
-#endif // _MYLIB_USE_PCL
+#endif // MLIB_USE_PCL

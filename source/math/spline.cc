@@ -1,6 +1,6 @@
 #include "mlib/math/spline.h"
 
-namespace _mlib
+namespace mlib
 {
 
   template<int dim>

@@ -2,7 +2,7 @@
 
 #include <fstream>      // std::ifstream
 
-namespace _mlib
+namespace mlib
 {
 
   std::map<std::string, std::string>

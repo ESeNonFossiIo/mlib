@@ -3,12 +3,12 @@
 #include "mlib/eigen/conversion.h"
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {
 
-#ifdef _MYLIB_USE_EIGEN3
+#ifdef MLIB_USE_EIGEN3
   print_title("Eigen Conversion from mlib to Eigen Matrix");
 
   Eigen::MatrixXd m(2,3);
@@ -21,8 +21,8 @@ int main()
   std::cout << m << std::endl;
   std::cout << from_eigen_to_m_matrix(m) << std::endl;
 
-#else //_MYLIB_USE_EIGEN3
+#else //MLIB_USE_EIGEN3
   make_test_pass("eigen/conversion_01");
-#endif //_MYLIB_USE_EIGEN3
+#endif //MLIB_USE_EIGEN3
 
 }

@@ -4,11 +4,11 @@
 
 #include <iostream>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {
-#ifdef _MYLIB_USE_PCL_WITH_VTK
+#ifdef MLIB_USE_PCL_WITH_VTK
   print_title("PCL Conversion to Point");
   {
 
@@ -21,7 +21,7 @@ int main()
     Point q(p);
     std::cout << q;
   }
-#else //_MYLIB_USE_PCL_WITH_VTK
+#else //MLIB_USE_PCL_WITH_VTK
   make_test_pass("pcl/pcl_03");
-#endif //_MYLIB_USE_PCL_WITH_VTK
+#endif //MLIB_USE_PCL_WITH_VTK
 }

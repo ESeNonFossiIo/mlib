@@ -11,7 +11,7 @@
 /** \addtogroup geo
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   struct ModelConstants
   {

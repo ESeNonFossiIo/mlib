@@ -1,5 +1,5 @@
-#ifndef __MYLIB__CLOTHOID__H_
-#define __MYLIB__CLOTHOID__H_
+#ifndef _MLIB__CLOTHOID__H_
+#define _MLIB__CLOTHOID__H_
 
 #include "mlib/math/point.h"
 #include "mlib/math/integral.h"
@@ -8,7 +8,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   class Clothoid
@@ -70,4 +70,4 @@ namespace _mlib
 };
 
 /** @}*/
-#endif //__MYLIB__CLOTHOID__H_
+#endif //_MLIB__CLOTHOID__H_

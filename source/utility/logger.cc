@@ -10,10 +10,10 @@
 #endif
 #endif
 
-namespace _mlib
+namespace mlib
 {
 
-  using namespace _mlib::Color;
+  using namespace mlib::Color;
 
   Logger::
   Logger(const std::string& filename_,

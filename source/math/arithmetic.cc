@@ -3,7 +3,7 @@
 #include <cmath>
 #include <iostream>
 
-namespace _mlib
+namespace mlib
 {
 
   size_t argmax(const std::vector<double>& x)

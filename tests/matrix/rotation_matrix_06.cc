@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-using namespace _mlib;
+using namespace mlib;
 
 
 int main()

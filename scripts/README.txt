@@ -11,7 +11,7 @@
 
 add to `.bash_profile`
 ```
-  export LIB_MYLIB_DIR="path_to_installation_dir"
+  export LIBMLIB_DIR="path_to_installation_dir"
 ```
 #Note
 
@@ -27,6 +27,6 @@ add to `.bash_profile`
 
 ### Precompiler FLAGS:
 
-- _MYLIB_USE_PCL_WITH_VTK
-- _MYLIB_USE_PCL
-- _MYLIB_USE_EIGEN3
+- MLIB_USE_PCL_WITH_VTK
+- MLIB_USE_PCL
+- MLIB_USE_EIGEN3

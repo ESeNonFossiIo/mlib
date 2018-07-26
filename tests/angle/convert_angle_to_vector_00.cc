@@ -4,7 +4,7 @@
 // per std::setw
 #include <iomanip>
 
-using namespace _mlib;
+using namespace mlib;
 
 int main()
 {

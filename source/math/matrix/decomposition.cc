@@ -1,14 +1,14 @@
 #include "mlib/math/matrix/decomposition.h"
 #include "mlib/math/point.h"
 
-#ifdef _MYLIB_USE_EIGEN3
+#ifdef MLIB_USE_EIGEN3
 #include "mlib/eigen/conversion.h"
-#endif //_MYLIB_USE_EIGEN3
+#endif //MLIB_USE_EIGEN3
 #
 #include <cmath>
 #include <cassert>
 
-namespace _mlib
+namespace mlib
 {
 
   void
@@ -17,7 +17,7 @@ namespace _mlib
       Matrixd& W,
       Matrixd& V)
   {
-#ifdef _MYLIB_USE_EIGEN3
+#ifdef MLIB_USE_EIGEN3
     // Eigen JacobiSVD works fine with square matrix. In the case of rectangular
     // matrix you can get only thin U and V.
     assert(A.r() == A.c());
@@ -41,10 +41,10 @@ namespace _mlib
         W(i,i) = svd.singularValues()(i);
       }
 
-#else //_MYLIB_USE_EIGEN3
+#else //MLIB_USE_EIGEN3
     // TODO
     assert(true);
-#endif //_MYLIB_USE_EIGEN3
+#endif //MLIB_USE_EIGEN3
 
   }
 

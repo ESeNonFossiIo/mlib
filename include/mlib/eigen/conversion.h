@@ -1,7 +1,7 @@
-#ifdef _MYLIB_USE_EIGEN3
+#ifdef MLIB_USE_EIGEN3
 
-#ifndef __MYLIB_EIGEN_CONVERSION_
-#define __MYLIB_EIGEN_CONVERSION_
+#ifndef _MLIB_EIGEN_CONVERSION_
+#define _MLIB_EIGEN_CONVERSION_
 
 #include "mlib/math/matrix/matrix.h"
 
@@ -17,7 +17,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
 
   /**
@@ -55,6 +55,6 @@ namespace _mlib
 
 /** @}*/
 
-#endif //__MYLIB_EIGEN_CONVERSION_
+#endif //_MLIB_EIGEN_CONVERSION_
 
-#endif //_MYLIB_USE_EIGEN3
+#endif //MLIB_USE_EIGEN3

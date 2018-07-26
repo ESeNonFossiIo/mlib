@@ -2,8 +2,8 @@
 #include <string>
 
 bool
-are_equal(const _mlib::Point& p,
-          const _mlib::Point& q,
+are_equal(const mlib::Point& p,
+          const mlib::Point& q,
           const double& tolerance = VAR_MLIB_ZERO_TOLERANCE)
 {
   return (p-q).l_2_norm() < tolerance;

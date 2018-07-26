@@ -20,7 +20,7 @@
  *  @{
  */
 
-namespace _mlib
+namespace mlib
 {
   template <typename T>
   int

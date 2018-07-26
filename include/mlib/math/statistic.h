@@ -8,7 +8,7 @@
 /** \addtogroup math
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   /**
    * Compute the n-moment of the vector v.

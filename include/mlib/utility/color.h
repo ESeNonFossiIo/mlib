@@ -1,5 +1,5 @@
-#ifndef __MYLIB_COLOR_UTILITY__
-#define __MYLIB_COLOR_UTILITY__
+#ifndef _MLIB_COLOR_UTILITY__
+#define _MLIB_COLOR_UTILITY__
 
 // per std::string
 #include <string>
@@ -7,7 +7,7 @@
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
 
   class GeneralColor
@@ -55,4 +55,4 @@ namespace _mlib
 
 }
 /** @}*/
-#endif //__MYLIB_COLOR_UTILITY__
+#endif //_MLIB_COLOR_UTILITY__

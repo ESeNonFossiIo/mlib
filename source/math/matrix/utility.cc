@@ -2,7 +2,7 @@
 #include "mlib/math/matrix/rotation.h"
 #include "mlib/math/matrix/decomposition.h"
 
-namespace _mlib
+namespace mlib
 {
   void swap_lines(Matrix<double>& M,
                   const unsigned int& l1,

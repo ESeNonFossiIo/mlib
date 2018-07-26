@@ -4,7 +4,7 @@
 
 #include <cassert>  // std::assert
 
-namespace _mlib
+namespace mlib
 {
   Clothoid::
   Clothoid(const double& a_,

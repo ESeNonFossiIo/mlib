@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-namespace _mlib
+namespace mlib
 {
 
   INIHandler::

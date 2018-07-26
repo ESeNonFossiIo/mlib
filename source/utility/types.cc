@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace _mlib
+namespace mlib
 {
   template<typename TYPE>
   TYPE

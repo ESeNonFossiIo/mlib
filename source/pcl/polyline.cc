@@ -1,8 +1,8 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
 #include "mlib/pcl/polyline.h"
 
-namespace _mlib
+namespace mlib
 {
   void remove_angles(pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud,
                      const double& min_degree_angle)
@@ -92,4 +92,4 @@ namespace _mlib
 
 }
 
-#endif // _MYLIB_USE_PCL
+#endif // MLIB_USE_PCL

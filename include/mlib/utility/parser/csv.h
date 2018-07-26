@@ -1,5 +1,5 @@
-#ifndef __MYLIB_CSV_MANAGER_FILE_H__
-#define __MYLIB_CSV_MANAGER_FILE_H__
+#ifndef _MLIB_CSV_MANAGER_FILE_H__
+#define _MLIB_CSV_MANAGER_FILE_H__
 
 #include <sstream>      // std::stringstream
 #include <iostream>
@@ -16,7 +16,7 @@
 /** \addtogroup utility
  *  @{
  */
-namespace _mlib
+namespace mlib
 {
   class CSVHandler
   {
@@ -110,4 +110,4 @@ namespace _mlib
 }
 
 /** @}*/
-#endif //__MYLIB_CSV_MANAGER_FILE_H__
+#endif //_MLIB_CSV_MANAGER_FILE_H__

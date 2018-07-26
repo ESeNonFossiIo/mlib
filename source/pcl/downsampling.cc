@@ -1,4 +1,4 @@
-#ifdef _MYLIB_USE_PCL
+#ifdef MLIB_USE_PCL
 
 #include "mlib/pcl/downsampling.h"
 
@@ -23,7 +23,7 @@
 #include <pcl/common/common.h>
 #include <pcl/filters/passthrough.h>
 
-namespace _mlib
+namespace mlib
 {
   void
   voxel_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
@@ -149,4 +149,4 @@ namespace _mlib
   };
 }
 
-#endif // _MYLIB_USE_PCL
+#endif // MLIB_USE_PCL
