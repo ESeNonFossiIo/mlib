@@ -5,6 +5,19 @@
 
 using namespace mlib;
 
+void test(std::string&& str)
+{
+  std::cout << "=======================" << std::endl;
+  XMLEntry res = process_XML_text(str);
+  std::cout << "label    : " << res.label << std::endl;
+  std::cout << "text     : " << res.text << std::endl;
+  for(auto it = res.properties.begin(); it != res.properties.end(); ++it)
+    {
+      std::cout << "property : " << it->first << " -> " << it->second <<
+                std::endl;
+    }
+}
+
 int main()
 {
   std::cout <<
@@ -16,30 +29,12 @@ int main()
             "=================================================" <<
             std::endl;
 
+  {
+    test("<text prop=\"prop1\"> txt </text>");
+    test("<text prop=\"prop1\"> <text prop=\"prop1\"> txt </text> </text>");
+    test("<?xml version=\"1.0\" ?><?xml-stylesheet href=\"prova.css\" type=\"text/xsl\" ?> ");
+    test("<?xml-stylesheet href=\"prova.css\" type=\"text/xsl\"  test=\"\" ?>");
+  }
 
-  XMLHandler manager;
-  manager.set_style("prova.css");
-  manager.set_xml_header("version", "1.0");
-  manager.set_xml_stylesheet("type", "text/xsl");
-
-  XMLEntry test("sezione","prova");
-  test.add_property("property1", "val1");
-  test.add_property("property2", "val2");
-
-  XMLEntry test2("subsezione","prova");
-  test2.add_property("subproperty1", "val1");
-
-  XMLEntry test3("subsubsezione","prova");
-  test3.add_property("subsubproperty1", "val1");
-
-  test2.add(test3);
-  test.add(test2);
-
-  // std::shared_ptr<XMLEntry> new_entry = std::make_shared<XMLEntry>("subsezione","prova");
-
-  manager.add(test);
-
-  std::cout << manager.get_file();
-  manager.save(get_test_dir()+"/utility/xml/xml_00.xml");
   return 0;
 }

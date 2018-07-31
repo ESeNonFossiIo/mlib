@@ -24,9 +24,9 @@ namespace mlib
 
   void
   XMLEntry::
-  add(XMLEntry entry)
+  add(const std::string& s, XMLEntry entry)
   {
-    sub_list.push_back(std::make_shared<XMLEntry>(entry));
+    sub_list.insert(std::pair<std::string, std::shared_ptr<XMLEntry>>(s, std::make_shared<XMLEntry>(entry)));
   }
 
   std::string
@@ -71,11 +71,11 @@ namespace mlib
           ss +="\n";
       }
 
-    std::vector<std::shared_ptr<XMLEntry>>::iterator itl = sub_list.begin();
-    std::vector<std::shared_ptr<XMLEntry>>::iterator endl = sub_list.end();
+    std::map<std::string, std::shared_ptr<XMLEntry>>::iterator itl = sub_list.begin();
+    std::map<std::string, std::shared_ptr<XMLEntry>>::iterator endl = sub_list.end();
     for(; itl!=endl; ++itl)
       {
-        ss += itl->get()->append_string(depth+1);
+        ss += itl->second->append_string(depth+1);
         ss +="\n";
       }
 
@@ -110,16 +110,9 @@ namespace mlib
 
   XMLEntry*
   XMLEntry::
-  get_element(const unsigned int& i)
+  operator[](const std::string& s)
   {
-    return sub_list[i].get();
-  }
-
-  XMLEntry*
-  XMLEntry::
-  operator[](const unsigned int& i)
-  {
-    return get_element(i);
+    return sub_list[s];
   }
 
   XMLHandler::
@@ -219,7 +212,7 @@ namespace mlib
     while(next_text.find("<")<next_text.size())
       {
         XMLEntry sub_entry = get_entry(next_text);
-        entry.add(sub_entry);
+        entry.add(label, sub_entry);
       };
     text.erase(start, end-start +1);
 
@@ -301,8 +294,8 @@ namespace mlib
       }
 
     {
-      std::vector<std::shared_ptr<XMLEntry>>::iterator itl  = xml_entries.begin();
-      std::vector<std::shared_ptr<XMLEntry>>::iterator endl = xml_entries.end();
+      std::map<std::string, std::shared_ptr<XMLEntry>>::iterator itl  = xml_entries.begin();
+      std::map<std::string, std::shared_ptr<XMLEntry>>::iterator endl = xml_entries.end();
       for(; itl!=endl; ++itl)
         {
           text +=  itl->get()->append_string();

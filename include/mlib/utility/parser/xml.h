@@ -9,73 +9,107 @@
 #include <map>
 #include <fstream>
 #include <memory>
+#include <regex>
+
+#include <mlib/utility/string.h>
 
 /** \addtogroup utility
  *  @{
  */
 namespace mlib
 {
-  class XMLEntry
+  struct XMLEntry
   {
-  public:
-    /**
-     *
-     */
-    XMLEntry(const std::string& label_,
-             const std::string& value_="");
+    size_t init;
+    size_t end;
 
-    /**
-     *
-     */
-    void add_property(const std::string& name,
-                      const std::string& val);
-
-    /**
-     *
-     */
-    void add(XMLEntry entry);
-
-    /**
-     *
-     */
-    std::string append_string(unsigned int depth = 0);
-
-    std::string&
-    get_val();
-
-    std::string&
-    get_label();
-
-    std::string&
-    get_property(std::string& str);
-
-    XMLEntry*
-    get_element(const unsigned int& i);
-
-    XMLEntry*
-    operator[](const unsigned int& i);
-
-  private:
-    /**
-     *
-     */
-    std::string value;
-
-    /**
-       *
-       */
     std::string label;
+    bool is_header;
 
-    /**
-     *
-     */
-    std::map<std::string, std::string> property;
-
-    /**
-     *
-     */
-    std::vector<std::shared_ptr<XMLEntry>> sub_list;
+    std::string text;
+    std::map<std::string, std::string> properties;
   };
+
+  /**
+   * process a line and extract: labels, properties, text
+   * @method process_line
+   * @param  s            [description]
+   */
+  XMLEntry
+  process_XML_text(const std::string& str)
+  {
+    XMLEntry ret;
+
+    std::size_t init(str.find('<')), end;
+    ret.init      = init;
+    ret.is_header = (str.at(init+1) == '?');
+
+    std::size_t init_label = ret.is_header ? init + 2 : init + 1;
+    std::size_t end_label =
+      std::min(
+        str.find('>', init + 1),
+        str.find(' ', init + 1)
+      );
+    ret.label = str.substr(init_label, end_label - init_label);
+
+    std::size_t init_first_tag = end_label;
+    std::size_t end_first_tag  = str.find(ret.is_header ? '?' : '>', end_label);
+    std::string properties_raw = str.substr(init_first_tag + 1,
+                                            end_first_tag - 1 - init_first_tag);
+    std::vector<std::string> properties =
+      split(properties_raw,
+            " ",
+            false,
+            false);
+
+    for(auto it  = properties.begin(); it != properties.end(); it++)
+      {
+        std::vector<std::string> entry = split(*it,
+                                               "=",
+                                               false,
+                                               true);
+        std::size_t init_prop = entry[1].find("\"") + 1;
+        std::size_t end_prop  = entry[1].find("\"", init_prop);
+        ret.properties.insert(std::pair<std::string, std::string>(entry[0],
+                                                                  entry[1].substr(init_prop,end_prop-init_prop)));
+      }
+
+    if(ret.is_header)
+      {
+        end = end_first_tag + 2;
+      }
+    else
+      {
+        size_t init_txt = end_first_tag + 1, end_txt;
+
+        size_t counter_tag = 1;
+        size_t next_t      = init_txt;
+
+        while(counter_tag >= 1)
+          {
+            size_t open  = std::min(str.find("<"+ret.label, next_t), str.size());
+            size_t close = std::min(str.find("</"+ret.label, next_t), str.size());
+
+            if((0 < open) && (open < close))
+              {
+                counter_tag++;
+                next_t = open + 1;
+              }
+            else
+              {
+                counter_tag--;
+                next_t = close + 1;
+              }
+          }
+        end_txt = next_t - 1;
+        end = next_t + ret.label.size() + 3 ;
+
+        ret.text = str.substr(init_txt, end_txt - init_txt);
+      }
+    ret.end = end;
+
+    return ret;
+  }
 
   class XMLHandler
   {
@@ -93,7 +127,7 @@ namespace mlib
     /**
      *
      */
-    void add(XMLEntry new_entry);
+    void add(const std::string& label, std::shared_ptr<XMLHandler> new_entry);
 
     /**
      *
@@ -133,27 +167,14 @@ namespace mlib
      * @param  i [description]
      * @return   [description]
      */
-    XMLEntry*
-    get_element(const unsigned int& i);
-
-    /**
-     * [operator[] description]
-     * @param  i [description]
-     * @return   [description]
-     */
-    XMLEntry*
-    operator[](const unsigned int& i);
+    std::shared_ptr<XMLHandler>
+    operator[](const std::string& s);
 
   private:
     /**
      *
      */
-    std::vector<std::shared_ptr<XMLEntry>> xml_entries;
-
-    /**
-       *
-       */
-    std::map<std::string, std::string> xml_header;
+    std::map<std::string, std::shared_ptr<XMLHandler>> xml_entries;
 
     /**
      *
