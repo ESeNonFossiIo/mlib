@@ -19,5 +19,12 @@ int main()
 
   XMLHandler manager(get_test_dir()+"/utility/xml/xml_01.xml");
   manager.print();
+  std::cout <<
+            "=================================================" <<
+            std::endl;
+  std::cout << manager["sezione"]["subsezione"]();
+  std::cout <<
+            "=================================================" <<
+            std::endl;
   return 0;
 }

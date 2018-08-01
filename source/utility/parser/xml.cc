@@ -145,9 +145,9 @@ namespace mlib
                 properties.insert(std::make_pair<std::string, std::string>(a.c_str(),
                                                                            b.c_str()));
               }
-            xml_entries.insert(std::make_pair<std::string, std::shared_ptr<XMLHandler>>
-                               (entry.label.c_str(), std::make_shared<XMLHandler>(XMLHandler(entry.text,
-                                                                                  false))));
+            xml_entries.insert(std::make_pair<std::string, XMLHandler>
+                               (entry.label.c_str(), XMLHandler(entry.text,
+                                                                false)));
           }
       }
     val_text = text;
@@ -193,8 +193,8 @@ namespace mlib
           {
             std::cout << " ";
           }
-        std::cout << it->second->val_text<< std::endl;
-        it->second->print(indent+1);
+        std::cout << it->second.val_text<< std::endl;
+        it->second.print(indent+1);
         for(int i = 0; i < indent; i++)
           {
             std::cout << " ";
@@ -399,10 +399,17 @@ namespace mlib
   //   return xml_entries[i].get();
   // }
   //
-  // XMLEntry*
-  // XMLHandler::
-  // operator[](const unsigned int& i)
-  // {
-  //   return get_element(i);
-  // }
+  XMLHandler
+  XMLHandler::
+  operator[](const std::string& s)
+  {
+    return xml_entries[s];
+  }
+
+  std::string
+  XMLHandler::
+  operator()()
+  {
+    return this->val_text;
+  };
 }

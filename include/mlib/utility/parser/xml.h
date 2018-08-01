@@ -65,11 +65,18 @@ namespace mlib
 
     /**
      * [operator[] description]
-     * @param  i [description]
+     * @param  s [description]
      * @return   [description]
      */
-    std::shared_ptr<XMLHandler>
+    XMLHandler
     operator[](const std::string& s);
+
+    /**
+     * [operator[] description]
+     * @return   [description]
+     */
+    std::string
+    operator()();
 
   private:
     /**
@@ -95,7 +102,7 @@ namespace mlib
     /**
      *
      */
-    std::map<std::string, std::shared_ptr<XMLHandler>> xml_entries;
+    std::map<std::string, XMLHandler> xml_entries;
   };
 
 }
