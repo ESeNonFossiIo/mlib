@@ -8,6 +8,7 @@ int main()
 {
   print_title("Huffman coding");
 
-  HuffmanCoding test("aabb");
+  HuffmanCoding test("acabbaacbabc");
 
+  test.print_counter();
 }

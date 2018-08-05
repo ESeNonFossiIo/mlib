@@ -17,19 +17,33 @@ namespace mlib
       :
       text(text_)
     {
+      std::map<char, int> counter_tmp;
+
       for(std::string::iterator it = text.begin(); it != text.end(); ++it)
         {
-          std::map<char, int>::iterator it2 = counter.find(*it);
-          if(counter.end() != it2)
+          std::map<char, int>::iterator it2 = counter_tmp.find(*it);
+          if(counter_tmp.end() != it2)
             {
-              counter.at(*it) += 1;
+              counter_tmp.at(*it) += 1;
             }
           else
             {
-              counter.insert(std::make_pair(*it, 1));
+              counter_tmp.insert(std::make_pair(*it, 1));
             }
         }
 
+      std::copy(counter_tmp.begin(),
+                counter_tmp.end(),
+                std::back_inserter<std::vector< std::pair<char, int>>>(counter));
+
+
+      auto cmp = [=](
+                   const std::pair<char, int>&   a,
+                   const std::pair<char, int>&   b)
+      {
+        return a.second <  b.second;
+      };
+      std::sort(counter.begin(), counter.end(), cmp);
 
     };
 
@@ -40,18 +54,12 @@ namespace mlib
           std::cout << it->first << " = " << it->second << std::endl;
         }
     };
-
-    // void sort()
-    // {
-    //   auto cmp = [](std::pair<K,V> const & a, std::pair<K,V> const & b)
-    //   {
-    //     return a.second != b.second?  a.second < b.second : a.first < b.first;
-    //   };
-    //   std::sort(items.begin(), items.end(), cmp);
-    // }
   private:
     std::string text;
-    std::map<char, int> counter;
+
+    // Use this syntax for sorting the elemets accortding to the value.
+    //  std::map does not allow to sort elements by value. It uses keys.
+    std::vector< std::pair<char, int>> counter;
   };
 };
 
