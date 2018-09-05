@@ -1,8 +1,8 @@
 #ifndef __m_MATH_SEQUENCE_H__
 #define __m_MATH_SEQUENCE_H__
 
-#include <iostream>     // std::cout
 #include <functional>   // std::function
+#include <vector>
 
 /** \addtogroup math
  *  @{
@@ -15,35 +15,23 @@ namespace mlib
   {
   public:
     MathSeq(const std::vector<T>& init_sequence,
-            const std::function<T(std::vector<T>, int)> next_element,
-            const int n_elements = 10)
-      :
-      sequence(init_sequence)
-    {
-      sequence.resize(n_elements);
-      for(size_t i = init_sequence.size(); i < n_elements; ++i)
-        {
-          auto tmp = std::vector<T>(sequence.begin()+i-init_sequence.size(),
-                                    sequence.begin()+i);
-          auto t = next_element(tmp, i);
-          sequence[i] = t;
-        };
-    };
-    ~MathSeq() {};
+            const std::function<T(std::vector<T>, int)>& next_element_,
+            const int first_element = 0,
+            const int n_elements = 10);;
+    ~MathSeq();
 
-    typedef typename std::vector<T>::iterator       iterator;
-    typedef typename std::vector<T>::const_iterator const_iterator;
-    iterator begin()
-    {
-      return sequence.begin();
-    }
-    iterator end()
-    {
-      return sequence.end();
-    }
+    void compute_elements(const int n_elements = 10);
+
+    T get_sum();
+
+    typename std::vector<T>::iterator begin();
+    typename std::vector<T>::iterator end();
 
   private:
+    T sum;
+    size_t size;
     std::vector<T> sequence;
+    std::function<T(std::vector<T>, int)> next_element;
     int pattern_lenght;
   };
 

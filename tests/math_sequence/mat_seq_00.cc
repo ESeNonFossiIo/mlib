@@ -22,6 +22,14 @@ int main()
       {
         std::cout << p << " ";
       }
+
+    ms.compute_elements(11);
+
+    std::cout << std::endl;
+    for(auto p: ms)
+      {
+        std::cout << p << " ";
+      }
   }
 
   std::cout << std::endl;
@@ -65,7 +73,7 @@ int main()
   {
     std::vector<int> init_sequence({0, 1});
     std::function<int(std::vector<int>, int)> next_element = [](
-                                                                     std::vector<int> x, int n)
+                                                               std::vector<int> x, int n)
     {
       return x[1] + n;
     };
