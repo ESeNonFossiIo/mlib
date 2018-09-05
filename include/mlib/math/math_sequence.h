@@ -15,7 +15,7 @@ namespace mlib
   {
   public:
     MathSeq(const std::vector<T>& init_sequence,
-            const std::function<T(std::vector<T>)> next_element,
+            const std::function<T(std::vector<T>, int)> next_element,
             const int n_elements = 10)
       :
       sequence(init_sequence)
@@ -25,7 +25,7 @@ namespace mlib
         {
           auto tmp = std::vector<T>(sequence.begin()+i-init_sequence.size(),
                                     sequence.begin()+i);
-          auto t = next_element(tmp);
+          auto t = next_element(tmp, i);
           sequence[i] = t;
         };
     };
