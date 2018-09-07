@@ -59,18 +59,9 @@ namespace mlib
 
     const Complex<T> operator* (const Complex<T>& c) const
     {
-      std::cout << ">" << real*c.i() << std::endl;
-      std::cout << ">" << img*c.r() << std::endl;
-      std::cout << ">" << real*c.r() << std::endl;
-      std::cout << ">" << img*c.i() << std::endl;
-
       T i = real*c.i() + img*c.r();
       T r = real*c.r() - img*c.i();
       Complex<T> ret(r, i);
-      std::cout << ">" << i << std::endl;
-      std::cout << ">" << r << std::endl;
-      std::cout << ">" << Complex<T>(r, i) << std::endl;
-
       return ret;
     };
 
