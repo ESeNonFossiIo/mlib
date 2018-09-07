@@ -16,7 +16,8 @@ int main()
     std::cout << c2 << std::endl;
 
     std::cout << (c1*c2) << std::endl;
-    std::cout <<( c2*c1) << std::endl;
+    std::cout << (c2*c1) << std::endl;
+    std::cout << (2*c1) << std::endl;
   }
 
 }
