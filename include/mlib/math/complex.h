@@ -41,28 +41,37 @@ namespace mlib
     /**
      *
      */
-    Complex<T>& operator*= (const T& r)
+    Complex<T> operator*= (const T& r)
     {
-      return this * r;
-    };
-    Complex<T>& operator*= (const Complex<T>& c)
-    {
-      return this * c;
+      *this = (*this) * r;
+      return *this;
     };
 
-    const Complex<T>& operator* (const T& a) const
+    Complex<T> operator= (const Complex<T>& c)
+    {
+      this->img  = c.i();
+      this->real = c.r();
+      return *this;
+    };
+
+    Complex<T> operator*= (const Complex<T>& c)
+    {
+      *this = (*this) * c;
+      return *this;
+    };
+
+    Complex<T> operator* (const T& a)
     {
       T i = img  * a;
       T r = real * a;
       return Complex<T>(i, r);
     };
 
-    const Complex<T> operator* (const Complex<T>& c) const
+    Complex<T> operator* (const Complex<T>& c)
     {
       T i = real*c.i() + img*c.r();
       T r = real*c.r() - img*c.i();
-      Complex<T> ret(r, i);
-      return ret;
+      return Complex<T> (r, i);
     };
 
 
