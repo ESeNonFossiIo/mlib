@@ -20,8 +20,12 @@ int main()
 ////////////////////////////////////////////////////////////////////////////////
   auto f = normalize_range(1.0, 10.0);
 
-  for(unsigned int i = 1; i <= 10; ++i)
-    std::cout << f(static_cast<double>(i)) << "\t ";
+  for(std::size_t i = 1; i <= 10; ++i)
+  {
+    const double x = static_cast<double>(i);
+    std::cout << f(x) << "\t ";
+  }
+
 
   return 0;
 }
