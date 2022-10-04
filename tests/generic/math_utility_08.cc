@@ -20,7 +20,7 @@ int main()
 ////////////////////////////////////////////////////////////////////////////////
   auto f = normalize_range(1.0, 10.0);
 
-  for(unsigned int i = 1.0; i <= 10; ++i)
+  for(unsigned int i = 1; i <= 10; ++i)
     std::cout << f(static_cast<double>(i)) << "\t ";
 
   return 0;
