@@ -44,3 +44,5 @@ add to `.bash_profile`
 - [ ] compilare i test prima di runnarli in maniera automatica
 - [ ] Cambiare la versione in doxygen
 - [ ] Add guard for python
+- [ ] python tests
+- [ ] python doc

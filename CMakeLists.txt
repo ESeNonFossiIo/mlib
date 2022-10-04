@@ -1,5 +1,5 @@
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.9)
 set(CMAKE_MACOSX_RPATH 1)
 
 IF (WIN32)
@@ -15,8 +15,8 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/utility.cmake)
 ################################################################################
 ################################################################################
 SET(_project "mlib")
-FILE (READ "VERSION" _version)
-STRING(REPLACE "\n" "\n      " _version ${_version})
+FILE (READ "VERSION" VERSION_TXT)
+STRING(REPLACE "\n" "\n      " _version ${VERSION_TXT})
 PROJECT(${_project} CXX)
 
 MESSAGE( "  ")
@@ -27,6 +27,9 @@ MESSAGE(STATUS "###############################################################"
 MESSAGE( "  ")
 ################################################################################
 ################################################################################
+
+# Version managment
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/version.cmake)
 
 # CXX flags
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/cxx_flags.cmake)
