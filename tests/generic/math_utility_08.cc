@@ -21,7 +21,7 @@ int main()
   auto f = normalize_range(1.0, 10.0);
 
   for(unsigned int i = 1.0; i <= 10; ++i)
-    std::cout << f((double)i) << "\t ";
+    std::cout << f(static_cast<double>(i)) << "\t ";
 
   return 0;
 }
