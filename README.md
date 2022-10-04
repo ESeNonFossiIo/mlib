@@ -46,3 +46,6 @@ add to `.bash_profile`
 - [ ] Add guard for python
 - [ ] python tests
 - [ ] python doc
+- [ ] python syntax
+- [ ] enviroment
+- [ ] macro run python
