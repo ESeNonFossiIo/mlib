@@ -171,6 +171,9 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/targets.cmake)
 # Tests
 INCLUDE(tests/tests.cmake)
 
+# Pyhon
+INCLUDE(python/mlibpy.cmake)
+
 # Documentation
 INCLUDE(doxygen/doxygen.cmake)
 
