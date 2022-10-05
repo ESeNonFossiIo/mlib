@@ -1,3 +1,4 @@
+#include "mlib/core/mlib_unused.h"
 #include "mlib/math/spline.h"
 
 namespace mlib
@@ -17,6 +18,7 @@ namespace mlib
   BaseInterpolation<dim>::
   is_valid_time(const double& t_) const
   {
+    MLIB_UNUSED(t_);
     assert(t_ >= t1);
     assert(t_ <= t2);
   };
