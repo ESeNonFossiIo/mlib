@@ -29,5 +29,13 @@ EXECUTE_PROCESS(
 )
 
 IF(DIFFERENT)
+  EXECUTE_PROCESS(
+    COMMAND sh ${CMAKE_CURRENT_LIST_DIR}/../scripts/show_diff.sh
+                ${TEST_NAME}.output
+                ${TEST_DIR}/output
+    OUTPUT_VARIABLE OUTFILE_DIFFERENT
+    RESULT_VARIABLE DIFFERENT
+  )
+  MESSAGE(STATUS ${OUTFILE_DIFFERENT})
   MESSAGE(FATAL_ERROR " [ Test failed - files differ ] ")
 ENDIF()

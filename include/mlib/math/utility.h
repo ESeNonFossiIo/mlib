@@ -138,7 +138,7 @@ namespace mlib
 
   template <typename T>
   std::function<T(T)>
-  normalize_range(const T& val1, const T& val2);
+  normalize_range(const T val1, const T val2);
 }
 /** @}*/
 #endif // __MATH_UTILITY__

@@ -38,8 +38,13 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/definitions.cmake)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/debug_flags.cmake)
 
 # Qt creator
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/qt_creator.cmake)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/qt_support.cmake)
+# VTK
+OPTION( WITH_QT
+    "Use Qt Libraries" OFF)
+IF(WITH_QT)
+    INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/qt_creator.cmake)
+    INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/qt_support.cmake)
+endif(WITH_QT)
 
 # Include files:
 ################################################################################
@@ -54,7 +59,9 @@ ADD_LIBRARY(${_project_lib} SHARED ${_cc_files})
 # target_link_libraries (${_project_lib})
 set_target_properties(${_project_lib} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set_target_properties(${_project_lib} PROPERTIES OUTPUT_NAME "${_project_lib}${BUILD_POSTFIX}")
-target_qt_support(${_project_lib})
+IF(WITH_QT)
+  target_qt_support(${_project_lib})
+endif(WITH_QT)
 
 IF (WIN32)
   SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
