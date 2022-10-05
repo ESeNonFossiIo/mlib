@@ -30,7 +30,7 @@ namespace mlib
   get_val(
     const std::string& section,
     const std::string& name,
-    const TYPE& default_value)
+    const TYPE& /* FIX: default_value */)
   {
     return conf[section][name];
   }
@@ -295,7 +295,6 @@ namespace mlib
                   conf[section][entry] += "\n"+line;
               }
           }
-contin:
         ;
       };
   }

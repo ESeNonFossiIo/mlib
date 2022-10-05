@@ -11,9 +11,9 @@ namespace mlib
                    const std::string& filename_out_,
                    const bool save_on_exit_)
     :
+    INIHandler(filename_in_),
     filename_in(filename_in_),
     filename_out(filename_out_==""?filename_in_:filename_out_),
-    INIHandler(filename_in_),
     save_on_exit(save_on_exit_)
   {}
 
@@ -111,8 +111,8 @@ namespace mlib
   add_new_entry(const std::string& section,
                 const std::string& name,
                 const bool& default_value,
-                const bool& max_val,
-                const bool& min_val)
+                const bool&,
+                const bool&)
   {
     std::string val = this->get_val<std::string>(section, name);
     if(val=="")

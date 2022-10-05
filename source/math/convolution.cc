@@ -17,7 +17,6 @@ namespace mlib
     };
 
     std::vector<double> ker;
-    int size  = sizeh * 2 + 1; // Deve essere dispari!
     for(int i = -sizeh ; i < sizeh + 1; ++i)
       {
         ker.push_back(gauss(i));
@@ -25,10 +24,10 @@ namespace mlib
 
     std::vector<double> out(in);
 
-    for(int i = sizeh; i < in.size() - sizeh - 1; ++i)
+    for(std::size_t i = sizeh; i < in.size() - sizeh - 1; ++i)
       {
         out[i] = 0.0;
-        for(int j = -sizeh; j < sizeh+1; ++j)
+        for(int j = -sizeh; j < sizeh + 1; ++j)
           out[i] += in[i - j] * ker[sizeh + j];
       }
     return out;
@@ -91,10 +90,10 @@ namespace mlib
   {
     // TODO: assert sigma > 0
     this->support = std::make_pair(-2*sigma, 2*sigma);
-    this->function = [&sigma_, &mu_](double x)
+    this->function = [&](double x)
     {
-      return std::exp(-1.0* (x-mu_) * (x-mu_) / (2 * sigma_ *
-                                                 sigma_)) / (std::sqrt(2 * M_PI * sigma_ * sigma_));
+      return std::exp(-1.0* (x-mu) * (x-mu) / (2 * sigma *
+                                                 sigma)) / (std::sqrt(2 * M_PI * sigma * sigma));
     };
   }
 
@@ -112,8 +111,8 @@ namespace mlib
   compute(const std::vector<double>& in) const
   {
     std::vector<double> ker;
-    std::pair<int, int> domain = kernel.get_int_support();
-    for(int  i = domain.first;
+    std::pair<std::size_t, std::size_t > domain = kernel.get_int_support();
+    for(std::size_t   i = domain.first;
         i <= domain.second;
         ++i)
       {
@@ -121,17 +120,19 @@ namespace mlib
         ker.push_back(kernel.get_kernel()(i));
       }
 
-    double l = domain.second - domain.first + 1;
     std::vector<double> out(in);
-    for(int  i = domain.first;
+    for(std::size_t  i = domain.first;
         i < in.size() - domain.second  - 1;
         ++i)
       {
         out[i] = 0.0;
-        for(int  j = domain.first;
+        for(std::size_t  j = domain.first;
             j <= domain.second;
             ++j)
+        {
+          assert(i >= j);
           out[i] += in[i - j] * ker[j];
+        }
       }
     return out;
   }

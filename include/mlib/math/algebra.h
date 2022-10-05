@@ -49,7 +49,7 @@ namespace mlib
      */
     friend
     std::ostream&
-    operator<< (std::ostream& output, const Polynomial& p);;
+    operator<< (std::ostream& output, const Polynomial& p);
 
   protected:
     std::vector<double> c;

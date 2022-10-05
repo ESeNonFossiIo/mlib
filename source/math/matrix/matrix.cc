@@ -38,9 +38,9 @@ namespace mlib
   Matrix<T>::
   Matrix(const Matrix<T>& M)
     :
+    elements(M.elements),
     rows(M.rows),
-    cols(M.cols),
-    elements(M.elements)
+    cols(M.cols)
   {
   }
 
@@ -59,7 +59,7 @@ namespace mlib
   template<typename T>
   Matrix<T>::
   Matrix(size_t rows, size_t cols, const T *elements)
-    : rows(rows), cols(cols), elements(rows*cols,T(0.0))
+    : elements(rows*cols,T(0.0)), rows(rows), cols(cols)
   {
     if(rows == 0 || cols == 0)
       throw std::range_error("attempt to create a degenerate Matrix");
@@ -90,9 +90,9 @@ namespace mlib
   Matrix<T>::
   Matrix(std::initializer_list<std::initializer_list<T>> list)
     :
+    elements(list.size() *list.begin()->size(),T(0.0)),
     rows(list.size()),
-    cols(list.begin()->size()),
-    elements(list.size() *list.begin()->size(),T(0.0))
+    cols(list.begin()->size())
   {
     size_t i = 0;
     for(auto l : list)
@@ -441,8 +441,6 @@ namespace mlib
 
     Matrix<T> inverse(rows, cols);
 
-    T sum(0.0);
-    int sign = -1;
     for(size_t i = 0; i < rows; ++i)
       for(size_t j = 0; j < cols; ++j)
         {

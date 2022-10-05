@@ -44,7 +44,7 @@ namespace mlib
     void msg(const std::string& str);
 
   private:
-    clock_t     begin, end;
+    clock_t     begin;
     std::string filename;
     ofstream    file;
     bool        write_on_stdcout;

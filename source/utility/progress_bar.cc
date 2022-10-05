@@ -8,8 +8,8 @@ namespace mlib
     unsigned int length_,
     std::string c_)
     :
-    length(length_),
-    c(c_)
+    c(c_),
+    length(length_)
   {}
 
   void

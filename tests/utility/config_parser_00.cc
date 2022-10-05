@@ -20,7 +20,7 @@ int main()
 // cf.check();
 
   ParsedParameters test(get_test_dir()+"/utility/config_parser_00.ini");
-  double d        = test.add_new_entry("section1","double1",3.14);
+  test.add_new_entry("section1","double1",3.14);
   unsigned int u  = test.add_new_entry("section1","prova",(unsigned int)3);
   int v           = test.add_new_entry("section2","prova",4);
   std::cout <<  "section1.prova = "  << u << std::endl;

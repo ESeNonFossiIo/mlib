@@ -10,8 +10,6 @@ int main()
 {
   print_title("Integral");
 
-  unsigned int size = 2;
-
   {
     Matrixd m({{2,3},{1,1}});
     Point p({1,1});
