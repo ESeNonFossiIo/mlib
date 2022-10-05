@@ -1,6 +1,7 @@
 #include "../test.h"
 
-#include "mlib/math/geometry/clothoid.h"
+#include <mlib/math/constants.h>
+#include <mlib/math/geometry/clothoid.h>
 
 using namespace mlib;
 
