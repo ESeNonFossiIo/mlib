@@ -45,9 +45,12 @@ int main()
     p.resize(size);
 
     for(size_t j = 0; j < size; ++j)
-      for(size_t i = 0; i < size-j; ++i)
-
-        m(i,j) = 5-i-j;
+      {
+        for(size_t i = 0; i < size-j; ++i)
+          {
+            m(i,j) = static_cast<double>(5-i-j);
+          }
+      }
 
     for(size_t j = 0; j < size; ++j)
       {

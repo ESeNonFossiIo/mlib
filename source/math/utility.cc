@@ -259,7 +259,9 @@ namespace mlib
 
     // check that the last element is equal to the lenght of vec.
     if(v[v.size()-1] != static_cast<int>(vec.size() - 1))
-      v.push_back(vec.size()-1);
+      {
+        v.push_back(static_cast<int>(vec.size()-1));
+      }
 
     return v;
   }
