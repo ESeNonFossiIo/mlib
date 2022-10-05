@@ -188,7 +188,7 @@ namespace mlib
   Point
   centroid(const std::vector<Point>& p,
            const std::vector<double>& w);
-};
+}
 
 /** @}*/
 #endif // __m_POINT_H__
