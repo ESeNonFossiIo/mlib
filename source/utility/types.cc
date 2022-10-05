@@ -8,7 +8,7 @@ namespace mlib
   TYPE
   zero()
   {
-    return 0.0;
+    return static_cast<TYPE>(0);
   }
 
   template<>
@@ -22,7 +22,7 @@ namespace mlib
   bool
   zero()
   {
-    return 0;
+    return true;
   }
 
   template double zero<double>();

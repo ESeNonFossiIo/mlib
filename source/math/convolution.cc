@@ -1,5 +1,6 @@
 #include "mlib/math/convolution.h"
 #include "mlib/math/constants.h"
+#include <assert.h>     /* assert */
 
 namespace mlib
 {
@@ -117,7 +118,7 @@ namespace mlib
         ++i)
       {
         // TODO: overload di ()...
-        ker.push_back(kernel.get_kernel()(i));
+        ker.push_back(kernel.get_kernel()(static_cast<double>(i)));
       }
 
     std::vector<double> out(in);
