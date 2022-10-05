@@ -65,12 +65,6 @@ namespace mlib
      */
     Point(double x_, double y_, double z_, double t_);
 
-    /**
-     * @brief Copy constructor.
-     * @param q point to copy.
-     */
-    Point(const Point& q);
-
 #ifdef MLIB_USE_PCL
     Point(const pcl::PointXYZ& p);
 

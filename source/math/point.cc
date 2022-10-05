@@ -64,17 +64,6 @@ namespace mlib
   })
   {}
 
-  Point::
-  Point(const Point& q)
-    :
-    Matrix<double> (q.dim(), 1)
-  {
-    for(unsigned int i = 0; i<q.dim(); ++i)
-      {
-        elements[i] = q[i];
-      }
-  }
-
 #ifdef MLIB_USE_PCL
   Point::
   Point(const pcl::PointXYZ& p)
