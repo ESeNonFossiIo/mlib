@@ -6,26 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
-      tags:
-        description: 'Test scenario tags'
-        required: false
-        type: boolean
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
-
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
@@ -69,7 +49,7 @@ jobs:
     - name: test library
       shell: bash
       run: |
-        cmake --build D:\\a\\mlib\\mlib\\build  --target test -- -m
+        ctest -C D:\\a\\mlib\\mlib\\build --output-on-failure
 
     - name: archive error 1
       uses: actions/upload-artifact@v3
