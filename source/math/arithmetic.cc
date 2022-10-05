@@ -90,7 +90,6 @@ namespace mlib
       return 0;
 
     unsigned int result = 0;
-    unsigned int e = num.size();
     unsigned int p = 1;
     for(unsigned int i = 0; i < num.size(); ++i)
       {

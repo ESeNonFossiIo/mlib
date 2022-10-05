@@ -154,7 +154,7 @@ namespace mlib
   {
     std::vector<double> v(vec);
 
-    for(int i = consecutive;
+    for(std::size_t i = consecutive;
         i < vec.size()-consecutive; ++i)
       {
         // calcola la media tra -consecutive e +consecutive compresi.
@@ -177,12 +177,12 @@ namespace mlib
           {
             for(int j = -1 * (int)consecutive; j<= (int)consecutive; ++j)
               v[i+j] = media;
-            int j = consecutive + 1;
+            std::size_t j = static_cast<std::size_t>(consecutive + 1);
 
             if(i+j > vec.size()-consecutive-1)
               break;
 
-            while(std::abs(vec[i+j] - media) < toll && i+j < vec.size() - (int)consecutive)
+            while(std::abs(vec[i+j] - media) < toll && (static_cast<std::size_t>(i+j) < vec.size() - consecutive))
               {
                 v[i+j] = media;
                 j++;
@@ -193,14 +193,14 @@ namespace mlib
     return v;
   }
 
-  std::vector<int>
+  std::vector<std::size_t>
   flat_part(
     std::vector<double>& vec,
     double toll,
     unsigned int min_num_zeroes)
   {
     // set the fist element to zero.
-    std::vector<int> v = {0};
+    std::vector<std::size_t> v = {0};
 
     for(unsigned int i = 0; i < vec.size(); ++i)
       {
@@ -234,21 +234,21 @@ namespace mlib
     // set the fist element to zero.
     std::vector<int> v = {0};
 
-    for(unsigned int i = 0; i < vec.size()-1; ++i)
+    for(int i = 0; i < static_cast<int>(vec.size())-1; ++i)
       {
-        unsigned int j=0;
+        int j=0;
         while(std::abs(
                 std::abs(vec[i] - vec[i+j])
                 -
                 j*std::abs(vec[i] - vec[i+1])
               )
               <toll &&
-              j+i<vec.size())
+              j+i<static_cast<int>(vec.size()))
           ++j;
         if(j>=1)
           --j;
 
-        if(j>min_num_zeroes)
+        if(j > static_cast<int>(min_num_zeroes))
           {
             v.push_back(i);
             v.push_back(i+j-2);
@@ -257,7 +257,7 @@ namespace mlib
       }
 
     // check that the last element is equal to the lenght of vec.
-    if(v[v.size()-1]!=vec.size()-1)
+    if(v[v.size()-1] != static_cast<int>(vec.size() - 1))
       v.push_back(vec.size()-1);
 
     return v;

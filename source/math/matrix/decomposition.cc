@@ -1,3 +1,4 @@
+#include <mlib/core/mlib_unused.h>
 #include "mlib/math/matrix/decomposition.h"
 #include "mlib/math/point.h"
 
@@ -43,6 +44,10 @@ namespace mlib
 
 #else //MLIB_USE_EIGEN3
     // TODO
+    MLIB_UNUSED(A);
+    MLIB_UNUSED(U);
+    MLIB_UNUSED(W);
+    MLIB_UNUSED(V);
     assert(true);
 #endif //MLIB_USE_EIGEN3
 

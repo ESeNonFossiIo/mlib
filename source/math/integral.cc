@@ -53,8 +53,8 @@ namespace mlib
   Integral(const Quadrature& quad_,
            const double step_)
     :
-    quad(quad_),
-    step(step_)
+    step(step_),
+    quad(quad_)
   {};
 
   double

@@ -9,8 +9,6 @@ int main()
 {
   print_title("Clothoid");
 
-  double clothoid_prm = 4.0;
-
   // Curvature:
   double k1           = 2.0;
   double k2           = 4.0;

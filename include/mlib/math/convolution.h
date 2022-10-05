@@ -46,7 +46,6 @@ namespace mlib
   private:
     const double sigma;
     const double mu;
-
   };
 
   class Convolution

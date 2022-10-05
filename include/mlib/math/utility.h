@@ -98,7 +98,7 @@ namespace mlib
     double toll = 0.1
   );
 
-  std::vector<int>
+  std::vector<std::size_t>
   flat_part(
     std::vector<double>& vec,
     double toll,

@@ -217,7 +217,7 @@ namespace mlib
     return *this;
   }
 
-  const size_t
+  size_t
   Point::
   dim() const
   {

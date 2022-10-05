@@ -143,7 +143,7 @@ namespace mlib
     Point
     operator= (const Matrix<double> M);
 
-    const size_t dim() const;
+    size_t dim() const;
 
     bool is_normalized;
   };

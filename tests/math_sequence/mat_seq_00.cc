@@ -11,7 +11,7 @@ int main()
   {
     std::vector<int> init_sequence({1,1});
     std::function<int(std::vector<int>, int)> next_element = [](std::vector<int> x,
-                                                                int n)
+                                                                int /* n */)
     {
       return x[0] + x[1];
     };
@@ -37,7 +37,7 @@ int main()
   {
     std::vector<int> init_sequence({1});
     std::function<int(std::vector<int>, int)> next_element = [](std::vector<int> x,
-                                                                int n)
+                                                                int /* n */)
     {
       return 2 * x[0];
     };
@@ -55,7 +55,7 @@ int main()
   {
     std::vector<double> init_sequence({});
     std::function<double(std::vector<double>, int)> next_element = [](
-                                                                     std::vector<double> x, int n)
+                                                                     std::vector<double> /* x */, int n)
     {
       return n;
     };
