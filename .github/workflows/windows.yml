@@ -39,8 +39,8 @@ jobs:
     - name: configure
       shell: bash
       run: |
-        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -D ENABLE_ALL_TESTS=ON
-        cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+        cmake -B D:\\a\\mlib\\mlib\\build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -D ENABLE_ALL_TESTS=ON
+        cmake --build D:\\a\\mlib\\mlib\\build --config ${{env.BUILD_TYPE}}
     - name: archive logs
       uses: actions/upload-artifact@v3
       with:
