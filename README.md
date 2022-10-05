@@ -1,5 +1,6 @@
 
-[![Build Status](https://travis-ci.org/ESeNonFossiIo/mlib.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+[![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
+[![linux](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux.yml)
 
 # Configuration:
 
@@ -39,8 +40,7 @@ add to `.bash_profile`
 |v0.1.0|Add Travis|
 |v0.0.0|First Tag|
 
-# TODO
-
+# TODO 
 - [ ] compilare i test prima di runnarli in maniera automatica
 - [ ] Cambiare la versione in doxygen
 - [ ] Add guard for python

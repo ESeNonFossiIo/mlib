@@ -88,16 +88,16 @@ namespace mlib
 
   template <typename T>
   std::function<T(T)>
-  normalize_range(const T& val1, const T& val2)
+  normalize_range(const T val1, const T val2)
   {
     assert(val2>val1);
-    return [&val1, &val2](T t)
+    return [val1, val2](T t) -> double
     {
       return (t - val1)/(val2 - val1);
     };
   };
-  template std::function<double(double)> normalize_range(const double&,
-                                                         const double&);
+  template std::function<double(double)> normalize_range(const double,
+                                                         const double);
 
   std::vector<double>
   difference(
