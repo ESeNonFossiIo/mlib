@@ -50,24 +50,19 @@ jobs:
       shell: bash
       run: |
         cmake --build build  --target test -- -m
-    - name: archive library
-      # run only if a PR is merged into master
-      if: github.ref == 'refs/heads/master'
-      uses: actions/upload-artifact@v3
-      with:
-        name: dealii-windows.zip
-        path: c:/project/dealii-windows.zip
+  
     - name: archive error 1
       uses: actions/upload-artifact@v3
       if: always()
       continue-on-error: true
       with:
         name: windows-CMakeOutput.log
-        path: build/CMakeFiles/CMakeOutput.log
+        path: D:\\a\\mlib\\mlib\\build\\CMakeFiles\\CMakeOutput.log
+
     - name: archive error 2
       uses: actions/upload-artifact@v3
       if: always()
       continue-on-error: true
       with:
         name: windows-CMakeError.log
-        path: build/CMakeFiles/CMakeError.log
+        path: D:\\a\\mlib\\mlib\\build\\CMakeFiles\\CMakeError.log
