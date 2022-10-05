@@ -83,13 +83,13 @@ namespace mlib
   {
     HyperPlane hp;
     hp.resize(p.dim()+1);
-    for(unsigned int i = 0; i < p.dim(); ++i)
+    for(std::size_t i = 0; i < p.dim(); ++i)
       hp[i] = p[i] - q[i];
-    for(unsigned int i = 0; i < p.dim(); ++i)
+    for(std::size_t i = 0; i < p.dim(); ++i)
       hp[p.dim()] -= hp[i]*(p[i] + q[i])/2;
     if(hp[0]*hp[0] > VAR_MLIB_ZERO_TOLERANCE)
       {
-        for(unsigned int i = 1; i < p.dim()+1; ++i)
+        for(std::size_t i = 1; i < p.dim()+1; ++i)
           hp[i]/=hp[0];
         hp[0]/=hp[0];
       }
@@ -108,9 +108,9 @@ namespace mlib
     mlib::Point b;
     b.resize(2);
 
-    for(unsigned int i = 0; i<2; ++i)
+    for(std::size_t i = 0; i<2; ++i)
       m(0,i) = p[i];
-    for(unsigned int i = 0; i<2; ++i)
+    for(std::size_t i = 0; i<2; ++i)
       m(1,i) = q[i];
 
     b[0] = -p[2];
@@ -130,11 +130,11 @@ namespace mlib
     Point b;
     b.resize(3);
 
-    for(unsigned int i = 0; i<3; ++i)
+    for(std::size_t i = 0; i<3; ++i)
       m(0,i) = p[i];
-    for(unsigned int i = 0; i<3; ++i)
+    for(std::size_t i = 0; i<3; ++i)
       m(1,i) = q[i];
-    for(unsigned int i = 0; i<3; ++i)
+    for(std::size_t i = 0; i<3; ++i)
       m(2,i) = r[i];
 
     b[0] = -p[3];
@@ -158,11 +158,11 @@ namespace mlib
 
     Matrix<double> m(3,3);
 
-    for(unsigned int i = 0; i<3; ++i)
+    for(std::size_t i = 0; i<3; ++i)
       m(0,i) = a[i];
-    for(unsigned int i = 0; i<3; ++i)
+    for(std::size_t i = 0; i<3; ++i)
       m(1,i) = p1[i];
-    for(unsigned int i = 0; i<3; ++i)
+    for(std::size_t i = 0; i<3; ++i)
       m(2,i) = p2[i];
 
     HyperPlane l;

@@ -68,7 +68,7 @@ namespace mlib
   )
   {
     std::vector<T> v(vec);
-    for(unsigned int i = 0; i < vec.size(); ++i)
+    for(std::size_t i = 0; i < vec.size(); ++i)
       {
         v[i] = mlib::truncate<T> (vec[i], min, max);
       }
@@ -107,10 +107,10 @@ namespace mlib
   {
     std::vector<double> v(vec);
     if(left)
-      for(unsigned int i = 1; i < vec.size(); ++i)
+      for(std::size_t i = 1; i < vec.size(); ++i)
         v[i] = (vec[i] - vec[i-1]) /step;
     else
-      for(unsigned int i = 0; i < vec.size()-1; ++i)
+      for(std::size_t i = 0; i < vec.size()-1; ++i)
         v[i] = (vec[i+1] - vec[i]) /step;
     return v;
   }
@@ -123,10 +123,10 @@ namespace mlib
   {
     std::vector<double> v(y);
     if(left)
-      for(unsigned int i = 1; i < y.size(); ++i)
+      for(std::size_t i = 1; i < y.size(); ++i)
         v[i] = (y[i] - y[i-1]) / (x[i] - x[i-1]);
     else
-      for(unsigned int i = 0; i < y.size()-1; ++i)
+      for(std::size_t i = 0; i < y.size()-1; ++i)
         v[i] = (y[i+1] - y[i]) / (x[i+1] - x[i]);
     return v;
   }
@@ -139,7 +139,7 @@ namespace mlib
   {
     std::vector<double> v(vec);
     if(left)
-      for(unsigned int i = 1; i < vec.size(); ++i)
+      for(std::size_t i = 1; i < vec.size(); ++i)
         v[i] =  step * vec[i] + v[i-1];
     else
       for(int i = vec.size()-2; i >= 0 ; --i)
@@ -149,7 +149,7 @@ namespace mlib
 
   std::vector<double> force_mean(
     std::vector<double>& vec,
-    unsigned int consecutive,
+    std::size_t consecutive,
     double toll)
   {
     std::vector<double> v(vec);
@@ -198,14 +198,14 @@ namespace mlib
   flat_part(
     std::vector<double>& vec,
     double toll,
-    unsigned int min_num_zeroes)
+    std::size_t min_num_zeroes)
   {
     // set the fist element to zero.
     std::vector<std::size_t> v = {0};
 
-    for(unsigned int i = 0; i < vec.size(); ++i)
+    for(std::size_t i = 0; i < vec.size(); ++i)
       {
-        unsigned int j=0;
+        std::size_t j=0;
         while(std::abs(vec[i] - vec[i+j]) <toll && j+i<vec.size())
           ++j;
         if(j>=1)
@@ -230,7 +230,7 @@ namespace mlib
   straight_part(
     std::vector<double>& vec,
     double toll,
-    unsigned int min_num_zeroes)
+    std::size_t min_num_zeroes)
   {
     // set the fist element to zero.
     std::vector<int> v = {0};
@@ -272,7 +272,7 @@ namespace mlib
   )
   {
     std::vector<double> v(vec);
-    for(unsigned int i = 0; i < interpolation.size()-1; ++i)
+    for(std::size_t i = 0; i < interpolation.size()-1; ++i)
       {
         int j_init = interpolation[i];
         int j_end  = interpolation[i+1];
@@ -303,7 +303,7 @@ namespace mlib
   )
   {
     std::vector<double> v(vec);
-    for(unsigned int i = 0; i < vec.size()-1; ++i)
+    for(std::size_t i = 0; i < vec.size()-1; ++i)
       v[i] = func(vec[i]);
     return v;
   }
@@ -313,32 +313,32 @@ namespace mlib
     std::vector<double>& vec,
     double toll_zero,
     double toll_jump,
-    unsigned int item_before,
-    unsigned int item_after,
-    unsigned int singularity_lenght,
+    std::size_t item_before,
+    std::size_t item_after,
+    std::size_t singularity_lenght,
     bool left)
   {
     std::vector<double> v(vec);
-    for(unsigned int i = item_before;
+    for(std::size_t i = item_before;
         i < vec.size() - item_after - singularity_lenght;
         ++i)
       {
         bool status = true;
 
         // Controlla che i primi valori siano allineati
-        for(unsigned int j = 2; j <= item_before; ++j)
+        for(std::size_t j = 2; j <= item_before; ++j)
           if(std::abs(vec[i-1]-vec[i-j]) > toll_zero)
             status = false;
 
         // Controlla che i secondi valori siano allineati
-        for(unsigned int j = 0; j < item_after; ++j)
+        for(std::size_t j = 0; j < item_after; ++j)
           if(std::abs(
                vec[i+singularity_lenght]-
                vec[i+singularity_lenght+j]) > toll_zero)
             status = false;
 
         // Controlla che la singolarità non sia allineata né prima né dopo
-        for(unsigned int j = 0; j < singularity_lenght; ++j)
+        for(std::size_t j = 0; j < singularity_lenght; ++j)
           if(std::abs(vec[i-1]-vec[i+j]) <= toll_jump
              || std::abs(vec[i+singularity_lenght]-vec[i+j]) <=
              toll_jump)
@@ -346,7 +346,7 @@ namespace mlib
 
 
         if(status)
-          for(unsigned int j = 0; j < singularity_lenght; ++j)
+          for(std::size_t j = 0; j < singularity_lenght; ++j)
             {
               if(left)
                 v[i+j] = vec[i-1];

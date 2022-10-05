@@ -10,7 +10,7 @@ int main()
 {
   print_title("Integral");
 
-  unsigned int size = 5;
+  std::size_t size = 5;
 
   Matrixd m(size,size);
   Point p;

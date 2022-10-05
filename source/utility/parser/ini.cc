@@ -78,12 +78,12 @@ namespace mlib
   }
 
   template<>
-  unsigned int
+  std::size_t
   INIHandler::
   get_val(
     const std::string& section,
     const std::string& name,
-    const unsigned int& default_value)
+    const std::size_t& default_value)
   {
     if(conf.count(section))
       return from_str_to_unsigned_int(conf[section][name]);

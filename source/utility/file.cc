@@ -45,10 +45,10 @@ namespace mlib
     return result;
   }
 
-  unsigned int
+  std::size_t
   get_number_of_lines(const std::string& in_filename)
   {
-    unsigned int n_lines = 0;
+    std::size_t n_lines = 0;
 
     std::string line;
     std::ifstream file(in_filename);

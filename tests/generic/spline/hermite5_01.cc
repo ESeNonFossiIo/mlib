@@ -13,7 +13,7 @@ int main()
   print_title("Hermite Spline");
 
 
-  unsigned int j_end = 100;
+  std::size_t j_end = 100;
 
   Point p0(0,0,0);
   Point v0(1,0,0);
@@ -33,7 +33,7 @@ int main()
 
   HermiteSpline5<3> hs(p0,p1,v0,v1,a0,a1,t0,t1);
 
-  for(unsigned int j = 0; j <= j_end; j++)
+  for(std::size_t j = 0; j <= j_end; j++)
     {
       double t  =  t0  + ((double)j/(double)j_end)  * (t1 - t0);
       std::cout << std::setprecision(8) << " " << std::setw(10) << t;

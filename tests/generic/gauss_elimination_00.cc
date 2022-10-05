@@ -38,7 +38,7 @@ int main()
 
   {
 
-    unsigned int size = 5;
+    std::size_t size = 5;
 
     Matrixd m(size,size);
     Point p;

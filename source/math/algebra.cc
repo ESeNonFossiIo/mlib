@@ -10,7 +10,7 @@ namespace mlib
     :
     c(list.size(), 0.0)
   {
-    unsigned int i = 0;
+    std::size_t i = 0;
     for(auto l: list)
       {
         c[i++] = l;
@@ -35,7 +35,7 @@ namespace mlib
   operator()(const double& x) const
   {
     double result(c[c.size() - 1]);
-    for(unsigned int j = 1; j<c.size(); j++)
+    for(std::size_t j = 1; j<c.size(); j++)
       {
         result *= x;
         result += c[c.size() - 1 - j];
@@ -59,7 +59,7 @@ namespace mlib
 
   Polynomial
   Polynomial::
-  d(const unsigned int& i) const
+  d(const std::size_t& i) const
   {
     if(i==0)
       {
@@ -72,7 +72,7 @@ namespace mlib
     else
       {
         std::vector<double> new_c(this->deg());
-        for(unsigned int j = 0; j<new_c.size(); j++)
+        for(std::size_t j = 0; j<new_c.size(); j++)
           {
             new_c[j] = (j+1)*c[j+1];
           }
@@ -99,7 +99,7 @@ namespace mlib
   operator<< (std::ostream& output, const Polynomial& p)
   {
     output << "[";
-    for(unsigned int i = 0; i < p.size() - 1; ++i)
+    for(std::size_t i = 0; i < p.size() - 1; ++i)
       output << p[i] << ",";
     output << p[p.deg()] << "]";
     return output;

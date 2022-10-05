@@ -14,19 +14,19 @@ namespace mlib
   {
   public:
     ProgressBar(
-      unsigned int length_ = 60,
+      std::size_t length_ = 60,
       std::string c_ = "=");
 
 
-    void print_bar(unsigned int pos);
+    void print_bar(std::size_t pos);
 
     void end();
 
-    void operator()(unsigned int pos);
+    void operator()(std::size_t pos);
 
   private:
     std::string c;
-    unsigned int length;
+    std::size_t length;
   };
 }
 /** @}*/

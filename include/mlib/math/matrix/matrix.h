@@ -250,7 +250,7 @@ namespace mlib
      * @brief lp norm
      */
     T
-    l_p_norm(const unsigned int& p) const;
+    l_p_norm(const std::size_t& p) const;
 
     /**
      * [det description]

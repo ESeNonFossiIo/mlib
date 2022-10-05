@@ -178,7 +178,7 @@ namespace mlib
   double
   points_distance(const Point& p1,
                   const Point& p2,
-                  const unsigned int& d = 2);
+                  const std::size_t& d = 2);
 
   /**
    * [Pointcentroid description]

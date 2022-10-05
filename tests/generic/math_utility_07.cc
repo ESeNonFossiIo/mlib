@@ -30,7 +30,7 @@ int main()
 
   auto u = remove_singularities(v);
 
-  for(unsigned int i = 0; i < u.size(); ++i)
+  for(std::size_t i = 0; i < u.size(); ++i)
     std::cout << std::setw(8) << v[i] << "\t "
               << std::setw(8) << u[i] << std::endl;
 

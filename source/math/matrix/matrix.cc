@@ -51,8 +51,8 @@ namespace mlib
     rows = M.size();
     cols = M[0].size();
     elements.resize(M.size() * M[0].size(), T(0.0));
-    for(unsigned int i = 0; i<rows; ++i)
-      for(unsigned int j = 0; j<cols; ++j)
+    for(std::size_t i = 0; i<rows; ++i)
+      for(std::size_t j = 0; j<cols; ++j)
         elements[i*cols+j] = M[i][j];
   }
 
@@ -194,7 +194,7 @@ namespace mlib
   {
     assert(i<cols);
     Matrix<T> new_matrix(rows,1);
-    for(unsigned int j = 0; j < rows; ++j)
+    for(std::size_t j = 0; j < rows; ++j)
       new_matrix[j] = elements[i + cols*j];
 
     return new_matrix;
@@ -207,7 +207,7 @@ namespace mlib
   {
     assert(i<rows);
     Matrix<T> new_matrix(1,cols);
-    for(unsigned int j = 0; j < cols; ++j)
+    for(std::size_t j = 0; j < cols; ++j)
       new_matrix[j] = elements[j + cols*i];
 
     return new_matrix;
@@ -218,7 +218,7 @@ namespace mlib
   Matrix<T>::
   operator*= (const T& a)
   {
-    for(unsigned int i = 0; i<elements.size(); ++i)
+    for(std::size_t i = 0; i<elements.size(); ++i)
       this->elements[i] *= a;
     return *this;
   }
@@ -236,7 +236,7 @@ namespace mlib
   Matrix<T>::
   operator/= (const T& a)
   {
-    for(unsigned int i = 0; i<elements.size(); ++i)
+    for(std::size_t i = 0; i<elements.size(); ++i)
       this->elements[i] /= a;
     return *this;
   }
@@ -254,7 +254,7 @@ namespace mlib
   Matrix<T>::
   operator+= (const Matrix<T>& M)
   {
-    for(unsigned int i=0; i<rows*cols; ++i)
+    for(std::size_t i=0; i<rows*cols; ++i)
       this->elements[i] += M.elements[i];
     return *this;
   }
@@ -264,7 +264,7 @@ namespace mlib
   Matrix<T>::
   operator-= (const Matrix<T>& M)
   {
-    for(unsigned int i=0; i<rows*cols; ++i)
+    for(std::size_t i=0; i<rows*cols; ++i)
       this->elements[i] -= M.elements[i];
     return *this;
   }
@@ -291,9 +291,9 @@ namespace mlib
   operator* (const Matrix<T>& M) const
   {
     Matrix<T> output(rows, M.c());
-    for(unsigned int i =0; i<rows; ++i)
-      for(unsigned int j =0; j<M.c(); ++j)
-        for(unsigned int k =0; k<cols; ++k)
+    for(std::size_t i =0; i<rows; ++i)
+      for(std::size_t j =0; j<M.c(); ++j)
+        for(std::size_t k =0; k<cols; ++k)
           output.elements[i*M.c()+j] += this->elements[i*cols+k] *
                                         M.elements[k*M.c()+j];
     return output;
@@ -313,8 +313,8 @@ namespace mlib
   transpose() const
   {
     Matrix<T> output(cols, rows);
-    for(unsigned int i =0; i<rows; ++i)
-      for(unsigned int j =0; j<cols; ++j)
+    for(std::size_t i =0; i<rows; ++i)
+      for(std::size_t j =0; j<cols; ++j)
         output(j,i) = this->elements[i*cols+j];
     return output;
   }
@@ -367,7 +367,7 @@ namespace mlib
   template<typename T>
   T
   Matrix<T>::
-  l_p_norm(const unsigned int& p) const
+  l_p_norm(const std::size_t& p) const
   {
     T sum(0.0);
     for(auto it = this->elements.begin();
@@ -478,11 +478,11 @@ namespace mlib
 #ifndef WINDOWS
     std::string bar = std::string(13*M.c() + M.c()+1, '-');
     output << std::setprecision(5) << std::endl;
-    for(unsigned int i = 0; i< M.r(); ++i)
+    for(std::size_t i = 0; i< M.r(); ++i)
       {
         output << " " << bar << std::endl;
         output << " | ";
-        for(unsigned int j = 0; j< M.c(); ++j)
+        for(std::size_t j = 0; j< M.c(); ++j)
           output << std::setw(11) << M(i,j) << " | ";
 
         output << std::endl;
@@ -506,7 +506,7 @@ namespace mlib
     :
     Matrix<double> (size, size)
   {
-    for(unsigned int i = 0; i<size; ++i)
+    for(std::size_t i = 0; i<size; ++i)
       this->elements[i + i*size] = 1.0;
   }
 

@@ -18,7 +18,7 @@ namespace mlib
   get_clusters(
     const pcl::PointCloud<pcl::PointXYZI>::Ptr& cloud,
     const double& tolerance,
-    const unsigned int& min_pts_per_cluster)
+    const std::size_t& min_pts_per_cluster)
   {
     std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> result;
 

@@ -39,7 +39,7 @@ namespace mlib
                       double toll_zero)
   {
     std::vector<double> v(vec);
-    for(unsigned int i  = 0; i<v.size(); ++i)
+    for(std::size_t i  = 0; i<v.size(); ++i)
       if(std::abs(v[i]) <toll_zero) v[i] = 0;
     return v;
   }
