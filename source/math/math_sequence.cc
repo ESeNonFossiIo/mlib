@@ -33,11 +33,11 @@ namespace mlib
     if(static_cast<std::size_t>(n_elements) < sequence.size()) return;
 
     sequence.resize(n_elements);
-    for(size_t i = size; i < static_cast<std::size_t>(n_elements); ++i)
+    for(std::size_t i = size; i < static_cast<std::size_t>(n_elements); ++i)
       {
         auto tmp = std::vector<T>(sequence.begin() + i - pattern_lenght,
                                   sequence.begin() + i);
-        auto t = next_element(tmp, static_cast<T>(i));
+        auto t = next_element(tmp, i);
         sequence[i] = t;
         sum += t;
       }
