@@ -1,5 +1,5 @@
-#include "source/_macro/python.h"
-#include "source/_python/types.h"
+#include "../source/_macro/python.h"
+#include "../source/_python/types.h"
 #include "mlib/core/version.h"
 
 /// ----------------------------------------------------------------------------

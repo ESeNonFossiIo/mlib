@@ -16,15 +16,15 @@ const char* version();
 
 /// ----------------------------------------------------------------------------
 /// Return the current major version
-const std::size_t version_major();
+std::size_t version_major();
 
 /// ----------------------------------------------------------------------------
 /// Return the current minor version
-const std::size_t version_minor();
+std::size_t version_minor();
 
 /// ----------------------------------------------------------------------------
 /// Return the current patch version
-const std::size_t version_patch();
+std::size_t version_patch();
 
 };
 
