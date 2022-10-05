@@ -20,7 +20,7 @@ int main()
   auto u = accumulate(v,true);
   auto w = accumulate(v,false);
 
-  for(unsigned int i = 1; i < v.size(); ++i)
+  for(std::size_t i = 1; i < v.size(); ++i)
     std::cout << " " << u[i] << " - " << w[i] << std::endl;
 
   return 0;

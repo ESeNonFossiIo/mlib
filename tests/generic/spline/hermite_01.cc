@@ -44,8 +44,8 @@ int main()
   HermiteSpline<2> hs(p, q, tp, tq, pt, qt);
 
 
-  unsigned int i_end = 20;
-  for(unsigned int i = 0; i <= i_end; i++)
+  std::size_t i_end = 20;
+  for(std::size_t i = 0; i <= i_end; i++)
     {
       double t  =  pt  + ((double)i/(double)i_end)  * (qt - pt);
       std::cout << " t =   " << t << std::flush << std::endl;

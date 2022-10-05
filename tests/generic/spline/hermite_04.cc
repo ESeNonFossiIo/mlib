@@ -53,9 +53,9 @@ int main()
   LinearInterpolation<2> tli(tp, tq, pt, qt);
 
   double ratio = 1.0;
-  unsigned int i_end = 1000;
+  std::size_t i_end = 1000;
 
-  for(unsigned int i = 0; i < i_end; i++)
+  for(std::size_t i = 0; i < i_end; i++)
     {
       double t  =  pt  + ((double)i/(double)i_end)  * (qt - pt)/ratio;
 

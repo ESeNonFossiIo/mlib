@@ -60,13 +60,18 @@ namespace mlib
   }
 
   std::vector<size_t>
-  decimal_to_binary(const unsigned int& num)
+  decimal_to_binary(const std::size_t& num)
   {
-    std::vector<size_t> r;
-    unsigned int res  = num;
+    if(num == 0)
+      {
+        return std::vector<std::size_t>(1, 0);
+      }
 
-    unsigned int e = static_cast<unsigned int>(std::log2(res));
-    unsigned int p = static_cast<unsigned int>(std::pow(2, e));
+    std::vector<size_t> r;
+    std::size_t res  = num;
+
+    std::size_t e = static_cast<std::size_t>(std::log2(res));
+    std::size_t p = static_cast<std::size_t>(std::pow(2, e));
 
     while(p > 0)
       {
@@ -83,15 +88,15 @@ namespace mlib
     return r;
   }
 
-  unsigned int
+  std::size_t
   binary_to_decimal(const   std::vector<size_t>& num)
   {
     if(num.size()==0)
       return 0;
 
-    unsigned int result = 0;
-    unsigned int p = 1;
-    for(unsigned int i = 0; i < num.size(); ++i)
+    std::size_t result = 0;
+    std::size_t p = 1;
+    for(std::size_t i = 0; i < num.size(); ++i)
       {
         result += static_cast<std::size_t>(num[num.size() - 1 - i] * p);
         p *= 2;

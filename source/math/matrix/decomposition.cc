@@ -37,7 +37,7 @@ namespace mlib
     V = from_eigen_to_m_matrix(svd.matrixV());
 
     W.resize(m,n);
-    for(unsigned int i = 0; i< A.r(); ++i)
+    for(std::size_t i = 0; i< A.r(); ++i)
       {
         W(i,i) = svd.singularValues()(i);
       }

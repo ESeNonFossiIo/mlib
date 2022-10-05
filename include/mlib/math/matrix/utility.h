@@ -17,16 +17,16 @@ namespace mlib
    *  Invert line l1 and l2
    */
   void swap_lines(Matrix<double>& M,
-                  const unsigned int& l1,
-                  const unsigned int& l2);
+                  const std::size_t& l1,
+                  const std::size_t& l2);
 
   /**
    *  Invert line l1 and l2 in M and b
    */
   void swap_lines(Matrix<double>& M,
                   Point& b,
-                  const unsigned int& l1,
-                  const unsigned int& l2);
+                  const std::size_t& l1,
+                  const std::size_t& l2);
 
   /**
    *  Calculate the equavalent upper triangular system

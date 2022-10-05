@@ -23,8 +23,8 @@ int main()
   n(0,0) = 10;
   n(1,0) = 11;
 
-  for(unsigned int i =0; i<2; i++)
-    for(unsigned int j =0; j<2; j++)
+  for(std::size_t i =0; i<2; i++)
+    for(std::size_t j =0; j<2; j++)
       std::cout << (n+m)(i,j) << std::endl;
 
   std::cout << m *n;

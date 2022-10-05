@@ -29,8 +29,8 @@ namespace mlib
   from_m_to_eigen_matrix(const Matrixd& m)
   {
     Eigen::MatrixXd m_new(m.r(),m.c());
-    for(unsigned int i = 0; i < m.r(); i++)
-      for(unsigned int j = 0; j < m.c(); j++)
+    for(std::size_t i = 0; i < m.r(); i++)
+      for(std::size_t j = 0; j < m.c(); j++)
         m_new(i,j) = m(i,j);
     return m_new;
   }
@@ -44,8 +44,8 @@ namespace mlib
   from_eigen_to_m_matrix(const Eigen::MatrixXd& m)
   {
     Matrixd m_new(m.rows(), m.cols());
-    for(unsigned int i = 0; i < m.rows(); i++)
-      for(unsigned int j = 0; j < m.cols(); j++)
+    for(std::size_t i = 0; i < m.rows(); i++)
+      for(std::size_t j = 0; j < m.cols(); j++)
         m_new(i,j) = m(i,j);
     return m_new;
   }

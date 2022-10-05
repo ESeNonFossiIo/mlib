@@ -49,19 +49,19 @@ namespace mlib
   }
 
   template<>
-  unsigned int
+  std::size_t
   ParsedParameters::
   add_new_entry(const std::string& section,
                 const std::string& name,
-                const unsigned int& default_value,
-                const unsigned int& max_val,
-                const unsigned int& min_val)
+                const std::size_t& default_value,
+                const std::size_t& max_val,
+                const std::size_t& min_val)
   {
     std::string val = this->get_val<std::string>(section, name);
     if(val=="")
       this->add_entry(section, name, std::to_string(default_value));
 
-    unsigned int num = from_str_to_unsigned_int(val);
+    std::size_t num = from_str_to_unsigned_int(val);
 
     if(num <min_val || num> max_val)
       return default_value;

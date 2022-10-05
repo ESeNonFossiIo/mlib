@@ -26,11 +26,11 @@ int main()
       c /= n;
       d /= n;
 
-      for(unsigned int i = 0; i < 10; ++i)
+      for(std::size_t i = 0; i < 10; ++i)
         {
-          for(unsigned int j = 0; j < 10; ++j)
+          for(std::size_t j = 0; j < 10; ++j)
             {
-              for(unsigned int k = 0; k < 10; ++k)
+              for(std::size_t k = 0; k < 10; ++k)
                 {
                   pcl::PointXYZI p;
                   p.x = i;

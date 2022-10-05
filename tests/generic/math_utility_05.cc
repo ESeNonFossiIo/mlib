@@ -20,7 +20,7 @@ int main()
   auto u = truncate_decimals_vec(v,0.1);
   auto w = truncate_decimals_vec(v,0.01);
 
-  for(unsigned int i = 0; i < v.size(); ++i)
+  for(std::size_t i = 0; i < v.size(); ++i)
     std::cout << " " << v[i] << " - "<< u[i] << " - " << w[i] <<
               std::endl;
 

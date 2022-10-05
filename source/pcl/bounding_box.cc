@@ -236,10 +236,10 @@ namespace mlib
   is_flat(double tolerance)
   {
     std::vector<int> counter(8,0);
-    for(unsigned int i = 0; i<8; i++)
+    for(std::size_t i = 0; i<8; i++)
       {
         auto q = bounding_box->points[i];
-        for(unsigned int j = i+1; j<8; j++)
+        for(std::size_t j = i+1; j<8; j++)
           {
             auto p = bounding_box->points[j];
             double qp = points_distance(q,p);
@@ -251,7 +251,7 @@ namespace mlib
               }
           }
       }
-    for(unsigned int i = 0; i<8; i++)
+    for(std::size_t i = 0; i<8; i++)
       {
         if(counter[i] != 1)
           return STATUS::MLIB_ERROR;

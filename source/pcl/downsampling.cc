@@ -53,7 +53,7 @@ namespace mlib
   void
   neighborhood_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
                             pcl::PointCloud<pcl::PointXYZI>::Ptr downsampled,
-                            float radius, unsigned int num_points)
+                            float radius, std::size_t num_points)
   {
     pcl::RadiusOutlierRemoval<pcl::PointXYZI> radius_outlier_removal;
     radius_outlier_removal.setInputCloud(cloud);
@@ -66,7 +66,7 @@ namespace mlib
   void
   horizontal_cloud_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
                                 pcl::PointCloud<pcl::PointXYZI>::Ptr downsampled,
-                                float height, unsigned int num_points)
+                                float height, std::size_t num_points)
   {
     double min = std::numeric_limits<double>::max();
     double max = std::numeric_limits<double>::lowest();

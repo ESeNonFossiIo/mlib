@@ -219,7 +219,7 @@ namespace mlib
   //     '=',  ' ');
   //
   //   auto parts = split(text, "\' ");
-  //   for(unsigned int i = 0; i<parts.size(); ++i)
+  //   for(std::size_t i = 0; i<parts.size(); ++i)
   //     {
   //       std::vector<std::string>  name_and_val = split(parts[i], "\'");
   //       if(name_and_val[0]!="" && name_and_val.size()>1)
@@ -237,8 +237,8 @@ namespace mlib
   //   if(text.find(meta_tag) > 0)
   //     {
   //       std::string label = meta_tag;
-  //       unsigned int init = text.find(meta_tag) + label.size() + 1;
-  //       unsigned int end  = text.find("?>", init) - 1;
+  //       std::size_t init = text.find(meta_tag) + label.size() + 1;
+  //       std::size_t end  = text.find("?>", init) - 1;
   //       xml_stylesheet_property_raw = text.substr(init, end - init);
   //       text.erase(text.find(meta_tag), text.find("?>",
   //                                                 init) - text.find(meta_tag) + 2);
@@ -249,14 +249,14 @@ namespace mlib
   // XMLEntry
   // get_entry(std::string& text)
   // {
-  //   unsigned int pos      = text.find("<");
-  //   unsigned int start    = pos;
-  //   unsigned int with     = 0;
-  //   unsigned int without  = 1;
+  //   std::size_t pos      = text.find("<");
+  //   std::size_t start    = pos;
+  //   std::size_t with     = 0;
+  //   std::size_t without  = 1;
   //
   //   while(with != without)
   //     {
-  //       unsigned int next = text.find("<", pos+1);
+  //       std::size_t next = text.find("<", pos+1);
   //       if(text.at(next+1) == '/')
   //         {
   //           with ++;
@@ -268,11 +268,11 @@ namespace mlib
   //       pos = next;
   //     }
   //
-  //   unsigned int close = pos;
-  //   unsigned int end = text.find(">", close+1);
+  //   std::size_t close = pos;
+  //   std::size_t end = text.find(">", close+1);
   //
-  //   unsigned int label_init = text.find_first_not_of(" ", start) +1;
-  //   unsigned int label_end =
+  //   std::size_t label_init = text.find_first_not_of(" ", start) +1;
+  //   std::size_t label_end =
   //     std::min(
   //       text.find(" ", label_init),
   //       text.find(">", label_init)
@@ -330,7 +330,7 @@ namespace mlib
   //
   // std::string
   // XMLHandler::
-  // get_file(unsigned int depth)
+  // get_file(std::size_t depth)
   // {
   //   std::string text;
   //
@@ -394,7 +394,7 @@ namespace mlib
   //
   // XMLEntry*
   // XMLHandler::
-  // get_element(const unsigned int& i)
+  // get_element(const std::size_t& i)
   // {
   //   return xml_entries[i].get();
   // }

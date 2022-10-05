@@ -57,8 +57,8 @@ int main()
             << std::setw(15) << "ty"
             << std::setw(15) << "yaw" << std::endl;
 
-  unsigned int i_end = 100;
-  for(unsigned int i = 0; i <= i_end; i++)
+  std::size_t i_end = 100;
+  for(std::size_t i = 0; i <= i_end; i++)
     {
       double t  =  pt  + ((double)i/(double)i_end)  * (qt - pt);
       std::cout << std::setw(15) << t - 307392 << std::flush;

@@ -48,7 +48,7 @@ namespace mlib
     return convert.str();
   }
 
-  unsigned int
+  std::size_t
   from_str_to_unsigned_int(const std::string in)
   {
     try
@@ -130,10 +130,10 @@ namespace mlib
   }
 
   std::string
-  hline(const unsigned int& size, const std::string& c)
+  hline(const std::size_t& size, const std::string& c)
   {
     std::string out = "";
-    for(unsigned int i = 0; i < size; ++i)
+    for(std::size_t i = 0; i < size; ++i)
       out += c;
     return out;
   }

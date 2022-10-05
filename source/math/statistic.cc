@@ -6,7 +6,7 @@ namespace mlib
   double
   moment(
     const std::vector<double>& v,
-    const unsigned int& n,
+    const std::size_t& n,
     const bool& central)
   {
     double sum = 0.0;

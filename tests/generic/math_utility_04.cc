@@ -16,7 +16,7 @@ int main()
   auto u = difference(v,true);
   auto w = difference(v,false);
 
-  for(unsigned int i = 1; i < v.size(); ++i)
+  for(std::size_t i = 1; i < v.size(); ++i)
     std::cout << " " << u[i] << " - " << w[i] << std::endl;
 
   return 0;

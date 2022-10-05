@@ -20,7 +20,7 @@ int main()
 
   std::vector<std::string> labels = test.get_labels();
 
-  // for(unsigned int i = 0; i < labels.size(); ++i)
+  // for(std::size_t i = 0; i < labels.size(); ++i)
   //   std::cout << i << " --> " <<labels[i] << std::endl;
 
   std::vector<std::string> date = test.get("Date");
@@ -34,7 +34,7 @@ int main()
   std::vector<std::string> pitch_txt = test.get("AnglePitch");
   std::vector<std::string> roll_txt  = test.get("AngleRoll");
 
-  for(unsigned int i = 0; i < 10; ++i)
+  for(std::size_t i = 0; i < 10; ++i)
     {
       std::cout   << date[i]      << ";"
                   << time[i]      << ";"
@@ -46,7 +46,7 @@ int main()
                   << roll_txt[i]
                   << std::endl;
     }
-  for(unsigned int i = roll_txt.size() - 10; i < roll_txt.size(); ++i)
+  for(std::size_t i = roll_txt.size() - 10; i < roll_txt.size(); ++i)
     {
       std::cout   << date[i]      << ";"
                   << time[i]      << ";"
