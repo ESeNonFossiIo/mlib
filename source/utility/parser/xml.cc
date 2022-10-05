@@ -90,7 +90,7 @@ namespace mlib
   }
 
   XMLHandler::
-  XMLHandler() {};
+  XMLHandler() {}
 
   XMLHandler::
   XMLHandler(std::string filename, bool is_file)
@@ -299,7 +299,7 @@ namespace mlib
   //     {
   //       XMLEntry sub_entry = get_entry(next_text);
   //       entry.add(label, sub_entry);
-  //     };
+  //   }
   //   text.erase(start, end-start +1);
   //
   //   return entry;
@@ -411,5 +411,5 @@ namespace mlib
   operator()()
   {
     return this->val_text;
-  };
+  }
 }

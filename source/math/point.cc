@@ -27,7 +27,7 @@ namespace mlib
   {
     if(is_normalized)
       this->normalize();
-  };
+  }
 
   Point::
   Point(double x_)
@@ -104,7 +104,7 @@ namespace mlib
   Point::
   Point(const Matrix<double>& M)
     :
-    Matrix<double> (M) {};
+    Matrix<double> (M) {}
 
   void
   Point::
@@ -251,7 +251,7 @@ namespace mlib
         sum += std::pow(std::abs(p1[i] - p2[i]), d);
       }
     return std::pow(sum, 1.0/(float)d);
-  };
+  }
 
   Point
   centroid(const std::vector<Point>& p,
@@ -270,6 +270,6 @@ namespace mlib
     assert(sum_w > 0);
 
     return (1.0/sum_w)*sum_p;
-  };
+  }
 
 }

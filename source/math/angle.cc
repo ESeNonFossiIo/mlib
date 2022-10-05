@@ -76,7 +76,7 @@ namespace mlib
     angleRad *= a;
     angleDeg *= a;
     return *this;
-  };
+  }
 
   double
   Angle::
@@ -238,5 +238,5 @@ namespace mlib
     double angle = std::acos(((a-o).t()*(b-o))[0]/((a-o).l_2_norm()*
                                                    (b-o).l_2_norm()));
     return Angle(angle);
-  };
+  }
 }

@@ -19,11 +19,11 @@ namespace mlib
     for(auto e: init_sequence)
       sum += e;
     compute_elements(n_elements);
-  };
+  }
 
   template<typename T>
   MathSeq<T>::
-  ~MathSeq() {};
+  ~MathSeq() {}
 
   template<typename T>
   void
@@ -40,10 +40,10 @@ namespace mlib
         auto t = next_element(tmp, i);
         sequence[i] = t;
         sum += t;
-      };
+      }
 
     size = n_elements;
-  };
+  }
 
   template<typename T>
   T

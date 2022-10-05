@@ -22,7 +22,7 @@ namespace mlib
   )
   {
     return a.x * b.x + a.y * b.y + a.z * b.z;
-  };
+  }
 
   /**
     * @brief distance
@@ -92,7 +92,7 @@ namespace mlib
     size_t& i1_min,
     size_t& i2_min);
 
-};
+}
 
 
 /** @}*/

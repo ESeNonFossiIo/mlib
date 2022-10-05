@@ -27,7 +27,7 @@ namespace mlib
     const double& tolerance,
     const unsigned int& min_pts_per_cluster);
 
-};
+}
 
 
 /** @}*/

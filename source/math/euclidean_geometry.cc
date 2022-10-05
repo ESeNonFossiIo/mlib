@@ -7,7 +7,7 @@ namespace mlib
   HyperPlane()
     :
     Point()
-  {};
+  {}
 
   HyperPlane::
   HyperPlane(std::initializer_list<double> list,
@@ -17,7 +17,7 @@ namespace mlib
   {
     if(normal_form)
       this->normal_form();
-  };
+  }
 
   void
   HyperPlane::
@@ -29,7 +29,7 @@ namespace mlib
       this->elements[i]/= this->elements[0];
 
     this->elements[0]/= this->elements[0];
-  };
+  }
 
   /**
    * @brief a
@@ -40,7 +40,7 @@ namespace mlib
   a() const
   {
     return this->elements[0];
-  };
+  }
 
   /**
    * @brief b
@@ -51,7 +51,7 @@ namespace mlib
   b() const
   {
     return this->elements[1];
-  };
+  }
 
   /**
    * @brief c
@@ -62,7 +62,7 @@ namespace mlib
   c() const
   {
     return this->elements[2];
-  };
+  }
 
   /**
    * @brief d
@@ -73,7 +73,7 @@ namespace mlib
   d() const
   {
     return this->elements[3];
-  };
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -94,7 +94,7 @@ namespace mlib
         hp[0]/=hp[0];
       }
     return hp;
-  };
+  }
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -119,7 +119,7 @@ namespace mlib
     assert(m.det()*m.det() > VAR_MLIB_ZERO_TOLERANCE);
 
     return m.inv() * b;
-  };
+  }
 
   Point
   get_hyperplanes_intersection(const HyperPlane& p,
@@ -144,7 +144,7 @@ namespace mlib
     assert(m.det()*m.det() > VAR_MLIB_ZERO_TOLERANCE);
 
     return m.inv() * b;
-  };
+  }
 
   HyperPlane
   hyperplane_passing_through_three_points(const Point& a,
@@ -173,7 +173,7 @@ namespace mlib
     l[3] = - a[0]*l[0] + a[1]*l[1] - a[2]*l[2];
 
     return l;
-  };
+  }
 
   Point
   circumference_center(const Point& a,
@@ -193,5 +193,5 @@ namespace mlib
         HyperPlane l2 = mlib::middle_hyperplane_between_points(b,c);
         return mlib::get_hyperplanes_intersection(l1,l2);
       }
-  };
+  }
 }

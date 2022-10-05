@@ -7,7 +7,7 @@ namespace mlib
     :
     color(color_),
     style(style_)
-  {};
+  {}
 
   std::string
   GeneralColor::
@@ -18,7 +18,7 @@ namespace mlib
 // #else
     // return "<Esc>["+std::to_string(style)+";"+std::to_string(color-65)+"m";
 // #endif
-  };
+  }
 
   std::string
   GeneralColor::
@@ -29,6 +29,6 @@ namespace mlib
 // #else
     // return "<Esc>[0m";
 // #endif
-  };
+  }
 
 }

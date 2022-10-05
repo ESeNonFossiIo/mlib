@@ -230,7 +230,7 @@ namespace mlib
           }
       }
     return return_log;
-  };
+  }
 
   void
   INIHandler::
@@ -242,7 +242,7 @@ namespace mlib
       {
         conf.erase(section);
       }
-  };
+  }
 
   void
   INIHandler::
@@ -296,7 +296,7 @@ namespace mlib
               }
           }
         ;
-      };
+      }
   }
 
   std::map<std::string, std::string>&

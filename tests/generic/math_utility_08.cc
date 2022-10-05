@@ -21,10 +21,10 @@ int main()
   auto f = normalize_range(1.0, 10.0);
 
   for(std::size_t i = 1; i <= 10; ++i)
-  {
-    const double x = static_cast<double>(i);
-    std::cout << f(x) << "\t ";
-  }
+    {
+      const double x = static_cast<double>(i);
+      std::cout << f(x) << "\t ";
+    }
 
 
   return 0;

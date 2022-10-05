@@ -29,7 +29,7 @@ namespace mlib
             ++it;
           }
 
-      };
+      }
   }
 
   void add_missing_points(pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud,
@@ -60,7 +60,7 @@ namespace mlib
               }
           }
         ++it;
-      };
+      }
     *input_cloud = *new_points;
   }
 
@@ -86,7 +86,7 @@ namespace mlib
           {
             ++it;
           }
-      };
+      }
   }
 
 

@@ -55,7 +55,7 @@ namespace mlib
   get_extreme_points() const
   {
     return std::make_pair<>(p1, p2);
-  };
+  }
 
   Segment&
   Segment::
@@ -154,7 +154,7 @@ namespace mlib
   {
     std::pair<Point, Point> p = closest_points(a, b);
     return points_distance(p.first, p.second);
-  };
+  }
 
   STATUS
   are_aligned(const Segment& a, const Segment& b, const double& tolerance)

@@ -43,7 +43,7 @@ namespace mlib
       elements(),
       rows(0),
       cols(0)
-    {};
+    {}
 
     /**
      * destructor

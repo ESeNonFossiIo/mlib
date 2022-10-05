@@ -43,7 +43,7 @@ namespace mlib
         {
           std::vector<std::string> vals = split(line,sep_char,true);
           data.push_back(vals);
-        };
+        }
     }
 
     void

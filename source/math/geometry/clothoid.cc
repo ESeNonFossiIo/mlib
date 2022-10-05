@@ -12,7 +12,7 @@ namespace mlib
     :
     a(a_),
     integral(integral_)
-  {};
+  {}
 
   double
   Clothoid::
@@ -55,7 +55,7 @@ namespace mlib
   ApproximatedClothoid(const double& a_)
     :
     a(a_)
-  {};
+  {}
 
   double
   ApproximatedClothoid::

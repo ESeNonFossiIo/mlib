@@ -70,7 +70,7 @@ namespace mlib
   STATUS
   are_aligned(const Segment& a, const Segment& b, const double& tolerance = 0.01);
 
-};
+}
 
 /** @}*/
 #endif //_MLIB__SEGMENT__H_

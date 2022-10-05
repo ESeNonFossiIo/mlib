@@ -23,14 +23,14 @@ namespace mlib
                 const pcl::PointCloud<CLOUDTYPE>& cloud)
   {
     pcl::io::savePCDFileASCII(filename, cloud);
-  };
+  }
 
   template<typename CLOUDTYPE = pcl::PointXYZ>
   int load_PCD(const std::string& filename,
                pcl::PointCloud<CLOUDTYPE>& cloud)
   {
     return pcl::io::loadPCDFile<CLOUDTYPE> (filename, cloud);
-  };
+  }
 
 
   void
@@ -57,7 +57,7 @@ namespace mlib
   save_txt(const std::string& qs_filename,
            pcl::PointCloud<pcl::PointXYZRGB>& cloud,
            const std::string& separator = ";");
-};
+}
 
 
 /** @}*/

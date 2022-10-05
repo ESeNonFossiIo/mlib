@@ -107,13 +107,13 @@ namespace mlib
   RotationMatrix(TaitBryanAngles angles, RotationType type)
     :
     Matrix<double> (type == RotationType::XYZ ?
-                   RotationMatrix(Point(1,0,0), angles.roll()) *
-                   RotationMatrix(Point(0,1,0), angles.pitch()) *
-                   RotationMatrix(Point(0,0,1), angles.yaw())
-                   :
-                   RotationMatrix(Point(0,0,1), angles.yaw()) *
-                   RotationMatrix(Point(0,1,0), angles.pitch()) *
-                   RotationMatrix(Point(1,0,0), angles.roll()))
+                    RotationMatrix(Point(1,0,0), angles.roll()) *
+                    RotationMatrix(Point(0,1,0), angles.pitch()) *
+                    RotationMatrix(Point(0,0,1), angles.yaw())
+                    :
+                    RotationMatrix(Point(0,0,1), angles.yaw()) *
+                    RotationMatrix(Point(0,1,0), angles.pitch()) *
+                    RotationMatrix(Point(1,0,0), angles.roll()))
 
   {
     std::pair<Point, Angle> result = get_axis_and_angle(
