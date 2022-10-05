@@ -25,7 +25,7 @@ namespace mlib
   void remove_extra_points(pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud,
                            const double& max_distance);
 
-};
+}
 /** @}*/
 
 #endif //_MLIB_PCL_POLYLINE_

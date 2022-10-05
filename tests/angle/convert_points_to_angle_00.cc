@@ -9,7 +9,7 @@ int main()
 {
   print_title("Convert points to angle");
 
-  for(unsigned int i = 0; i < 181; i += 5)
+  for(std::size_t i = 0; i < 181; i += 5)
     {
       Angle alpha(i, AngleType::deg);
 

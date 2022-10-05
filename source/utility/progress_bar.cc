@@ -5,22 +5,22 @@ namespace mlib
 
   ProgressBar::
   ProgressBar(
-    unsigned int length_,
+    std::size_t length_,
     std::string c_)
     :
-    length(length_),
-    c(c_)
+    c(c_),
+    length(length_)
   {}
 
   void
   ProgressBar::
-  print_bar(unsigned int pos)
+  print_bar(std::size_t pos)
   {
-    unsigned int status = (int)((double) pos*
-                                (double) length/100.0);
+    std::size_t status = (int)((double) pos*
+                               (double) length/100.0);
 
     std::cout << "\r [";
-    for(unsigned int i = 0; i<length; ++i)
+    for(std::size_t i = 0; i<length; ++i)
       {
         if(i <= status)
           std::cout << c;
@@ -41,7 +41,7 @@ namespace mlib
 
   void
   ProgressBar::
-  operator()(unsigned int pos)
+  operator()(std::size_t pos)
   {
     print_bar(pos);
   }

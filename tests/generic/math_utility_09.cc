@@ -18,7 +18,7 @@ int main()
   auto u = difference(y, x1);
   auto w = difference(y, x2);
 
-  for(unsigned int i = 1; i < y.size(); ++i)
+  for(std::size_t i = 1; i < y.size(); ++i)
     std::cout << " " << u[i] << " - " << w[i] << std::endl;
 
   return 0;

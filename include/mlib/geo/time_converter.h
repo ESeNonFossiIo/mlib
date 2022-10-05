@@ -12,7 +12,7 @@ namespace mlib
   {
   public:
     TimeConverter(double secs_, int mins_, int hours_, int day_, int month_,
-                  int year_);;
+                  int year_);
 
     double getUTCWeek();
 

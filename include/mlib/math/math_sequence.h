@@ -17,7 +17,7 @@ namespace mlib
     MathSeq(const std::vector<T>& init_sequence,
             const std::function<T(std::vector<T>, int)>& next_element_,
             const int first_element = 0,
-            const int n_elements = 10);;
+            const int n_elements = 10);
     ~MathSeq();
 
     void compute_elements(const int n_elements = 10);
@@ -29,10 +29,10 @@ namespace mlib
 
   private:
     T sum;
-    size_t size;
+    std::size_t size;
     std::vector<T> sequence;
     std::function<T(std::vector<T>, int)> next_element;
-    int pattern_lenght;
+    std::size_t pattern_lenght;
   };
 
 }

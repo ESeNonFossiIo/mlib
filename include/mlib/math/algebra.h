@@ -35,7 +35,7 @@ namespace mlib
     size() const;
 
     Polynomial
-    d(const unsigned int& i = 1) const;
+    d(const std::size_t& i = 1) const;
 
     double&
     operator[](size_t i);
@@ -49,7 +49,7 @@ namespace mlib
      */
     friend
     std::ostream&
-    operator<< (std::ostream& output, const Polynomial& p);;
+    operator<< (std::ostream& output, const Polynomial& p);
 
   protected:
     std::vector<double> c;

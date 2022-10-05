@@ -10,14 +10,17 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
+concurrency:
+  group: ${ {github.event_name }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{github.event_name == 'pull_request'}}
+
 permissions:
   contents: read
 
 jobs:
-  build:
-    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
-    # You can convert this to a matrix build if you need cross-platform coverage.
-    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  build-osx:
+
+    name: OSX MLIB
     runs-on: macos-latest
 
     steps:
@@ -44,7 +47,7 @@ jobs:
       continue-on-error: true
       with:
         name: osx-CMakeOutput.log
-        path: CMakeFiles/CMakeOutput.log
+        path: ${{github.workspace}}/build/CMakeFiles/CMakeOutput.log
 
     - name: archive error 2
       uses: actions/upload-artifact@v3
@@ -52,4 +55,4 @@ jobs:
       continue-on-error: true
       with:
         name: osx-CMakeError.log
-        path: CMakeFiles/CMakeError.log
+        path: ${{github.workspace}}/build/CMakeFiles/CMakeError.log

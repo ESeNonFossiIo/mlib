@@ -46,12 +46,12 @@ namespace mlib
   void
   neighborhood_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
                             pcl::PointCloud<pcl::PointXYZI>::Ptr downsampled,
-                            float radius, unsigned int num_points);
+                            float radius, std::size_t num_points);
 
   void
   horizontal_cloud_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
                                 pcl::PointCloud<pcl::PointXYZI>::Ptr downsampled,
-                                float height, unsigned int num_points);
+                                float height, std::size_t num_points);
 
   void
   horizontal_section_cloud_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr
@@ -59,7 +59,7 @@ namespace mlib
                                         pcl::PointCloud<pcl::PointXYZI>::Ptr downsampled,
                                         float height, float thickness);
 
-};
+}
 
 
 /** @}*/

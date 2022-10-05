@@ -1,5 +1,6 @@
 #include "mlib/math/convolution.h"
 #include "mlib/math/constants.h"
+#include <assert.h>     /* assert */
 
 namespace mlib
 {
@@ -17,7 +18,6 @@ namespace mlib
     };
 
     std::vector<double> ker;
-    int size  = sizeh * 2 + 1; // Deve essere dispari!
     for(int i = -sizeh ; i < sizeh + 1; ++i)
       {
         ker.push_back(gauss(i));
@@ -25,10 +25,10 @@ namespace mlib
 
     std::vector<double> out(in);
 
-    for(int i = sizeh; i < in.size() - sizeh - 1; ++i)
+    for(std::size_t i = sizeh; i < in.size() - sizeh - 1; ++i)
       {
         out[i] = 0.0;
-        for(int j = -sizeh; j < sizeh+1; ++j)
+        for(int j = -sizeh; j < sizeh + 1; ++j)
           out[i] += in[i - j] * ker[sizeh + j];
       }
     return out;
@@ -39,7 +39,7 @@ namespace mlib
                       double toll_zero)
   {
     std::vector<double> v(vec);
-    for(unsigned int i  = 0; i<v.size(); ++i)
+    for(std::size_t i  = 0; i<v.size(); ++i)
       if(std::abs(v[i]) <toll_zero) v[i] = 0;
     return v;
   }
@@ -53,7 +53,7 @@ namespace mlib
     function(function_)
   {
     support = std::make_pair(support_min, support_max);
-  };
+  }
 
   std::function<double(double)>
   Kernel::
@@ -67,7 +67,7 @@ namespace mlib
   operator()(double x) const
   {
     return function(x);
-  };
+  }
 
   std::pair<int,int>
   Kernel::
@@ -76,7 +76,7 @@ namespace mlib
     // assert first < second
     return std::make_pair((int) support.first,
                           (int) support.second);
-  };
+  }
 
 // GaussKernel
 ////////////////////////////////////////////////////////////////////////////////
@@ -91,10 +91,10 @@ namespace mlib
   {
     // TODO: assert sigma > 0
     this->support = std::make_pair(-2*sigma, 2*sigma);
-    this->function = [&sigma_, &mu_](double x)
+    this->function = [&](double x)
     {
-      return std::exp(-1.0* (x-mu_) * (x-mu_) / (2 * sigma_ *
-                                                 sigma_)) / (std::sqrt(2 * M_PI * sigma_ * sigma_));
+      return std::exp(-1.0* (x-mu) * (x-mu) / (2 * sigma *
+                                               sigma)) / (std::sqrt(2 * M_PI * sigma * sigma));
     };
   }
 
@@ -105,33 +105,35 @@ namespace mlib
   Convolution(Kernel kernel_)
     :
     kernel(kernel_)
-  {};
+  {}
 
   std::vector<double>
   Convolution::
   compute(const std::vector<double>& in) const
   {
     std::vector<double> ker;
-    std::pair<int, int> domain = kernel.get_int_support();
-    for(int  i = domain.first;
+    std::pair<std::size_t, std::size_t > domain = kernel.get_int_support();
+    for(std::size_t   i = domain.first;
         i <= domain.second;
         ++i)
       {
         // TODO: overload di ()...
-        ker.push_back(kernel.get_kernel()(i));
+        ker.push_back(kernel.get_kernel()(static_cast<double>(i)));
       }
 
-    double l = domain.second - domain.first + 1;
     std::vector<double> out(in);
-    for(int  i = domain.first;
+    for(std::size_t  i = domain.first;
         i < in.size() - domain.second  - 1;
         ++i)
       {
         out[i] = 0.0;
-        for(int  j = domain.first;
+        for(std::size_t  j = domain.first;
             j <= domain.second;
             ++j)
-          out[i] += in[i - j] * ker[j];
+          {
+            assert(i >= j);
+            out[i] += in[i - j] * ker[j];
+          }
       }
     return out;
   }
@@ -141,6 +143,6 @@ namespace mlib
   operator()(const std::vector<double>& v) const
   {
     return compute(v);
-  }; // for const objects
+  } // for const objects
 
 }

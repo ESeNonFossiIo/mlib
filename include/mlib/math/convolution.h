@@ -21,7 +21,7 @@ namespace mlib
   class Kernel
   {
   public:
-    Kernel() {};
+    Kernel() {}
 
     Kernel(std::function<double(double)> function_,
            double support_min,
@@ -46,7 +46,6 @@ namespace mlib
   private:
     const double sigma;
     const double mu;
-
   };
 
   class Convolution

@@ -53,7 +53,7 @@ namespace mlib
             (1-std::cos(theta)) * (u*u.t()) +
             std::sin(theta) * A;
 
-        for(unsigned int i = 0; i<9; ++i)
+        for(std::size_t i = 0; i<9; ++i)
           this->elements[i] = M[i];
       }
   }
@@ -75,7 +75,7 @@ namespace mlib
 
     Matrix<double> Matrix = std::sin(theta.rad()) *M + std::cos(
                               theta.rad()) * (id - axis*axis.t()) + axis*axis.t();
-    for(unsigned int i = 0; i<9; ++i)
+    for(std::size_t i = 0; i<9; ++i)
       this->elements[i] = Matrix[i];
   }
 
@@ -99,7 +99,7 @@ namespace mlib
 
     Matrix<double> Matrix = std::sin(theta.rad()) *M + std::cos(
                               theta.rad()) * (id - axis*axis.t()) + axis*axis.t();
-    for(unsigned int i = 0; i<9; ++i)
+    for(std::size_t i = 0; i<9; ++i)
       this->elements[i] = Matrix[i];
   }
 
@@ -107,13 +107,13 @@ namespace mlib
   RotationMatrix(TaitBryanAngles angles, RotationType type)
     :
     Matrix<double> (type == RotationType::XYZ ?
-                   RotationMatrix(Point(1,0,0), angles.roll()) *
-                   RotationMatrix(Point(0,1,0), angles.pitch()) *
-                   RotationMatrix(Point(0,0,1), angles.yaw())
-                   :
-                   RotationMatrix(Point(0,0,1), angles.yaw()) *
-                   RotationMatrix(Point(0,1,0), angles.pitch()) *
-                   RotationMatrix(Point(1,0,0), angles.roll()))
+                    RotationMatrix(Point(1,0,0), angles.roll()) *
+                    RotationMatrix(Point(0,1,0), angles.pitch()) *
+                    RotationMatrix(Point(0,0,1), angles.yaw())
+                    :
+                    RotationMatrix(Point(0,0,1), angles.yaw()) *
+                    RotationMatrix(Point(0,1,0), angles.pitch()) *
+                    RotationMatrix(Point(1,0,0), angles.roll()))
 
   {
     std::pair<Point, Angle> result = get_axis_and_angle(

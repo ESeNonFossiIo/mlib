@@ -65,12 +65,6 @@ namespace mlib
      */
     Point(double x_, double y_, double z_, double t_);
 
-    /**
-     * @brief Copy constructor.
-     * @param q point to copy.
-     */
-    Point(const Point& q);
-
 #ifdef MLIB_USE_PCL
     Point(const pcl::PointXYZ& p);
 
@@ -143,7 +137,7 @@ namespace mlib
     Point
     operator= (const Matrix<double> M);
 
-    const size_t dim() const;
+    size_t dim() const;
 
     bool is_normalized;
   };
@@ -184,7 +178,7 @@ namespace mlib
   double
   points_distance(const Point& p1,
                   const Point& p2,
-                  const unsigned int& d = 2);
+                  const std::size_t& d = 2);
 
   /**
    * [Pointcentroid description]
@@ -194,7 +188,7 @@ namespace mlib
   Point
   centroid(const std::vector<Point>& p,
            const std::vector<double>& w);
-};
+}
 
 /** @}*/
 #endif // __m_POINT_H__

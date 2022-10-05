@@ -30,7 +30,7 @@ namespace mlib
    * @param  in_filename [description]
    * @return             [description]
    */
-  unsigned int
+  std::size_t
   get_number_of_lines(const std::string& in_filename);
 }
 

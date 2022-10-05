@@ -11,7 +11,12 @@ namespace mlib
 #ifdef _WIN32
     std::system("CLS");
 #else //_WIN32
-    std::system("clear");
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-result" 
+    std::system("clear");; /* this specific unused-result warning gets ignored during compilation */
+#pragma GCC diagnostic pop 
+
 #endif //_WIN32
   }
 

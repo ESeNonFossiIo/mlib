@@ -45,11 +45,11 @@ namespace mlib
   from_double_to_str(double Number);
 
   /**
-   * @brief from_str_to_unsigned_int convert a std::string in a unsigned int.
+   * @brief from_str_to_unsigned_int convert a std::string in a std::size_t.
    * @param in
-   * @return a unsigned int
+   * @return a std::size_t
    */
-  unsigned int
+  std::size_t
   from_str_to_unsigned_int(const std::string in);
 
   /**
@@ -86,7 +86,7 @@ namespace mlib
    *
    */
   std::string
-  hline(const unsigned int& size = 10,
+  hline(const std::size_t& size = 10,
         const std::string& c = "-");
 
   /**

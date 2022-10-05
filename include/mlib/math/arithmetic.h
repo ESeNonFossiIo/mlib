@@ -55,14 +55,14 @@ namespace mlib
    * @return     digits
    */
   std::vector<size_t>
-  decimal_to_binary(const unsigned int& num);
+  decimal_to_binary(const std::size_t& num);
 
   /**
    * Return an unsinded int from a std::vector representi a binary number
    * @param  num [description]
    * @return     [description]
    */
-  unsigned int
+  std::size_t
   binary_to_decimal(const std::vector<size_t>& num);
 
   /**

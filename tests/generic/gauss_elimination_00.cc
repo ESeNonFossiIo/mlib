@@ -10,8 +10,6 @@ int main()
 {
   print_title("Integral");
 
-  unsigned int size = 2;
-
   {
     Matrixd m({{2,3},{1,1}});
     Point p({1,1});
@@ -40,16 +38,19 @@ int main()
 
   {
 
-    unsigned int size = 5;
+    std::size_t size = 5;
 
     Matrixd m(size,size);
     Point p;
     p.resize(size);
 
     for(size_t j = 0; j < size; ++j)
-      for(size_t i = 0; i < size-j; ++i)
-
-        m(i,j) = 5-i-j;
+      {
+        for(size_t i = 0; i < size-j; ++i)
+          {
+            m(i,j) = static_cast<double>(5-i-j);
+          }
+      }
 
     for(size_t j = 0; j < size; ++j)
       {

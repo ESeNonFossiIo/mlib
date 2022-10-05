@@ -1,3 +1,4 @@
+#include "mlib/core/mlib_unused.h"
 #include "mlib/math/spline.h"
 
 namespace mlib
@@ -10,16 +11,17 @@ namespace mlib
     t1(t1_),
     t2(t2_),
     normalize_time(normalize_range(t1,t2))
-  {};
+  {}
 
   template<int dim>
   void
   BaseInterpolation<dim>::
   is_valid_time(const double& t_) const
   {
+    MLIB_UNUSED(t_);
     assert(t_ >= t1);
     assert(t_ <= t2);
-  };
+  }
 
   template<int dim>
   double
@@ -29,7 +31,7 @@ namespace mlib
     assert(t_ >= t1);
     assert(t_ <= t2);
     return normalize_time(t_);
-  };
+  }
 
 
   template class BaseInterpolation<1>;
@@ -46,7 +48,7 @@ namespace mlib
     BaseInterpolation<dim>(t1_,t2_),
     p1(p1_),
     p2(p2_)
-  {};
+  {}
 
   template<int dim>
   Point
@@ -56,7 +58,7 @@ namespace mlib
     this->is_valid_time(t_);
     double t = this->normalize_time(t_);
     return (1-t)*p1 + t * p2;
-  };
+  }
 
   template class LinearInterpolation<1>;
   template class LinearInterpolation<2>;
@@ -80,7 +82,7 @@ namespace mlib
     1,0,-3,2
   }),
   h13({0,1,-2,1})
-  {};
+  {}
 
   template<int dim>
   Point
@@ -98,7 +100,7 @@ namespace mlib
     p += h03(1-t) * p2;
 
     return p;
-  };
+  }
 
   template<int dim>
   Point
@@ -116,7 +118,7 @@ namespace mlib
     v -= h03.d(1)(1-t)  * p2;
 
     return v;
-  };
+  }
 
   template<int dim>
   Point
@@ -134,7 +136,7 @@ namespace mlib
     a += h03.d(2)(1-t)  * p2;
 
     return a;
-  };
+  }
 
   template class HermiteSpline<1>;
   template class HermiteSpline<2>;
@@ -161,8 +163,8 @@ namespace mlib
     1,  0,    0,    -10,   15,  -6
   }),
   h15({0,  1,    0,    -6,     8,  -3}),
-  h25({0,  0,   .5,  -1.5,   1.5, -.5})
-  {};
+      h25({0,  0,   .5,  -1.5,   1.5, -.5})
+  {}
 
   template<int dim>
   Point
@@ -182,7 +184,7 @@ namespace mlib
     p += h05(1-t) * p2;
 
     return p;
-  };
+  }
 
   template<int dim>
   Point
@@ -202,7 +204,7 @@ namespace mlib
     v -= h05.d(1)(1-t)  * p2;
 
     return v;
-  };
+  }
 
   template<int dim>
   Point
@@ -222,7 +224,7 @@ namespace mlib
     a += h05.d(2)(1-t)  * p2;
 
     return a;
-  };
+  }
 
   template class HermiteSpline5<1>;
   template class HermiteSpline5<2>;

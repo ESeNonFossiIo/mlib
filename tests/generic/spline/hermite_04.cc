@@ -33,8 +33,6 @@ int main()
   // final time
   double qt(25900.182);
 
-  double t = 25900.17939256;
-
   Point ax(0.0,1.0);
   bool clock_wise = true;
 
@@ -55,12 +53,11 @@ int main()
   LinearInterpolation<2> tli(tp, tq, pt, qt);
 
   double ratio = 1.0;
-  unsigned int i_end = 1000;
+  std::size_t i_end = 1000;
 
-  for(unsigned int i = 0; i < i_end; i++)
+  for(std::size_t i = 0; i < i_end; i++)
     {
       double t  =  pt  + ((double)i/(double)i_end)  * (qt - pt)/ratio;
-      double t1  =  pt  + ((double)(i+1)/(double)i_end)  * (qt - pt)/ratio;
 
       std::cout << std::setw(15) << t << std::flush;
       std::cout << std::setw(15) << hs.p(t).x() - 411753;

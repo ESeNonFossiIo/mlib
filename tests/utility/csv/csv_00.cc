@@ -19,11 +19,11 @@ int main()
   CSVHandler test(get_test_dir()+"/utility/csv/csv_00.csv");
 
   std::vector<std::string> labels = test.get_labels();
-  for(unsigned int i = 0; i < labels.size(); ++i)
+  for(std::size_t i = 0; i < labels.size(); ++i)
     std::cout <<  " --> " <<labels[i] << std::endl;
 
   std::vector<std::string> datum = test.get("title1");
-  for(unsigned int i = 0; i < datum.size(); ++i)
+  for(std::size_t i = 0; i < datum.size(); ++i)
     std::cout <<  " ---> " <<datum[i] << std::endl;
   return 0;
 }

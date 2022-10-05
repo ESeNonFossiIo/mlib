@@ -63,8 +63,6 @@ namespace mlib
                     Point& p,
                     const ModelConstants& model)
   {
-    double sum   = model.sm_a + model.sm_b;
-    double diff  = model.sm_a - model.sm_b;
     double sm_a2 = model.sm_a * model.sm_a;
     double sm_b2 = model.sm_b * model.sm_b;
 

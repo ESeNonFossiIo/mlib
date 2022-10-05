@@ -5,27 +5,27 @@
 namespace mlib
 {
   void swap_lines(Matrix<double>& M,
-                  const unsigned int& l1,
-                  const unsigned int& l2)
+                  const std::size_t& l1,
+                  const std::size_t& l2)
   {
-    for(unsigned int i = 0; i < M.c(); ++i)
+    for(std::size_t i = 0; i < M.c(); ++i)
       {
         double tmp = M(l1, i);
         M(l1, i) = M(l2, i);
         M(l2, i) = tmp;
       }
-  };
+  }
 
   void swap_lines(Matrix<double>& M,
                   Point& b,
-                  const unsigned int& l1,
-                  const unsigned int& l2)
+                  const std::size_t& l1,
+                  const std::size_t& l2)
   {
     swap_lines(M, l1, l2);
     double tmp_b = b[l1];
     b[l1] = b[l2];
     b[l2] = tmp_b;
-  };
+  }
 
   std::pair<Matrix<double>, Point>
   upper_triangular(const Matrix<double>& M, const Point& b)
@@ -33,11 +33,11 @@ namespace mlib
     Matrix<double> M_temp(M);
     Point b_temp(b);
 
-    for(unsigned int i = 0; i<M.r(); ++i)
+    for(std::size_t i = 0; i<M.r(); ++i)
       {
         size_t i_max = i;
         double v_max = M_temp(i,i);
-        for(unsigned int j = i; j<M_temp.r(); ++j)
+        for(std::size_t j = i; j<M_temp.r(); ++j)
           {
             if(std::abs(M_temp(j,i)) > std::abs(v_max))
               {
@@ -46,11 +46,11 @@ namespace mlib
               }
           }
         swap_lines(M_temp, b_temp, i, i_max);
-        for(unsigned int h = i+1; h<M_temp.r(); ++h)
+        for(std::size_t h = i+1; h<M_temp.r(); ++h)
           {
             double k = M_temp(h,i) / M_temp(i, i);
             M_temp(h,i) = 0.0;
-            for(unsigned int j = i+1;   j<M_temp.c(); ++j)
+            for(std::size_t j = i+1;   j<M_temp.c(); ++j)
               {
                 M_temp(h,j) -= k * M_temp(i, j);
               }
@@ -58,7 +58,7 @@ namespace mlib
           }
       }
     return std::make_pair(M_temp, b_temp);
-  };
+  }
 
   Point
   solve_upper_triangular(const Matrix<double>& M, const Point& b)
@@ -77,7 +77,7 @@ namespace mlib
         x[i] = sum/M(i,i);
       }
     return x;
-  };
+  }
 
   Point
   gauss_elimination_upper(const Matrix<double>& M, const Point& b)
@@ -105,7 +105,7 @@ namespace mlib
     std::vector<double> wp(p.size(), 1.0);
     pp = centroid(p,wp);
     std::vector<Point> p_(p);
-    for(unsigned int i = 0; i < p.size(); ++i)
+    for(std::size_t i = 0; i < p.size(); ++i)
       {
         p_[i] -= pp;
       }
@@ -114,23 +114,23 @@ namespace mlib
     std::vector<double> wq(q.size(), 1.0);
     qq = centroid(q,wq);
     std::vector<Point> q_(q);
-    for(unsigned int i = 0; i < q.size(); ++i)
+    for(std::size_t i = 0; i < q.size(); ++i)
       {
         q_[i] -= qq;
       }
 
     Matrixd X(pp.dim(), p.size());
-    for(unsigned int i = 0; i < pp.dim(); i++)
-      for(unsigned int j = 0; j < p.size(); j++)
+    for(std::size_t i = 0; i < pp.dim(); i++)
+      for(std::size_t j = 0; j < p.size(); j++)
         X(i,j) = p_[j][i];
 
     Matrixd Y(qq.dim(), q.size());
-    for(unsigned int i = 0; i < qq.dim(); i++)
-      for(unsigned int j = 0; j < q.size(); j++)
+    for(std::size_t i = 0; i < qq.dim(); i++)
+      for(std::size_t j = 0; j < q.size(); j++)
         Y(i,j) = q_[j][i];
 
     Matrixd Z(p.size(), q.size());
-    for(unsigned int i = 0; i < q.size(); i++)
+    for(std::size_t i = 0; i < q.size(); i++)
       Z(i,i) = wp[i];
 
     Matrixd S = X * Z * Y.t();
@@ -139,7 +139,7 @@ namespace mlib
     SVD(S,U,W,V);
 
     Matrixd WW(qq.dim(),qq.dim());
-    for(unsigned int j = 0; j < qq.dim(); j++)
+    for(std::size_t j = 0; j < qq.dim(); j++)
       {
         WW(j,j) = 1.0;
       }
@@ -152,13 +152,13 @@ namespace mlib
     b = qq - M*pp;
 
     double error(0.0);
-    for(unsigned int i = 0; i < np; ++i)
+    for(std::size_t i = 0; i < np; ++i)
       {
         error += ((M*p[i] + b) - q[i]).l_2_norm();
       }
 
     return error/(1.0 * np);
-  };
+  }
 
   double
   rototranslation_matrix_2d(const Point& p1, const Point& p2,
@@ -180,7 +180,7 @@ namespace mlib
     t.resize(2);
     t = p1 - q1;
     return 0.0;
-  };
+  }
 
   double
   best_affine_transformation(const std::vector<Point>& p,
@@ -191,8 +191,8 @@ namespace mlib
     // x' = Ax + b
     assert(p.size() > 3);
 
-    unsigned int np   = p.size();
-    unsigned int size = 3 * np;
+    std::size_t np   = p.size();
+    std::size_t size = 3 * np;
 
     Point s;
     s.resize(size);
@@ -201,11 +201,11 @@ namespace mlib
     M.resize(3,3);
     b.resize(3);
 
-    for(unsigned int i = 0; i < np; ++i)
+    for(std::size_t i = 0; i < np; ++i)
       {
-        for(unsigned int j = 0; j < 3; ++j)
+        for(std::size_t j = 0; j < 3; ++j)
           {
-            for(unsigned int k = 0; k < 3; ++k)
+            for(std::size_t k = 0; k < 3; ++k)
               {
                 m(i*3+j, 3*j+k) = p[i][k];
               }
@@ -216,9 +216,9 @@ namespace mlib
 
     auto x = gauss_elimination_upper(m.t()*m, m.t()*s);
 
-    for(unsigned int i = 0; i < 3; ++i)
+    for(std::size_t i = 0; i < 3; ++i)
       {
-        for(unsigned int j = 0; j < 3; ++j)
+        for(std::size_t j = 0; j < 3; ++j)
           {
             M(i,j) = x[3*i + j];
           }
@@ -227,13 +227,13 @@ namespace mlib
 
 
     double error(0.0);
-    for(unsigned int i = 0; i < np; ++i)
+    for(std::size_t i = 0; i < np; ++i)
       {
         error += ((M*p[i] + b) - q[i]).l_2_norm();
       }
 
     return error/(1.0 * np);
-  };
+  }
 
   RotoTranslationMatrixHandler::
   RotoTranslationMatrixHandler(const std::vector<Point>& u_,
@@ -244,12 +244,12 @@ namespace mlib
   {
     assert(u.size() == v.size());
     np = u.size();
-    for(unsigned int i  = 0; i<np; ++i)
+    for(std::size_t i  = 0; i<np; ++i)
       {
         b.push_back(1);
       }
     error = rototranslation_matrix(u,v,M,t);
-  };
+  }
 
   void
   RotoTranslationMatrixHandler::
@@ -266,7 +266,7 @@ namespace mlib
 
     std::vector<Point> u_new;
     std::vector<Point> v_new;
-    for(unsigned int i  = 0; i<u.size(); ++i)
+    for(std::size_t i  = 0; i<u.size(); ++i)
       {
         if(b[i] == 1)
           {
@@ -275,47 +275,47 @@ namespace mlib
           }
       }
     error = rototranslation_matrix(u_new,v_new,M,t);
-  };
+  }
 
   double
   RotoTranslationMatrixHandler::
   get_error_on_point(const size_t& i)
   {
     return (M*u[i] + t - v[i]).l_2_norm();
-  };
+  }
 
   double
   RotoTranslationMatrixHandler::
   get_volume_diff()
   {
     return M.det();
-  };
+  }
 
   double
   RotoTranslationMatrixHandler::
   get_error()
   {
     return error;
-  };
+  }
 
   size_t
   RotoTranslationMatrixHandler::
   get_number_of_points()
   {
     return np;
-  };
+  }
 
   Matrix<double>&
   RotoTranslationMatrixHandler::
   get_matrix()
   {
     return M;
-  };
+  }
 
   Point&
   RotoTranslationMatrixHandler::
   get_translation()
   {
     return t;
-  };
+  }
 }

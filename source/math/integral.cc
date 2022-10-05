@@ -7,7 +7,7 @@ namespace mlib
 {
 
   Quadrature::
-  Quadrature() {};
+  Quadrature() {}
 
   double
   Quadrature::
@@ -21,7 +21,7 @@ namespace mlib
         sum += weights[i] * (end - init) * f(init + nodes[i]*(end - init));
       }
     return sum;
-  };
+  }
 
   MidpointMethod::
   MidpointMethod()
@@ -32,7 +32,7 @@ namespace mlib
     weights[0] = 1.0;
     nodes.resize(1);
     nodes[0] = 1.0 / 2.0;
-  };
+  }
 
   TrapezoidalRule::
   TrapezoidalRule()
@@ -45,7 +45,7 @@ namespace mlib
     nodes.resize(2);
     nodes[0] = 0.0;
     nodes[1] = 1.0;
-  };
+  }
 
 
 
@@ -53,9 +53,9 @@ namespace mlib
   Integral(const Quadrature& quad_,
            const double step_)
     :
-    quad(quad_),
-    step(step_)
-  {};
+    step(step_),
+    quad(quad_)
+  {}
 
   double
   Integral::
@@ -79,7 +79,7 @@ namespace mlib
               x1 = x;
             sum +=  quad.compute_value(f, x0, x1);;
             x0 = x1;
-          };
+          }
       }
     else
       {
@@ -92,10 +92,10 @@ namespace mlib
               x1 = 0.0;
             sum -=  quad.compute_value(f, x0, x1);;
             x0 = x1;
-          };
+          }
       }
     return sum;
-  };
+  }
 
   double
   Integral::
@@ -104,6 +104,6 @@ namespace mlib
     double x) const
   {
     return this->compute_integral(f,x);
-  };
+  }
 
-};
+}

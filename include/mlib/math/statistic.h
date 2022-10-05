@@ -20,7 +20,7 @@ namespace mlib
   double
   moment(
     const std::vector<double>& v,
-    const unsigned int& n = 1,
+    const std::size_t& n = 1,
     const bool& central = false);
 
   /**

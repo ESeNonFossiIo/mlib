@@ -16,7 +16,7 @@ int main()
             std::endl;
   {
     Polynomial p({1,2,1});
-    for(unsigned int i = 0; i <= 10; i++)
+    for(std::size_t i = 0; i <= 10; i++)
       std::cout << (double)i / 10.0 << " -> " << p((double)i / 10.0) << std::endl;
   }
   std::cout <<
@@ -24,7 +24,7 @@ int main()
             std::endl;
   {
     Polynomial p({1,0,3,4});
-    for(unsigned int i = 0; i <= 10; i++)
+    for(std::size_t i = 0; i <= 10; i++)
       std::cout << (double)i / 10.0 << " -> " << p((double)i / 10.0) << std::endl;
   }
   std::cout <<

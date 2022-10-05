@@ -43,7 +43,7 @@ namespace mlib
         {
           std::vector<std::string> vals = split(line,sep_char,true);
           data.push_back(vals);
-        };
+        }
     }
 
     void
@@ -54,17 +54,17 @@ namespace mlib
       if(title)
         {
           outputFile << labels[0];
-          for(unsigned int j = 1; j<labels.size(); ++j)
+          for(std::size_t j = 1; j<labels.size(); ++j)
             {
               outputFile << "\t;\t" << labels[j] ;
             }
           outputFile << std::endl;
         }
 
-      for(unsigned int i = 0; i<data.size(); ++i)
+      for(std::size_t i = 0; i<data.size(); ++i)
         {
           outputFile << data[i][0];
-          for(unsigned int j = 1; j<data[0].size(); ++j)
+          for(std::size_t j = 1; j<data[0].size(); ++j)
             {
               outputFile << "\t;\t" << data[i][j] ;
             }
@@ -84,12 +84,12 @@ namespace mlib
     {
       int i = -1;
 
-      for(unsigned int j = 0; j<labels.size(); ++j)
+      for(std::size_t j = 0; j<labels.size(); ++j)
         if(label == labels[j]) i = j;
 
       assert(i>=0);
       std::vector<std::string> result;
-      for(unsigned int j = 0; j<data.size(); ++j)
+      for(std::size_t j = 0; j<data.size(); ++j)
         result.push_back(data[j][i]);
 
       return result;

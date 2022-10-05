@@ -27,7 +27,7 @@ namespace mlib
   {
     if(is_normalized)
       this->normalize();
-  };
+  }
 
   Point::
   Point(double x_)
@@ -63,17 +63,6 @@ namespace mlib
     x_,y_,z_,t_
   })
   {}
-
-  Point::
-  Point(const Point& q)
-    :
-    Matrix<double> (q.dim(), 1)
-  {
-    for(unsigned int i = 0; i<q.dim(); ++i)
-      {
-        elements[i] = q[i];
-      }
-  }
 
 #ifdef MLIB_USE_PCL
   Point::
@@ -115,7 +104,7 @@ namespace mlib
   Point::
   Point(const Matrix<double>& M)
     :
-    Matrix<double> (M) {};
+    Matrix<double> (M) {}
 
   void
   Point::
@@ -191,7 +180,7 @@ namespace mlib
   norm() const
   {
     double sum = 0.0;
-    for(unsigned int i = 0; i < this->dim(); ++i)
+    for(std::size_t i = 0; i < this->dim(); ++i)
       sum += elements[i]*elements[i];
     return std::sqrt(sum);
   }
@@ -217,7 +206,7 @@ namespace mlib
     return *this;
   }
 
-  const size_t
+  size_t
   Point::
   dim() const
   {
@@ -254,15 +243,15 @@ namespace mlib
   double
   points_distance(const Point& p1,
                   const Point& p2,
-                  const unsigned int& d)
+                  const std::size_t& d)
   {
     double sum = 0;
-    for(unsigned int i = 0; i < p1.dim(); i++)
+    for(std::size_t i = 0; i < p1.dim(); i++)
       {
         sum += std::pow(std::abs(p1[i] - p2[i]), d);
       }
     return std::pow(sum, 1.0/(float)d);
-  };
+  }
 
   Point
   centroid(const std::vector<Point>& p,
@@ -273,7 +262,7 @@ namespace mlib
     Point sum_p(0 * p[0]);
     double sum_w = 0.0;
 
-    for(unsigned int i = 0; i < p.size(); ++i)
+    for(std::size_t i = 0; i < p.size(); ++i)
       {
         sum_p += (w[i] * p[i]);
         sum_w += w[i];
@@ -281,6 +270,6 @@ namespace mlib
     assert(sum_w > 0);
 
     return (1.0/sum_w)*sum_p;
-  };
+  }
 
 }

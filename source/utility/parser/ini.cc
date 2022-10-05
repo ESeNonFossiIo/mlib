@@ -30,7 +30,7 @@ namespace mlib
   get_val(
     const std::string& section,
     const std::string& name,
-    const TYPE& default_value)
+    const TYPE& /* FIX: default_value */)
   {
     return conf[section][name];
   }
@@ -78,12 +78,12 @@ namespace mlib
   }
 
   template<>
-  unsigned int
+  std::size_t
   INIHandler::
   get_val(
     const std::string& section,
     const std::string& name,
-    const unsigned int& default_value)
+    const std::size_t& default_value)
   {
     if(conf.count(section))
       return from_str_to_unsigned_int(conf[section][name]);
@@ -230,7 +230,7 @@ namespace mlib
           }
       }
     return return_log;
-  };
+  }
 
   void
   INIHandler::
@@ -242,7 +242,7 @@ namespace mlib
       {
         conf.erase(section);
       }
-  };
+  }
 
   void
   INIHandler::
@@ -295,9 +295,8 @@ namespace mlib
                   conf[section][entry] += "\n"+line;
               }
           }
-contin:
         ;
-      };
+      }
   }
 
   std::map<std::string, std::string>&

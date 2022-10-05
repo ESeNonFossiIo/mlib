@@ -94,22 +94,22 @@ namespace mlib
   std::vector<double>
   force_mean(
     std::vector<double>& vec,
-    unsigned int consecutive = 4,
+    std::size_t consecutive = 4,
     double toll = 0.1
   );
 
-  std::vector<int>
+  std::vector<std::size_t>
   flat_part(
     std::vector<double>& vec,
     double toll,
-    unsigned int min_num_zeroes = 0
+    std::size_t min_num_zeroes = 0
   );
 
   std::vector<int>
   straight_part(
     std::vector<double>& vec,
     double toll,
-    unsigned int min_num_zeroes = 0
+    std::size_t min_num_zeroes = 0
   );
 
   std::vector<double>
@@ -130,9 +130,9 @@ namespace mlib
     std::vector<double>& vec,
     double toll_zero = 1e-6,
     double toll_jump = 0.0,
-    unsigned int item_before = 2,
-    unsigned int item_after  = 2,
-    unsigned int singularity_lenght = 1,
+    std::size_t item_before = 2,
+    std::size_t item_after  = 2,
+    std::size_t singularity_lenght = 1,
     bool left = true);
 
 
