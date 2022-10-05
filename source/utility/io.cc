@@ -11,7 +11,7 @@ namespace mlib
 #ifdef _WIN32
     std::system("CLS");
 #else //_WIN32
-    std::system("clear");
+    (void) std::system("clear");
 #endif //_WIN32
   }
 
