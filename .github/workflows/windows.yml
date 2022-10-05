@@ -69,7 +69,7 @@ jobs:
     - name: test library
       shell: bash
       run: |
-        cmake --build build  --target test -- -m
+        cmake --build D:\\a\\mlib\\mlib\\build  --target test -- -m
 
     - name: archive error 1
       uses: actions/upload-artifact@v3
