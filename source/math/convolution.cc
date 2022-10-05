@@ -52,7 +52,7 @@ namespace mlib
     function(function_)
   {
     support = std::make_pair(support_min, support_max);
-  };
+  }
 
   std::function<double(double)>
   Kernel::
@@ -66,7 +66,7 @@ namespace mlib
   operator()(double x) const
   {
     return function(x);
-  };
+  }
 
   std::pair<int,int>
   Kernel::
@@ -75,7 +75,7 @@ namespace mlib
     // assert first < second
     return std::make_pair((int) support.first,
                           (int) support.second);
-  };
+  }
 
 // GaussKernel
 ////////////////////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@ namespace mlib
     this->function = [&](double x)
     {
       return std::exp(-1.0* (x-mu) * (x-mu) / (2 * sigma *
-                                                 sigma)) / (std::sqrt(2 * M_PI * sigma * sigma));
+                                               sigma)) / (std::sqrt(2 * M_PI * sigma * sigma));
     };
   }
 
@@ -104,7 +104,7 @@ namespace mlib
   Convolution(Kernel kernel_)
     :
     kernel(kernel_)
-  {};
+  {}
 
   std::vector<double>
   Convolution::
@@ -129,10 +129,10 @@ namespace mlib
         for(std::size_t  j = domain.first;
             j <= domain.second;
             ++j)
-        {
-          assert(i >= j);
-          out[i] += in[i - j] * ker[j];
-        }
+          {
+            assert(i >= j);
+            out[i] += in[i - j] * ker[j];
+          }
       }
     return out;
   }
@@ -142,6 +142,6 @@ namespace mlib
   operator()(const std::vector<double>& v) const
   {
     return compute(v);
-  }; // for const objects
+  } // for const objects
 
 }

@@ -33,6 +33,6 @@ private:
     Ui::MainWindow *ui;
     mlib::RotationType rotation_type;
     mlib::AngleType    angle_type;
-};
+}
 
 #endif // MAINWINDOW_H

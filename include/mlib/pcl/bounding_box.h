@@ -55,7 +55,7 @@ namespace mlib
     Eigen::Matrix4f projectionTransform_inv;
   };
 
-};
+}
 
 
 /** @}*/

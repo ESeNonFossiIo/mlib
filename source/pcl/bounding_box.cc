@@ -228,7 +228,7 @@ namespace mlib
     std::sort(s.begin(), s.end(), std::greater<double>());
 
     return s;
-  };
+  }
 
 
   STATUS

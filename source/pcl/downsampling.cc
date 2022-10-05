@@ -146,7 +146,7 @@ namespace mlib
           *downsampled+=*sections[i];
       }
     return;
-  };
+  }
 }
 
 #endif // MLIB_USE_PCL

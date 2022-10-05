@@ -31,17 +31,17 @@ namespace mlib
         write_on_file = false;
       }
     begin  = clock();
-  };
+  }
 
   Logger::
   Logger(const Logger& copy)
   {
     content = copy.content;
-  };
+  }
 
   Logger::
   ~Logger()
-  {};
+  {}
 
   void
   Logger::
@@ -105,28 +105,28 @@ namespace mlib
                 << std::endl;
 
     return;
-  };
+  }
 
   void
   Logger::
   warning(const std::string& str)
   {
     write("WARNING", str, yellow);
-  };
+  }
 
   void
   Logger::
   error(const std::string& str)
   {
     write("ERROR", str, red);
-  };
+  }
 
   void
   Logger::
   status(const std::string& str)
   {
     write("STATUS", str, blue);
-  };
+  }
 
   void
   Logger::
@@ -146,13 +146,13 @@ namespace mlib
     std::sprintf(&output[0], format, str.c_str(), val.c_str());
 
     write("VALUE", output, green);
-  };
+  }
 
   void
   Logger::
   msg(const std::string& str)
   {
     write("MSG", str, white);
-  };
+  }
 
 }

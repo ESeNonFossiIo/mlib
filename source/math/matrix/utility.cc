@@ -14,7 +14,7 @@ namespace mlib
         M(l1, i) = M(l2, i);
         M(l2, i) = tmp;
       }
-  };
+  }
 
   void swap_lines(Matrix<double>& M,
                   Point& b,
@@ -25,7 +25,7 @@ namespace mlib
     double tmp_b = b[l1];
     b[l1] = b[l2];
     b[l2] = tmp_b;
-  };
+  }
 
   std::pair<Matrix<double>, Point>
   upper_triangular(const Matrix<double>& M, const Point& b)
@@ -58,7 +58,7 @@ namespace mlib
           }
       }
     return std::make_pair(M_temp, b_temp);
-  };
+  }
 
   Point
   solve_upper_triangular(const Matrix<double>& M, const Point& b)
@@ -77,7 +77,7 @@ namespace mlib
         x[i] = sum/M(i,i);
       }
     return x;
-  };
+  }
 
   Point
   gauss_elimination_upper(const Matrix<double>& M, const Point& b)
@@ -158,7 +158,7 @@ namespace mlib
       }
 
     return error/(1.0 * np);
-  };
+  }
 
   double
   rototranslation_matrix_2d(const Point& p1, const Point& p2,
@@ -180,7 +180,7 @@ namespace mlib
     t.resize(2);
     t = p1 - q1;
     return 0.0;
-  };
+  }
 
   double
   best_affine_transformation(const std::vector<Point>& p,
@@ -233,7 +233,7 @@ namespace mlib
       }
 
     return error/(1.0 * np);
-  };
+  }
 
   RotoTranslationMatrixHandler::
   RotoTranslationMatrixHandler(const std::vector<Point>& u_,
@@ -249,7 +249,7 @@ namespace mlib
         b.push_back(1);
       }
     error = rototranslation_matrix(u,v,M,t);
-  };
+  }
 
   void
   RotoTranslationMatrixHandler::
@@ -275,47 +275,47 @@ namespace mlib
           }
       }
     error = rototranslation_matrix(u_new,v_new,M,t);
-  };
+  }
 
   double
   RotoTranslationMatrixHandler::
   get_error_on_point(const size_t& i)
   {
     return (M*u[i] + t - v[i]).l_2_norm();
-  };
+  }
 
   double
   RotoTranslationMatrixHandler::
   get_volume_diff()
   {
     return M.det();
-  };
+  }
 
   double
   RotoTranslationMatrixHandler::
   get_error()
   {
     return error;
-  };
+  }
 
   size_t
   RotoTranslationMatrixHandler::
   get_number_of_points()
   {
     return np;
-  };
+  }
 
   Matrix<double>&
   RotoTranslationMatrixHandler::
   get_matrix()
   {
     return M;
-  };
+  }
 
   Point&
   RotoTranslationMatrixHandler::
   get_translation()
   {
     return t;
-  };
+  }
 }

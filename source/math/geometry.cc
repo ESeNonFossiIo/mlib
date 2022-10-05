@@ -34,7 +34,7 @@ namespace mlib
               {
                 break;
               }
-          };
+          }
 
         if(j>min_n_zeroes)
           {

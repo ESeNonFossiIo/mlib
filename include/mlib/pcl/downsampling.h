@@ -59,7 +59,7 @@ namespace mlib
                                         pcl::PointCloud<pcl::PointXYZI>::Ptr downsampled,
                                         float height, float thickness);
 
-};
+}
 
 
 /** @}*/

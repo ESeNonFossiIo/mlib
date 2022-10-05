@@ -85,7 +85,7 @@ namespace mlib
     cloud.height = 1;
     cloud.is_dense = true;
     return;
-  };
+  }
 
   void
   save_txt(const std::string& qs_filename,

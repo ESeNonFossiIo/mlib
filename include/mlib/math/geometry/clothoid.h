@@ -67,7 +67,7 @@ namespace mlib
     double a;
   };
 
-};
+}
 
 /** @}*/
 #endif //_MLIB__CLOTHOID__H_

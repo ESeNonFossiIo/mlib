@@ -95,7 +95,7 @@ namespace mlib
     {
       return (t - val1)/(val2 - val1);
     };
-  };
+  }
   template std::function<double(double)> normalize_range(const double,
                                                          const double);
 
@@ -182,11 +182,12 @@ namespace mlib
             if(i+j > vec.size()-consecutive-1)
               break;
 
-            while(std::abs(vec[i+j] - media) < toll && (static_cast<std::size_t>(i+j) < vec.size() - consecutive))
+            while(std::abs(vec[i+j] - media) < toll
+                  && (static_cast<std::size_t>(i+j) < vec.size() - consecutive))
               {
                 v[i+j] = media;
                 j++;
-              };
+              }
             i += j + consecutive - 1;
           }
       }
@@ -223,7 +224,7 @@ namespace mlib
       v.push_back(vec.size()-1);
 
     return v;
-  };
+  }
 
   std::vector<int>
   straight_part(
@@ -261,7 +262,7 @@ namespace mlib
       v.push_back(vec.size()-1);
 
     return v;
-  };
+  }
 
   std::vector<double>
   interpolate(
@@ -293,7 +294,7 @@ namespace mlib
             v[j] = vec[j_init];
       }
     return v;
-  };
+  }
 
   std::vector<double>
   apply_lambda(

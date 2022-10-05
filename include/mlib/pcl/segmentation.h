@@ -20,7 +20,7 @@ namespace mlib
     const pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
     const double& model_tolerance = 0.01);
 
-};
+}
 
 
 /** @}*/

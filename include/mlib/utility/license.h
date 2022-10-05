@@ -75,7 +75,7 @@ namespace mlib
       license+=license;
       license+=license;
       license+=license; // TODO: generalizzare
-    };
+    }
 
     void
     generate_license() const
@@ -85,14 +85,14 @@ namespace mlib
       myfile << this->cipher.encrypt(license);
       myfile.close();
       return;
-    };
+    }
 
     void
     read_license_raw(const std::string& license_file) const
     {
       license = get_file_content(license_file);
       return;
-    };
+    }
 
     void
     generate_raw_license() const
@@ -102,7 +102,7 @@ namespace mlib
       myfile << license;
       myfile.close();
       return;
-    };
+    }
 
     bool
     check_license() const

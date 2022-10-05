@@ -30,24 +30,24 @@ namespace mlib
     sum /= v.size();
 
     return sum;
-  };
+  }
 
   double
   mean(const std::vector<double>& v)
   {
     return moment(v, 1);
-  };
+  }
 
   double
   var(const std::vector<double>& v)
   {
     return moment(v, 2, true);
-  };
+  }
 
   double
   stddev(const std::vector<double>& v)
   {
     return std::sqrt(var(v));
-  };
+  }
 
 }

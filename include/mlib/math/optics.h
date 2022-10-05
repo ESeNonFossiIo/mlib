@@ -19,7 +19,7 @@ namespace mlib
       T(3,1)
     {
 
-    };
+    }
 
     /**
      * skew coefficient between the x and the y axis
@@ -66,7 +66,7 @@ namespace mlib
     Matrixd T;
   };
 
-};
+}
 
 /** @}*/
 #endif //__OPTICS__H_

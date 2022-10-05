@@ -15,19 +15,19 @@ namespace mlib
       {
         c[i++] = l;
       }
-  };
+  }
 
   Polynomial::
   Polynomial(const std::vector<double>& v)
     :
     c(v)
-  {};
+  {}
 
   Polynomial::
   Polynomial()
     :
     c(1, 0.0)
-  {};
+  {}
 
 
   double
@@ -86,15 +86,14 @@ namespace mlib
   operator[](size_t i)
   {
     return c[i];
-  };
+  }
 
   const double&
   Polynomial::
   operator[](size_t i) const
   {
     return c[i];
-  };
-
+  }
 
   std::ostream&
   operator<< (std::ostream& output, const Polynomial& p)
@@ -104,6 +103,6 @@ namespace mlib
       output << p[i] << ",";
     output << p[p.deg()] << "]";
     return output;
-  };
+  }
 
 }

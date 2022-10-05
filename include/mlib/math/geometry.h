@@ -49,5 +49,6 @@ namespace mlib
     idx);
 
 }
+
 /** @}*/
 #endif // __GEOMETRY__

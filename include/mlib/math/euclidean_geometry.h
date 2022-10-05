@@ -121,7 +121,7 @@ namespace mlib
                        const Point& b,
                        const Point& c);
 
-};
+}
 
 /** @}*/
 #endif // __EUCLIDEAN_GEOMETRY_H__

@@ -19,7 +19,7 @@ namespace mlib
       :
       nodes(quad_.nodes),
       weights(quad_.weights)
-    {};
+    {}
 
     double
     compute_value(const std::function<double(double)>& f,
@@ -53,7 +53,7 @@ namespace mlib
       :
       step(integral_.step),
       quad(integral_.quad)
-    {};
+    {}
 
     double
     compute_integral(
@@ -69,7 +69,7 @@ namespace mlib
     Quadrature quad;
   };
 
-};
+}
 
 /** @}*/
 #endif //__INTEGRAL__H_
