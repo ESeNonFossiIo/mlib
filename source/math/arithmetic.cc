@@ -65,8 +65,8 @@ namespace mlib
     std::vector<size_t> r;
     unsigned int res  = num;
 
-    unsigned int e = int(std::log2(res));
-    unsigned int p = std::pow(2,e);
+    unsigned int e = static_cast<unsigned int>(std::log2(res));
+    unsigned int p = static_cast<unsigned int>(std::pow(2, e));
 
     while(p > 0)
       {
@@ -93,7 +93,7 @@ namespace mlib
     unsigned int p = 1;
     for(unsigned int i = 0; i < num.size(); ++i)
       {
-        result += num[num.size() - 1 - i] * p;
+        result += static_cast<std::size_t>(num[num.size() - 1 - i] * p);
         p *= 2;
       }
     return result;

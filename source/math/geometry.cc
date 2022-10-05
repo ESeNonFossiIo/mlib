@@ -45,7 +45,7 @@ namespace mlib
 
       }
 
-    v.push_back(x.size()-1);
+    v.push_back(static_cast<unsigned int>(x.size()-1));
 
     return v;
   }
@@ -63,7 +63,8 @@ namespace mlib
         if(i+step < x.size())
           v.push_back(std::make_pair(i, i+step));
       }
-    v.push_back(std::make_pair(x.size()-1, x.size()-1));
+    unsigned int xs = static_cast<unsigned int>(x.size()-1);
+    v.push_back(std::make_pair(xs, xs));
 
     return v;
   }

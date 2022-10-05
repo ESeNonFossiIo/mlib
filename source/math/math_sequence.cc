@@ -37,7 +37,7 @@ namespace mlib
       {
         auto tmp = std::vector<T>(sequence.begin() + i - pattern_lenght,
                                   sequence.begin() + i);
-        auto t = next_element(tmp, i);
+        auto t = next_element(tmp, static_cast<T>(i));
         sequence[i] = t;
         sum += t;
       }
