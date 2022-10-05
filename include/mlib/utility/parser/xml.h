@@ -9,73 +9,34 @@
 #include <map>
 #include <fstream>
 #include <memory>
+#include <regex>
+
+#include <mlib/utility/string.h>
 
 /** \addtogroup utility
  *  @{
  */
 namespace mlib
 {
-  class XMLEntry
+  struct XMLEntry
   {
-  public:
-    /**
-     *
-     */
-    XMLEntry(const std::string& label_,
-             const std::string& value_="");
+    size_t init;
+    size_t end;
 
-    /**
-     *
-     */
-    void add_property(const std::string& name,
-                      const std::string& val);
-
-    /**
-     *
-     */
-    void add(XMLEntry entry);
-
-    /**
-     *
-     */
-    std::string append_string(unsigned int depth = 0);
-
-    std::string&
-    get_val();
-
-    std::string&
-    get_label();
-
-    std::string&
-    get_property(std::string& str);
-
-    XMLEntry*
-    get_element(const unsigned int& i);
-
-    XMLEntry*
-    operator[](const unsigned int& i);
-
-  private:
-    /**
-     *
-     */
-    std::string value;
-
-    /**
-       *
-       */
     std::string label;
+    bool is_header;
 
-    /**
-     *
-     */
-    std::map<std::string, std::string> property;
-
-    /**
-     *
-     */
-    std::vector<std::shared_ptr<XMLEntry>> sub_list;
+    std::string text;
+    std::map<std::string, std::string> properties;
   };
+
+  /**
+   * process a line and extract: labels, properties, text
+   * @method process_line
+   * @param  s            [description]
+   */
+  XMLEntry
+  process_XML_text(const std::string& str);
 
   class XMLHandler
   {
@@ -88,39 +49,13 @@ namespace mlib
     /**
      *
      */
-    XMLHandler(std::string filename);
+    XMLHandler(std::string filename, bool is_file = true);
 
     /**
      *
      */
-    void add(XMLEntry new_entry);
+    void print(int indent = 0);
 
-    /**
-     *
-     */
-    void print();
-
-    /**
-     *
-     */
-    void set_style(std::string style_);
-
-
-    /**
-     *
-     */
-    void set_xml_header(std::string name, std::string val);
-
-    /**
-     *
-     */
-    void set_xml_stylesheet(std::string name, std::string val);
-
-
-    /**
-     *
-     */
-    std::string get_file(unsigned int depth = 0);
 
     /**
      *
@@ -130,35 +65,44 @@ namespace mlib
 
     /**
      * [operator[] description]
-     * @param  i [description]
+     * @param  s [description]
      * @return   [description]
      */
-    XMLEntry*
-    get_element(const unsigned int& i);
+    XMLHandler
+    operator[](const std::string& s);
 
     /**
      * [operator[] description]
-     * @param  i [description]
      * @return   [description]
      */
-    XMLEntry*
-    operator[](const unsigned int& i);
+    std::string
+    operator()();
 
   private:
     /**
      *
      */
-    std::vector<std::shared_ptr<XMLEntry>> xml_entries;
-
-    /**
-       *
-       */
-    std::map<std::string, std::string> xml_header;
+    std::map<std::string, std::string> xml;
 
     /**
      *
      */
     std::map<std::string, std::string> xml_stylesheet;
+
+    /**
+     *
+     */
+    std::string val_text;
+
+    /**
+     *
+     */
+    std::map<std::string, std::string> properties;
+
+    /**
+     *
+     */
+    std::map<std::string, XMLHandler> xml_entries;
   };
 
 }

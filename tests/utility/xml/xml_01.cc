@@ -17,13 +17,14 @@ int main()
             std::endl;
 
 
-  XMLHandler test(get_test_dir()+"/utility/xml/xml_01.xml");
-  test.print();
-  std::cout
-      << "====================" << std::endl
-      << test.get_file() << std::endl
-      << "====================" << std::endl;
-  // test.save(get_test_dir()+"/utility/xml_01.xml");
-  std::cout << test.get_element(0)[0][0]->get_val();
+  XMLHandler manager(get_test_dir()+"/utility/xml/xml_01.xml");
+  manager.print();
+  std::cout <<
+            "=================================================" <<
+            std::endl;
+  std::cout << manager["sezione"]["subsezione"]();
+  std::cout <<
+            "=================================================" <<
+            std::endl;
   return 0;
 }

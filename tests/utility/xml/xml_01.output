@@ -1,56 +1,16 @@
 =================================================
   TEST for utility - XMLHandler
 =================================================
-<?xml encoding='ISO-8859-1' version='1.0' ?> 
-<?xml-stylesheet href='prova.css' type='text/xsl' ?> 
-<prova property1="val1" property2="val2">
-  sezione
-  <prova subproperty1="val1">
-    subsezione
-    <prova subsubproperty1="val1">
-      subsubsezione
-    </prova>
-  </prova>
-</prova><prova property1="val1" property2="val2">
-  sezione
-  <prova subproperty1="val1">
-    subsezione
-    <prova subsubproperty1="val1">
-      subsubsezione
-      <prova subsubproperty1="val1">      </prova>
-    </prova>
-    <prova subsubproperty1="val1">    </prova>
-    <prova subsubproperty1="val1">    </prova>
-    <prova subsubproperty1="val1">
-      subsubsezione
-    </prova>
-  </prova>
-</prova>
-====================
-<?xml encoding='ISO-8859-1' version='1.0' ?> 
-<?xml-stylesheet href='prova.css' type='text/xsl' ?> 
-<prova property1="val1" property2="val2">
-  sezione
-  <prova subproperty1="val1">
-    subsezione
-    <prova subsubproperty1="val1">
-      subsubsezione
-    </prova>
-  </prova>
-</prova><prova property1="val1" property2="val2">
-  sezione
-  <prova subproperty1="val1">
-    subsezione
-    <prova subsubproperty1="val1">
-      subsubsezione
-      <prova subsubproperty1="val1">      </prova>
-    </prova>
-    <prova subsubproperty1="val1">    </prova>
-    <prova subsubproperty1="val1">    </prova>
-    <prova subsubproperty1="val1">
-      subsubsezione
-    </prova>
-  </prova>
-</prova>
-====================
-subsezione
+<?xml  version="1.0" ?>
+<?xml_stylesheet  href="prova.css"  type="text/xsl" ?>
+<sezione property1="val1"  property2="val2" >
+ prova 
+ <subsezione subproperty1="val1" >
+  prova 
+  <subsubsezione subsubproperty1="val1" >
+   prova 
+  <subsubsezione>
+ <subsezione>
+<sezione>
+=================================================
+ prova =================================================

@@ -1,14 +1,21 @@
 =================================================
   TEST for utility - XMLHandler
 =================================================
-<?xml version='1.0' ?> 
-<?xml-stylesheet href='prova.css' type='text/xsl' ?> 
-<sezione property1="val1" property2="val2">
-  prova
-  <subsezione subproperty1="val1">
-    prova
-    <subsubsezione subsubproperty1="val1">
-      prova
-    </subsubsezione>
-  </subsezione>
-</sezione>
+=======================
+label    : text
+text     :  txt 
+property : prop -> prop1
+=======================
+label    : text
+text     :  <text prop="prop1"> txt </text> 
+property : prop -> prop1
+=======================
+label    : xml
+text     : 
+property : version -> 1.0
+=======================
+label    : xml-stylesheet
+text     : 
+property : href -> prova.css
+property : test -> 
+property : type -> text/xsl
