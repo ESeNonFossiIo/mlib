@@ -26,7 +26,7 @@ std::size_t version_minor();
 /// Return the current patch version
 std::size_t version_patch();
 
-};
+}
 
 
 /** @}*/

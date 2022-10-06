@@ -1,10 +1,6 @@
-#include "mlib/core/version.h"
+#include <mlib/core/version.h>
 #include "../source/_macro/string.h"
 
-
-/** \addtogroup core
- *  @{
- */
 
 namespace mlib
 {
@@ -21,7 +17,4 @@ std::size_t version_minor(){return MLIB_VERSION_VERSION_MINOR;}
 /// ----------------------------------------------------------------------------
 std::size_t version_patch(){return MLIB_VERSION_VERSION_PATCH;}
 
-};
-
-
-/** @}*/
+}
