@@ -1,6 +1,7 @@
 #pragma once
 
 #include <mlib/math/constants.h>
+#include <cmath>
 
 /** \addtogroup math
  *  @{
@@ -24,7 +25,7 @@ namespace mlib
       inline double norm_pdf(const double x ///< [in] evaluation point
                             )
       {
-        return mlib::constants::inv_sqrt_two_pi * exp(-0.5*x*x);
+        return mlib::constants::inv_sqrt_two_pi * std::exp(-0.5*x*x);
       }
 
 /// ----------------------------------------------------------------------------
@@ -36,8 +37,9 @@ namespace mlib
                                                                    (-1.821255978 + 1.330274429*k))));
 
         const double z = std::fabs(x);
-        const double cdf = (1.0 - ((mlib::constants::inv_sqrt_two_pi)*exp(
+        const double cdf = (1.0 - ((mlib::constants::inv_sqrt_two_pi)*std::exp(
                                      -0.5*z*z) * k_sum));
+
         if(x >= 0.0)
           {
             return cdf;
