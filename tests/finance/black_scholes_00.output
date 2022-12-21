@@ -1,8 +1,12 @@
 
 =================================================
-  TEST for Statistic
+  TEST for Black-Scholes
 =================================================
 
- mean      = 3.5
- var       = 2.91667
- stddev    = 1.70783
+Underlying:      100
+Strike:          100
+Risk-Free Rate:  0.05
+Volatility:      0.2
+Maturity:        1
+Call Price:      10.4506
+Put Price:       -10.4519
