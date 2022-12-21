@@ -3,8 +3,15 @@
 [![linux](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux.yml)
 [![windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
 
-# Configuration:
+# Build:
+```bash
+  mkdir build && cd build
+  cmake -D ENABLE_ALL_TESTS=ON .. 
+  make -j4
+  ctest --output-on-failure
+```
 
+# Configuration:
 ```bash
   mkdir build
   cd build
