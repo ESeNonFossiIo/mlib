@@ -6,7 +6,7 @@
 # Build:
 ```bash
   mkdir build && cd build
-  cmake -D ENABLE_ALL_TESTS=ON .. 
+  cmake -D ENABLE_ALL_TESTS=ON ..
   make -j4
   ctest --output-on-failure
 ```
@@ -39,6 +39,7 @@ add to `.bash_profile`
 - MLIB_USE_PCL_WITH_VTK
 - MLIB_USE_PCL
 - MLIB_USE_EIGEN3
+- BUILD_PY_ENV
 
 # ChangeLog
 
@@ -48,7 +49,7 @@ add to `.bash_profile`
 |v0.1.0|Add Travis|
 |v0.0.0|First Tag|
 
-# TODO 
+# TODO
 - [ ] compilare i test prima di runnarli in maniera automatica
 - [ ] Cambiare la versione in doxygen
 - [ ] Add guard for python

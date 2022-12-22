@@ -1,5 +1,5 @@
 #include <mlib/core/version.h>
-#include "../source/_macro/string.h"
+#include <mlib/core/string.h>
 
 
 namespace mlib

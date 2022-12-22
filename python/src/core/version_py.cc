@@ -1,6 +1,7 @@
-#include "../source/_macro/python.h"
-#include "../source/_python/types.h"
-#include "mlib/core/version.h"
+#include <mlib/core/version.h>
+#include <mlib/core/export.h>
+
+#include "_python/types.h"
 
 /// ----------------------------------------------------------------------------
 /// Get the current version

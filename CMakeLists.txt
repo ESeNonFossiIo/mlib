@@ -52,16 +52,27 @@ endif(WITH_QT)
 # Include files:
 ################################################################################
 INCLUDE_DIRECTORIES("include")
+INCLUDE_DIRECTORIES("source/mlib")
+INCLUDE_DIRECTORIES("python/src")
 
 aux_source_directory(. SRC_LIST)
-FILE(GLOB_RECURSE _h_files   "include/*.h")
-FILE(GLOB_RECURSE _cc_files  "source/*.cc")
+FILE(GLOB_RECURSE _h_files      "include/*.h")
+FILE(GLOB_RECURSE _cc_files     "source/mlib/*.cc")
+FILE(GLOB_RECURSE _cc_bindings  "python/src/*.cc")
 
 SET(_project_lib "_${_project}")
 ADD_LIBRARY(${_project_lib} SHARED ${_cc_files})
+
+SET(_project_lib_bindings "_${_project}_bindings")
+ADD_LIBRARY(${_project_lib_bindings} SHARED ${_cc_bindings})
+
 # target_link_libraries (${_project_lib})
 set_target_properties(${_project_lib} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set_target_properties(${_project_lib} PROPERTIES OUTPUT_NAME "${_project_lib}${BUILD_POSTFIX}")
+
+set_target_properties(${_project_lib_bindings} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+set_target_properties(${_project_lib_bindings} PROPERTIES OUTPUT_NAME "${_project_lib_bindings}${BUILD_POSTFIX}")
+
 IF(WITH_QT)
   target_qt_support(${_project_lib})
 endif(WITH_QT)
@@ -143,6 +154,7 @@ FOREACH(_m ${_main})
 ENDFOREACH()
 
 TARGET_LINK_LIBRARIES(${_project_lib} ${external_libraries})
+TARGET_LINK_LIBRARIES(${_project_lib_bindings} ${_project_lib} ${external_libraries})
 FOREACH(_m ${_main})
   GET_FILENAME_COMPONENT(_main_name ${_m} NAME_WE)
   IF(ENABLE_MAIN_${_main_name})
