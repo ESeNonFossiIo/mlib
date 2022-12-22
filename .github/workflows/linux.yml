@@ -46,7 +46,7 @@ jobs:
 
     - name: Python Test
       working-directory: ${{github.workspace}}
-      run: source ${{github.workspace}}/scripts/run_pytest.sh
+      run: $CONDA/bin/pytest ${{github.workspace}}/python/tests
 
     - name: archive error 1
       uses: actions/upload-artifact@v3
