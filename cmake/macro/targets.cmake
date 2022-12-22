@@ -53,8 +53,6 @@ ADD_CUSTOM_TARGET(run_tests
   )
 
 ADD_CUSTOM_TARGET(run_python_tests
-    COMMAND conda activate ${CMAKE_BINARY_DIR}/mlibpy_env
     COMMAND pytest ../python/tests
-    COMMAND conda deactivate
     WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
   )
