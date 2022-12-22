@@ -12,19 +12,19 @@ namespace mlib
 
 /// ----------------------------------------------------------------------------
 /// Return teh current version (complete)
-const char* version();
+  const char* version();
 
 /// ----------------------------------------------------------------------------
 /// Return the current major version
-std::size_t version_major();
+  std::size_t version_major();
 
 /// ----------------------------------------------------------------------------
 /// Return the current minor version
-std::size_t version_minor();
+  std::size_t version_minor();
 
 /// ----------------------------------------------------------------------------
 /// Return the current patch version
-std::size_t version_patch();
+  std::size_t version_patch();
 
 }
 
