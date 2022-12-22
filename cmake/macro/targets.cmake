@@ -51,3 +51,8 @@ ADD_CUSTOM_TARGET(run_tests
     COMMAND ctest -R
     WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
   )
+
+ADD_CUSTOM_TARGET(run_python_tests
+    COMMAND pytest ../python/tests
+    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
+  )
