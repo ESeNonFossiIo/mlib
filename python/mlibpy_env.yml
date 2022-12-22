@@ -3,7 +3,6 @@ channels:
   - defaults
 dependencies:
   - pip=21.2.2
-  - libgcc=5.2.0
   - pip:
     - pytest==7.0.1
 prefix: mlibpy_env

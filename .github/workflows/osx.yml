@@ -52,6 +52,7 @@ jobs:
     - name: Python Test
       working-directory: ${{github.workspace}}
       run: |
+        conda install -c anaconda libstdcxx-ng
         conda install pytest
         $CONDA/bin/pytest ${{github.workspace}}/python/tests
 
