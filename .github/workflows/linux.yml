@@ -45,11 +45,8 @@ jobs:
       run: make run_tests
 
     - name: Python Test
-      working-directory: ${{github.workspace}}/build
-      run: |
-        conda activate ${{github.workspace}}/build/mlibpy_env
-        make run_python_tests
-        conda deactivate
+      working-directory: ${{github.workspace}}
+      run: source ${{github.workspace}}/scripts/run_pytest.sh
 
     - name: archive error 1
       uses: actions/upload-artifact@v3
