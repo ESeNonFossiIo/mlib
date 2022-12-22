@@ -12,7 +12,7 @@ def loadMLIB():
         # path to the folder that contains the library
         lib_dir = join(current_dir, "../../lib")
         # name of the library
-        mlib_lib = r"lib_mlib.dylib"
+        mlib_lib = r"lib_mlib_bindings.dylib"
 
         # get the library
         loadMLIB.mlib = cdll.LoadLibrary(join(lib_dir, mlib_lib))
