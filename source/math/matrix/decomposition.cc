@@ -1,6 +1,6 @@
-#include <mlib/core/mlib_unused.h>
-#include "mlib/math/matrix/decomposition.h"
-#include "mlib/math/point.h"
+#include <mlib/core/unused.h>
+#include <mlib/math/matrix/decomposition.h>
+#include <mlib/math/point.h>
 
 #ifdef MLIB_USE_EIGEN3
 #include "mlib/eigen/conversion.h"

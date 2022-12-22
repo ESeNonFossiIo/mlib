@@ -1,5 +1,5 @@
-#include "mlib/core/mlib_unused.h"
-#include "mlib/math/spline.h"
+#include <mlib/core/unused.h>
+#include <mlib/math/spline.h>
 
 namespace mlib
 {
