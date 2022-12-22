@@ -1,5 +1,6 @@
 from ctypes import cdll
 from os.path import dirname, abspath, join
+from sys import platform
 
 # ------------------------------------------------------------------------------
 def loadMLIB():
@@ -11,8 +12,20 @@ def loadMLIB():
         current_dir = dirname(abspath(__file__))
         # path to the folder that contains the library
         lib_dir = join(current_dir, "../../lib")
+
+        lib_ext = ""
+        if platform == "linux" or platform == "linux2":
+            # linux
+            lib_ext = "so"
+        elif platform == "darwin":
+            # OS X
+            lib_ext = "dylib"
+        elif platform == "win32":
+            # Windows...
+            lib_ext = "dll"
+
         # name of the library
-        mlib_lib = r"lib_mlib_bindings.dylib"
+        mlib_lib = r"lib_mlib_bindings." + lib_ext
 
         # get the library
         loadMLIB.mlib = cdll.LoadLibrary(join(lib_dir, mlib_lib))
