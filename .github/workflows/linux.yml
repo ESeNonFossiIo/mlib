@@ -40,13 +40,20 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
+    - name: Install conda dependencies
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        $CONDA/bin/conda env update --file ${{github.workspace}}/python/mlibpy_env.yml --name mlibpy_env
+
     - name: CPP Test
       working-directory: ${{github.workspace}}/build
       run: make run_tests
 
     - name: Python Test
       working-directory: ${{github.workspace}}
-      run: $CONDA/bin/pytest ${{github.workspace}}/python/tests
+      run: |
+        conda install pytest
+        $CONDA/bin/pytest ${{github.workspace}}/python/tests
 
     - name: archive error 1
       uses: actions/upload-artifact@v3
