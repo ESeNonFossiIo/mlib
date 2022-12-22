@@ -52,12 +52,12 @@ endif(WITH_QT)
 # Include files:
 ################################################################################
 INCLUDE_DIRECTORIES("include")
-INCLUDE_DIRECTORIES("source/mlib")
+INCLUDE_DIRECTORIES("source")
 INCLUDE_DIRECTORIES("python/src")
 
 aux_source_directory(. SRC_LIST)
 FILE(GLOB_RECURSE _h_files      "include/*.h")
-FILE(GLOB_RECURSE _cc_files     "source/mlib/*.cc")
+FILE(GLOB_RECURSE _cc_files     "source/*.cc")
 FILE(GLOB_RECURSE _cc_bindings  "python/src/*.cc")
 
 SET(_project_lib "_${_project}")

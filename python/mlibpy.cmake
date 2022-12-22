@@ -4,7 +4,7 @@ FILE(COPY "./python/mlibpy" DESTINATION "${CMAKE_BINARY_DIR}")
 
 # Activate conda environment, assume Anaconda or Miniconda is already installed
 OPTION( BUILD_PY_ENV
-        "Create a new python ENV" OFF)
+"Create a new python ENV" ON)
 IF(BUILD_PY_ENV)
   EXECUTE_PROCESS(COMMAND conda deactivate)
   IF(EXISTS ${CMAKE_BINARY_DIR}/mlibpy_env)
