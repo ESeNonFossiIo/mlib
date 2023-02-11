@@ -12,7 +12,12 @@ enum class MLIBStatus : MLIBInt
   Failed //< Generic error found
 }
 
+#define MLIB_TRY \
+  try{
 
+#define MLIB_CATCH \
+} catch (...) {    \
+}
 
 
 #endif // _MLIB_PYTHON_STATUS_
