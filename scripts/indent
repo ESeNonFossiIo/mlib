@@ -1,4 +1,4 @@
-for dir in include tests main source;
+for dir in include tests main source python;
 do
   echo "--- Indenting ${dir}"
   files=`find $dir | egrep '\.(cc|h)$'`
