@@ -5,3 +5,4 @@ build*
 *#
 *.orig
 *.gch
+**/__pycache__/*
