@@ -94,7 +94,7 @@ namespace mlib
 #endif
 
     std::string output(size + 1, '\0');
-    std::sprintf(&output[0], format, elapsed_secs, msg.c_str(), str.c_str());
+    std::sprintf_s(&output[0], format, elapsed_secs, msg.c_str(), str.c_str());
 
     output = color.init() + output + color.end();
 
@@ -143,7 +143,7 @@ namespace mlib
 #endif
 
     std::string output(size + 1, '\0');
-    std::sprintf(&output[0], format, str.c_str(), val.c_str());
+    std::sprintf_s(&output[0], format, str.c_str(), val.c_str());
 
     write("VALUE", output, green);
   }

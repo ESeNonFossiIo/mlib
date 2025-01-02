@@ -56,5 +56,5 @@ add to `.bash_profile`
 - [ ] python tests
 - [ ] python doc
 - [ ] python syntax
-- [ ] enviroment
+- [ ] environment
 - [ ] macro run python
