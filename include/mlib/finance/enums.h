@@ -13,13 +13,12 @@ namespace mlib
     enum class OptionType
     {
       EuropeanCall, ///< European call option
-      EuropeanPut, ///< European put option
-      None ///< Not defined
+      EuropeanPut,  ///< European put option
+      None          ///< No option type
     };
 
   }
 
 }
-
 
 /** @}*/
