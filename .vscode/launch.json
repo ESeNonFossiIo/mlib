@@ -20,7 +20,7 @@
             "name": "Run all tests",
             "type": "cppdbg",
             "request": "launch",
-            "program": "ctest --output-on-failure",
+            "program": "ctest . --output-on-failure",
             "args": [],
             "cwd": "${workspaceFolder}\\out\\build\\${input:buildType}\\",
             "preLaunchTask": "CMake: Run Tests"
