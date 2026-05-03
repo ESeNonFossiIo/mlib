@@ -99,7 +99,7 @@ namespace mlib
     std::snprintf(&output[0], size + 1, format, elapsed_secs, msg.c_str(), str.c_str());
 #else
     // Use Windows-specific sprintf_s on Windows platform
-    std::sprintf_s(&output[0], size + 1, format, elapsed_secs, msg.c_str(), str.c_str());
+    sprintf_s(&output[0], size + 1, format, elapsed_secs, msg.c_str(), str.c_str());
 #endif
 
     output = color.init() + output + color.end();
@@ -154,7 +154,7 @@ namespace mlib
     std::snprintf(&output[0], size + 1, format, str.c_str(), val.c_str());
 #else
     // Use Windows-specific sprintf_s on Windows platform
-    std::sprintf_s(&output[0], size + 1, format, str.c_str(), val.c_str());
+    sprintf_s(&output[0], size + 1, format, str.c_str(), val.c_str());
 #endif
 
     write("VALUE", output, green);
