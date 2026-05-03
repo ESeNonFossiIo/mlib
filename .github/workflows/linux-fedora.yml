@@ -30,7 +30,6 @@ jobs:
     - name: modules
       run: |
         sudo dnf -y upgrade --refresh
-        sudo dnf -y install -q numdiff
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
