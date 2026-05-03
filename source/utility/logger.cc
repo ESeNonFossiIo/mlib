@@ -89,8 +89,8 @@ namespace mlib
     size_t size = std::snprintf(nullptr, 0, format, elapsed_secs, msg.c_str(),
                                 str.c_str());
 #else
-    size_t size = snprintf(nullptr, 0, format, elapsed_secs, msg.c_str(),
-                           str.c_str());
+    size_t size = _snprintf(nullptr, 0, format, elapsed_secs, msg.c_str(),
+                            str.c_str());
 #endif
 
     std::string output(size + 1, '\0');
@@ -98,8 +98,8 @@ namespace mlib
     // Use standard snprintf on non-Windows platforms
     std::snprintf(&output[0], size + 1, format, elapsed_secs, msg.c_str(), str.c_str());
 #else
-    // Use Windows-specific sprintf_s on Windows platform
-    sprintf_s(&output[0], size + 1, format, elapsed_secs, msg.c_str(), str.c_str());
+    // Use Windows-specific snprintf on Windows platform
+    _snprintf(&output[0], size + 1, format, elapsed_secs, msg.c_str(), str.c_str());
 #endif
 
     output = color.init() + output + color.end();
@@ -144,8 +144,8 @@ namespace mlib
     size_t size = std::snprintf(nullptr, 0, format,
                                 str.c_str(), val.c_str());
 #else
-    size_t size = sprintf_s(nullptr, 0, format,
-                            str.c_str(), val.c_str());
+    size_t size = snprintf(nullptr, 0, format,
+                           str.c_str(), val.c_str());
 #endif
 
     std::string output(size + 1, '\0');
@@ -153,8 +153,8 @@ namespace mlib
     // Use standard snprintf on non-Windows platforms
     std::snprintf(&output[0], size + 1, format, str.c_str(), val.c_str());
 #else
-    // Use Windows-specific sprintf_s on Windows platform
-    sprintf_s(&output[0], size + 1, format, str.c_str(), val.c_str());
+    // Use Windows-specific snprintf on Windows platform
+    snprintf(&output[0], size + 1, format, str.c_str(), val.c_str());
 #endif
 
     write("VALUE", output, green);
