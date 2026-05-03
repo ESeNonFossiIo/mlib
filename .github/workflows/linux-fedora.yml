@@ -30,6 +30,7 @@ jobs:
     - name: modules
       run: |
         sudo dnf -y upgrade --refresh
+        sudo dnf install -y -q cmake
 
     - name: Set up Python 3.12.13
       uses: actions/setup-python@v4
