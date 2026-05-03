@@ -34,7 +34,7 @@ namespace mlib
       :
       img(img_),
       real(real_)
-    {};
+    {}
 
     /**
      * \brief Copy constructor (uses default implementation).
@@ -58,7 +58,7 @@ namespace mlib
     inline T i() const
     {
       return img;
-    };
+    }
 
     /**
      * \brief Get the real part of the complex number.
@@ -67,7 +67,7 @@ namespace mlib
     inline T r() const
     {
       return real;
-    };
+    }
 
   public:
     /**
@@ -80,7 +80,7 @@ namespace mlib
     {
       *this = (*this) * r;
       return *this;
-    };
+    }
 
     /**
      * \brief Copy assignment operator.
@@ -93,7 +93,7 @@ namespace mlib
       this->img  = c.i();
       this->real = c.r();
       return *this;
-    };
+    }
 
     /**
      * \brief Move assignment operator.
@@ -106,7 +106,7 @@ namespace mlib
       this->img  = std::move(c.img);
       this->real = std::move(c.real);
       return *this;
-    };
+    }
 
     /**
      * \brief Multiply-assign operator with another complex number.
@@ -118,7 +118,7 @@ namespace mlib
     {
       *this = (*this) * c;
       return *this;
-    };
+    }
 
     /**
      * \brief Multiply operator with a scalar value.
@@ -131,7 +131,7 @@ namespace mlib
       T i = img  * a;
       T r = real * a;
       return Complex<T>(r, i);
-    };
+    }
 
     /**
      * \brief Multiply operator with another complex number.
@@ -146,7 +146,7 @@ namespace mlib
       T i = real*c.i() + img*c.r();
       T r = real*c.r() - img*c.i();
       return Complex<T> (r, i);
-    };
+    }
 
 
     /**
@@ -173,7 +173,7 @@ namespace mlib
           output << c.r() << " - " << std::abs(c.i()) << "i" ;
         }
       return output;
-    };
+    }
 
   private:
     T img;  ///< Imaginary part

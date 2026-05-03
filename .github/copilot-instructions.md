@@ -19,3 +19,4 @@
 ## 📝 Documentation Requirements
 - Use TSDoc for all public-facing methods.
 - Every function must have a `@throws` tag if it can fail.
+- Include examples in the documentation for complex functions.
