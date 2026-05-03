@@ -232,33 +232,39 @@ namespace mlib
     double toll,
     std::size_t min_num_zeroes)
   {
-    // set the fist element to zero.
+    // set the first element to zero.
     std::vector<int> v = {0};
 
-    for(int i = 0; i < static_cast<int>(vec.size())-1; ++i)
+    std::size_t i = 0;
+    while(i < vec.size() - 1)
       {
-        int j=0;
-        while(std::abs(
-                std::abs(vec[i] - vec[i+j])
+        std::size_t j = 0;
+        // Check how far we can go
+        while(i + j + 1 < vec.size() &&
+              std::abs(
+                std::abs(vec[i] - vec[i+j+1])
                 -
-                j*std::abs(vec[i] - vec[i+1])
-              )
-              <toll &&
-              j+i<static_cast<int>(vec.size()))
+                (j+1)*std::abs(vec[i] - vec[i+1])
+              ) < toll)
           ++j;
-        if(j>=1)
+
+        // j is now the last valid offset
+        ++j;  // j becomes the count of points in the segment
+
+        if(j >= 1)
           --j;
 
-        if(j > static_cast<int>(min_num_zeroes))
+        if(j > min_num_zeroes)
           {
-            v.push_back(i);
-            v.push_back(i+j-2);
+            v.push_back(static_cast<int>(i));
+            v.push_back(static_cast<int>(i+j-2));
           }
-        i=i+j;
+
+        i = i + j + 1;
       }
 
-    // check that the last element is equal to the lenght of vec.
-    if(v[v.size()-1] != static_cast<int>(vec.size() - 1))
+    // Ensure last element is included
+    if(v[v.size()-1] != static_cast<int>(vec.size()-1))
       {
         v.push_back(static_cast<int>(vec.size()-1));
       }

@@ -475,7 +475,6 @@ namespace mlib
   std::ostream&
   operator<< (std::ostream& output, const Matrix<S>& M)
   {
-#ifndef WINDOWS
     std::string bar = std::string(13*M.c() + M.c()+1, '-');
     output << std::setprecision(5) << std::endl;
     for(std::size_t i = 0; i< M.r(); ++i)
@@ -488,7 +487,7 @@ namespace mlib
         output << std::endl;
       }
     output <<  " " << bar << std::endl;
-#endif
+
     return output;
   }
 

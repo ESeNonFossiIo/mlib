@@ -1,4 +1,4 @@
-name: OSX
+name: Fedora
 
 on:
   push:
@@ -18,24 +18,30 @@ permissions:
   contents: read
 
 jobs:
-  build-osx:
+  build-linux:
 
-    name: OSX MLIB
-    runs-on: macos-latest
+    name: Linux - fedora MLIB
+    runs-on: ubuntu-latest
+    container: fedora:latest
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python 3.9
+    - name: modules
+      run: |
+        sudo dnf -y upgrade --refresh
+        sudo dnf install -y -q cmake
+
+    - name: Set up Python 3.12.13
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.12.13
 
     - name: Set up Miniconda
       uses: conda-incubator/setup-miniconda@v3
       with:
         auto-activate-base: true
-        python-version: 3.9
+        python-version: 3.12.13
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
@@ -58,6 +64,7 @@ jobs:
     - name: Python Test
       working-directory: ${{github.workspace}}
       run: |
+        conda install -c anaconda libstdcxx-ng
         conda install pytest
         $CONDA/bin/pytest ${{github.workspace}}/python/tests
 
@@ -66,7 +73,7 @@ jobs:
       if: always()
       continue-on-error: true
       with:
-        name: osx-CMakeOutput.log
+        name: linux-CMakeOutput.log
         path: ${{github.workspace}}/build/CMakeFiles/CMakeOutput.log
 
     - name: archive error 2
@@ -74,5 +81,5 @@ jobs:
       if: always()
       continue-on-error: true
       with:
-        name: osx-CMakeError.log
+        name: linux-CMakeError.log
         path: ${{github.workspace}}/build/CMakeFiles/CMakeError.log
