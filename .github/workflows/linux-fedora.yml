@@ -21,7 +21,8 @@ jobs:
   build-linux:
 
     name: Linux - fedora MLIB
-    runs-on: fedora-latest
+    runs-on: ubuntu-latest
+    container: fedora:latest
 
     steps:
     - uses: actions/checkout@v4
