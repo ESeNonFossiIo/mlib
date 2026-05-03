@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: modules
       run: |
@@ -62,7 +62,7 @@ jobs:
         $CONDA/bin/pytest ${{github.workspace}}/python/tests
 
     - name: archive error 1
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       continue-on-error: true
       with:
@@ -70,7 +70,7 @@ jobs:
         path: ${{github.workspace}}/build/CMakeFiles/CMakeOutput.log
 
     - name: archive error 2
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       continue-on-error: true
       with:

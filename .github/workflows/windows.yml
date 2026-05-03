@@ -29,7 +29,7 @@ jobs:
         os: [windows-2019, windows-2022]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: info
       run: |
         cmake --version
@@ -42,7 +42,7 @@ jobs:
         cmake -B D:\\a\\mlib\\mlib\\build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -D ENABLE_ALL_TESTS=ON
         cmake --build D:\\a\\mlib\\mlib\\build --config ${{env.BUILD_TYPE}}
     - name: archive logs
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: windows-detailed.log
         path: build/detailed.log
@@ -52,7 +52,7 @@ jobs:
         ctest -C D:\\a\\mlib\\mlib\\build --output-on-failure
 
     - name: archive error 1
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       continue-on-error: true
       with:
@@ -60,7 +60,7 @@ jobs:
         path: D:\\a\\mlib\\mlib\\build\\CMakeFiles\\CMakeOutput.log
 
     - name: archive error 2
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       continue-on-error: true
       with:
