@@ -163,10 +163,9 @@ FOREACH(_m ${_main})
   ENDIF()
 ENDFOREACH()
 
-DIRLIST(_gui_dirs "${CMAKE_SOURCE_DIR}/gui")
-
 OPTION( ENABLE_ALL_Qt_MAIN
         "Enable Qt gui app" OFF)
+DIRLIST(_gui_dirs "${CMAKE_SOURCE_DIR}/gui")
 FOREACH(_main_name ${_gui_dirs})
   IF(${_main_name} STREQUAL "main")
     OPTION( ENABLE_MAIN_${_main_name}
