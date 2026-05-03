@@ -31,16 +31,16 @@ jobs:
       run: |
         sudo dnf -y upgrade --refresh
 
-    - name: Set up Python 3.9
+    - name: Set up Python 3.12.13
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.12.13
 
     - name: Set up Miniconda
       uses: conda-incubator/setup-miniconda@v3
       with:
         auto-activate-base: true
-        python-version: 3.9
+        python-version: 3.12.13
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
