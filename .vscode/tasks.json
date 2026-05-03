@@ -30,7 +30,7 @@
 			"type": "shell",
 			"command": "bash",
 			"args": ["-c", "mkdir -p build && cd build && cmake -D CMAKE_BUILD_TYPE=${input:buildType} -D ENABLE_ALL_TESTS=ON .."],
-			"dependsOn": ["Clean Build"],
+			"dependsOn": [],
 			"group": {
 				"kind": "build",
 				"isDefault": false
