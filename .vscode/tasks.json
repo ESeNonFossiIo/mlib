@@ -22,7 +22,7 @@
 				"-D CMAKE_EXPORT_COMPILE_COMMANDS=ON",
 				"-D ENABLE_ALL_TESTS=ON",
 				"-S .",
-				"-B build/${input:buildType}"
+				"-B out/build/${input:buildType}"
 			],
 			"dependsOn": [],
 			"group": {
@@ -36,7 +36,7 @@
 			"type": "shell",
 			"command": "cmake",
 			"args": [
-				"--build", "build/${input:buildType}",
+				"--build", "out/build/${input:buildType}",
 				"--config", "${input:buildType}"
 			],
 			"dependsOn": ["CMake: Configure"],
@@ -50,7 +50,10 @@
 			"label": "CMake: Clean",
 			"type": "shell",
 			"command": "cmake",
-			"args": ["clean"],
+			"args": [
+				"--build", "out/build/${input:buildType}",
+				"--target", "clean"
+			],
 			"dependsOn": [],
 			"group": {
 				"kind": "build",
@@ -64,7 +67,7 @@
 			"command": "ctest",
 			"args": [
 				"--output-on-failure",
-				"--test-dir build/${input:buildType}",
+				"--test-dir out/build/${input:buildType}",
 				"-C ${input:buildType}"
 			],
 			"dependsOn": ["CMake: Build"],

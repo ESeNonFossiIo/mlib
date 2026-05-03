@@ -22,7 +22,7 @@
             "request": "launch",
             "program": "ctest --output-on-failure",
             "args": [],
-            "cwd": "${workspaceFolder}\\build\\${input:buildType}\\",
+            "cwd": "${workspaceFolder}\\out\\build\\${input:buildType}\\",
             "preLaunchTask": "CMake: Run Tests"
         }
     ]
