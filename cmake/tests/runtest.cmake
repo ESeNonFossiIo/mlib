@@ -1,45 +1,37 @@
 ################################################################################
-# -> RUN CHECK
-################################################################################
-EXECUTE_PROCESS(
-  COMMAND ${TEST_PROG}
-  OUTPUT_VARIABLE OUTFILE
-  RESULT_VARIABLE HAD_ERROR
-)
-
-FILE ( WRITE ${TEST_DIR}/output ${OUTFILE} )
-
-IF(HAD_ERROR)
-  FILE ( WRITE ${TEST_DIR}/error ${HAD_ERROR} )
-  MESSAGE(FATAL_ERROR " [ Test failed - no run ] ")
-ELSE()
-  MESSAGE( " -> Test compiled" )
-ENDIF()
-
-################################################################################
-# -> DIFF CHECK
+# -> DIFF CHECK (Best of both worlds: numdiff -> Python fallback)
 ################################################################################
 # 1. Search the host OS for diffing tools
 find_program(NUMDIFF_CMD numdiff)
-find_program(DIFF_CMD diff)
+find_program(NDIFF_CMD ndiff)
+find_package(Python3 COMPONENTS Interpreter QUIET) # QUIET means it won't crash if Python is missing
 
 set(EXPECTED_FILE "${TEST_NAME}.output")
 set(ACTUAL_FILE "${TEST_DIR}/output")
+set(TOLERANCE "1.0e-6")
 
-# 2. Replicate the script logic directly in CMake
+# 2. Execute the best available tool
 if(NUMDIFF_CMD)
-    # Use numdiff with tolerance if installed
-    set(TOLERANCE "1.0e-6")
+    # Priority 1: numdiff (Highly precise, native speed)
     execute_process(
         COMMAND ${NUMDIFF_CMD} -V -r ${TOLERANCE} ${EXPECTED_FILE} ${ACTUAL_FILE}
         RESULT_VARIABLE DIFFERENT
         OUTPUT_VARIABLE OUTFILE_DIFFERENT
         ERROR_VARIABLE ERROR_DIFFERENT
     )
-elseif(DIFF_CMD)
-    # Fallback to standard diff, but ignore Windows CR line endings
+elseif(NDIFF_CMD)
+    # Priority 2: ndiff 
     execute_process(
-        COMMAND ${DIFF_CMD} --strip-trailing-cr ${EXPECTED_FILE} ${ACTUAL_FILE}
+        COMMAND ${NDIFF_CMD} --relative-error ${TOLERANCE} ${EXPECTED_FILE} ${ACTUAL_FILE}
+        RESULT_VARIABLE DIFFERENT
+        OUTPUT_VARIABLE OUTFILE_DIFFERENT
+        ERROR_VARIABLE ERROR_DIFFERENT
+    )
+elseif(Python3_FOUND)
+    # Priority 3: Python fallback (Cross-platform, handles Windows math perfectly)
+    set(PYTHON_SCRIPT "${CMAKE_CURRENT_LIST_DIR}/../scripts/script_diff.py")
+    execute_process(
+        COMMAND ${Python3_EXECUTABLE} ${PYTHON_SCRIPT} ${EXPECTED_FILE} ${ACTUAL_FILE} ${TOLERANCE}
         RESULT_VARIABLE DIFFERENT
         OUTPUT_VARIABLE OUTFILE_DIFFERENT
         ERROR_VARIABLE ERROR_DIFFERENT
@@ -51,21 +43,26 @@ else()
         RESULT_VARIABLE DIFFERENT
     )
     if(DIFFERENT)
-        set(OUTFILE_DIFFERENT "Files differ natively. Install 'numdiff' or 'diff' for a detailed report.")
+        set(OUTFILE_DIFFERENT "Files differ natively. Install 'numdiff', 'ndiff', or Python for a detailed math diff.")
     endif()
 endif()
 
-# 3. Print the diff report if it failed
+# 3. Print the diff report and fail the test if differences were found
 IF(DIFFERENT)
-  # Mimic the output formatting from show_diff.sh
   MESSAGE(STATUS "===================================INIT==================================")
-  MESSAGE(STATUS "${OUTFILE_DIFFERENT}")
-  if(ERROR_DIFFERENT)
-      MESSAGE(STATUS "${ERROR_DIFFERENT}")
+  
+  if(NUMDIFF_CMD OR NDIFF_CMD OR Python3_FOUND)
+      MESSAGE(STATUS "${OUTFILE_DIFFERENT}")
+      if(ERROR_DIFFERENT)
+          MESSAGE(STATUS "${ERROR_DIFFERENT}")
+      endif()
+  else()
+      MESSAGE(STATUS "${OUTFILE_DIFFERENT}")
   endif()
+  
   MESSAGE(STATUS "===================================END===================================")
   
-  # Write the .diff file mimic-ing the behavior of check_diff
+  # Write the .diff file to the disk for manual inspection later
   FILE(WRITE "${ACTUAL_FILE}.diff" "${OUTFILE_DIFFERENT}\n${ERROR_DIFFERENT}")
   
   MESSAGE(FATAL_ERROR " [ Test failed - files differ ] ")

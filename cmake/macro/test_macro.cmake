@@ -23,6 +23,7 @@ MACRO(NEW_TEST TEST_SRC)
 
 # If on Windows, copy the required DLLs into the isolated test folder
 if(WIN32)
+  # TODO: can we avoid this code?
   add_custom_command(TARGET ${FILE_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${_project_lib}> ${WORKING_TEST_DIR}
   )
