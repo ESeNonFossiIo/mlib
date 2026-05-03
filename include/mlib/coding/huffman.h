@@ -2,6 +2,10 @@
 #define _MLIB_HUFFMAN_
 
 #include <map>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <iostream>
 
 /** \addtogroup coding
  *  @{
@@ -10,10 +14,25 @@
 namespace mlib
 {
 
+  /**
+   * \brief Huffman coding utility class for character frequency analysis.
+   * 
+   * This class analyzes the frequency of characters in a given string
+   * and provides sorted frequency information for Huffman encoding purposes.
+   * Characters are sorted by frequency in ascending order.
+   */
   class HuffmanCoding
   {
   public:
-    HuffmanCoding(const std::string& text_)
+    /**
+     * \brief Constructor that analyzes character frequencies in the input text.
+     * 
+     * Counts occurrences of each character and sorts them by frequency.
+     * Note: std::map sorts by keys, so we use a vector for frequency-based sorting.
+     * 
+     * \param text_ Input string to analyze for character frequencies
+     */
+    inline HuffmanCoding(const std::string& text_)
       :
       text(text_)
     {
@@ -47,18 +66,28 @@ namespace mlib
 
     };
 
-    void print_counter()
+    /**
+     * \brief Print character frequencies to standard output.
+     * 
+     * Outputs each character and its frequency count in the format: "char = count"
+     */
+    inline void print_counter()
     {
       for(auto it = counter.begin(); it != counter.end(); ++it)
         {
           std::cout << it->first << " = " << it->second << std::endl;
         }
     };
-  private:
-    std::string text;
 
-    // Use this syntax for sorting the elemets accortding to the value.
-    //  std::map does not allow to sort elements by value. It uses keys.
+  private:
+    std::string text; ///< Input text being analyzed
+
+    /**
+     * \brief Vector of character-frequency pairs sorted by frequency.
+     * 
+     * Note: We use a vector instead of std::map because std::map sorts by keys,
+     * but we need sorting by frequency values for Huffman encoding.
+     */
     std::vector< std::pair<char, int>> counter;
   };
 };
