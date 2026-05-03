@@ -20,7 +20,7 @@ permissions:
 jobs:
   build-linux:
 
-    name: Linux MLIB
+    name: Linux - ubuntu MLIB
     runs-on: ubuntu-latest
 
     steps:
