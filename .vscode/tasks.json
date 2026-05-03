@@ -14,22 +14,16 @@
 	],
 	"tasks": [
 		{
-			"label": "Clean Build",
-			"type": "shell",
-			"command": "bash",
-			"args": ["-c", "rm -rf build"],
-			"problemMatcher": [],
-			"group": {
-				"kind": "build",
-				"isDefault": false
-			},
-			"detail": "Clean the build directory"
-		},
-		{
 			"label": "CMake: Configure",
 			"type": "shell",
-			"command": "bash",
-			"args": ["-c", "mkdir -p build && cd build && cmake -D CMAKE_BUILD_TYPE=${input:buildType} -D ENABLE_ALL_TESTS=ON .."],
+			"command": "cmake",
+			"args": [
+				"-D CMAKE_BUILD_TYPE=${input:buildType}",
+				"-D CMAKE_EXPORT_COMPILE_COMMANDS=ON",
+				"-D ENABLE_ALL_TESTS=ON",
+				"-S .",
+				"-B build/${input:buildType}"
+			],
 			"dependsOn": [],
 			"group": {
 				"kind": "build",
@@ -40,14 +34,45 @@
 		{
 			"label": "CMake: Build",
 			"type": "shell",
-			"command": "bash",
-			"args": ["-c", "cd build && cmake --build . --config ${input:buildType}"],
+			"command": "cmake",
+			"args": [
+				"--build", "build/${input:buildType}",
+				"--config", "${input:buildType}"
+			],
 			"dependsOn": ["CMake: Configure"],
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
 			"detail": "Build the project using CMake"
+		},
+		{
+			"label": "CMake: Clean",
+			"type": "shell",
+			"command": "cmake",
+			"args": ["clean"],
+			"dependsOn": [],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"detail": "Clean the build using CMake"
+		},
+		{
+			"label": "CMake: Run Tests",
+			"type": "shell",
+			"command": "ctest",
+			"args": [
+				"--output-on-failure",
+				"--test-dir build/${input:buildType}",
+				"-C ${input:buildType}"
+			],
+			"dependsOn": ["CMake: Build"],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"detail": "Run all tests using CTest"
 		}
 	]
 }
