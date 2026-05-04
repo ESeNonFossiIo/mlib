@@ -1,8 +1,11 @@
 
-[![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
-[![linux](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux.yml)
-[![windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
 [![CodeQL](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml/badge.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml)
+
+[![Linux Ubuntu (Debug)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_debug.yml)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_debug.yml)
+[![Linux Ubuntu (Release)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_release.yml)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_release.yml)
+[![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
+[![Windows (Release)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows_release.yml)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows_release.yml)
+
 
 # Build
 
