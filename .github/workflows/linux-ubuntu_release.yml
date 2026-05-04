@@ -1,4 +1,4 @@
-name: Ubuntu
+name: Ubuntu Release
 
 on:
   push:
@@ -20,11 +20,11 @@ permissions:
 jobs:
   build-linux:
 
-    name: Linux MLIB
+    name: Linux - ubuntu MLIB
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: modules
       run: |
@@ -32,8 +32,14 @@ jobs:
         sudo apt-get install -yq --no-install-recommends numdiff
 
     - name: Set up Python 3.9
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
+        python-version: 3.9
+
+    - name: Set up Miniconda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        auto-activate-base: true
         python-version: 3.9
 
     - name: Configure CMake
@@ -62,7 +68,7 @@ jobs:
         $CONDA/bin/pytest ${{github.workspace}}/python/tests
 
     - name: archive error 1
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       continue-on-error: true
       with:
@@ -70,7 +76,7 @@ jobs:
         path: ${{github.workspace}}/build/CMakeFiles/CMakeOutput.log
 
     - name: archive error 2
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       continue-on-error: true
       with:

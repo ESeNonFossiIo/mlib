@@ -20,6 +20,15 @@ MACRO(NEW_TEST TEST_SRC)
   FILE(MAKE_DIRECTORY ${WORKING_TEST_DIR})
   ADD_EXECUTABLE(${FILE_NAME} ${TEST_SRC})
   TARGET_LINK_LIBRARIES(${FILE_NAME} ${_project_lib})
+
+# If on Windows, copy the required DLLs into the isolated test folder
+if(WIN32)
+  # TODO: can we avoid this code?
+  add_custom_command(TARGET ${FILE_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${_project_lib}> ${WORKING_TEST_DIR}
+  )
+endif()
+
   SET_TARGET_PROPERTIES(${FILE_NAME}
     PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${WORKING_TEST_DIR})
 

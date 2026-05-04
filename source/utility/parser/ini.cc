@@ -262,7 +262,8 @@ namespace mlib
     while(std::getline(is, line))
       {
         std::string line_in(line);
-        remove_if(line_in.begin(), line_in.end(), ::isspace);
+        // Remove all whitespace characters from the working copy (erase-remove idiom)
+        line_in.erase(remove_if(line_in.begin(), line_in.end(), ::isspace), line_in.end());
 
         if(line_in.size() > 0)
           if(line_in.at(0)==';')
