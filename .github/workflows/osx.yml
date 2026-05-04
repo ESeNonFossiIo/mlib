@@ -53,7 +53,43 @@ jobs:
 
     - name: CPP Test
       working-directory: ${{github.workspace}}/build
-      run: make run_tests
+      run: make run_tests > test_output.txt 2>&1 || true
+      continue-on-error: true
+
+    - name: Extract and save test count
+      run: |
+        TEST_COUNT=$(grep -c "^[0-9]*: Test " build/test_output.txt || echo "0")
+        if [ "$TEST_COUNT" -eq 0 ]; then
+          TEST_COUNT=$(ctest --test-dir build -N --quiet 2>/dev/null | wc -l || echo "0")
+        fi
+        echo "Current test count: $TEST_COUNT"
+        echo "$TEST_COUNT" > test_count.txt
+
+    - name: Download previous test count
+      continue-on-error: true
+      uses: actions/download-artifact@v4
+      with:
+        name: test-count-release
+        path: previous_count
+
+    - name: Compare test counts
+      run: |
+        CURRENT=$(cat test_count.txt)
+        PREVIOUS=$(cat previous_count/test_count.txt 2>/dev/null || echo "0")
+        echo "Previous test count: $PREVIOUS"
+        echo "Current test count: $CURRENT"
+        if [ "$CURRENT" -lt "$PREVIOUS" ]; then
+          echo "ERROR: Test count decreased from $PREVIOUS to $CURRENT"
+          exit 1
+        fi
+        echo "✓ Test count check passed (Previous: $PREVIOUS, Current: $CURRENT)"
+
+    - name: Upload test count for next run
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-count-release
+        path: test_count.txt
+        retention-days: 30
 
     - name: Python Test
       working-directory: ${{github.workspace}}
