@@ -1,0 +1,85 @@
+# Base style to build upon (options: LLVM, Google, Chromium, Mozilla, WebKit, Microsoft)
+BasedOnStyle: LLVM
+
+# The extra indent or outdent for access modifiers (public, private, etc.)
+AccessModifierOffset: -4
+
+# Align parameters on the next line if they don't fit on the current one
+AlignAfterOpenBracket: Align
+
+# Don't align consecutive assignments or declarations to avoid large diffs when adding variables
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+
+# Align operands for binary operators
+AlignOperands: true
+
+# Align trailing comments
+AlignTrailingComments: true
+
+# Allow putting all parameters of a function declaration onto the next line
+AllowAllParametersOfDeclarationOnNextLine: true
+
+# Keep blocks/functions/ifs on multiple lines for better readability
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+
+# Always break before multiline strings
+AlwaysBreakBeforeMultilineStrings: false
+
+# Always break after template declarations
+AlwaysBreakTemplateDeclarations: Yes
+
+# Formatting for function arguments: one per line if they don't fit
+BinPackArguments: false
+BinPackParameters: false
+
+# Brace wrapping settings (Custom style)
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+
+# The column limit for a line
+ColumnLimit: 100
+
+# Indentation width (4 spaces is standard for many teams)
+IndentWidth: 4
+
+# Indent case labels within switch statements
+IndentCaseLabels: true
+
+# Keep empty lines to a minimum
+MaxEmptyLinesToKeep: 1
+
+# Pointer alignment (Left is often preferred in modern C++, e.g., int* p)
+PointerAlignment: Left
+
+# Reflow comments to fit the column limit
+ReflowComments: true
+
+# Alphabetically sort includes
+SortIncludes: true
+
+# Use spaces instead of tabs
+UseTab: Never
+
+# The standard to use (Latest will auto-detect based on the code)
+Standard: Latest
+
+# Space settings
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
