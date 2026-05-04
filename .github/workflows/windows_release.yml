@@ -50,7 +50,44 @@ jobs:
     - name: test library
       shell: bash
       run: |
-        ctest -C D:\\a\\mlib\\mlib\\build --output-on-failure
+        ctest -C D:\\a\\mlib\\mlib\\build --output-on-failure > test_output.txt 2>&1 || true
+
+    - name: Extract and save test count
+      shell: bash
+      run: |
+        TEST_COUNT=$(grep -c "^[0-9]*: Test " test_output.txt || echo "0")
+        if [ "$TEST_COUNT" -eq 0 ]; then
+          TEST_COUNT=$(ctest --test-dir D:\\a\\mlib\\mlib\\build -N --quiet 2>/dev/null | wc -l || echo "0")
+        fi
+        echo "Current test count: $TEST_COUNT"
+        echo "$TEST_COUNT" > test_count.txt
+
+    - name: Download previous test count
+      continue-on-error: true
+      uses: actions/download-artifact@v4
+      with:
+        name: test-count-windows-release
+        path: previous_count
+
+    - name: Compare test counts
+      shell: bash
+      run: |
+        CURRENT=$(cat test_count.txt)
+        PREVIOUS=$(cat previous_count/test_count.txt 2>/dev/null || echo "0")
+        echo "Previous test count: $PREVIOUS"
+        echo "Current test count: $CURRENT"
+        if [ "$CURRENT" -lt "$PREVIOUS" ]; then
+          echo "ERROR: Test count decreased from $PREVIOUS to $CURRENT"
+          exit 1
+        fi
+        echo "✓ Test count check passed (Previous: $PREVIOUS, Current: $CURRENT)"
+
+    - name: Upload test count for next run
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-count-windows-release
+        path: test_count.txt
+        retention-days: 30
 
     - name: archive error 1
       uses: actions/upload-artifact@v4
