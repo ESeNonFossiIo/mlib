@@ -4,20 +4,23 @@
 #include "_python/types.h"
 
 /// ----------------------------------------------------------------------------
-/// return the status of the call to the c function
-enum class MLIBStatus : MLIBInt
-{
-  None, //< Status not set yet
-  Success, //< No error occurred
-  Failed //< Generic error found
-}
+/// Return the status of the call to the c function
+enum class MLIBStatus : MLIBInt {
+    None,    //< Status not set yet
+    Success, //< No error occurred
+    Failed   //< Generic error found
+};
 
-#define MLIB_TRY \
-  try{
+/// ----------------------------------------------------------------------------
+/// Try-catch block for c++ exceptions.
+#define MLIB_TRY try {
 
-#define MLIB_CATCH \
-} catch (...) {    \
-}
-
+/// ----------------------------------------------------------------------------
+/// Try-catch block for c++ exceptions.
+#define MLIB_CATCH                                                                                 \
+    }                                                                                              \
+    catch (...)                                                                                    \
+    {                                                                                              \
+    }
 
 #endif // _MLIB_PYTHON_STATUS_

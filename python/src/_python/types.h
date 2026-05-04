@@ -5,7 +5,7 @@
 #include <cstdint>
 
 /// ----------------------------------------------------------------------------
-/// type used for intergers
+/// Type used for intergers
 using MLIBInt = std::uint64_t;
 
 #endif // _MLIB_PYTHON_TYPES_
