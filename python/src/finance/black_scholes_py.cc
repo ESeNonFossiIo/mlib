@@ -1,7 +1,6 @@
 #include <mlib/core/export.h>
 #include <mlib/finance/black_scholes.h>
 
-#include "_python/types.h"
 #include "_python/status.h"
 
 /// ----------------------------------------------------------------------------
@@ -14,18 +13,12 @@ MLIB_EXPORT MLIBStatus MLIB_BSPricer(
   const double r, ///< [in] risk-free rate
   const double v, ///< [in] volatility of underlying sigma
   const double T, ///< [in] time to maturity
-  const MLIBInt optTypeInt ///< [in] option to compute
-  const double& price ///< [out] price
+  const MLIBInt optTypeInt, ///< [in] option to compute
+  double* price ///< [out] price
 )
 {
   const mlib::finance::OptionType optType =
-    static_cast<mlib::finance::OptionType >(optTypeInt);
-  price =  mlib::finance::BSPrice(
-             const double S, ///< [in] underlying
-             const double K, ///< [in] strike
-             const double r, ///< [in] risk-free rate
-             const double v, ///< [in] volatility of underlying sigma
-             const double T, ///< [in] time to maturity
-             const OptionType optType ///< [in] option to compute
-           );
+    static_cast<mlib::finance::OptionType>(optTypeInt);
+  *price = mlib::finance::BSPrice(S, K, r, v, T, optType);
+  return MLIBStatus::Success;
 }
