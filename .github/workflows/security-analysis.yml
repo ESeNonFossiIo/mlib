@@ -1,0 +1,213 @@
+name: Security and Static Analysis
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  schedule:
+    - cron: '0 7 * * 1'  # Every Monday at 07:00 UTC
+
+concurrency:
+  group: ${{ github.event_name }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  cppcheck:
+    name: C++ Static Analysis (cppcheck)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install cppcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -yq cppcheck
+
+      - name: Run cppcheck (XML)
+        run: |
+          cppcheck \
+            --enable=warning,performance,portability,information \
+            --suppress=missingIncludeSystem \
+            --suppress=unmatchedSuppression \
+            --error-exitcode=0 \
+            --xml --xml-version=2 \
+            -I include \
+            source/ \
+            2> cppcheck-report.xml
+
+      - name: Run cppcheck (text summary)
+        run: |
+          cppcheck \
+            --enable=warning,performance,portability,information \
+            --suppress=missingIncludeSystem \
+            --suppress=unmatchedSuppression \
+            -I include \
+            source/ \
+            2>&1 | tee cppcheck-summary.txt
+        continue-on-error: true
+
+      - name: Upload cppcheck XML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cppcheck-xml
+          path: cppcheck-report.xml
+          retention-days: 14
+
+      - name: Upload cppcheck text summary
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cppcheck-summary
+          path: cppcheck-summary.txt
+          retention-days: 14
+
+  clang-tidy:
+    name: C++ Linting (clang-tidy)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -yq clang clang-tidy cmake
+
+      - name: Generate compile commands
+        run: |
+          cmake -B ${{ github.workspace }}/build \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_ALL_TESTS=ON \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+      - name: Run clang-tidy
+        run: |
+          find source -name '*.cc' -print0 | \
+            xargs -0 clang-tidy \
+              -p ${{ github.workspace }}/build \
+              --checks='-*,clang-analyzer-*,bugprone-*,cert-*,performance-*,portability-*' \
+              2>&1 | tee clang-tidy-report.txt
+        continue-on-error: true
+
+      - name: Upload clang-tidy report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: clang-tidy-report
+          path: clang-tidy-report.txt
+          retention-days: 14
+
+  python-bandit:
+    name: Python Security Scan (bandit)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install bandit
+        run: pip install bandit
+
+      - name: Run bandit (SARIF)
+        run: |
+          bandit \
+            -r python/ \
+            --format sarif \
+            --output bandit-results.sarif \
+            --severity-level low \
+            --confidence-level low
+        continue-on-error: true
+
+      - name: Upload SARIF to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: bandit-results.sarif
+          category: bandit
+
+      - name: Run bandit (text report)
+        run: |
+          bandit -r python/ --format text 2>&1 | tee bandit-report.txt
+        continue-on-error: true
+
+      - name: Upload bandit text report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bandit-report
+          path: bandit-report.txt
+          retention-days: 14
+
+  python-lint:
+    name: Python Linting (flake8)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install flake8
+        run: pip install flake8
+
+      - name: Run flake8
+        run: |
+          flake8 python/ \
+            --max-line-length=120 \
+            --count \
+            --statistics \
+            --tee \
+            --output-file flake8-report.txt
+        continue-on-error: true
+
+      - name: Upload flake8 report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: flake8-report
+          path: flake8-report.txt
+          retention-days: 14
+
+  python-dependency-audit:
+    name: Python Dependency Audit (pip-audit)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install pip-audit and project dependencies
+        run: pip install pip-audit pytest pytest-cov
+
+      - name: Run pip-audit
+        run: |
+          pip-audit \
+            --format json \
+            --output pip-audit-report.json
+        continue-on-error: true
+
+      - name: Upload pip-audit report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pip-audit-report
+          path: pip-audit-report.json
+          retention-days: 14

@@ -1,0 +1,127 @@
+name: Coverage
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+concurrency:
+  group: ${{ github.event_name }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  cpp-coverage:
+    name: C++ Coverage (gcovr)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -yq --no-install-recommends \
+            numdiff clang llvm gcovr
+
+      - name: Configure CMake with coverage flags
+        run: |
+          cmake -B ${{ github.workspace }}/build \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_ALL_TESTS=ON \
+            -DCMAKE_CXX_FLAGS="--coverage -O0" \
+            -DCMAKE_EXE_LINKER_FLAGS="--coverage"
+
+      - name: Build
+        run: cmake --build ${{ github.workspace }}/build
+
+      - name: Run tests
+        working-directory: ${{ github.workspace }}/build
+        run: make run_tests
+        continue-on-error: true
+
+      - name: Generate coverage report
+        run: |
+          mkdir -p ${{ github.workspace }}/coverage_html
+          gcovr \
+            --root ${{ github.workspace }} \
+            --gcov-executable "llvm-cov gcov" \
+            --exclude "${{ github.workspace }}/tests/" \
+            --exclude "${{ github.workspace }}/build/" \
+            --html-details ${{ github.workspace }}/coverage_html/index.html \
+            --xml ${{ github.workspace }}/coverage.xml \
+            --print-summary
+
+      - name: Upload HTML coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cpp-coverage-html
+          path: coverage_html/
+          retention-days: 14
+
+      - name: Upload XML coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cpp-coverage-xml
+          path: coverage.xml
+          retention-days: 14
+
+  python-coverage:
+    name: Python Coverage (pytest-cov)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -yq --no-install-recommends numdiff clang
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Build C++ bindings
+        run: |
+          cmake -B ${{ github.workspace }}/build \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_CXX_FLAGS="--coverage -O0" \
+            -DCMAKE_EXE_LINKER_FLAGS="--coverage"
+          cmake --build ${{ github.workspace }}/build
+
+      - name: Install Python test dependencies
+        run: pip install pytest pytest-cov
+
+      - name: Run Python tests with coverage
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python:${{ github.workspace }}/build/lib
+        run: |
+          pytest python/tests \
+            --cov=mlibpy \
+            --cov-report=html:python_coverage_html \
+            --cov-report=xml:python_coverage.xml \
+            --cov-report=term-missing
+        continue-on-error: true
+
+      - name: Upload Python HTML coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-coverage-html
+          path: python_coverage_html/
+          retention-days: 14
+
+      - name: Upload Python XML coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-coverage-xml
+          path: python_coverage.xml
+          retention-days: 14
