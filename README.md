@@ -6,9 +6,9 @@
 [![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
 [![Windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
 
-# Build
+## Build
 
-## Quick Start
+### Quick Start
 
 ```bash
 mkdir -p build && cd build
@@ -17,12 +17,12 @@ ninja -j4
 ctest --output-on-failure
 ```
 
-## Build Options
+### Build Options
 
 - `-D CMAKE_BUILD_TYPE=Release` - Optimized build (or Debug for debugging symbols)
 - `-D ENABLE_ALL_TESTS=ON` - Compile all test suite
 
-## VS Code Integration
+### VS Code Integration
 
 This project includes pre-configured VS Code tasks and debug configurations:
 
@@ -32,7 +32,7 @@ This project includes pre-configured VS Code tasks and debug configurations:
 
 See `.vscode/tasks.json` and `.vscode/launch.json` for details.
 
-# Configuration
+## Configuration
 
 ```bash
 mkdir build
@@ -47,56 +47,56 @@ Add to `.bash_profile`:
 export LIBMLIB_DIR="path_to_installation_dir"
 ```
 
-# Notes
+## Notes
 
 - v0.10.0 Remove the template for points. Some compatibility issues may occur.
 - All 121 unit tests passing with GCC C++15 and above
 - Cross-platform support: Linux, macOS, Windows
 
-# Developer Guide
+## Developer Guide
 
-## Tests
+### Tests
 
 - To make test pass use `make_test_pass("pcl/pcl_00");`
 - Run specific test: `ctest -R test_name --output-on-failure`
 - Run all tests: `ctest --output-on-failure`
 - Rerun failed tests: `ctest --rerun-failed --output-on-failure`
 
-## Compilation
+### Compilation
 
-### Precompiler FLAGS
+#### Precompiler FLAGS
 
 - `MLIB_USE_PCL_WITH_VTK` - PCL with VTK support
 - `MLIB_USE_PCL` - Point Cloud Library support
 - `MLIB_USE_EIGEN3` - Eigen3 linear algebra
 - `BUILD_PY_ENV` - Python bindings
 
-### Recent Improvements (May 2026)
+#### Recent Improvements (May 2026)
 
-#### Code Quality
+##### Code Quality
 
 - Added comprehensive Doxygen documentation to Complex, Logger, Huffman, and INI classes
 - Implemented C++11 default/delete semantics for constructors
 - Added `inline` keywords to template methods
 - Implemented move semantics where appropriate
 
-#### Fixes
+##### Fixes
 
 - Fixed Windows/Linux portability issue in logger.cc (sprintf_s → snprintf)
 - Fixed unused return value warning in ini.cc (std::remove_if)
 - Added missing headers to huffman.h
 - Fixed deprecation warning in complex.h
 
-# ChangeLog
+## ChangeLog
 
-## Version 0
+### Version 0
 
-| TAG    | COMMIT    | DATE      | NOTES                  |
-|--------|-----------|-----------|------------------------|
+| TAG    | COMMIT     | DATE       | NOTES                  |
+|--------|------------|------------|------------------------|
 | v0.1.0 | Add Travis | 2026-03-XX | Continuous Integration |
 | v0.0.0 | First Tag  | 2026-01-XX | Initial Release        |
 
-# TODO
+## TODO
 
 - [ ] compilare i test prima di runnarli in maniera automatica
 - [ ] Cambiare la versione in doxygen
