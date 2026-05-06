@@ -34,7 +34,7 @@ jobs:
     - name: modules
       run: |
         dnf -y upgrade --refresh
-        dnf install -y --skip-unavailable cmake ninja-build gcc-c++ numdiff git
+        dnf install -y --skip-unavailable cmake ninja-build gcc-c++ clang numdiff git
 
     - name: Set up Python 3.12
       uses: actions/setup-python@v4
