@@ -22,11 +22,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2022]
         include:
-          - build_type: Debug
+          - os: windows-2022
+            build_type: Debug
             artifact_suffix: debug
-          - build_type: Release
+          - os: windows-2022
+            build_type: Release
             artifact_suffix: release
 
     steps:
