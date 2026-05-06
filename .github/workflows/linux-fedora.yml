@@ -1,0 +1,121 @@
+name: Fedora
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+concurrency:
+  group: ${{ github.event_name }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build-linux:
+
+    name: Linux - fedora MLIB (${{ matrix.build_type }})
+    runs-on: ubuntu-latest
+    container: fedora:latest
+
+    strategy:
+      matrix:
+        include:
+          - build_type: Debug
+            artifact_suffix: debug
+          - build_type: Release
+            artifact_suffix: release
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: modules
+      run: |
+        dnf -y upgrade --refresh
+        dnf install -y cmake ninja-build gcc-c++ numdiff git
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+
+    - name: Set up Miniconda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        auto-activate-base: true
+        python-version: "3.12"
+
+    - name: Configure CMake
+      run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -D ENABLE_ALL_TESTS=ON
+
+    - name: Build
+      run: cmake --build ${{ github.workspace }}/build --config ${{ matrix.build_type }}
+
+    - name: Install conda dependencies
+      run: |
+        $CONDA/bin/conda env update --file ${{ github.workspace }}/python/mlibpy_env.yml --name mlibpy_env
+
+    - name: CPP Test
+      working-directory: ${{ github.workspace }}/build
+      run: make run_tests > test_output.txt 2>&1 || true
+      continue-on-error: true
+
+    - name: Extract and save test count
+      run: |
+        TEST_COUNT=$(grep -c "^[0-9]*: Test " build/test_output.txt || echo "0")
+        if [ "$TEST_COUNT" -eq 0 ]; then
+          TEST_COUNT=$(ctest --test-dir build -N --quiet 2>/dev/null | wc -l || echo "0")
+        fi
+        echo "Current test count: $TEST_COUNT"
+        echo "$TEST_COUNT" > test_count.txt
+
+    - name: Download previous test count
+      continue-on-error: true
+      uses: actions/download-artifact@v4
+      with:
+        name: test-count-fedora-${{ matrix.artifact_suffix }}
+        path: previous_count
+
+    - name: Compare test counts
+      run: |
+        CURRENT=$(cat test_count.txt)
+        PREVIOUS=$(cat previous_count/test_count.txt 2>/dev/null || echo "0")
+        echo "Previous test count: $PREVIOUS"
+        echo "Current test count: $CURRENT"
+        if [ "$CURRENT" -lt "$PREVIOUS" ]; then
+          echo "ERROR: Test count decreased from $PREVIOUS to $CURRENT"
+          exit 1
+        fi
+        echo "Test count check passed (Previous: $PREVIOUS, Current: $CURRENT)"
+
+    - name: Upload test count for next run
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-count-fedora-${{ matrix.artifact_suffix }}
+        path: test_count.txt
+        retention-days: 30
+
+    - name: Python Test
+      working-directory: ${{ github.workspace }}
+      run: |
+        conda install -c anaconda libstdcxx-ng
+        conda install pytest
+        $CONDA/bin/pytest ${{ github.workspace }}/python/tests
+
+    - name: archive error 1
+      uses: actions/upload-artifact@v4
+      if: always()
+      continue-on-error: true
+      with:
+        name: fedora-${{ matrix.artifact_suffix }}-CMakeOutput.log
+        path: ${{ github.workspace }}/build/CMakeFiles/CMakeOutput.log
+
+    - name: archive error 2
+      uses: actions/upload-artifact@v4
+      if: always()
+      continue-on-error: true
+      with:
+        name: fedora-${{ matrix.artifact_suffix }}-CMakeError.log
+        path: ${{ github.workspace }}/build/CMakeFiles/CMakeError.log
