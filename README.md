@@ -1,26 +1,29 @@
+# mlib
 
 [![CodeQL](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml)
-
 [![Ubuntu](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu.yml)
+[![Fedora](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-fedora.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-fedora.yml)
 [![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
 [![Windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
-
 
 # Build
 
 ## Quick Start
+
 ```bash
 mkdir -p build && cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_ALL_TESTS=ON ..
-make -j4
+ninja -j4
 ctest --output-on-failure
 ```
 
 ## Build Options
+
 - `-D CMAKE_BUILD_TYPE=Release` - Optimized build (or Debug for debugging symbols)
 - `-D ENABLE_ALL_TESTS=ON` - Compile all test suite
 
 ## VS Code Integration
+
 This project includes pre-configured VS Code tasks and debug configurations:
 
 - **Build (Ctrl+Shift+B)** - Configures and builds the project
@@ -35,10 +38,11 @@ See `.vscode/tasks.json` and `.vscode/launch.json` for details.
 mkdir build
 cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_ALL_TESTS=ON ..
-make -j4
+ninja -j4
 ```
 
 Add to `.bash_profile`:
+
 ```bash
 export LIBMLIB_DIR="path_to_installation_dir"
 ```
@@ -70,12 +74,14 @@ export LIBMLIB_DIR="path_to_installation_dir"
 ### Recent Improvements (May 2026)
 
 #### Code Quality
+
 - Added comprehensive Doxygen documentation to Complex, Logger, Huffman, and INI classes
 - Implemented C++11 default/delete semantics for constructors
 - Added `inline` keywords to template methods
 - Implemented move semantics where appropriate
 
 #### Fixes
+
 - Fixed Windows/Linux portability issue in logger.cc (sprintf_s → snprintf)
 - Fixed unused return value warning in ini.cc (std::remove_if)
 - Added missing headers to huffman.h
@@ -84,12 +90,14 @@ export LIBMLIB_DIR="path_to_installation_dir"
 # ChangeLog
 
 ## Version 0
-|TAG|COMMIT|DATE|NOTES|
-|---|------|----|-----|
-|v0.1.0|Add Travis|2026-03-XX|Continuous Integration|
-|v0.0.0|First Tag|2026-01-XX|Initial Release|
+
+| TAG    | COMMIT    | DATE      | NOTES                  |
+|--------|-----------|-----------|------------------------|
+| v0.1.0 | Add Travis | 2026-03-XX | Continuous Integration |
+| v0.0.0 | First Tag  | 2026-01-XX | Initial Release        |
 
 # TODO
+
 - [ ] compilare i test prima di runnarli in maniera automatica
 - [ ] Cambiare la versione in doxygen
 - [ ] Add guard for python
