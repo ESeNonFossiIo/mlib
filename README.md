@@ -1,10 +1,9 @@
 
 [![CodeQL](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml)
 
-[![Ubuntu Debug](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_debug.yml/badge.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_debug.yml)
-[![Ubuntu Release](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_release.yml/badge.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu_release.yml)
+[![Ubuntu](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu.yml)
 [![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
-[![windows release](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows_release.yml/badge.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows_release.yml)
+[![Windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
 
 
 # Build
