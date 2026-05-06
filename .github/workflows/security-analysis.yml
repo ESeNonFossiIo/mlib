@@ -117,7 +117,7 @@ jobs:
           python-version: "3.9"
 
       - name: Install bandit
-        run: pip install bandit
+        run: pip install "bandit[sarif]"
 
       - name: Run bandit (SARIF)
         run: |
@@ -126,8 +126,11 @@ jobs:
             --format sarif \
             --output bandit-results.sarif \
             --severity-level low \
-            --confidence-level low
-        continue-on-error: true
+            --confidence-level low || true
+          if [ ! -f bandit-results.sarif ]; then
+            echo '{"version":"2.1.0","$schema":"https://json.schemastore.org/sarif-2.1.0.json","runs":[]}' \
+              > bandit-results.sarif
+          fi
 
       - name: Upload SARIF to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v4
