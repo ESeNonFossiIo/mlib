@@ -1,5 +1,5 @@
 from ctypes import cdll
-from os.path import dirname, abspath, join
+from os.path import dirname, abspath, join, isfile
 from sys import platform
 
 # ------------------------------------------------------------------------------
@@ -24,8 +24,15 @@ def loadMLIB():
             # Windows...
             lib_ext = "dll"
 
-        # name of the library
-        mlib_lib = r"lib_mlib_bindings." + lib_ext
+        # Debug builds use a "_d" postfix (set by cmake/macro/debug_flags.cmake).
+        # Try the debug variant first so both build types work transparently.
+        # TODO: consider using a separate environment variable to specify the library path, which would be more robust and flexible.    
+        for candidate in ["lib_mlib_bindings_d." + lib_ext, "lib_mlib_bindings." + lib_ext]:
+            if isfile(join(lib_dir, candidate)):
+                mlib_lib = candidate
+                break
+        else:
+            mlib_lib = "lib_mlib_bindings." + lib_ext
 
         # get the library
         loadMLIB.mlib = cdll.LoadLibrary(join(lib_dir, mlib_lib))
