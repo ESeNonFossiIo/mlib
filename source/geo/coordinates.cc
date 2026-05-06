@@ -53,7 +53,8 @@ namespace mlib
     double d  = (151.0 * n3 / 96.0) + (-417.0 * n5 / 128.0);
     double e  = (1097.0 * n4 / 512.0);
 
-    return ya * (b * sin(2.0 * ya)) +
+    return ya +
+           (b * sin(2.0 * ya)) +
            (c * sin(4.0 * ya)) +
            (d * sin(6.0 * ya)) +
            (e * sin(8.0 * ya));
