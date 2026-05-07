@@ -6,6 +6,9 @@
 [![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
 [![Windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
 
+[![C++ Coverage](badges/coverage-cpp.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/coverage.yml)
+[![Python Coverage](badges/coverage-python.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/coverage.yml)
+
 ## Build
 
 ### Quick Start
