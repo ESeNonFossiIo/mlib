@@ -16,7 +16,7 @@ permissions:
 jobs:
   build-osx:
 
-    name: OSX MLIB (${{ matrix.build_type }})
+    name: OSX (${{ matrix.build_type }})
     runs-on: macos-latest
 
     strategy:

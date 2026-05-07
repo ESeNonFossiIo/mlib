@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
-  contents: read
+  contents: read  # overridden to write in the update-badges job
 
 jobs:
   cpp-coverage:
@@ -125,3 +125,55 @@ jobs:
           name: python-coverage-xml
           path: python_coverage.xml
           retention-days: 14
+
+  update-badges:
+    name: Update Coverage Badges
+    needs: [cpp-coverage, python-coverage]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download C++ coverage XML
+        uses: actions/download-artifact@v4
+        with:
+          name: cpp-coverage-xml
+          path: artifacts/cpp
+        continue-on-error: true
+
+      - name: Download Python coverage XML
+        uses: actions/download-artifact@v4
+        with:
+          name: python-coverage-xml
+          path: artifacts/python
+        continue-on-error: true
+
+      - name: Generate badges
+        run: |
+          pip install --quiet "genbadge[coverage]"
+          mkdir -p badges
+          if [ -f artifacts/cpp/coverage.xml ]; then
+            genbadge coverage \
+              -i artifacts/cpp/coverage.xml \
+              -o badges/coverage-cpp.svg \
+              -n "C++ coverage"
+          fi
+          if [ -f artifacts/python/python_coverage.xml ]; then
+            genbadge coverage \
+              -i artifacts/python/python_coverage.xml \
+              -o badges/coverage-python.svg \
+              -n "Python coverage"
+          fi
+
+      - name: Commit badges
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add badges/
+          git diff --staged --quiet || \
+            git commit -m "chore: update coverage badges [skip ci]" && \
+            git push

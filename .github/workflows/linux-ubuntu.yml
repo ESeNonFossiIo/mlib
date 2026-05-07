@@ -16,7 +16,7 @@ permissions:
 jobs:
   build-linux:
 
-    name: Linux - ubuntu MLIB (${{ matrix.build_type }})
+    name: Linux - ubuntu (${{ matrix.build_type }})
     runs-on: ubuntu-latest
 
     strategy:
