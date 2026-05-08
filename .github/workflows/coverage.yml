@@ -135,9 +135,10 @@ jobs:
     permissions:
       contents: write
 
-    steps:
-      - uses: actions/checkout@v4
+    env:
+      BADGES_BRANCH: badges
 
+    steps:
       - name: Download C++ coverage XML
         uses: actions/download-artifact@v4
         with:
@@ -155,25 +156,53 @@ jobs:
       - name: Generate badges
         run: |
           pip install --quiet "genbadge[coverage]"
-          mkdir -p badges
+          mkdir -p generated-badges
           if [ -f artifacts/cpp/coverage.xml ]; then
             genbadge coverage \
               -i artifacts/cpp/coverage.xml \
-              -o badges/coverage-cpp.svg \
+              -o generated-badges/coverage-cpp.svg \
               -n "C++ coverage"
           fi
           if [ -f artifacts/python/python_coverage.xml ]; then
             genbadge coverage \
               -i artifacts/python/python_coverage.xml \
-              -o badges/coverage-python.svg \
+              -o generated-badges/coverage-python.svg \
               -n "Python coverage"
           fi
 
-      - name: Commit badges
+      - name: Publish badges to ${{ env.BADGES_BRANCH }} branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
         run: |
+          set -euo pipefail
+          if ! ls generated-badges/*.svg >/dev/null 2>&1; then
+            echo "No badges generated; nothing to publish."
+            exit 0
+          fi
+
+          work=$(mktemp -d)
+          git clone --depth=1 --branch "$BADGES_BRANCH" \
+            "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" \
+            "$work" 2>/dev/null || {
+              echo "Branch $BADGES_BRANCH does not exist; creating as orphan."
+              git clone --depth=1 \
+                "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" \
+                "$work"
+              git -C "$work" checkout --orphan "$BADGES_BRANCH"
+              git -C "$work" rm -rf . >/dev/null 2>&1 || true
+            }
+
+          cp generated-badges/*.svg "$work/"
+
+          cd "$work"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add badges/
-          git diff --staged --quiet || \
-            git commit -m "chore: update coverage badges [skip ci]" && \
-            git push
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Badges unchanged; nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore: update coverage badges for ${SHA} [skip ci]"
+          git push origin "HEAD:${BADGES_BRANCH}"
