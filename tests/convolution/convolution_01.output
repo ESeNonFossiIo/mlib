@@ -1,0 +1,22 @@
+
+=================================================
+  TEST for Convolution (extended)
+=================================================
+
+ support        = (0,0)
+ kernel_at_0    = 1
+ kernel_at_3    = 4
+ get_kernel_at5 = 6
+ conv_size      = 4
+  out[0] = 2
+  out[1] = 4
+  out[2] = 6
+  out[3] = 8
+ direct_eq      = 1
+ cleaned_size   = 5
+  cleaned[0] = 0
+  cleaned[1] = 0.5
+  cleaned[2] = 0
+  cleaned[3] = 1.5
+  cleaned[4] = 0
+ convolve_size  = 5
