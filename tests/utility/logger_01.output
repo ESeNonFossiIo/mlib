@@ -1,0 +1,11 @@
+
+=================================================
+  TEST for Logger (file + copy + print)
+=================================================
+
+ file_exists    = 1
+ line_count     = 6
+ resave_exists  = 1
+ copy_exists    = 1
+ copy_line_eq   = 1
+ print_done     = 1

@@ -1,0 +1,11 @@
+
+=================================================
+  TEST for Complex Numbers (extended)
+=================================================
+
+ r0 = 0, i0 = 0
+ r1 = 7, i1 = 0
+ copy_assigned = 2 + 3i
+ move_assigned = 4 - 5i
+ compound      = -5 + 10i
+ neg_imag      = 2 - 7i
