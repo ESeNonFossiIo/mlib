@@ -1,0 +1,48 @@
+# Astyle configuration for mlib
+# Mirrors the project .clang-format settings as closely as Astyle allows.
+
+# Brace style: Stroustrup
+#   - braces on a new line after function definitions
+#   - braces attached to control statements (if/while/for/switch)
+# Matches clang-format BraceWrapping: AfterFunction=true, others=false.
+--style=stroustrup
+
+# Indentation: 4 spaces, no tabs
+--indent=spaces=4
+--convert-tabs
+
+# Indent switch case labels (clang-format IndentCaseLabels: true)
+--indent-switches
+
+# Indent preprocessor blocks and continuation lines for readability
+--indent-preproc-block
+--indent-preproc-define
+--indent-col1-comments
+
+# Spacing
+--pad-oper                # space around binary operators
+--pad-header              # space after if/for/while/switch
+--unpad-paren             # no space just inside parentheses
+
+# Pointer/reference alignment: left (clang-format PointerAlignment: Left)
+--align-pointer=type
+--align-reference=type
+
+# Column limit (clang-format ColumnLimit: 100)
+--max-code-length=100
+
+# Break one-line blocks/statements onto multiple lines.
+# (Astyle breaks them by default; --keep-one-line-* would *enable* keeping them,
+#  so we deliberately leave those flags out to match
+#  clang-format AllowShort*OnASingleLine: false.)
+
+# Treat sources as C/C++
+--mode=c
+
+# Do not write .orig backup files when astyle is run locally with --suffix=none
+--suffix=none
+
+# Recurse and target C/C++ files when invoked with --recursive
+--exclude=build
+--exclude=out
+--exclude=.git
