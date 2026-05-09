@@ -1,0 +1,60 @@
+name: Style
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+concurrency:
+  group: ${{ github.event_name }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  astyle:
+    name: Astyle check
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install astyle
+      run: |
+        sudo apt-get update
+        sudo apt-get install -yq --no-install-recommends astyle
+        astyle --version
+
+    - name: Run astyle (dry-run)
+      run: |
+        set -o pipefail
+        astyle \
+          --options=.astylerc \
+          --dry-run \
+          --formatted \
+          --recursive \
+          "source/*.cc" "source/*.cpp" "source/*.h" "source/*.hpp" \
+          "include/*.cc" "include/*.cpp" "include/*.h" "include/*.hpp" \
+          "tests/*.cc"  "tests/*.cpp"  "tests/*.h"  "tests/*.hpp" \
+          "main/*.cc"   "main/*.cpp"   "main/*.h"   "main/*.hpp" \
+          "gui/*.cc"    "gui/*.cpp"    "gui/*.h"    "gui/*.hpp" \
+          | tee astyle_output.txt
+
+    - name: Fail if any file would be reformatted
+      run: |
+        if grep -E '^Formatted ' astyle_output.txt > offenders.txt; then
+          echo "::error::The following files do not match the project style. Run 'astyle --options=.astylerc --recursive \"source/*.cc\" ...' locally to fix."
+          cat offenders.txt
+          exit 1
+        fi
+        echo "All files conform to the project style."
+
+    - name: Upload astyle report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: astyle-report
+        path: astyle_output.txt
+        retention-days: 14
