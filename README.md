@@ -5,6 +5,7 @@
 [![Fedora](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-fedora.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-fedora.yml)
 [![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
 [![Windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
+[![Style](https://github.com/ESeNonFossiIo/mlib/actions/workflows/style-check.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/style-check.yml)
 
 [![C++ Coverage](https://raw.githubusercontent.com/ESeNonFossiIo/mlib/badges/coverage-cpp.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/coverage.yml)
 [![Python Coverage](https://raw.githubusercontent.com/ESeNonFossiIo/mlib/badges/coverage-python.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/coverage.yml)
