@@ -6,9 +6,9 @@ using namespace mlib;
 
 int main()
 {
-  print_title("Huffman coding");
+    print_title("Huffman coding");
 
-  HuffmanCoding test("acabbaacbabc");
+    HuffmanCoding test("acabbaacbabc");
 
-  test.print_counter();
+    test.print_counter();
 }

@@ -1,367 +1,272 @@
 #include "mlib/math/utility.h"
-#include  <iostream>
+#include <iostream>
 // std::abs
+#include <assert.h> /* assert */
 #include <cmath>
-#include <assert.h>     /* assert */
 
-namespace mlib
+namespace mlib {
+
+template <typename T>
+int sgn(T val)
 {
-
-  template <typename T>
-  int
-  sgn(
-    T val)
-  {
     return (T(0) < val) - (val < T(0));
-  }
+}
 
-  template int sgn(int);
-  template int sgn(double);
-  template int sgn(float);
+template int sgn(int);
+template int sgn(double);
+template int sgn(float);
 
+double truncate_decimals(double num, double size)
+{
+    return int(num / size) * size;
+}
 
-  double
-  truncate_decimals(
-    double num,
-    double size)
-  {
-    return int (num/size) *size;
-  }
-
-  std::vector<double>
-  truncate_decimals_vec(
-    std::vector<double>& vec,
-    double size)
-  {
+std::vector<double> truncate_decimals_vec(std::vector<double>& vec, double size)
+{
     std::vector<double> v(vec);
-    for(auto
-        it = v.begin();
-        it != v.end();
-        ++it)
-      {
-        *it = mlib::truncate_decimals(*it,size);
-      }
+    for (auto it = v.begin(); it != v.end(); ++it) {
+        *it = mlib::truncate_decimals(*it, size);
+    }
     return v;
-  }
+}
 
-  template <typename T>
-  T
-  truncate(
-    T num,
-    T min,
-    T max)
-  {
-    if(num < min)
-      return min;
-    else if(num > max)
-      return max;
+template <typename T>
+T truncate(T num, T min, T max)
+{
+    if (num < min)
+        return min;
+    else if (num > max)
+        return max;
     else
-      return num;
-  }
+        return num;
+}
 
-  template <typename T>
-  std::vector<T>
-  truncate_vec(
-    std::vector<T>& vec,
-    T min,
-    T max
-  )
-  {
+template <typename T>
+std::vector<T> truncate_vec(std::vector<T>& vec, T min, T max)
+{
     std::vector<T> v(vec);
-    for(std::size_t i = 0; i < vec.size(); ++i)
-      {
-        v[i] = mlib::truncate<T> (vec[i], min, max);
-      }
+    for (std::size_t i = 0; i < vec.size(); ++i) {
+        v[i] = mlib::truncate<T>(vec[i], min, max);
+    }
     return v;
-  }
+}
 
-  template int truncate(int,int,int);
-  template double truncate(double,double,double);
-  template float truncate(float,float,float);
-  template std::vector<int> truncate_vec(std::vector<int>&,
-                                         int,int);
-  template std::vector<double> truncate_vec(
-    std::vector<double>&,double,double);
-  template std::vector<float> truncate_vec(std::vector<float>
-                                           &,float,float);
+template int truncate(int, int, int);
+template double truncate(double, double, double);
+template float truncate(float, float, float);
+template std::vector<int> truncate_vec(std::vector<int>&, int, int);
+template std::vector<double> truncate_vec(std::vector<double>&, double, double);
+template std::vector<float> truncate_vec(std::vector<float>&, float, float);
 
+template <typename T>
+std::function<T(T)> normalize_range(const T val1, const T val2)
+{
+    assert(val2 > val1);
+    return [val1, val2](T t) -> double { return (t - val1) / (val2 - val1); };
+}
+template std::function<double(double)> normalize_range(const double, const double);
 
-  template <typename T>
-  std::function<T(T)>
-  normalize_range(const T val1, const T val2)
-  {
-    assert(val2>val1);
-    return [val1, val2](T t) -> double
-    {
-      return (t - val1)/(val2 - val1);
-    };
-  }
-  template std::function<double(double)> normalize_range(const double,
-                                                         const double);
-
-  std::vector<double>
-  difference(
-    std::vector<double>& vec,
-    double step,
-    bool left)
-  {
+std::vector<double> difference(std::vector<double>& vec, double step, bool left)
+{
     std::vector<double> v(vec);
-    if(left)
-      for(std::size_t i = 1; i < vec.size(); ++i)
-        v[i] = (vec[i] - vec[i-1]) /step;
+    if (left)
+        for (std::size_t i = 1; i < vec.size(); ++i)
+            v[i] = (vec[i] - vec[i - 1]) / step;
     else
-      for(std::size_t i = 0; i < vec.size()-1; ++i)
-        v[i] = (vec[i+1] - vec[i]) /step;
+        for (std::size_t i = 0; i < vec.size() - 1; ++i)
+            v[i] = (vec[i + 1] - vec[i]) / step;
     return v;
-  }
+}
 
-  std::vector<double>
-  difference(
-    std::vector<double>& y,
-    std::vector<double>& x,
-    bool left)
-  {
+std::vector<double> difference(std::vector<double>& y, std::vector<double>& x, bool left)
+{
     std::vector<double> v(y);
-    if(left)
-      for(std::size_t i = 1; i < y.size(); ++i)
-        v[i] = (y[i] - y[i-1]) / (x[i] - x[i-1]);
+    if (left)
+        for (std::size_t i = 1; i < y.size(); ++i)
+            v[i] = (y[i] - y[i - 1]) / (x[i] - x[i - 1]);
     else
-      for(std::size_t i = 0; i < y.size()-1; ++i)
-        v[i] = (y[i+1] - y[i]) / (x[i+1] - x[i]);
+        for (std::size_t i = 0; i < y.size() - 1; ++i)
+            v[i] = (y[i + 1] - y[i]) / (x[i + 1] - x[i]);
     return v;
-  }
+}
 
-  std::vector<double>
-  accumulate(
-    std::vector<double>& vec,
-    double step,
-    bool left)
-  {
+std::vector<double> accumulate(std::vector<double>& vec, double step, bool left)
+{
     std::vector<double> v(vec);
-    if(left)
-      for(std::size_t i = 1; i < vec.size(); ++i)
-        v[i] =  step * vec[i] + v[i-1];
+    if (left)
+        for (std::size_t i = 1; i < vec.size(); ++i)
+            v[i] = step * vec[i] + v[i - 1];
     else
-      for(int i = vec.size()-2; i >= 0 ; --i)
-        v[i] =  step * vec[i] +  v[i+1];
+        for (int i = vec.size() - 2; i >= 0; --i)
+            v[i] = step * vec[i] + v[i + 1];
     return v;
-  }
+}
 
-  std::vector<double> force_mean(
-    std::vector<double>& vec,
-    std::size_t consecutive,
-    double toll)
-  {
+std::vector<double> force_mean(std::vector<double>& vec, std::size_t consecutive, double toll)
+{
     std::vector<double> v(vec);
 
-    for(std::size_t i = consecutive;
-        i < vec.size()-consecutive; ++i)
-      {
+    for (std::size_t i = consecutive; i < vec.size() - consecutive; ++i) {
         // calcola la media tra -consecutive e +consecutive compresi.
         double media = 0.0;
-        for(int j = -1 * (int) consecutive; j<= (int)consecutive; ++j)
-          {
-            media += vec[i+j];
-          }
-        media /= double(2*consecutive+1);
+        for (int j = -1 * (int)consecutive; j <= (int)consecutive; ++j) {
+            media += vec[i + j];
+        }
+        media /= double(2 * consecutive + 1);
 
         // se il valore di v_i vicino a meno di una tolleraza a media allora
         // v_i viene posto uguale a media
         bool check = true;
-        for(int j = -1 * (int)consecutive; j<= (int)consecutive; ++j)
-          {
-            check &= (std::abs(vec[i+j] - media) < toll);
-          }
+        for (int j = -1 * (int)consecutive; j <= (int)consecutive; ++j) {
+            check &= (std::abs(vec[i + j] - media) < toll);
+        }
 
-        if(check)
-          {
-            for(int j = -1 * (int)consecutive; j<= (int)consecutive; ++j)
-              v[i+j] = media;
+        if (check) {
+            for (int j = -1 * (int)consecutive; j <= (int)consecutive; ++j)
+                v[i + j] = media;
             std::size_t j = static_cast<std::size_t>(consecutive + 1);
 
-            if(i+j > vec.size()-consecutive-1)
-              break;
+            if (i + j > vec.size() - consecutive - 1)
+                break;
 
-            while(std::abs(vec[i+j] - media) < toll
-                  && (static_cast<std::size_t>(i+j) < vec.size() - consecutive))
-              {
-                v[i+j] = media;
+            while (std::abs(vec[i + j] - media) < toll &&
+                   (static_cast<std::size_t>(i + j) < vec.size() - consecutive)) {
+                v[i + j] = media;
                 j++;
-              }
+            }
             i += j + consecutive - 1;
-          }
-      }
+        }
+    }
     return v;
-  }
+}
 
-  std::vector<std::size_t>
-  flat_part(
-    std::vector<double>& vec,
-    double toll,
-    std::size_t min_num_zeroes)
-  {
+std::vector<std::size_t>
+flat_part(std::vector<double>& vec, double toll, std::size_t min_num_zeroes)
+{
     // set the fist element to zero.
     std::vector<std::size_t> v = {0};
 
-    for(std::size_t i = 0; i < vec.size(); ++i)
-      {
-        std::size_t j=0;
-        while(std::abs(vec[i] - vec[i+j]) <toll && j+i<vec.size())
-          ++j;
-        if(j>=1)
-          --j;
+    for (std::size_t i = 0; i < vec.size(); ++i) {
+        std::size_t j = 0;
+        while (std::abs(vec[i] - vec[i + j]) < toll && j + i < vec.size())
+            ++j;
+        if (j >= 1)
+            --j;
 
-        if(j>min_num_zeroes)
-          {
+        if (j > min_num_zeroes) {
             v.push_back(i);
-            v.push_back(i+j-2);
-          }
-        i=i+j;
-      }
+            v.push_back(i + j - 2);
+        }
+        i = i + j;
+    }
 
     // check that the last element is equal to the lenght of vec.
-    if(v[v.size()-1]!=vec.size()-1)
-      v.push_back(vec.size()-1);
+    if (v[v.size() - 1] != vec.size() - 1)
+        v.push_back(vec.size() - 1);
 
     return v;
-  }
+}
 
-  std::vector<int>
-  straight_part(
-    std::vector<double>& vec,
-    double toll,
-    std::size_t min_num_zeroes)
-  {
+std::vector<int> straight_part(std::vector<double>& vec, double toll, std::size_t min_num_zeroes)
+{
     // set the first element to zero.
     std::vector<int> v = {0};
 
     std::size_t i = 0;
-    while(i < vec.size() - 1)
-      {
+    while (i < vec.size() - 1) {
         std::size_t j = 0;
         // Check how far we can go
-        while(i + j + 1 < vec.size() &&
-              std::abs(
-                std::abs(vec[i] - vec[i+j+1])
-                -
-                (j+1)*std::abs(vec[i] - vec[i+1])
-              ) < toll)
-          ++j;
+        while (i + j + 1 < vec.size() && std::abs(std::abs(vec[i] - vec[i + j + 1]) -
+                                                  (j + 1) * std::abs(vec[i] - vec[i + 1])) < toll)
+            ++j;
 
         // j is now the last valid offset
-        ++j;  // j becomes the count of points in the segment
+        ++j; // j becomes the count of points in the segment
 
-        if(j >= 1)
-          --j;
+        if (j >= 1)
+            --j;
 
-        if(j > min_num_zeroes)
-          {
+        if (j > min_num_zeroes) {
             v.push_back(static_cast<int>(i));
-            v.push_back(static_cast<int>(i+j-2));
-          }
+            v.push_back(static_cast<int>(i + j - 2));
+        }
 
         i = i + j + 1;
-      }
+    }
 
     // Ensure last element is included
-    if(v[v.size()-1] != static_cast<int>(vec.size()-1))
-      {
-        v.push_back(static_cast<int>(vec.size()-1));
-      }
+    if (v[v.size() - 1] != static_cast<int>(vec.size() - 1)) {
+        v.push_back(static_cast<int>(vec.size() - 1));
+    }
 
     return v;
-  }
+}
 
-  std::vector<double>
-  interpolate(
-    std::vector<double>& vec,
-    std::vector<int>& interpolation,
-    double toll
-  )
-  {
+std::vector<double>
+interpolate(std::vector<double>& vec, std::vector<int>& interpolation, double toll)
+{
     std::vector<double> v(vec);
-    for(std::size_t i = 0; i < interpolation.size()-1; ++i)
-      {
+    for (std::size_t i = 0; i < interpolation.size() - 1; ++i) {
         int j_init = interpolation[i];
-        int j_end  = interpolation[i+1];
+        int j_end = interpolation[i + 1];
 
-        if(
-          std::abs(
-            std::abs(vec[j_init] - vec[j_init+j_end])
-            -
-            (j_end-j_init) *std::abs(vec[j_init] - vec[j_init+1])
-          )
-          >toll)
-          for(int j = j_init; j < j_end; ++j)
-            {
-              v[j] = vec[j_init] + (j-j_init) /double(j_end-j_init) *
-                     (vec[j_end-1] - vec[j_init]);
+        if (std::abs(std::abs(vec[j_init] - vec[j_init + j_end]) -
+                     (j_end - j_init) * std::abs(vec[j_init] - vec[j_init + 1])) > toll)
+            for (int j = j_init; j < j_end; ++j) {
+                v[j] = vec[j_init] +
+                       (j - j_init) / double(j_end - j_init) * (vec[j_end - 1] - vec[j_init]);
             }
         else
-          for(int j = j_init; j < j_end; ++j)
-            v[j] = vec[j_init];
-      }
+            for (int j = j_init; j < j_end; ++j)
+                v[j] = vec[j_init];
+    }
     return v;
-  }
+}
 
-  std::vector<double>
-  apply_lambda(
-    std::vector<double>& vec,
-    std::function<double(double)> func
-  )
-  {
+std::vector<double> apply_lambda(std::vector<double>& vec, std::function<double(double)> func)
+{
     std::vector<double> v(vec);
-    for(std::size_t i = 0; i < vec.size()-1; ++i)
-      v[i] = func(vec[i]);
+    for (std::size_t i = 0; i < vec.size() - 1; ++i)
+        v[i] = func(vec[i]);
     return v;
-  }
+}
 
-  std::vector<double>
-  remove_singularities(
-    std::vector<double>& vec,
-    double toll_zero,
-    double toll_jump,
-    std::size_t item_before,
-    std::size_t item_after,
-    std::size_t singularity_lenght,
-    bool left)
-  {
+std::vector<double> remove_singularities(std::vector<double>& vec,
+                                         double toll_zero,
+                                         double toll_jump,
+                                         std::size_t item_before,
+                                         std::size_t item_after,
+                                         std::size_t singularity_lenght,
+                                         bool left)
+{
     std::vector<double> v(vec);
-    for(std::size_t i = item_before;
-        i < vec.size() - item_after - singularity_lenght;
-        ++i)
-      {
+    for (std::size_t i = item_before; i < vec.size() - item_after - singularity_lenght; ++i) {
         bool status = true;
 
         // Controlla che i primi valori siano allineati
-        for(std::size_t j = 2; j <= item_before; ++j)
-          if(std::abs(vec[i-1]-vec[i-j]) > toll_zero)
-            status = false;
+        for (std::size_t j = 2; j <= item_before; ++j)
+            if (std::abs(vec[i - 1] - vec[i - j]) > toll_zero)
+                status = false;
 
         // Controlla che i secondi valori siano allineati
-        for(std::size_t j = 0; j < item_after; ++j)
-          if(std::abs(
-               vec[i+singularity_lenght]-
-               vec[i+singularity_lenght+j]) > toll_zero)
-            status = false;
+        for (std::size_t j = 0; j < item_after; ++j)
+            if (std::abs(vec[i + singularity_lenght] - vec[i + singularity_lenght + j]) > toll_zero)
+                status = false;
 
         // Controlla che la singolarità non sia allineata né prima né dopo
-        for(std::size_t j = 0; j < singularity_lenght; ++j)
-          if(std::abs(vec[i-1]-vec[i+j]) <= toll_jump
-             || std::abs(vec[i+singularity_lenght]-vec[i+j]) <=
-             toll_jump)
-            status = false;
+        for (std::size_t j = 0; j < singularity_lenght; ++j)
+            if (std::abs(vec[i - 1] - vec[i + j]) <= toll_jump ||
+                std::abs(vec[i + singularity_lenght] - vec[i + j]) <= toll_jump)
+                status = false;
 
-
-        if(status)
-          for(std::size_t j = 0; j < singularity_lenght; ++j)
-            {
-              if(left)
-                v[i+j] = vec[i-1];
-              else
-                v[i+j] = vec[i+singularity_lenght];
+        if (status)
+            for (std::size_t j = 0; j < singularity_lenght; ++j) {
+                if (left)
+                    v[i + j] = vec[i - 1];
+                else
+                    v[i + j] = vec[i + singularity_lenght];
             }
-      }
+    }
     return v;
-  }
 }
+} // namespace mlib

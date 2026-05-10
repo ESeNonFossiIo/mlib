@@ -66,6 +66,29 @@ export LIBMLIB_DIR="path_to_installation_dir"
 - Run all tests: `ctest --output-on-failure`
 - Rerun failed tests: `ctest --rerun-failed --output-on-failure`
 
+### Code formatting
+
+The project is formatted with `clang-format` (config: `.clang-format`). The
+`Style` GitHub Action fails any PR that contains files which would be modified
+by `clang-format`.
+
+```bash
+# Apply formatting to every C/C++ file in source/, include/, tests/, main/,
+# gui/, and python/src/:
+./scripts/clang_format.sh
+
+# Check only — exits non-zero and prints a diff if any file is out of sync.
+# This is what CI runs:
+./scripts/clang_format.sh --check
+```
+
+Optional: install the `pre-commit` hook so commits are auto-formatted locally:
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
 ### Compilation
 
 #### Precompiler FLAGS

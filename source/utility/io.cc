@@ -1,13 +1,11 @@
 #include "mlib/utility/io.h"
 
-#include <fstream>      // std::ifstream
+#include <fstream> // std::ifstream
 
-namespace mlib
+namespace mlib {
+
+void clean_screen()
 {
-
-  void
-  clean_screen()
-  {
 #ifdef _WIN32
     std::system("CLS");
 #else //_WIN32
@@ -19,6 +17,6 @@ namespace mlib
 #pragma GCC diagnostic pop
 
 #endif //_WIN32
-  }
-
 }
+
+} // namespace mlib

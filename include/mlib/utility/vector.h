@@ -4,8 +4,7 @@
  *  @{
  */
 
-namespace mlib
-{
+namespace mlib {
 
 }
 /** @}*/

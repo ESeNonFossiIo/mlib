@@ -14,47 +14,27 @@ permissions:
   contents: read
 
 jobs:
-  astyle:
-    name: Astyle check
+  clang-format:
+    name: clang-format check
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install astyle
+    - name: Install clang-format
       run: |
         sudo apt-get update
-        sudo apt-get install -yq --no-install-recommends astyle
-        astyle --version
+        sudo apt-get install -yq --no-install-recommends clang-format
+        clang-format --version
 
-    - name: Run astyle (dry-run)
+    - name: Run clang-format check
       run: |
-        set -o pipefail
-        astyle \
-          --options=.astylerc \
-          --dry-run \
-          --formatted \
-          --recursive \
-          "source/*.cc" "source/*.cpp" "source/*.h" "source/*.hpp" \
-          "include/*.cc" "include/*.cpp" "include/*.h" "include/*.hpp" \
-          "tests/*.cc"  "tests/*.cpp"  "tests/*.h"  "tests/*.hpp" \
-          "main/*.cc"   "main/*.cpp"   "main/*.h"   "main/*.hpp" \
-          "gui/*.cc"    "gui/*.cpp"    "gui/*.h"    "gui/*.hpp" \
-          | tee astyle_output.txt
+        ./scripts/clang_format.sh --check | tee clang_format_output.txt
 
-    - name: Fail if any file would be reformatted
-      run: |
-        if grep -E '^Formatted ' astyle_output.txt > offenders.txt; then
-          echo "::error::The following files do not match the project style. Run 'astyle --options=.astylerc --recursive \"source/*.cc\" ...' locally to fix."
-          cat offenders.txt
-          exit 1
-        fi
-        echo "All files conform to the project style."
-
-    - name: Upload astyle report
-      if: always()
+    - name: Upload diff if formatting failed
+      if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: astyle-report
-        path: astyle_output.txt
+        name: clang-format-diff
+        path: clang_format_output.txt
         retention-days: 14

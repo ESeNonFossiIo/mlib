@@ -3,25 +3,23 @@
 
 #include "mlib/math/matrix/matrix.h"
 
-#include <assert.h>     /* assert */
-#include <cmath>     /* pow */
+#include <assert.h> /* assert */
+#include <cmath>    /* pow */
 #include <tuple>
 
 #ifdef MLIB_USE_PCL
 #include <pcl/point_types.h>
-#endif //MLIB_USE_PCL
+#endif // MLIB_USE_PCL
 
 /** \addtogroup math
  *  @{
  */
-namespace mlib
-{
-  /**
-   * @brief The Point class
-   */
-  class Point : public Matrix<double>
-  {
-  public:
+namespace mlib {
+/**
+ * @brief The Point class
+ */
+class Point : public Matrix<double> {
+public:
     /**
      * @brief constructor
      */
@@ -30,9 +28,7 @@ namespace mlib
     /**
      * @brief constructor
      */
-    Point(std::initializer_list<double> list,
-          bool normalize = false);
-
+    Point(std::initializer_list<double> list, bool normalize = false);
 
     /**
      * @brief Point
@@ -73,7 +69,7 @@ namespace mlib
     // Point& Operator= (const pcl::PointXYZ& p);
     //
     // Point& Operator= (const pcl::PointXYZI& p);
-#endif //MLIB_USE_PCL
+#endif // MLIB_USE_PCL
 
     void resize(const size_t& n);
 
@@ -82,45 +78,37 @@ namespace mlib
      */
     Point(const Matrix<double>& M);
 
-    double&
-    operator[](size_t i);
+    double& operator[](size_t i);
 
-    const double&
-    operator[](size_t i) const;
+    const double& operator[](size_t i) const;
 
-    double&
-    operator()(size_t i);
+    double& operator()(size_t i);
 
-    const double&
-    operator()(size_t i) const;
+    const double& operator()(size_t i) const;
 
     /**
      * @brief x
      * @return
      */
-    const double&
-    x() const;
+    const double& x() const;
 
     /**
      * @brief y
      * @return
      */
-    const double&
-    y() const;
+    const double& y() const;
 
     /**
      * @brief z
      * @return
      */
-    const double&
-    z() const;
+    const double& z() const;
 
     /**
      * @brief z
      * @return
      */
-    const double&
-    w() const;
+    const double& w() const;
 
     /**
      * @brief norm
@@ -134,61 +122,52 @@ namespace mlib
      */
     void normalize();
 
-    Point
-    operator= (const Matrix<double> M);
+    Point operator=(const Matrix<double> M);
 
     size_t dim() const;
 
     bool is_normalized;
-  };
+};
 
-  /**
-   * @brief operator ^
-   * @param p1
-   * @param p2
-   * @return
-   */
-  Point
-  operator^ (const Point& p1, const Point& p2);
+/**
+ * @brief operator ^
+ * @param p1
+ * @param p2
+ * @return
+ */
+Point operator^(const Point& p1, const Point& p2);
 
-  /**
-   * @brief operator ^
-   * @param p1
-   * @param p2
-   * @return
-   */
-  double
-  vector_product(const Point& p1, const Point& p2);
+/**
+ * @brief operator ^
+ * @param p1
+ * @param p2
+ * @return
+ */
+double vector_product(const Point& p1, const Point& p2);
 
-  /**
-   * @brief scalar_product
-   * @param p1
-   * @param p2
-   * @return
-   */
-  double
-  scalar_product(const Point& p1, const Point& p2);
+/**
+ * @brief scalar_product
+ * @param p1
+ * @param p2
+ * @return
+ */
+double scalar_product(const Point& p1, const Point& p2);
 
-  /**
-   * @brief operator ^
-   * @param p1
-   * @param p2
-   * @return
-   */
-  double
-  points_distance(const Point& p1,
-                  const Point& p2,
-                  const std::size_t& d = 2);
+/**
+ * @brief operator ^
+ * @param p1
+ * @param p2
+ * @return
+ */
+double points_distance(const Point& p1, const Point& p2, const std::size_t& d = 2);
 
-  /**
-   * [Pointcentroid description]
-   * @param p [description]
-   * @param w [description]
-   */
-  Point
-  centroid(const std::vector<Point>& p,
-           const std::vector<double>& w);
-}
+/**
+ * [Pointcentroid description]
+ * @param p [description]
+ * @param w [description]
+ */
+Point centroid(const std::vector<Point>& p, const std::vector<double>& w);
+} // namespace mlib
 
 /** @}*/
 #endif // __m_POINT_H__

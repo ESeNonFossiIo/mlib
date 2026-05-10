@@ -3,9 +3,7 @@
 #include <QMessageBox>
 #include <cmath>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -62,46 +60,41 @@ void MainWindow::on_compute_matrix_clicked()
     mlib::Angle angle_yaw(ui->heading->toPlainText().toDouble(), angle_type);
     mlib::TaitBryanAngles angles(angle_roll, angle_pitch, angle_yaw);
     mlib::RotationMatrix RM(angles, rotation_type);
-    ui->m00->setText(QString::number(RM(0,0),'f',5));
-    ui->m01->setText(QString::number(RM(0,1),'f',5));
-    ui->m02->setText(QString::number(RM(0,2),'f',5));
-    ui->m10->setText(QString::number(RM(1,0),'f',5));
-    ui->m11->setText(QString::number(RM(1,1),'f',5));
-    ui->m12->setText(QString::number(RM(1,2),'f',5));
-    ui->m20->setText(QString::number(RM(2,0),'f',5));
-    ui->m21->setText(QString::number(RM(2,1),'f',5));
-    ui->m22->setText(QString::number(RM(2,2),'f',5));
+    ui->m00->setText(QString::number(RM(0, 0), 'f', 5));
+    ui->m01->setText(QString::number(RM(0, 1), 'f', 5));
+    ui->m02->setText(QString::number(RM(0, 2), 'f', 5));
+    ui->m10->setText(QString::number(RM(1, 0), 'f', 5));
+    ui->m11->setText(QString::number(RM(1, 1), 'f', 5));
+    ui->m12->setText(QString::number(RM(1, 2), 'f', 5));
+    ui->m20->setText(QString::number(RM(2, 0), 'f', 5));
+    ui->m21->setText(QString::number(RM(2, 1), 'f', 5));
+    ui->m22->setText(QString::number(RM(2, 2), 'f', 5));
 }
 
 void MainWindow::on_compute_angles_clicked()
 {
     double default_yaw = ui->heading->toPlainText().toDouble();
-    mlib::Matrixd m(3,3);
-    m(0,0) = ui->m00->toPlainText().toDouble();
-    m(0,1) = ui->m01->toPlainText().toDouble();
-    m(0,2) = ui->m02->toPlainText().toDouble();
-    m(1,0) = ui->m10->toPlainText().toDouble();
-    m(1,1) = ui->m11->toPlainText().toDouble();
-    m(1,2) = ui->m12->toPlainText().toDouble();
-    m(2,0) = ui->m20->toPlainText().toDouble();
-    m(2,1) = ui->m21->toPlainText().toDouble();
-    m(2,2) = ui->m22->toPlainText().toDouble();
+    mlib::Matrixd m(3, 3);
+    m(0, 0) = ui->m00->toPlainText().toDouble();
+    m(0, 1) = ui->m01->toPlainText().toDouble();
+    m(0, 2) = ui->m02->toPlainText().toDouble();
+    m(1, 0) = ui->m10->toPlainText().toDouble();
+    m(1, 1) = ui->m11->toPlainText().toDouble();
+    m(1, 2) = ui->m12->toPlainText().toDouble();
+    m(2, 0) = ui->m20->toPlainText().toDouble();
+    m(2, 1) = ui->m21->toPlainText().toDouble();
+    m(2, 2) = ui->m22->toPlainText().toDouble();
 
     double det = m.det();
-    if( std::abs(det - 1) < 1e-10)
-{
-    mlib::TaitBryanAngles angles = get_roll_pitch_yaw(m, rotation_type, default_yaw);
-    ui->roll->setText(QString::number(angles.roll(angle_type),'f',5));
-    ui->pitch->setText(QString::number(angles.pitch(angle_type),'f',5));
-    ui->heading->setText(QString::number(angles.yaw(angle_type),'f',5));
-}
-else
-{
-    QMessageBox::warning(
-        this,
-        tr("Error: det != 1"),
-        tr("The matrix is not a rotation matrix!"));
-}
+    if (std::abs(det - 1) < 1e-10) {
+        mlib::TaitBryanAngles angles = get_roll_pitch_yaw(m, rotation_type, default_yaw);
+        ui->roll->setText(QString::number(angles.roll(angle_type), 'f', 5));
+        ui->pitch->setText(QString::number(angles.pitch(angle_type), 'f', 5));
+        ui->heading->setText(QString::number(angles.yaw(angle_type), 'f', 5));
+    } else {
+        QMessageBox::warning(
+            this, tr("Error: det != 1"), tr("The matrix is not a rotation matrix!"));
+    }
 }
 
 void MainWindow::on_RPH_clicked(bool checked)
@@ -124,6 +117,6 @@ void MainWindow::on_deg_clicked(bool checked)
 
 void MainWindow::on_rad_clicked(bool checked)
 {
-        angle_type = checked ? mlib::AngleType::rad : mlib::AngleType::deg;
+    angle_type = checked ? mlib::AngleType::rad : mlib::AngleType::deg;
     ui->deg->setChecked(!checked);
 }

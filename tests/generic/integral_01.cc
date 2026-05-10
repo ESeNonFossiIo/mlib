@@ -8,61 +8,49 @@ using namespace mlib;
 
 int main()
 {
-  print_title("Integral (extended)");
+    print_title("Integral (extended)");
 
-  // TrapezoidalRule on x: integral from 0 to 1 of x dx = 0.5
-  {
-    TrapezoidalRule tr;
-    Integral I(tr, 0.001);
-
-    const std::function<double(double)>& f = [](double x)
+    // TrapezoidalRule on x: integral from 0 to 1 of x dx = 0.5
     {
-      return x;
-    };
+        TrapezoidalRule tr;
+        Integral I(tr, 0.001);
 
-    std::cout << I(f, 1.0) << std::endl;
-  }
+        const std::function<double(double)>& f = [](double x) { return x; };
 
-  // TrapezoidalRule on x*x: integral from 0 to 1 of x^2 dx = 0.333333
-  {
-    TrapezoidalRule tr;
-    Integral I(tr, 0.001);
+        std::cout << I(f, 1.0) << std::endl;
+    }
 
-    const std::function<double(double)>& f = [](double x)
+    // TrapezoidalRule on x*x: integral from 0 to 1 of x^2 dx = 0.333333
     {
-      return x*x;
-    };
+        TrapezoidalRule tr;
+        Integral I(tr, 0.001);
 
-    std::cout << I(f, 1.0) << std::endl;
-  }
+        const std::function<double(double)>& f = [](double x) { return x * x; };
 
-  // Negative-x branch: MidpointMethod, integral from -1 to 0 of x dx = -0.5
-  {
-    MidpointMethod mm;
-    Integral I(mm, 0.001);
+        std::cout << I(f, 1.0) << std::endl;
+    }
 
-    const std::function<double(double)>& f = [](double x)
+    // Negative-x branch: MidpointMethod, integral from -1 to 0 of x dx = -0.5
     {
-      return x;
-    };
+        MidpointMethod mm;
+        Integral I(mm, 0.001);
 
-    std::cout << I(f, -1.0) << std::endl;
-  }
+        const std::function<double(double)>& f = [](double x) { return x; };
 
-  // Exercise Quadrature and Integral copy constructors
-  {
-    MidpointMethod mm;
-    Quadrature qcopy(mm);
-    Integral I(mm, 0.001);
-    Integral Icopy(I);
+        std::cout << I(f, -1.0) << std::endl;
+    }
 
-    const std::function<double(double)>& f = [](double x)
+    // Exercise Quadrature and Integral copy constructors
     {
-      return x*x;
-    };
+        MidpointMethod mm;
+        Quadrature qcopy(mm);
+        Integral I(mm, 0.001);
+        Integral Icopy(I);
 
-    std::cout << Icopy(f, 1.0) << std::endl;
-  }
+        const std::function<double(double)>& f = [](double x) { return x * x; };
 
-  return 0;
+        std::cout << Icopy(f, 1.0) << std::endl;
+    }
+
+    return 0;
 }

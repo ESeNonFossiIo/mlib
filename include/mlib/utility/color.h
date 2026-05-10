@@ -7,20 +7,16 @@
 /** \addtogroup utility
  *  @{
  */
-namespace mlib
-{
+namespace mlib {
 
-  class GeneralColor
-  {
-  public:
+class GeneralColor {
+public:
     /**
      * [GeneralColor description]
      * @param color_ [description]
      * @param style_ [description]
      */
-    GeneralColor(
-      const int& color_ = 32,
-      const int& style_ = 1);
+    GeneralColor(const int& color_ = 32, const int& style_ = 1);
 
     /**
      * [init description]
@@ -34,25 +30,23 @@ namespace mlib
      */
     std::string end() const;
 
-  private:
+private:
     int color;
     int style;
-  };
+};
 
+namespace Color {
+static const GeneralColor black(30);
+static const GeneralColor red(31);
+static const GeneralColor green(32);
+static const GeneralColor yellow(33);
+static const GeneralColor blue(34);
+static const GeneralColor magenta(35);
+static const GeneralColor cyan(36);
+static const GeneralColor light_gray(37);
+static const GeneralColor white(97);
+} // namespace Color
 
-  namespace Color
-  {
-    static const GeneralColor black(30);
-    static const GeneralColor red(31);
-    static const GeneralColor green(32);
-    static const GeneralColor yellow(33);
-    static const GeneralColor blue(34);
-    static const GeneralColor magenta(35);
-    static const GeneralColor cyan(36);
-    static const GeneralColor light_gray(37);
-    static const GeneralColor white(97);
-  }
-
-}
+} // namespace mlib
 /** @}*/
 #endif //_MLIB_COLOR_UTILITY__

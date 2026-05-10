@@ -17,44 +17,40 @@
  *  @{
  */
 
-namespace mlib
+namespace mlib {
+
+/**
+ * [from_eigen_to_m_matrix description]
+ * @param  m [description]
+ * @return   [description]
+ */
+Eigen::MatrixXd from_m_to_eigen_matrix(const Matrixd& m)
 {
-
-  /**
-   * [from_eigen_to_m_matrix description]
-   * @param  m [description]
-   * @return   [description]
-   */
-  Eigen::MatrixXd
-  from_m_to_eigen_matrix(const Matrixd& m)
-  {
-    Eigen::MatrixXd m_new(m.r(),m.c());
-    for(std::size_t i = 0; i < m.r(); i++)
-      for(std::size_t j = 0; j < m.c(); j++)
-        m_new(i,j) = m(i,j);
+    Eigen::MatrixXd m_new(m.r(), m.c());
+    for (std::size_t i = 0; i < m.r(); i++)
+        for (std::size_t j = 0; j < m.c(); j++)
+            m_new(i, j) = m(i, j);
     return m_new;
-  }
+}
 
-  /**
-   * [from_m_to_eigen_matrix description]
-   * @param  m [description]
-   * @return   [description]
-   */
-  Matrixd
-  from_eigen_to_m_matrix(const Eigen::MatrixXd& m)
-  {
+/**
+ * [from_m_to_eigen_matrix description]
+ * @param  m [description]
+ * @return   [description]
+ */
+Matrixd from_eigen_to_m_matrix(const Eigen::MatrixXd& m)
+{
     Matrixd m_new(m.rows(), m.cols());
-    for(std::size_t i = 0; i < m.rows(); i++)
-      for(std::size_t j = 0; j < m.cols(); j++)
-        m_new(i,j) = m(i,j);
+    for (std::size_t i = 0; i < m.rows(); i++)
+        for (std::size_t j = 0; j < m.cols(); j++)
+            m_new(i, j) = m(i, j);
     return m_new;
-  }
+}
 
-};
-
+}; // namespace mlib
 
 /** @}*/
 
 #endif //_MLIB_EIGEN_CONVERSION_
 
-#endif //MLIB_USE_EIGEN3
+#endif // MLIB_USE_EIGEN3

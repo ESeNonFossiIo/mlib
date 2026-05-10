@@ -1,108 +1,77 @@
 #include "mlib/math/algebra.h"
 
-#include <cassert>  // std::assert
+#include <cassert> // std::assert
 
-namespace mlib
+namespace mlib {
+
+Polynomial::Polynomial(const std::initializer_list<double>& list) : c(list.size(), 0.0)
 {
-
-  Polynomial::
-  Polynomial(const std::initializer_list<double>& list)
-    :
-    c(list.size(), 0.0)
-  {
     std::size_t i = 0;
-    for(auto l: list)
-      {
+    for (auto l : list) {
         c[i++] = l;
-      }
-  }
+    }
+}
 
-  Polynomial::
-  Polynomial(const std::vector<double>& v)
-    :
-    c(v)
-  {}
+Polynomial::Polynomial(const std::vector<double>& v) : c(v)
+{
+}
 
-  Polynomial::
-  Polynomial()
-    :
-    c(1, 0.0)
-  {}
+Polynomial::Polynomial() : c(1, 0.0)
+{
+}
 
-
-  double
-  Polynomial::
-  operator()(const double& x) const
-  {
+double Polynomial::operator()(const double& x) const
+{
     double result(c[c.size() - 1]);
-    for(std::size_t j = 1; j<c.size(); j++)
-      {
+    for (std::size_t j = 1; j < c.size(); j++) {
         result *= x;
         result += c[c.size() - 1 - j];
-      }
+    }
     return result;
-  }
+}
 
-  size_t
-  Polynomial::
-  deg() const
-  {
+size_t Polynomial::deg() const
+{
     return c.size() - 1;
-  }
+}
 
-  size_t
-  Polynomial::
-  size() const
-  {
+size_t Polynomial::size() const
+{
     return c.size();
-  }
+}
 
-  Polynomial
-  Polynomial::
-  d(const std::size_t& i) const
-  {
-    if(i==0)
-      {
+Polynomial Polynomial::d(const std::size_t& i) const
+{
+    if (i == 0) {
         return *this;
-      }
-    else if(i>this->deg() || this->deg() < 1)
-      {
+    } else if (i > this->deg() || this->deg() < 1) {
         return Polynomial();
-      }
-    else
-      {
+    } else {
         std::vector<double> new_c(this->deg());
-        for(std::size_t j = 0; j<new_c.size(); j++)
-          {
-            new_c[j] = (j+1)*c[j+1];
-          }
-        return Polynomial(new_c).d(i-1);
-      }
+        for (std::size_t j = 0; j < new_c.size(); j++) {
+            new_c[j] = (j + 1) * c[j + 1];
+        }
+        return Polynomial(new_c).d(i - 1);
+    }
+}
 
-  }
-
-  double&
-  Polynomial::
-  operator[](size_t i)
-  {
+double& Polynomial::operator[](size_t i)
+{
     return c[i];
-  }
+}
 
-  const double&
-  Polynomial::
-  operator[](size_t i) const
-  {
+const double& Polynomial::operator[](size_t i) const
+{
     return c[i];
-  }
+}
 
-  std::ostream&
-  operator<< (std::ostream& output, const Polynomial& p)
-  {
+std::ostream& operator<<(std::ostream& output, const Polynomial& p)
+{
     output << "[";
-    for(std::size_t i = 0; i < p.size() - 1; ++i)
-      output << p[i] << ",";
+    for (std::size_t i = 0; i < p.size() - 1; ++i)
+        output << p[i] << ",";
     output << p[p.deg()] << "]";
     return output;
-  }
-
 }
+
+} // namespace mlib

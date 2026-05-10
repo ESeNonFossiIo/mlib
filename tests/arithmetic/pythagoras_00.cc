@@ -7,7 +7,7 @@ using namespace mlib;
 
 int main()
 {
-  print_title("Arithmetic - Pythagoras");
+    print_title("Arithmetic - Pythagoras");
 
-  std::cout <<  " sqrt(9 + 16) = 5 = "<< pythagoras(3, 4) << std::endl;
+    std::cout << " sqrt(9 + 16) = 5 = " << pythagoras(3, 4) << std::endl;
 }

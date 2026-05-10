@@ -8,14 +8,13 @@ using namespace mlib;
 
 int main()
 {
-  print_title(" TEST for Utility - trim");
+    print_title(" TEST for Utility - trim");
 
-  auto v = split("1;;2",";",true);
+    auto v = split("1;;2", ";", true);
 
-  for(auto p : v)
-    {
-      std::cout << " -> " << p << std::endl;
+    for (auto p : v) {
+        std::cout << " -> " << p << std::endl;
     }
 
-  return 0;
+    return 0;
 }

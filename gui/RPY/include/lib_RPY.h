@@ -1,19 +1,18 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include "mlib/math/matrix/rotation.h"
+#include <QMainWindow>
 
 namespace Ui {
-    class MainWindow;
+class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
 private slots:
@@ -30,9 +29,9 @@ private slots:
 
 private:
     void reset();
-    Ui::MainWindow *ui;
+    Ui::MainWindow* ui;
     mlib::RotationType rotation_type;
-    mlib::AngleType    angle_type;
+    mlib::AngleType angle_type;
 }
 
 #endif // MAINWINDOW_H

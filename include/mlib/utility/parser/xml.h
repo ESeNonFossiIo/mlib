@@ -1,25 +1,23 @@
 #ifndef _MLIB_XML_MANAGER_FILE_H__
 #define _MLIB_XML_MANAGER_FILE_H__
 
-#include <sstream>      // std::stringstream
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <vector>
-#include <map>
 #include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <map>
 #include <memory>
 #include <regex>
+#include <sstream> // std::stringstream
+#include <string>
+#include <vector>
 
 #include <mlib/utility/string.h>
 
 /** \addtogroup utility
  *  @{
  */
-namespace mlib
-{
-  struct XMLEntry
-  {
+namespace mlib {
+struct XMLEntry {
     size_t init;
     size_t end;
 
@@ -28,19 +26,17 @@ namespace mlib
 
     std::string text;
     std::map<std::string, std::string> properties;
-  };
+};
 
-  /**
-   * process a line and extract: labels, properties, text
-   * @method process_line
-   * @param  s            [description]
-   */
-  XMLEntry
-  process_XML_text(const std::string& str);
+/**
+ * process a line and extract: labels, properties, text
+ * @method process_line
+ * @param  s            [description]
+ */
+XMLEntry process_XML_text(const std::string& str);
 
-  class XMLHandler
-  {
-  public:
+class XMLHandler {
+public:
     /**
      *
      */
@@ -56,29 +52,25 @@ namespace mlib
      */
     void print(int indent = 0);
 
-
     /**
      *
      */
-    void
-    save(const std::string& filename);
+    void save(const std::string& filename);
 
     /**
      * [operator[] description]
      * @param  s [description]
      * @return   [description]
      */
-    XMLHandler
-    operator[](const std::string& s);
+    XMLHandler operator[](const std::string& s);
 
     /**
      * [operator[] description]
      * @return   [description]
      */
-    std::string
-    operator()();
+    std::string operator()();
 
-  private:
+private:
     /**
      *
      */
@@ -103,8 +95,8 @@ namespace mlib
      *
      */
     std::map<std::string, XMLHandler> xml_entries;
-  };
+};
 
-}
+} // namespace mlib
 /** @}*/
 #endif //_MLIB_XML_MANAGER_FILE_H__

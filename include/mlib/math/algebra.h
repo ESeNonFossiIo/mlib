@@ -1,20 +1,17 @@
 #ifndef TDT_ALGEBRA_H
 #define TDT_ALGEBRA_H
 
-#include <initializer_list>  // std::initializer_list
-#include <vector>  // std::vector
-#include <ostream>  // std::ostream
-
+#include <initializer_list> // std::initializer_list
+#include <ostream>          // std::ostream
+#include <vector>           // std::vector
 
 /** \addtogroup math
  *  @{
  */
 
-namespace mlib
-{
-  class Polynomial
-  {
-  public:
+namespace mlib {
+class Polynomial {
+public:
     /**
      * constructor
      */
@@ -24,37 +21,27 @@ namespace mlib
 
     Polynomial();
 
+    double operator()(const double& x) const;
 
-    double
-    operator()(const double& x) const;
+    size_t deg() const;
 
-    size_t
-    deg() const;
+    size_t size() const;
 
-    size_t
-    size() const;
+    Polynomial d(const std::size_t& i = 1) const;
 
-    Polynomial
-    d(const std::size_t& i = 1) const;
+    double& operator[](size_t i);
 
-    double&
-    operator[](size_t i);
-
-    const double&
-    operator[](size_t i) const;
-
+    const double& operator[](size_t i) const;
 
     /**
      *
      */
-    friend
-    std::ostream&
-    operator<< (std::ostream& output, const Polynomial& p);
+    friend std::ostream& operator<<(std::ostream& output, const Polynomial& p);
 
-  protected:
+protected:
     std::vector<double> c;
-  };
+};
 
-}
+} // namespace mlib
 /** @}*/
 #endif // TDT_ALGEBRA_H

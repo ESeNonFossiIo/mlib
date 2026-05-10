@@ -9,82 +9,67 @@ using namespace mlib;
 int main()
 {
 #ifdef MLIB_USE_PCL_WITH_VTK
-  print_title("PCL BoundingBox - ged_dominant_direction");
-  {
+    print_title("PCL BoundingBox - ged_dominant_direction");
     {
-      pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new
-                                                 pcl::PointCloud<pcl::PointXYZI>());
-
-      for(std::size_t i = 0; i < 2; ++i)
         {
-          for(std::size_t j = 0; j < 2; ++j)
-            {
-              for(std::size_t k = 0; k < 2; ++k)
-                {
-                  pcl::PointXYZI p;
-                  p.x = i;
-                  p.y = j;
-                  p.z = k * 4.0;
-                  p.intensity = 0;
-                  cloud->push_back(p);
+            pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());
+
+            for (std::size_t i = 0; i < 2; ++i) {
+                for (std::size_t j = 0; j < 2; ++j) {
+                    for (std::size_t k = 0; k < 2; ++k) {
+                        pcl::PointXYZI p;
+                        p.x = i;
+                        p.y = j;
+                        p.z = k * 4.0;
+                        p.intensity = 0;
+                        cloud->push_back(p);
+                    }
                 }
+            }
+
+            BoundingBox bb(cloud);
+
+            Segment s = bb.get_dominant_direction();
+
+            std::cout << s.get_extreme_points().first << s.get_extreme_points().second
+                      << s.get_direction() << std::endl;
+
+            auto sizes = bb.sizes();
+            for (auto size : sizes) {
+                std::cout << " distance = " << size << std::endl;
             }
         }
 
-      BoundingBox bb(cloud);
-
-      Segment s = bb.get_dominant_direction();
-
-      std::cout << s.get_extreme_points().first
-                << s.get_extreme_points().second
-                << s.get_direction()
-                << std::endl;
-
-      auto sizes = bb.sizes();
-      for(auto size: sizes)
         {
-          std::cout << " distance = "  << size << std::endl;
-        }
-    }
+            pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());
 
-
-    {
-      pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new
-                                                 pcl::PointCloud<pcl::PointXYZI>());
-
-      for(std::size_t i = 0; i < 2; ++i)
-        {
-          for(std::size_t j = 0; j < 2; ++j)
-            {
-              for(std::size_t k = 0; k < 2; ++k)
-                {
-                  pcl::PointXYZI p;
-                  p.x = i;
-                  p.y = j * 4.0;
-                  p.z = k;
-                  p.intensity = 0;
-                  cloud->push_back(p);
+            for (std::size_t i = 0; i < 2; ++i) {
+                for (std::size_t j = 0; j < 2; ++j) {
+                    for (std::size_t k = 0; k < 2; ++k) {
+                        pcl::PointXYZI p;
+                        p.x = i;
+                        p.y = j * 4.0;
+                        p.z = k;
+                        p.intensity = 0;
+                        cloud->push_back(p);
+                    }
                 }
             }
-        }
 
-      BoundingBox bb(cloud);
+            BoundingBox bb(cloud);
 
-      Segment s = bb.get_dominant_direction();
+            Segment s = bb.get_dominant_direction();
 
-      std::cout << s.get_extreme_points().first
-                << s.get_extreme_points().second
-                << s.get_direction()
-                << std::endl;
+            std::cout << s.get_extreme_points().first << s.get_extreme_points().second
+                      << s.get_direction() << std::endl;
 
-      auto sizes = bb.sizes();
-      for(auto size: sizes)
-        {
-          std::cout << " distance = "  << size << std::endl;
+            auto sizes = bb.sizes();
+            for (auto size : sizes) {
+                std::cout << " distance = " << size << std::endl;
+            }
         }
     }
-  }
-#else //MLIB_USE_PCL_WITH_VTK
-  make_test_pass("pcl/pcl_bb_00");
-#endif //MLIB_USE_PCL_WITH_VTK
+#else  // MLIB_USE_PCL_WITH_VTK
+    make_test_pass("pcl/pcl_bb_00");
+#endif // MLIB_USE_PCL_WITH_VTK
 }

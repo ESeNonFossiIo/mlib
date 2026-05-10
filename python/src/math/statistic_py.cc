@@ -6,10 +6,9 @@
 #include <vector>
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Mean(
-    const double* data, ///< [in]  array data
-    const MLIBInt n,    ///< [in]  length
-    double*       result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Mean(const double* data, ///< [in]  array data
+                                 const MLIBInt n,    ///< [in]  length
+                                 double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
@@ -18,10 +17,9 @@ MLIB_EXPORT MLIBStatus MLIB_Mean(
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Var(
-    const double* data, ///< [in]  array data
-    const MLIBInt n,    ///< [in]  length
-    double*       result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Var(const double* data, ///< [in]  array data
+                                const MLIBInt n,    ///< [in]  length
+                                double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
@@ -30,10 +28,9 @@ MLIB_EXPORT MLIBStatus MLIB_Var(
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Stddev(
-    const double* data, ///< [in]  array data
-    const MLIBInt n,    ///< [in]  length
-    double*       result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Stddev(const double* data, ///< [in]  array data
+                                   const MLIBInt n,    ///< [in]  length
+                                   double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
@@ -42,12 +39,11 @@ MLIB_EXPORT MLIBStatus MLIB_Stddev(
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Moment(
-    const double* data,    ///< [in]  array data
-    const MLIBInt n,       ///< [in]  length
-    const MLIBInt order,   ///< [in]  moment order
-    const MLIBInt central, ///< [in]  1 = central moment, 0 = raw
-    double*       result   ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Moment(const double* data,    ///< [in]  array data
+                                   const MLIBInt n,       ///< [in]  length
+                                   const MLIBInt order,   ///< [in]  moment order
+                                   const MLIBInt central, ///< [in]  1 = central moment, 0 = raw
+                                   double* result         ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);

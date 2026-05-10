@@ -1,23 +1,21 @@
-#ifndef  __m_MATRIX_H__
-#define  __m_MATRIX_H__
+#ifndef __m_MATRIX_H__
+#define __m_MATRIX_H__
 
-#include <vector>
+#include <initializer_list> // std::initializer_list
 #include <iostream>
-#include <initializer_list>  // std::initializer_list
+#include <vector>
 
 /** \addtogroup math
  *  @{
  */
-namespace mlib
-{
-  template<typename T = double>
-  class Matrix
-  {
-  public:
+namespace mlib {
+template <typename T = double>
+class Matrix {
+public:
     /**
      * constructor
      */
-    Matrix(size_t rows, size_t cols, const T *elements = 0);
+    Matrix(size_t rows, size_t cols, const T* elements = 0);
 
     /**
      * constructor
@@ -27,8 +25,7 @@ namespace mlib
     /**
      * constructor
      */
-    Matrix(std::initializer_list<std::initializer_list<T>>
-           list);
+    Matrix(std::initializer_list<std::initializer_list<T>> list);
 
     /**
      * constructor
@@ -38,12 +35,9 @@ namespace mlib
     /**
      * constructor
      */
-    Matrix()
-      :
-      elements(),
-      rows(0),
-      cols(0)
-    {}
+    Matrix() : elements(), rows(0), cols(0)
+    {
+    }
 
     /**
      * destructor
@@ -51,10 +45,9 @@ namespace mlib
     ~Matrix();
 
     /**
-    *
-    */
-    void
-    resize(size_t rows_, size_t cols_, const T *elements_ = 0);
+     *
+     */
+    void resize(size_t rows_, size_t cols_, const T* elements_ = 0);
 
     /**
      * Return the number of coloumns.
@@ -78,7 +71,7 @@ namespace mlib
      * Return the number of coloumns.
      * @return number of coloumns.
      */
-    Matrix<T>  r(const size_t& i) const;
+    Matrix<T> r(const size_t& i) const;
 
     /**
      * [operator[] description]
@@ -129,7 +122,7 @@ namespace mlib
      */
     T& element(size_t i, size_t j);
 
-  protected:
+protected:
     /**
      * [range_check description]
      * @param i [description]
@@ -152,61 +145,61 @@ namespace mlib
      */
     size_t cols;
 
-  public:
+public:
     /**
      *
      */
-    Matrix<T>& operator*= (const T& a);
+    Matrix<T>& operator*=(const T& a);
 
     /**
      *
      */
-    Matrix<T>& operator/= (const T& a);
+    Matrix<T>& operator/=(const T& a);
 
     /**
      *
      */
-    Matrix<T> operator* (const T& a) const;
+    Matrix<T> operator*(const T& a) const;
 
     /**
      *
      */
-    Matrix<T> operator/ (const T& a);
+    Matrix<T> operator/(const T& a);
 
     /**
      *
      */
-    Matrix<T>& operator+= (const Matrix<T>& M);
+    Matrix<T>& operator+=(const Matrix<T>& M);
 
     /**
      *
      */
-    Matrix<T>& operator-= (const Matrix<T>& M);
+    Matrix<T>& operator-=(const Matrix<T>& M);
 
     /**
      *
      */
-    Matrix<T>& operator*= (const Matrix<T>& M);
+    Matrix<T>& operator*=(const Matrix<T>& M);
 
     /**
      *
      */
-    Matrix<T> operator+ (const Matrix<T>& M) const;
+    Matrix<T> operator+(const Matrix<T>& M) const;
 
     /**
      *
      */
-    Matrix<T> operator- (const Matrix<T>& M) const;
+    Matrix<T> operator-(const Matrix<T>& M) const;
 
     /**
      *
      */
-    Matrix<T> operator* (const Matrix<T>& M) const;
+    Matrix<T> operator*(const Matrix<T>& M) const;
 
     /**
      *
      */
-    Matrix<T>& operator= (const Matrix<T>& M);
+    Matrix<T>& operator=(const Matrix<T>& M);
 
     /**
      * @brief transpose
@@ -221,7 +214,7 @@ namespace mlib
     /**
      * @brief transpose
      */
-    Matrix<T> cofactor(size_t i,size_t j) const;
+    Matrix<T> cofactor(size_t i, size_t j) const;
 
     /**
      * @brief trace
@@ -231,26 +224,22 @@ namespace mlib
     /**
      * @brief l infinity norm
      */
-    T
-    l_inf_norm() const;
+    T l_inf_norm() const;
 
     /**
      * @brief l2 norm
      */
-    T
-    l_2_norm() const;
+    T l_2_norm() const;
 
     /**
      * @brief l1 norm
      */
-    T
-    l_1_norm() const;
+    T l_1_norm() const;
 
     /**
      * @brief lp norm
      */
-    T
-    l_p_norm(const std::size_t& p) const;
+    T l_p_norm(const std::size_t& p) const;
 
     /**
      * [det description]
@@ -274,29 +263,24 @@ namespace mlib
     /**
      *
      */
-    template<typename S>
-    friend
-    std::ostream&
-    operator<< (std::ostream& output, const Matrix<S>& M);
+    template <typename S>
+    friend std::ostream& operator<<(std::ostream& output, const Matrix<S>& M);
 
     /**
      *
      */
-    template<typename S>
-    friend
-    Matrix<S>
-    operator* (const double& a, const Matrix<S>& M);
-  };
+    template <typename S>
+    friend Matrix<S> operator*(const double& a, const Matrix<S>& M);
+};
 
-  typedef Matrix<double> Matrixd;
+typedef Matrix<double> Matrixd;
 
 // identityMatrix
 ////////////////////////////////////////////////////////////////////////////////
-  class IdentityMatrix : public Matrix<double>
-  {
-  public:
+class IdentityMatrix : public Matrix<double> {
+public:
     IdentityMatrix(size_t size);
-  };
-}
+};
+} // namespace mlib
 /** @}*/
 #endif // __m_MATRIX_H__

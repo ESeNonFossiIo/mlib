@@ -1,39 +1,37 @@
 #ifndef _MLIB_CONFIG_FILE_H__
 #define _MLIB_CONFIG_FILE_H__
 
-#include "mlib/utility/string.h"
 #include "mlib/utility/parser/ini.h"
+#include "mlib/utility/string.h"
 
-#include <sstream>
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <vector>
-#include <map>
 #include <fstream>
+#include <iomanip>
+#include <iostream>
 #include <limits> //std::limits
+#include <map>
+#include <sstream>
+#include <string>
+#include <vector>
 
 /** \addtogroup utility
  *  @{
  */
-namespace mlib
-{
+namespace mlib {
 
-  /**
-   * @brief ParsedParameters
-   */
+/**
+ * @brief ParsedParameters
+ */
 
-  /**
-   *
-   */
-  class ParsedParameters: public INIHandler
-  {
-  public:
+/**
+ *
+ */
+class ParsedParameters : public INIHandler {
+public:
     /**
      *
      */
     ParsedParameters(const std::string& filename_in_,
-                     const std::string& filename_out_="",
+                     const std::string& filename_out_ = "",
                      const bool save_on_exit_ = true);
 
     /**
@@ -49,14 +47,14 @@ namespace mlib
     /**
      *
      */
-    template<typename T>
-    T
-    add_new_entry(const std::string& section,
-                  const std::string& name,
-                  const T& default_value,
-                  const T& max_val = std::numeric_limits<T>::max(),
-                  const T& min_val = std::numeric_limits<T>::min());
-  private:
+    template <typename T>
+    T add_new_entry(const std::string& section,
+                    const std::string& name,
+                    const T& default_value,
+                    const T& max_val = std::numeric_limits<T>::max(),
+                    const T& min_val = std::numeric_limits<T>::min());
+
+private:
     /**
      *
      */
@@ -71,9 +69,9 @@ namespace mlib
      *
      */
     bool save_on_exit;
-  };
+};
 
-}
+} // namespace mlib
 
 /** @}*/
 #endif //_MLIB_CONFIG_FILE_H__

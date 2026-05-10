@@ -9,16 +9,16 @@ using namespace mlib::Color;
 
 int main()
 {
-  print_title("Logger");
+    print_title("Logger");
 
-  Logger log("", true);
+    Logger log("", true);
 
-  log.write("Prova", "testo", white);
-  log.warning("testo");
-  log.error("testo");
-  log.status("testo");
-  log.value("testo", "3.14");
-  log.msg("testo");
+    log.write("Prova", "testo", white);
+    log.warning("testo");
+    log.error("testo");
+    log.status("testo");
+    log.value("testo", "3.14");
+    log.msg("testo");
 
-  return 0;
+    return 0;
 }
