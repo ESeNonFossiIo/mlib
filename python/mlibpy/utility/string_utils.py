@@ -1,4 +1,12 @@
-from ctypes import POINTER, byref, c_char_p, c_double, c_int64, c_uint64, create_string_buffer
+from ctypes import (
+    POINTER,
+    byref,
+    c_char_p,
+    c_double,
+    c_int64,
+    c_uint64,
+    create_string_buffer,
+)
 
 from mlibpy.bind.load_symbols import evaluateFunction
 
