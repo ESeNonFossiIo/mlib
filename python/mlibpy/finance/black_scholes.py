@@ -6,7 +6,7 @@ from mlibpy.bind.load_symbols import evaluateFunction
 
 class OptionType(IntEnum):
     """Option contract type for Black-Scholes pricing.
-    
+
     .. addedversion:: mlib_version_placeholder
     """
 

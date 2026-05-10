@@ -2,10 +2,10 @@ from ctypes import cdll
 from os.path import dirname, abspath, join, isfile
 from sys import platform
 
+
 # ------------------------------------------------------------------------------
 def loadMLIB():
-    """ Use ctypes to load c functions
-    """
+    """Use ctypes to load c functions"""
 
     if not hasattr(loadMLIB, "mlib"):
         # path to the folde that contains this file
@@ -26,8 +26,11 @@ def loadMLIB():
 
         # Debug builds use a "_d" postfix (set by cmake/macro/debug_flags.cmake).
         # Try the debug variant first so both build types work transparently.
-        # TODO: consider using a separate environment variable to specify the library path, which would be more robust and flexible.    
-        for candidate in ["lib_mlib_bindings_d." + lib_ext, "lib_mlib_bindings." + lib_ext]:
+        # TODO: consider using a separate environment variable to specify the library path, which would be more robust and flexible.
+        for candidate in [
+            "lib_mlib_bindings_d." + lib_ext,
+            "lib_mlib_bindings." + lib_ext,
+        ]:
             if isfile(join(lib_dir, candidate)):
                 mlib_lib = candidate
                 break
@@ -39,14 +42,15 @@ def loadMLIB():
 
     return loadMLIB.mlib
 
+
 # ------------------------------------------------------------------------------
 def evaluateFunction(name, arg_types, arg_values, ret_type=None):
-    """ Evaluate a function contained in the dll
-        Args:
-            name(str): name of the function to evaluate
-            arg_types(list): list of types of the arguments
-            arg_values(list): list of arguments
-            ret_type(ctype): return type (default is None)
+    """Evaluate a function contained in the dll
+    Args:
+        name(str): name of the function to evaluate
+        arg_types(list): list of types of the arguments
+        arg_values(list): list of arguments
+        ret_type(ctype): return type (default is None)
     """
 
     fn = getattr(loadMLIB(), "MLIB_" + name)
