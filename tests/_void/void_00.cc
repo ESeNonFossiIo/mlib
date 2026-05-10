@@ -2,6 +2,6 @@
 
 int main()
 {
-  std::cout << "void" << std::endl;
-  return 0;
+    std::cout << "void" << std::endl;
+    return 0;
 }

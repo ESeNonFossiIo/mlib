@@ -2,12 +2,10 @@
 
 #include "mlib/pcl/segmentation.h"
 
-namespace mlib
+namespace mlib {
+pcl::ModelCoefficients fitting_plane(const pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
+                                     const double& model_tolerance)
 {
-  pcl::ModelCoefficients fitting_plane(
-    const pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
-    const double& model_tolerance)
-  {
     pcl::ModelCoefficients coefficients;
     pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
     // Create the segmentation object
@@ -22,7 +20,7 @@ namespace mlib
     seg.setInputCloud(cloud);
     seg.segment(*inliers, coefficients);
     return coefficients;
-  }
 }
+} // namespace mlib
 
 #endif // MLIB_USE_PCL

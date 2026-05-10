@@ -2,20 +2,15 @@
 #define _MLIB_STATUS_H__
 
 #include <iostream>
-#include <string>
 #include <map>
+#include <string>
 
 /** \addtogroup utility
  *  @{
  */
-namespace mlib
-{
+namespace mlib {
 
-  enum STATUS
-  {
-    MLIB_SUCCEED = 0,
-    MLIB_ERROR = 1
-  };
+enum STATUS { MLIB_SUCCEED = 0, MLIB_ERROR = 1 };
 }
 
 /** @}*/

@@ -1,25 +1,23 @@
-#ifndef  __m_ROTATION_MATRIX_H__
-#define  __m_ROTATION_MATRIX_H__
+#ifndef __m_ROTATION_MATRIX_H__
+#define __m_ROTATION_MATRIX_H__
 
-#include "mlib/math/matrix/matrix.h"
 #include "mlib/math/angle.h"
-#include "mlib/math/point.h"
 #include "mlib/math/constants.h"
+#include "mlib/math/matrix/matrix.h"
+#include "mlib/math/point.h"
 
-#include <math.h>       /* atan2 */
+#include <math.h> /* atan2 */
 
 /** \addtogroup math
  *  @{
  */
 
-namespace mlib
-{
-  /**
-   * @brief The RotationType enum specifica il come vengono
-   * misurati gli angoli.
-   */
-  enum class RotationType
-  {
+namespace mlib {
+/**
+ * @brief The RotationType enum specifica il come vengono
+ * misurati gli angoli.
+ */
+enum class RotationType {
     /**
      * Sistema di riferimento intrinsico o di Eulero.
      * i.e. Yaw * Pitch * Roll
@@ -30,11 +28,10 @@ namespace mlib
      * i.e. Roll * Pitch * Yaw.
      */
     XYZ
-  };
+};
 
-  class RotationMatrix : public Matrix<double>
-  {
-  public:
+class RotationMatrix : public Matrix<double> {
+public:
     /**
      * @brief constructor
      */
@@ -53,17 +50,15 @@ namespace mlib
     /**
      * @brief constructor
      */
-    RotationMatrix(TaitBryanAngles angles,
-                   RotationType type = RotationType::XYZ);
+    RotationMatrix(TaitBryanAngles angles, RotationType type = RotationType::XYZ);
 
     /**
      * @brief get_angles
      */
-    TaitBryanAngles
-    get_angles(const RotationType type = RotationType::XYZ,
-               const double& defaul_yaw = M_PI / 3.0);
+    TaitBryanAngles get_angles(const RotationType type = RotationType::XYZ,
+                               const double& defaul_yaw = M_PI / 3.0);
 
-  private:
+private:
     /**
      *
      */
@@ -73,42 +68,38 @@ namespace mlib
      *
      */
     Angle theta;
-  };
+};
 
-  class Rotation2DMatrix : public Matrix<double>
-  {
-  public:
+class Rotation2DMatrix : public Matrix<double> {
+public:
     /**
      * @brief constructor
      */
     Rotation2DMatrix(Angle theta_);
 
-  private:
-
+private:
     /**
      *
      */
     Angle theta;
-  };
+};
 
-  /**
-   * @brief
-   * @return std::pair. first element is the rotation axis, the second element is
-   *         the angle theta.
-   */
-  std::pair<Point, Angle>
-  get_axis_and_angle(const Matrixd& m);
+/**
+ * @brief
+ * @return std::pair. first element is the rotation axis, the second element is
+ *         the angle theta.
+ */
+std::pair<Point, Angle> get_axis_and_angle(const Matrixd& m);
 
-  /**
-   * @brief Given a rotation matrix, this function returns its
-   * roll \f[\in ]-\pi, \pi ]\f], pitch \f[\in ]-\frac{\pi}{2}, and  \frac{\pi}{2}] \f],
-   * yaw \f[\in ]-\pi, \pi ]\f].
-   */
-  TaitBryanAngles
-  get_roll_pitch_yaw(const Matrixd& m,
-                     const RotationType type = RotationType::XYZ,
-                     const double& defaul_yaw = M_PI / 3.0);
+/**
+ * @brief Given a rotation matrix, this function returns its
+ * roll \f[\in ]-\pi, \pi ]\f], pitch \f[\in ]-\frac{\pi}{2}, and  \frac{\pi}{2}] \f],
+ * yaw \f[\in ]-\pi, \pi ]\f].
+ */
+TaitBryanAngles get_roll_pitch_yaw(const Matrixd& m,
+                                   const RotationType type = RotationType::XYZ,
+                                   const double& defaul_yaw = M_PI / 3.0);
 
-}
+} // namespace mlib
 /** @}*/
 #endif // __m_ROTATION_MATRIX_H__

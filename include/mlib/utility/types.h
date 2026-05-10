@@ -1,16 +1,13 @@
 #ifndef _MLIB_TYPES_H__
 #define _MLIB_TYPES_H__
 
-
 /** \addtogroup utility
  *  @{
  */
-namespace mlib
-{
+namespace mlib {
 
-  template<typename TYPE>
-  TYPE
-  zero();
+template <typename TYPE>
+TYPE zero();
 
 }
 

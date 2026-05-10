@@ -1,123 +1,107 @@
 #include "mlib/utility/config_file.h"
 
-namespace mlib
-{
+namespace mlib {
 
 // ParsedParameters
 ////////////////////////////////////////////////////////////////////////////////
 
-  ParsedParameters::
-  ParsedParameters(const std::string& filename_in_,
-                   const std::string& filename_out_,
-                   const bool save_on_exit_)
-    :
-    INIHandler(filename_in_),
-    filename_in(filename_in_),
-    filename_out(filename_out_==""?filename_in_:filename_out_),
-    save_on_exit(save_on_exit_)
-  {}
+ParsedParameters::ParsedParameters(const std::string& filename_in_,
+                                   const std::string& filename_out_,
+                                   const bool save_on_exit_)
+    : INIHandler(filename_in_), filename_in(filename_in_),
+      filename_out(filename_out_ == "" ? filename_in_ : filename_out_), save_on_exit(save_on_exit_)
+{
+}
 
-  ParsedParameters::
-  ~ParsedParameters() {}
+ParsedParameters::~ParsedParameters()
+{
+}
 
-  void
-  ParsedParameters::
-  save()
-  {
-    if(save_on_exit)
-      INIHandler::save(filename_out);
-  }
+void ParsedParameters::save()
+{
+    if (save_on_exit)
+        INIHandler::save(filename_out);
+}
 
-  template<>
-  double
-  ParsedParameters::
-  add_new_entry(const std::string& section,
-                const std::string& name,
-                const double& default_value,
-                const double& max_val,
-                const double& min_val)
-  {
+template <>
+double ParsedParameters::add_new_entry(const std::string& section,
+                                       const std::string& name,
+                                       const double& default_value,
+                                       const double& max_val,
+                                       const double& min_val)
+{
     std::string val = this->get_val<std::string>(section, name);
-    if(val=="")
-      this->add_entry(section, name, std::to_string(default_value));
+    if (val == "")
+        this->add_entry(section, name, std::to_string(default_value));
 
     double num = from_str_to_double(val);
 
-    if(num < min_val || num > max_val)
-      return default_value;
+    if (num < min_val || num > max_val)
+        return default_value;
     return num;
-  }
+}
 
-  template<>
-  std::size_t
-  ParsedParameters::
-  add_new_entry(const std::string& section,
-                const std::string& name,
-                const std::size_t& default_value,
-                const std::size_t& max_val,
-                const std::size_t& min_val)
-  {
+template <>
+std::size_t ParsedParameters::add_new_entry(const std::string& section,
+                                            const std::string& name,
+                                            const std::size_t& default_value,
+                                            const std::size_t& max_val,
+                                            const std::size_t& min_val)
+{
     std::string val = this->get_val<std::string>(section, name);
-    if(val=="")
-      this->add_entry(section, name, std::to_string(default_value));
+    if (val == "")
+        this->add_entry(section, name, std::to_string(default_value));
 
     std::size_t num = from_str_to_unsigned_int(val);
 
-    if(num <min_val || num> max_val)
-      return default_value;
+    if (num < min_val || num > max_val)
+        return default_value;
     return num;
-  }
+}
 
-  template<>
-  int
-  ParsedParameters::
-  add_new_entry(const std::string& section,
-                const std::string& name,
-                const int& default_value,
-                const int& max_val,
-                const int& min_val)
-  {
+template <>
+int ParsedParameters::add_new_entry(const std::string& section,
+                                    const std::string& name,
+                                    const int& default_value,
+                                    const int& max_val,
+                                    const int& min_val)
+{
     std::string val = this->get_val<std::string>(section, name);
-    if(val=="")
-      this->add_entry(section, name, std::to_string(default_value));
+    if (val == "")
+        this->add_entry(section, name, std::to_string(default_value));
 
     int num = from_str_to_int(val);
 
-    if(num < min_val || num > max_val)
-      return default_value;
+    if (num < min_val || num > max_val)
+        return default_value;
     return num;
-  }
+}
 
-  template<>
-  std::string
-  ParsedParameters::
-  add_new_entry(const std::string& section,
-                const std::string& name,
-                const std::string& default_value,
-                const std::string&,
-                const std::string&)
-  {
+template <>
+std::string ParsedParameters::add_new_entry(const std::string& section,
+                                            const std::string& name,
+                                            const std::string& default_value,
+                                            const std::string&,
+                                            const std::string&)
+{
     std::string val = this->get_val<std::string>(section, name);
-    if(val=="")
-      this->add_entry(section, name, default_value);
+    if (val == "")
+        this->add_entry(section, name, default_value);
 
     return val;
-  }
+}
 
-
-  template<>
-  bool
-  ParsedParameters::
-  add_new_entry(const std::string& section,
-                const std::string& name,
-                const bool& default_value,
-                const bool&,
-                const bool&)
-  {
+template <>
+bool ParsedParameters::add_new_entry(const std::string& section,
+                                     const std::string& name,
+                                     const bool& default_value,
+                                     const bool&,
+                                     const bool&)
+{
     std::string val = this->get_val<std::string>(section, name);
-    if(val=="")
-      this->add_entry(section, name, std::to_string(default_value));
+    if (val == "")
+        this->add_entry(section, name, std::to_string(default_value));
 
     return from_str_to_bool(val);
-  }
 }
+} // namespace mlib

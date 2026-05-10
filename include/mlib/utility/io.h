@@ -4,11 +4,9 @@
 /** \addtogroup utility
  *  @{
  */
-namespace mlib
-{
+namespace mlib {
 
-  void
-  clean_screen();
+void clean_screen();
 
 }
 

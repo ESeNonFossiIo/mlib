@@ -1,19 +1,17 @@
 #ifndef __m_MATH_SEQUENCE_H__
 #define __m_MATH_SEQUENCE_H__
 
-#include <functional>   // std::function
+#include <functional> // std::function
 #include <vector>
 
 /** \addtogroup math
  *  @{
  */
-namespace mlib
-{
+namespace mlib {
 
-  template<typename T>
-  class MathSeq
-  {
-  public:
+template <typename T>
+class MathSeq {
+public:
     MathSeq(const std::vector<T>& init_sequence,
             const std::function<T(std::vector<T>, int)>& next_element_,
             const int first_element = 0,
@@ -27,14 +25,14 @@ namespace mlib
     typename std::vector<T>::iterator begin();
     typename std::vector<T>::iterator end();
 
-  private:
+private:
     T sum;
     std::size_t size;
     std::vector<T> sequence;
     std::function<T(std::vector<T>, int)> next_element;
     std::size_t pattern_lenght;
-  };
+};
 
-}
+} // namespace mlib
 /** @}*/
 #endif // __m_MATH_SEQUENCE_H__

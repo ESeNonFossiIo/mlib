@@ -7,18 +7,11 @@
  *  @{
  */
 
-namespace mlib
-{
+namespace mlib {
 
-  class CameraMatrix
-  {
-    CameraMatrix()
-      :
-      K(3,3),
-      R(3,3),
-      T(3,1)
+class CameraMatrix {
+    CameraMatrix() : K(3, 3), R(3, 3), T(3, 1)
     {
-
     }
 
     /**
@@ -26,7 +19,7 @@ namespace mlib
      */
     double gamma()
     {
-      return m(0,2);
+        return m(0, 2);
     }
 
     /**
@@ -34,7 +27,7 @@ namespace mlib
      */
     double px_f_x()
     {
-      return m(0,0);
+        return m(0, 0);
     }
 
     /**
@@ -42,7 +35,7 @@ namespace mlib
      */
     double px_f_y()
     {
-      return m(1,1);
+        return m(1, 1);
     }
 
     /**
@@ -50,7 +43,7 @@ namespace mlib
      */
     double p_p_x()
     {
-      return m(0,2);
+        return m(0, 2);
     }
 
     /**
@@ -58,15 +51,15 @@ namespace mlib
      */
     double p_p_y()
     {
-      return m(1,2);
+        return m(1, 2);
     }
 
     Matrixd K;
     Matrixd R;
     Matrixd T;
-  };
+};
 
-}
+} // namespace mlib
 
 /** @}*/
 #endif //__OPTICS__H_

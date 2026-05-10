@@ -1,27 +1,23 @@
 #ifndef _MLIB__CLOTHOID__H_
 #define _MLIB__CLOTHOID__H_
 
-#include "mlib/math/point.h"
 #include "mlib/math/integral.h"
+#include "mlib/math/point.h"
 
 /** \addtogroup math
  *  @{
  */
 
-namespace mlib
-{
+namespace mlib {
 
-  class Clothoid
-  {
-  public:
-    Clothoid(const double& a_,
-             const Integral& integral_ = Integral(TrapezoidalRule(), 0.01));
+class Clothoid {
+public:
+    Clothoid(const double& a_, const Integral& integral_ = Integral(TrapezoidalRule(), 0.01));
 
     /**
      * Evaluate the clothoid in x
      */
-    Point
-    operator()(const double& x) const;
+    Point operator()(const double& x) const;
 
     /**
      * Clothoid curvature
@@ -38,18 +34,16 @@ namespace mlib
      */
     double a;
     Integral integral;
-  };
+};
 
-  class ApproximatedClothoid
-  {
-  public:
+class ApproximatedClothoid {
+public:
     ApproximatedClothoid(const double& a_);
 
     /**
      * Evaluate the clothoid in x
      */
-    Point
-    operator()(const double& x) const;
+    Point operator()(const double& x) const;
 
     /**
      * Clothoid length
@@ -65,9 +59,9 @@ namespace mlib
      * Clothoid param
      */
     double a;
-  };
+};
 
-}
+} // namespace mlib
 
 /** @}*/
 #endif //_MLIB__CLOTHOID__H_

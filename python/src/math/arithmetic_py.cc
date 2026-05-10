@@ -6,10 +6,9 @@
 #include <vector>
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Pythagoras(
-    const double a, ///< [in]
-    const double b, ///< [in]
-    double*      result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Pythagoras(const double a, ///< [in]
+                                       const double b, ///< [in]
+                                       double* result  ///< [out]
 )
 {
     *result = mlib::pythagoras(a, b);
@@ -17,10 +16,9 @@ MLIB_EXPORT MLIBStatus MLIB_Pythagoras(
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Argmax(
-    const double* data, ///< [in] array data
-    const MLIBInt n,    ///< [in] length
-    MLIBInt*      result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Argmax(const double* data, ///< [in] array data
+                                   const MLIBInt n,    ///< [in] length
+                                   MLIBInt* result     ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
@@ -29,10 +27,9 @@ MLIB_EXPORT MLIBStatus MLIB_Argmax(
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Argmin(
-    const double* data, ///< [in] array data
-    const MLIBInt n,    ///< [in] length
-    MLIBInt*      result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Argmin(const double* data, ///< [in] array data
+                                   const MLIBInt n,    ///< [in] length
+                                   MLIBInt* result     ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
@@ -41,10 +38,9 @@ MLIB_EXPORT MLIBStatus MLIB_Argmin(
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Max(
-    const double* data, ///< [in] array data
-    const MLIBInt n,    ///< [in] length
-    double*       result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Max(const double* data, ///< [in] array data
+                                const MLIBInt n,    ///< [in] length
+                                double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
@@ -53,10 +49,9 @@ MLIB_EXPORT MLIBStatus MLIB_Max(
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Min(
-    const double* data, ///< [in] array data
-    const MLIBInt n,    ///< [in] length
-    double*       result ///< [out]
+MLIB_EXPORT MLIBStatus MLIB_Min(const double* data, ///< [in] array data
+                                const MLIBInt n,    ///< [in] length
+                                double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
@@ -69,7 +64,7 @@ MLIB_EXPORT MLIBStatus MLIB_Min(
 MLIB_EXPORT MLIBStatus MLIB_Normalize(
     const double* data, ///< [in]  array data
     const MLIBInt n,    ///< [in]  length
-    double*       out   ///< [out] normalised values (caller allocates n doubles)
+    double* out         ///< [out] normalised values (caller allocates n doubles)
 )
 {
     const std::vector<double> v(data, data + n);

@@ -11,12 +11,9 @@ using namespace mlib;
 int main()
 {
 
-  print_title("TimeConverter");
+    print_title("TimeConverter");
 
-  TimeConverter tc(32.0, 7, 12, 8, 3, 2018);
+    TimeConverter tc(32.0, 7, 12, 8, 3, 2018);
 
-  std::cout << " UTC Week -> "
-            << tc.getUTCWeek()
-            << std::endl;
-
+    std::cout << " UTC Week -> " << tc.getUTCWeek() << std::endl;
 }

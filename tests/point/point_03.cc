@@ -8,33 +8,33 @@ using namespace mlib;
 
 int main()
 {
-  print_title("Point");
+    print_title("Point");
 
-  {
-    Point e1({1,0,0});
-    Point e2({1,1,0});
+    {
+        Point e1({1, 0, 0});
+        Point e2({1, 1, 0});
 
-    std::cout << points_distance(e1,e2) << std::endl;
-  }
+        std::cout << points_distance(e1, e2) << std::endl;
+    }
 
-  {
-    Point e1({0,0,0});
-    Point e2({1,1,0});
+    {
+        Point e1({0, 0, 0});
+        Point e2({1, 1, 0});
 
-    std::cout << points_distance(e1,e2) << std::endl;
-  }
+        std::cout << points_distance(e1, e2) << std::endl;
+    }
 
-  {
-    Point e1({0,0,0});
-    Point e2({1,1,0});
+    {
+        Point e1({0, 0, 0});
+        Point e2({1, 1, 0});
 
-    std::cout << points_distance(e1,e2,1) << std::endl;
-  }
+        std::cout << points_distance(e1, e2, 1) << std::endl;
+    }
 
-  {
-    Point e1({0,3,0});
-    Point e2({4,0,0});
+    {
+        Point e1({0, 3, 0});
+        Point e2({4, 0, 0});
 
-    std::cout << points_distance(e1,e2,2) << std::endl;
-  }
+        std::cout << points_distance(e1, e2, 2) << std::endl;
+    }
 }

@@ -7,29 +7,23 @@
  *  @{
  */
 
-namespace mlib
-{
+namespace mlib {
 
-  template<typedef VALUE>
-  class Node
-  {
-  public:
+template <typedef VALUE>
+class Node {
+public:
     Node() {};
 
-    Node(std::shared_ptr<Node> right_, std::shared_ptr<Node> left_)
-      :
-      right(right_),
-      left(left_) {};
+    Node(std::shared_ptr<Node> right_, std::shared_ptr<Node> left_) : right(right_), left(left_) {};
 
-  private:
+private:
     VALUE val;
 
     std::shared_ptr<Node> right;
     std::shared_ptr<Node> left;
-  }
+}
 
-};
-
+}; // namespace mlib
 
 /** @}*/
 

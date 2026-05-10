@@ -9,14 +9,10 @@ FOREACH(_m ${_main})
   )
 ENDFOREACH()
 
-ADD_CUSTOM_TARGET(setup_astyle
-  COMMAND sh ./scripts/setup_astyle.sh
+ADD_CUSTOM_TARGET(clang_format
+  COMMAND bash ./scripts/clang_format.sh
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
-
-ADD_CUSTOM_TARGET(indent
-  COMMAND sh ./scripts/indent
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  COMMENT "Reformat all C/C++ sources with clang-format"
 )
 
 ADD_CUSTOM_TARGET(tag
@@ -29,9 +25,10 @@ ADD_CUSTOM_TARGET(generate_readme
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
-ADD_CUSTOM_TARGET(check_indentation
-  COMMAND sh ./scripts/check_indentation.sh
+ADD_CUSTOM_TARGET(check_format
+  COMMAND bash ./scripts/clang_format.sh --check
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  COMMENT "Check formatting with clang-format (no files modified)"
 )
 
 ADD_CUSTOM_TARGET(debug

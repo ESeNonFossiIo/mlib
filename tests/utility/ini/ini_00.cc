@@ -16,36 +16,27 @@ using namespace mlib;
 
 int main()
 {
-  std::cout <<
-            "=================================================" <<
-            std::endl;
-  std::cout << "  TEST for utility - INIHandler" <<
-            std::endl;
-  std::cout <<
-            "=================================================" <<
-            std::endl;
+    std::cout << "=================================================" << std::endl;
+    std::cout << "  TEST for utility - INIHandler" << std::endl;
+    std::cout << "=================================================" << std::endl;
 
-
-  INIHandler test("[section1]\n\
+    INIHandler test("[section1]\n\
                     prova=2\n\
                   test=3\ncontinua\n\
                     [section2]\n\
                     prova=2\n\
                     [section3]\n\
-                    prova=3", false);
+                    prova=3",
+                    false);
 
-  std::cout <<  "--->" << test.get_sections()[0]<<std::endl;
-  std::cout <<  "--->" << test.get_sections()[1]<<std::endl;
-  std::cout <<  "--->" << test.get_sections()[2]<<std::endl;
-  std::cout <<  "--->" <<
-            test.get_entries("section1")[0]<<std::endl;
-  std::cout <<  "--->" <<
-            test.get_entries("section1")[1]<<std::endl;
-  std::cout <<  "--->" << test.get_sections().size()
-            <<std::endl;
-  std::cout <<  "--->" << test.get_val<std::string>("section1",
-                                                    "prova")<<std::endl;
+    std::cout << "--->" << test.get_sections()[0] << std::endl;
+    std::cout << "--->" << test.get_sections()[1] << std::endl;
+    std::cout << "--->" << test.get_sections()[2] << std::endl;
+    std::cout << "--->" << test.get_entries("section1")[0] << std::endl;
+    std::cout << "--->" << test.get_entries("section1")[1] << std::endl;
+    std::cout << "--->" << test.get_sections().size() << std::endl;
+    std::cout << "--->" << test.get_val<std::string>("section1", "prova") << std::endl;
 
-  test.check();
-  return 0;
+    test.check();
+    return 0;
 }

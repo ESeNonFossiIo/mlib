@@ -8,41 +8,32 @@ using namespace mlib;
 
 int main()
 {
-  print_title("Integral");
+    print_title("Integral");
 
-  {
-    MidpointMethod mm;
-    Integral I(mm, 0.001);
-
-    const std::function<double(double)>& f = [](double x)
     {
-      return x;
-    };
+        MidpointMethod mm;
+        Integral I(mm, 0.001);
 
-    std::cout << I(f, 1.0) << std::endl;
-  }
+        const std::function<double(double)>& f = [](double x) { return x; };
 
-  {
-    MidpointMethod mm;
-    Integral I(mm, 0.001);
+        std::cout << I(f, 1.0) << std::endl;
+    }
 
-    const std::function<double(double)>& f = [](double x)
     {
-      return x*x;
-    };
+        MidpointMethod mm;
+        Integral I(mm, 0.001);
 
-    std::cout << I(f, 1.0) << std::endl;
-  }
+        const std::function<double(double)>& f = [](double x) { return x * x; };
 
-  {
-    MidpointMethod mm;
-    Integral I(mm, 0.001);
+        std::cout << I(f, 1.0) << std::endl;
+    }
 
-    const std::function<double(double)>& f = [](double x)
     {
-      return x*x*x;
-    };
+        MidpointMethod mm;
+        Integral I(mm, 0.001);
 
-    std::cout << I(f, 1.0) << std::endl;
-  }
+        const std::function<double(double)>& f = [](double x) { return x * x * x; };
+
+        std::cout << I(f, 1.0) << std::endl;
+    }
 }
