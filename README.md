@@ -68,25 +68,47 @@ export LIBMLIB_DIR="path_to_installation_dir"
 
 ### Code formatting
 
-The project is formatted with `clang-format` (config: `.clang-format`). The
-`Style` GitHub Action fails any PR that contains files which would be modified
-by `clang-format`.
+The project uses **clang-format** for C/C++ (`.clang-format`) and **Black** for
+Python. The `Style` GitHub Action enforces these in CI.
 
+#### Manual formatting
+
+Apply formatting to all tracked C/C++ files:
 ```bash
-# Apply formatting to every C/C++ file in source/, include/, tests/, main/,
-# gui/, and python/src/:
 ./scripts/clang_format.sh
+```
 
-# Check only — exits non-zero and prints a diff if any file is out of sync.
-# This is what CI runs:
+Check only (no files modified; exits non-zero if any file is out of sync):
+```bash
 ./scripts/clang_format.sh --check
 ```
 
-Optional: install the `pre-commit` hook so commits are auto-formatted locally:
+Use CMake targets for convenience:
+```bash
+make clang_format   # reformat in-place
+make check_format   # check only (CI uses this)
+```
+
+#### Pre-commit hooks (optional but recommended)
+
+Install local git hooks to auto-format on every commit:
 
 ```bash
 pip install pre-commit
 pre-commit install
+```
+
+Then on the next `git commit`:
+
+- **clang-format** will check/reformat staged C/C++ files
+- **Black** will check/reformat staged Python files
+- If changes are made, the commit is blocked; review and re-stage with `git add`, then commit again
+
+Run hooks manually (without committing):
+```bash
+pre-commit run --all-files           # check all files
+pre-commit run clang-format --all-files
+pre-commit run black --all-files
 ```
 
 ### Compilation
