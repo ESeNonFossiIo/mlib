@@ -1,6 +1,0 @@
-{
-    "chat.tools.terminal.autoApprove": {
-        "ctest": true
-    },
-    "C_Cpp.default.compilerPath": "/usr/bin/clang++"
-}
