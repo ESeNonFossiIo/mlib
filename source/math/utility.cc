@@ -148,7 +148,9 @@ flat_part(std::vector<double>& vec, double toll, std::size_t min_num_zeroes)
 
     for (std::size_t i = 0; i < vec.size(); ++i) {
         std::size_t j = 0;
-        while (std::abs(vec[i] - vec[i + j]) < toll && j + i < vec.size())
+        // Short-circuit on bounds first so vec[i + j] is never read past
+        // the end (the previous order read OOB when i + j == vec.size()).
+        while (j + i < vec.size() && std::abs(vec[i] - vec[i + j]) < toll)
             ++j;
         if (j >= 1)
             --j;

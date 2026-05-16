@@ -1,0 +1,16 @@
+=================================================
+  TEST for utility - ParsedParameters 01
+=================================================
+ i_missing   = 0
+ s_missing   = 0
+ d_missing   = 0
+ d_ok        = 1.5
+ i_ok        = 5
+ s_ok        = 7
+ d_bad->def  = 7
+ i_bad->def  = 1
+ s_bad->def  = 2
+ str_present =  hello
+ str_missing = 
+ b_present   = 1
+ b_missing   = 0

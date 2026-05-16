@@ -45,6 +45,9 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/definitions.cmake)
 # DEBUG FLAGS
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/debug_flags.cmake)
 
+# COVERAGE
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/coverage.cmake)
+
 # Qt creator
 # VTK
 OPTION( WITH_QT
