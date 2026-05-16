@@ -238,7 +238,7 @@ void RotoTranslationMatrixHandler::update_mask(const std::vector<size_t>& b_)
 double RotoTranslationMatrixHandler::get_error_on_point(const size_t& i)
 {
     return (M * u[i] + t - v[i]).l_2_norm();
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on return-of-temporary
 
 double RotoTranslationMatrixHandler::get_volume_diff()
 {

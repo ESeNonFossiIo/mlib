@@ -62,12 +62,12 @@ Segment& Segment::operator/=(const double& a)
 Segment Segment::operator*(const double& a) const
 {
     return Segment(*this).operator*=(a);
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on return-by-value closing brace
 
 Segment Segment::operator/(const double& a)
 {
     return Segment(*this).operator*=(a);
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on return-by-value closing brace
 
 double get_angle(const Segment& a, const Segment& b)
 {

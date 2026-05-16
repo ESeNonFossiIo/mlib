@@ -1,0 +1,12 @@
+
+=================================================
+  TEST for RotoTranslationMatrixHandler - mask + getters
+=================================================
+
+ n_points  = 8
+ volume    = [OK]
+ err_pt[0] = [OK]
+ err_pt[3] = [OK]
+ masked_n  = 6
+ masked_e  = [OK]
+ masked_v  = [OK]

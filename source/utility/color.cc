@@ -12,7 +12,7 @@ std::string GeneralColor::init() const
     // #else
     // return "<Esc>["+std::to_string(style)+";"+std::to_string(color-65)+"m";
     // #endif
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on return-by-value
 
 std::string GeneralColor::end() const
 {
@@ -21,6 +21,6 @@ std::string GeneralColor::end() const
     // #else
     // return "<Esc>[0m";
     // #endif
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on return-by-value
 
 } // namespace mlib

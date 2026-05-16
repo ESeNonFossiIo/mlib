@@ -7,10 +7,24 @@
 
 #include <iostream>
 
+// Silence warnings inside Eigen headers (deprecated implicit copy/dtor,
+// sign comparisons, ...). They are not actionable from mlib code.
+#if defined(__clang__) || defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-copy"
+#endif
+#if defined(__clang__)
+#pragma GCC diagnostic ignored "-Wdeprecated-copy-with-dtor"
+#endif
+
 #ifdef _WIN32
 #include <Eigen/Dense>
 #else
 #include <eigen3/Eigen/Dense>
+#endif
+
+#if defined(__clang__) || defined(__GNUC__)
+#pragma GCC diagnostic pop
 #endif
 
 /** \addtogroup math
@@ -41,8 +55,10 @@ Eigen::MatrixXd from_m_to_eigen_matrix(const Matrixd& m)
 Matrixd from_eigen_to_m_matrix(const Eigen::MatrixXd& m)
 {
     Matrixd m_new(m.rows(), m.cols());
-    for (std::size_t i = 0; i < m.rows(); i++)
-        for (std::size_t j = 0; j < m.cols(); j++)
+    // m.rows()/m.cols() return Eigen::Index (signed) — compare with the same
+    // type to avoid -Wsign-compare under -Werror.
+    for (Eigen::Index i = 0; i < m.rows(); i++)
+        for (Eigen::Index j = 0; j < m.cols(); j++)
             m_new(i, j) = m(i, j);
     return m_new;
 }
