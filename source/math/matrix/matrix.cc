@@ -179,7 +179,7 @@ template <typename T>
 Matrix<T> Matrix<T>::operator*(const T& a) const
 {
     return Matrix<T>(*this).operator*=(a);
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of value-returning function
 
 template <typename T>
 Matrix<T>& Matrix<T>::operator/=(const T& a)
@@ -193,7 +193,7 @@ template <typename T>
 Matrix<T> Matrix<T>::operator/(const T& a)
 {
     return Matrix<T>(*this).operator/=(a);
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of value-returning function
 
 template <typename T>
 Matrix<T>& Matrix<T>::operator+=(const Matrix<T>& M)
@@ -215,13 +215,13 @@ template <typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& M) const
 {
     return Matrix<T>(*this).operator+=(M);
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of value-returning function
 
 template <typename T>
 Matrix<T> Matrix<T>::operator-(const Matrix<T>& M) const
 {
     return Matrix<T>(*this).operator-=(M);
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of value-returning function
 
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& M) const
@@ -239,7 +239,7 @@ template <typename T>
 Matrix<T>& Matrix<T>::operator*=(const Matrix<T>& M)
 {
     return *this = *this * M;
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of reference-returning function
 
 template <typename T>
 Matrix<T> Matrix<T>::transpose() const

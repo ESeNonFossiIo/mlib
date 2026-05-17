@@ -46,7 +46,7 @@ Point LinearInterpolation<dim>::operator()(const double& t_) const
     this->is_valid_time(t_);
     double t = this->normalize_time(t_);
     return (1 - t) * p1 + t * p2;
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of Point-returning function
 
 template class LinearInterpolation<1>;
 template class LinearInterpolation<2>;

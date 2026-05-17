@@ -1,0 +1,8 @@
+
+=================================================
+  TEST for Arithmetic - missing branches
+=================================================
+
+ binary_to_decimal({}) = 0
+ pythagoras(4,3) = 5
+ pythagoras(0,0) = 0

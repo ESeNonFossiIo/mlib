@@ -165,7 +165,7 @@ Point operator^(const Point& p1, const Point& p2)
 double scalar_product(const Point& p1, const Point& p2)
 {
     return (p1.t() * p2)[0];
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of double-returning function
 
 double vector_product(const Point& p1, const Point& p2)
 {

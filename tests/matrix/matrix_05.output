@@ -1,0 +1,17 @@
+
+=================================================
+  TEST for Matrix - uncovered paths
+=================================================
+
+ M[0] = 1
+ cM[1] = 2
+ cM.element(0,1) = 2
+ M.element(1,0) = 9
+ N[0] = 7
+ D[0] = 0.5
+ A[0] = 1
+ T2[1] = 9
+ row_oob = 1
+ col_oob = 1
+ degen_ctor = 1
+ degen_resize = 1
