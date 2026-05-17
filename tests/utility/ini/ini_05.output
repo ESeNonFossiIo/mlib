@@ -1,0 +1,13 @@
+
+=================================================
+  TEST for INIHandler - typed get_val + comment line
+=================================================
+
+ dval = 3.14
+ dmiss = 1.5
+ bval = 1
+ bmiss = 0
+ sval = 42
+ smiss = 99
+ ival = -7
+ imiss = -1

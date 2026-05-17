@@ -177,5 +177,5 @@ Angle get_angle_from_points(const Point& a, const Point& o, const Point& b)
     double angle =
         std::acos(((a - o).t() * (b - o))[0] / ((a - o).l_2_norm() * (b - o).l_2_norm()));
     return Angle(angle);
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of value-returning function
 } // namespace mlib

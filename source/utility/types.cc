@@ -13,7 +13,7 @@ template <>
 std::string zero()
 {
     return "";
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of string-returning function
 
 template <>
 bool zero()

@@ -11,7 +11,7 @@
 
 namespace mlib {
 
-class Segment {
+class Segment { // GCOVR_EXCL_LINE — gcov phantom-line on class declaration
 public:
     Segment();
 
