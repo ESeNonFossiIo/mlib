@@ -1,37 +1,55 @@
+from unittest import mock
+
 import pytest
 
 import mlibpy.bind.load_symbols as ls
 
 
-def _force_real_load():
-    """Ensure the real library handle is cached on loadMLIB."""
-    ls.loadMLIB()
-
-
 def test_loadmlib_returns_cached_handle():
-    """The second call returns the same cached library handle."""
+    """The first call loads the library; the second returns the cached handle."""
     first = ls.loadMLIB()
     second = ls.loadMLIB()
     assert first is second
 
 
-@pytest.mark.parametrize("fake_platform", ["darwin", "win32", "freebsd"])
-def test_loadmlib_non_linux_platform(fake_platform):
-    """Non-Linux platforms pick a different (or empty) extension and fall back
-    to the bare library name; loading that file then fails on this Linux host.
-    'freebsd' also exercises the fall-through past every platform branch."""
-    _force_real_load()
-    saved_platform = ls.platform
-    saved_cache = ls.loadMLIB.mlib
+@pytest.mark.parametrize(
+    "fake_platform,expected_ext",
+    [
+        ("darwin", "dylib"),
+        ("win32", "dll"),
+        ("freebsd", ""),
+    ],
+)
+def test_loadmlib_platform_selects_extension(fake_platform, expected_ext):
+    """loadMLIB derives the library extension from sys.platform and, when no
+    candidate file is found, falls back to the bare 'lib_mlib_bindings.<ext>'.
 
-    del ls.loadMLIB.mlib
-    ls.platform = fake_platform
-    try:
-        with pytest.raises(OSError):
-            ls.loadMLIB()
-    finally:
-        ls.platform = saved_platform
-        ls.loadMLIB.mlib = saved_cache
+    'freebsd' is an unrecognised platform: it exercises the fall-through past
+    every platform branch (lib_ext stays empty).
+
+    The test is hermetic: sys.platform, isfile and cdll are all mocked, so it
+    neither touches the filesystem nor depends on which libraries are present.
+    """
+    fake_cdll = mock.Mock()
+
+    # loadMLIB caches the handle on the function object; drop it so the body
+    # re-runs, and drop it again afterwards so later real calls reload cleanly.
+    if hasattr(ls.loadMLIB, "mlib"):
+        del ls.loadMLIB.mlib
+
+    with mock.patch.object(ls, "platform", fake_platform), mock.patch.object(
+        ls, "isfile", return_value=False
+    ), mock.patch.object(ls, "cdll", fake_cdll):
+        try:
+            handle = ls.loadMLIB()
+        finally:
+            if hasattr(ls.loadMLIB, "mlib"):
+                del ls.loadMLIB.mlib
+
+    assert handle is fake_cdll.LoadLibrary.return_value
+    fake_cdll.LoadLibrary.assert_called_once()
+    loaded_path = fake_cdll.LoadLibrary.call_args[0][0]
+    assert loaded_path.endswith("lib_mlib_bindings." + expected_ext)
 
 
 def test_evaluate_function_without_ret_type():
