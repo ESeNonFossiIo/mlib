@@ -23,6 +23,20 @@ IF(WITH_COVERAGE)
     MESSAGE(FATAL_ERROR "WITH_COVERAGE is not supported with MSVC.")
   ENDIF()
 
+  # Coverage must be measured at -O0: with optimisation the compiler inlines
+  # trivial constructors/destructors and rewrites conditionals, which makes
+  # gcov mis-attribute function and branch hits. The build-type flags
+  # (e.g. CMAKE_CXX_FLAGS_RELEASE = "-O3 -DNDEBUG") are appended *after*
+  # CMAKE_CXX_FLAGS, so an -O0 there would be overridden. Strip the
+  # optimisation level from every per-configuration flag set first; -DNDEBUG
+  # is kept so assert() behaviour matches the chosen build type.
+  FOREACH(_cfg "" "_DEBUG" "_RELEASE" "_RELWITHDEBINFO" "_MINSIZEREL")
+    FOREACH(_lang CXX C)
+      STRING(REGEX REPLACE "-O[0-9sgz]" "" CMAKE_${_lang}_FLAGS${_cfg}
+             "${CMAKE_${_lang}_FLAGS${_cfg}}")
+    ENDFOREACH()
+  ENDFOREACH()
+
   # --coverage implies -fprofile-arcs -ftest-coverage and links libgcov.
   # -fprofile-update=atomic avoids counter races when tests fork or thread.
   SET(_cov_flags "--coverage -O0 -g -fprofile-update=atomic")
