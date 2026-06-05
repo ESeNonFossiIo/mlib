@@ -342,6 +342,15 @@ Matrix<T> Matrix<T>::inv() const
     auto det = this->det();
     // assert(std::abs(det) > VAR_MLIB_ZERO_TOLERANCE);
 
+    // A 1x1 matrix has no minors: its inverse is just the reciprocal. The
+    // generic cofactor loop below would build a degenerate 0x0 matrix and
+    // throw, so handle this case explicitly (e.g. a scalar Kalman innovation).
+    if (rows == 1) {
+        Matrix<T> inverse(1, 1);
+        inverse(0, 0) = T(1.0) / det;
+        return inverse;
+    }
+
     Matrix<T> inverse(rows, cols);
 
     for (size_t i = 0; i < rows; ++i)
