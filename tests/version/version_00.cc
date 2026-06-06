@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/core/version.h"
+#include "numerix/core/version.h"
 
 #include <iostream>
 #include <string>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

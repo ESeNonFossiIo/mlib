@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/math/convolution.h"
+#include "numerix/math/convolution.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

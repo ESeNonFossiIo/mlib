@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/math/angle.h"
+#include "numerix/math/angle.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // Exercises the deg-branch of Angle::operator=(double), the default and
 // three-double TaitBryanAngles constructors and the const-setters that

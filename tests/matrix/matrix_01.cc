@@ -1,10 +1,10 @@
-#include "mlib/math/matrix/matrix.h"
-#include "mlib/utility/string.h"
+#include "numerix/math/matrix/matrix.h"
+#include "numerix/utility/string.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

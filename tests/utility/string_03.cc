@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/utility/string.h"
+#include "numerix/utility/string.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

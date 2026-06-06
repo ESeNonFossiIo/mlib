@@ -2,13 +2,13 @@ from unittest import mock
 
 import pytest
 
-import mlibpy.bind.load_symbols as ls
+import numerixpy.bind.load_symbols as ls
 
 
-def test_loadmlib_returns_cached_handle():
+def test_loadnumerix_returns_cached_handle():
     """The first call loads the library; the second returns the cached handle."""
-    first = ls.loadMLIB()
-    second = ls.loadMLIB()
+    first = ls.loadNUMERIX()
+    second = ls.loadNUMERIX()
     assert first is second
 
 
@@ -20,9 +20,9 @@ def test_loadmlib_returns_cached_handle():
         ("freebsd", ""),
     ],
 )
-def test_loadmlib_platform_selects_extension(fake_platform, expected_ext):
-    """loadMLIB derives the library extension from sys.platform and, when no
-    candidate file is found, falls back to the bare 'lib_mlib_bindings.<ext>'.
+def test_loadnumerix_platform_selects_extension(fake_platform, expected_ext):
+    """loadNUMERIX derives the library extension from sys.platform and, when no
+    candidate file is found, falls back to the bare 'lib_numerix_bindings.<ext>'.
 
     'freebsd' is an unrecognised platform: it exercises the fall-through past
     every platform branch (lib_ext stays empty).
@@ -32,24 +32,24 @@ def test_loadmlib_platform_selects_extension(fake_platform, expected_ext):
     """
     fake_cdll = mock.Mock()
 
-    # loadMLIB caches the handle on the function object; drop it so the body
+    # loadNUMERIX caches the handle on the function object; drop it so the body
     # re-runs, and drop it again afterwards so later real calls reload cleanly.
-    if hasattr(ls.loadMLIB, "mlib"):
-        del ls.loadMLIB.mlib
+    if hasattr(ls.loadNUMERIX, "numerix"):
+        del ls.loadNUMERIX.numerix
 
     with mock.patch.object(ls, "platform", fake_platform), mock.patch.object(
         ls, "isfile", return_value=False
     ), mock.patch.object(ls, "cdll", fake_cdll):
         try:
-            handle = ls.loadMLIB()
+            handle = ls.loadNUMERIX()
         finally:
-            if hasattr(ls.loadMLIB, "mlib"):
-                del ls.loadMLIB.mlib
+            if hasattr(ls.loadNUMERIX, "numerix"):
+                del ls.loadNUMERIX.numerix
 
     assert handle is fake_cdll.LoadLibrary.return_value
     fake_cdll.LoadLibrary.assert_called_once()
     loaded_path = fake_cdll.LoadLibrary.call_args[0][0]
-    assert loaded_path.endswith("lib_mlib_bindings." + expected_ext)
+    assert loaded_path.endswith("lib_numerix_bindings." + expected_ext)
 
 
 def test_evaluate_function_without_ret_type():

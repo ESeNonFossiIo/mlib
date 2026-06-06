@@ -1,7 +1,7 @@
 import math
 import pytest
 
-from mlibpy.geo.coordinates import (
+from numerixpy.geo.coordinates import (
     arclen_of_a_meridian,
     compute_convergence_angle,
     compute_zone,

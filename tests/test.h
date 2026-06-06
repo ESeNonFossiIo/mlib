@@ -1,12 +1,12 @@
-#include "mlib/utility/file.h"
-#include "mlib/utility/string.h"
+#include "numerix/utility/file.h"
+#include "numerix/utility/string.h"
 
 #include <map>
 
 std::string get_test_dir()
 {
 
-    std::map<std::string, std::string> ext_name = mlib::get_ext_and_name(__FILE__);
+    std::map<std::string, std::string> ext_name = numerix::get_ext_and_name(__FILE__);
     return ext_name["dir"];
 }
 
@@ -20,5 +20,5 @@ void print_title(const std::string& title)
 void make_test_pass(const std::string& filename)
 {
     std::string fn(get_test_dir() + "/" + filename + ".output");
-    std::cout << mlib::get_file_content(fn);
+    std::cout << numerix::get_file_content(fn);
 }

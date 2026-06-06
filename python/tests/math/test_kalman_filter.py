@@ -12,7 +12,7 @@ position and the (unobserved) velocity.
 
 import pytest
 
-from mlibpy.math.kalman_filter import KalmanFilter
+from numerixpy.math.kalman_filter import KalmanFilter
 
 # ---------------------------------------------------------------------------
 # Reference constant-velocity model
@@ -119,3 +119,11 @@ def test_rejects_mismatched_measurement_matrix():
             x0=_X0,
             P0=_P0,
         )
+
+
+def test_binding_failure_raises_runtime_error():
+    """A C++-side failure (here a degenerate zero-dimensional model) surfaces
+    as a RuntimeError rather than a silent wrong answer."""
+    kf = KalmanFilter(F=[], H=[], Q=[], R=[], x0=[], P0=[])
+    with pytest.raises(RuntimeError):
+        kf.step([])

@@ -1,8 +1,8 @@
 #include "../test.h"
 
-#include "mlib/math/math_sequence.h"
+#include "numerix/math/math_sequence.h"
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

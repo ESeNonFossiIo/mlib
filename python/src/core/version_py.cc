@@ -1,32 +1,32 @@
-#include <mlib/core/export.h>
-#include <mlib/core/version.h>
+#include <numerix/core/export.h>
+#include <numerix/core/version.h>
 
 #include "_python/types.h"
 
 /// ----------------------------------------------------------------------------
 /// Get the current version
-MLIB_EXPORT const char* MLIB_version()
+NUMERIX_EXPORT const char* NUMERIX_version()
 {
-    return mlib::version();
+    return numerix::version();
 }
 
 /// ----------------------------------------------------------------------------
 /// Get the current major version
-MLIB_EXPORT MLIBInt MLIB_version_major()
+NUMERIX_EXPORT NUMERIXInt NUMERIX_version_major()
 {
-    return static_cast<MLIBInt>(mlib::version_major());
+    return static_cast<NUMERIXInt>(numerix::version_major());
 }
 
 /// ----------------------------------------------------------------------------
 /// Get the current minor version
-MLIB_EXPORT MLIBInt MLIB_version_minor()
+NUMERIX_EXPORT NUMERIXInt NUMERIX_version_minor()
 {
-    return static_cast<MLIBInt>(mlib::version_minor());
+    return static_cast<NUMERIXInt>(numerix::version_minor());
 }
 
 /// ----------------------------------------------------------------------------
 /// Get the current patch version
-MLIB_EXPORT MLIBInt MLIB_version_patch()
+NUMERIX_EXPORT NUMERIXInt NUMERIX_version_patch()
 {
-    return static_cast<MLIBInt>(mlib::version_patch());
+    return static_cast<NUMERIXInt>(numerix::version_patch());
 }

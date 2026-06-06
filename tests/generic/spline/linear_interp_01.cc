@@ -1,11 +1,11 @@
 #include "../../test.h"
 
-#include "mlib/math/spline.h"
+#include "numerix/math/spline.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // Instantiates LinearInterpolation<1> and LinearInterpolation<3> (and the
 // underlying BaseInterpolation<1>/<3>), which are not otherwise exercised.

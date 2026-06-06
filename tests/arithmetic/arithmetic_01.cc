@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/math/arithmetic.h"
+#include "numerix/math/arithmetic.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

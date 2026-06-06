@@ -1,8 +1,8 @@
-#include "mlib/utility/io.h"
+#include "numerix/utility/io.h"
 
 #include <fstream> // std::ifstream
 
-namespace mlib {
+namespace numerix {
 
 void clean_screen()
 {
@@ -19,4 +19,4 @@ void clean_screen()
 #endif //_WIN32
 }
 
-} // namespace mlib
+} // namespace numerix

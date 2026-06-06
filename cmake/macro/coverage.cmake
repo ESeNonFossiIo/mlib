@@ -72,7 +72,7 @@ IF(WITH_COVERAGE)
               --root ${CMAKE_SOURCE_DIR}
               --gcov-executable "${_gcov_executable}"
               --filter "${CMAKE_SOURCE_DIR}/source/"
-              --filter "${CMAKE_SOURCE_DIR}/include/mlib/"
+              --filter "${CMAKE_SOURCE_DIR}/include/numerix/"
               --exclude ".*/tests/.*"
               --print-summary
               --txt        ${_cov_txt}

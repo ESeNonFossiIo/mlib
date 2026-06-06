@@ -1,10 +1,10 @@
-#include "mlib/math/geometry/clothoid.h"
-#include "mlib/math/constants.h"
-#include "mlib/math/utility.h"
+#include "numerix/math/geometry/clothoid.h"
+#include "numerix/math/constants.h"
+#include "numerix/math/utility.h"
 
 #include <cassert> // std::assert
 
-namespace mlib {
+namespace numerix {
 Clothoid::Clothoid(const double& a_, const Integral& integral_) : a(a_), integral(integral_)
 {
 }
@@ -64,4 +64,4 @@ Point ApproximatedClothoid::operator()(const double& x) const
     p[1] = 0.5 - R(std::abs(x)) * std::cos(.5 * M_PI * (A(std::abs(x)) - x * x));
     return sgn(x) * M_PI * a * p;
 }
-} // namespace mlib
+} // namespace numerix

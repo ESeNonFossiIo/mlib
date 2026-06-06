@@ -1,5 +1,5 @@
-#include <mlib/finance/black_scholes.h>
-#include <mlib/math/statistics/norm_dist.h>
+#include <numerix/finance/black_scholes.h>
+#include <numerix/math/statistics/norm_dist.h>
 
 #include <cmath>
 
@@ -22,7 +22,7 @@ double d_2(const double S, const double K, const double r, const double v, const
 
 } // namespace
 
-namespace mlib {
+namespace numerix {
 
 namespace finance {
 
@@ -38,7 +38,7 @@ double BSPrice(const double S,          ///< [in] underlying
                const OptionType optType ///< [in] option to compute
 )
 {
-    using namespace mlib::math::statistics;
+    using namespace numerix::math::statistics;
 
     if (optType == OptionType::EuropeanCall) {
         return S * norm_cdf(d_1(S, K, r, v, T)) - K * exp(-r * T) * norm_cdf(d_2(S, K, r, v, T));
@@ -52,4 +52,4 @@ double BSPrice(const double S,          ///< [in] underlying
 
 } // namespace finance
 
-} // namespace mlib
+} // namespace numerix

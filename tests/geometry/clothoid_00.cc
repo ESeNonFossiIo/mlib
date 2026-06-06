@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/math/geometry/clothoid.h"
+#include "numerix/math/geometry/clothoid.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

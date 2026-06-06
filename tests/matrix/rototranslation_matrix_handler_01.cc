@@ -1,21 +1,21 @@
 #include "../test.h"
 #include "../test_compare.h"
 
-#include "mlib/math/angle.h"
-#include "mlib/math/matrix/rotation.h"
-#include "mlib/math/matrix/utility.h"
+#include "numerix/math/angle.h"
+#include "numerix/math/matrix/rotation.h"
+#include "numerix/math/matrix/utility.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 // Coverage for the RotoTranslationMatrixHandler getters that the existing
 // handler_00 test does not touch: update_mask, get_error_on_point,
 // get_volume_diff, get_number_of_points.
 int main()
 {
-#ifdef MLIB_USE_EIGEN3
+#ifdef NUMERIX_USE_EIGEN3
     print_title("RotoTranslationMatrixHandler - mask + getters");
 
     Angle roll(0.5, AngleType::rad);
@@ -55,7 +55,7 @@ int main()
     std::cout << " masked_e  = " << are_equal(h.get_error()) << std::endl;
     std::cout << " masked_v  = " << are_equal(h.get_volume_diff() - 1.0) << std::endl;
 
-#else  // MLIB_USE_EIGEN3
+#else  // NUMERIX_USE_EIGEN3
     make_test_pass("matrix/rototranslation_matrix_handler_01");
-#endif // MLIB_USE_EIGEN3
+#endif // NUMERIX_USE_EIGEN3
 }

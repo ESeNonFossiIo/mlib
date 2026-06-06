@@ -1,8 +1,8 @@
-#include "mlib/math/euclidean_geometry.h"
+#include "numerix/math/euclidean_geometry.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/utility/types.h"
+#include "numerix/utility/types.h"
 
 #include <iostream>
 #include <string>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

@@ -1,6 +1,6 @@
-#include "mlib/math/statistic.h"
+#include "numerix/math/statistic.h"
 
-namespace mlib {
+namespace numerix {
 
 double moment(const std::vector<double>& v, const std::size_t& n, const bool& central)
 {
@@ -40,4 +40,4 @@ double stddev(const std::vector<double>& v)
     return std::sqrt(var(v));
 }
 
-} // namespace mlib
+} // namespace numerix

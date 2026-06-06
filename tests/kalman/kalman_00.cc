@@ -1,8 +1,8 @@
 #include "../test.h"
 
-#include "mlib/math/kalman_filter.h"
+#include "numerix/math/kalman_filter.h"
 
-using namespace mlib;
+using namespace numerix;
 
 // 1-D constant-velocity tracker.
 //   state  = [position, velocity]ᵀ

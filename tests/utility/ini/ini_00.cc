@@ -1,6 +1,6 @@
 #include "../../test.h"
 
-#include "mlib/utility/parser/ini.h"
+#include "numerix/utility/parser/ini.h"
 #include <iostream>
 
 // void test(std::string filename)
@@ -12,7 +12,7 @@
 //   std::cout << std::endl;
 // }
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

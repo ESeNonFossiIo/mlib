@@ -1,15 +1,15 @@
 #include "../test.h"
 #include "../test_compare.h"
 
-#include "mlib/pcl/segmentation.h"
+#include "numerix/pcl/segmentation.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
-#ifdef MLIB_USE_PCL_WITH_VTK
+#ifdef NUMERIX_USE_PCL_WITH_VTK
     print_title("PCL Best fitting plane");
     {
         {
@@ -50,7 +50,7 @@ int main()
             std::cout << "error a -> " << are_equal(d - coef.values[3] / nn, 1e-6) << std::endl;
         }
     }
-#else  // MLIB_USE_PCL_WITH_VTK
+#else  // NUMERIX_USE_PCL_WITH_VTK
     make_test_pass("pcl/best_fitting_plane_00");
-#endif // MLIB_USE_PCL_WITH_VTK
+#endif // NUMERIX_USE_PCL_WITH_VTK
 }

@@ -1,75 +1,75 @@
-#include <mlib/core/export.h>
-#include <mlib/math/arithmetic.h>
+#include <numerix/core/export.h>
+#include <numerix/math/arithmetic.h>
 
 #include "_python/status.h"
 
 #include <vector>
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Pythagoras(const double a, ///< [in]
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Pythagoras(const double a, ///< [in]
                                        const double b, ///< [in]
                                        double* result  ///< [out]
 )
 {
-    *result = mlib::pythagoras(a, b);
-    return MLIBStatus::Success;
+    *result = numerix::pythagoras(a, b);
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Argmax(const double* data, ///< [in] array data
-                                   const MLIBInt n,    ///< [in] length
-                                   MLIBInt* result     ///< [out]
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Argmax(const double* data, ///< [in] array data
+                                   const NUMERIXInt n,    ///< [in] length
+                                   NUMERIXInt* result     ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = static_cast<MLIBInt>(mlib::argmax(v));
-    return MLIBStatus::Success;
+    *result = static_cast<NUMERIXInt>(numerix::argmax(v));
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Argmin(const double* data, ///< [in] array data
-                                   const MLIBInt n,    ///< [in] length
-                                   MLIBInt* result     ///< [out]
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Argmin(const double* data, ///< [in] array data
+                                   const NUMERIXInt n,    ///< [in] length
+                                   NUMERIXInt* result     ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = static_cast<MLIBInt>(mlib::argmin(v));
-    return MLIBStatus::Success;
+    *result = static_cast<NUMERIXInt>(numerix::argmin(v));
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Max(const double* data, ///< [in] array data
-                                const MLIBInt n,    ///< [in] length
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Max(const double* data, ///< [in] array data
+                                const NUMERIXInt n,    ///< [in] length
                                 double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = mlib::max(v);
-    return MLIBStatus::Success;
+    *result = numerix::max(v);
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Min(const double* data, ///< [in] array data
-                                const MLIBInt n,    ///< [in] length
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Min(const double* data, ///< [in] array data
+                                const NUMERIXInt n,    ///< [in] length
                                 double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = mlib::min(v);
-    return MLIBStatus::Success;
+    *result = numerix::min(v);
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
 // Output buffer out must be pre-allocated with n elements.
-MLIB_EXPORT MLIBStatus MLIB_Normalize(
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Normalize(
     const double* data, ///< [in]  array data
-    const MLIBInt n,    ///< [in]  length
+    const NUMERIXInt n,    ///< [in]  length
     double* out         ///< [out] normalised values (caller allocates n doubles)
 )
 {
     const std::vector<double> v(data, data + n);
-    const std::vector<double> norm = mlib::normalize(v);
-    for (MLIBInt i = 0; i < n; ++i)
+    const std::vector<double> norm = numerix::normalize(v);
+    for (NUMERIXInt i = 0; i < n; ++i)
         out[i] = norm[i];
-    return MLIBStatus::Success;
+    return NUMERIXStatus::Success;
 }

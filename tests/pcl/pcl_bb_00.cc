@@ -1,14 +1,14 @@
 #include "../test.h"
 
-#include "mlib/pcl/bounding_box.h"
+#include "numerix/pcl/bounding_box.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
-#ifdef MLIB_USE_PCL_WITH_VTK
+#ifdef NUMERIX_USE_PCL_WITH_VTK
     print_title("PCL BoundingBox - ged_dominant_direction");
     {
         {
@@ -69,7 +69,7 @@ int main()
             }
         }
     }
-#else  // MLIB_USE_PCL_WITH_VTK
+#else  // NUMERIX_USE_PCL_WITH_VTK
     make_test_pass("pcl/pcl_bb_00");
-#endif // MLIB_USE_PCL_WITH_VTK
+#endif // NUMERIX_USE_PCL_WITH_VTK
 }

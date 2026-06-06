@@ -1,8 +1,8 @@
-#include "mlib/math/matrix/utility.h"
-#include "mlib/math/matrix/decomposition.h"
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/matrix/utility.h"
+#include "numerix/math/matrix/decomposition.h"
+#include "numerix/math/matrix/rotation.h"
 
-namespace mlib {
+namespace numerix {
 void swap_lines(Matrix<double>& M, const std::size_t& l1, const std::size_t& l2)
 {
     for (std::size_t i = 0; i < M.c(); ++i) {
@@ -264,4 +264,4 @@ Point& RotoTranslationMatrixHandler::get_translation()
 {
     return t;
 }
-} // namespace mlib
+} // namespace numerix

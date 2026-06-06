@@ -55,12 +55,12 @@ jobs:
 
     - name: Install conda dependencies
       run: |
-        if [ -f "${{ github.workspace }}/python/mlibpy_env.yml" ]; then
+        if [ -f "${{ github.workspace }}/python/numerixpy_env.yml" ]; then
           $CONDA/bin/conda env update \
-            --file ${{ github.workspace }}/python/mlibpy_env.yml \
-            --name mlibpy_env
+            --file ${{ github.workspace }}/python/numerixpy_env.yml \
+            --name numerixpy_env
         else
-          echo "python/mlibpy_env.yml not found, skipping"
+          echo "python/numerixpy_env.yml not found, skipping"
         fi
 
     - name: CPP Test

@@ -1,9 +1,9 @@
-#include "mlib/math/integral.h"
+#include "numerix/math/integral.h"
 
 #include <assert.h> /* assert */
 #include <iostream>
 
-namespace mlib {
+namespace numerix {
 
 Quadrature::Quadrature()
 {
@@ -80,4 +80,4 @@ double Integral::operator()(const std::function<double(double)>& f, double x) co
     return this->compute_integral(f, x);
 }
 
-} // namespace mlib
+} // namespace numerix

@@ -1,12 +1,12 @@
 #include "../test.h"
 
-#include "mlib/utility/config_file.h"
+#include "numerix/utility/config_file.h"
 
 #include <cstdio>  // std::remove
 #include <fstream>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // Exercises every typed ParsedParameters::add_new_entry specialisation
 // (double, int, size_t, string, bool) for both:

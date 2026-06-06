@@ -1,8 +1,8 @@
-#include "mlib/utility/file.h"
+#include "numerix/utility/file.h"
 
 #include <fstream> // std::ifstream
 
-namespace mlib {
+namespace numerix {
 
 std::map<std::string, std::string> get_ext_and_name(const std::string& path)
 {
@@ -47,4 +47,4 @@ std::size_t get_number_of_lines(const std::string& in_filename)
 
     return n_lines;
 }
-} // namespace mlib
+} // namespace numerix

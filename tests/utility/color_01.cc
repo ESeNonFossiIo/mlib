@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/utility/color.h"
+#include "numerix/utility/color.h"
 
 #include <iostream>
 
-using namespace mlib;
-using namespace mlib::Color;
+using namespace numerix;
+using namespace numerix::Color;
 
 int main()
 {

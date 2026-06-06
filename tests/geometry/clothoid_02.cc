@@ -1,9 +1,9 @@
 #include "../test.h"
 
-#include <mlib/math/constants.h>
-#include <mlib/math/geometry/clothoid.h>
+#include <numerix/math/constants.h>
+#include <numerix/math/geometry/clothoid.h>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

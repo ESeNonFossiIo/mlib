@@ -1,12 +1,12 @@
 #include "../test.h"
 #include "../test_compare.h"
 
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/matrix/rotation.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

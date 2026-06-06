@@ -1,16 +1,16 @@
 #include "../test.h"
 
-#include "mlib/math/matrix/decomposition.h"
+#include "numerix/math/matrix/decomposition.h"
 
 #include <cmath>
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
-    // QR is pure mlib code and does not require Eigen3, so we test it
+    // QR is pure numerix code and does not require Eigen3, so we test it
     // unconditionally to keep the function covered in the default build.
     print_title("SVD - Decomposition");
 
@@ -21,6 +21,6 @@ int main()
 
     std::cout << Q << std::endl;
     std::cout << R << std::endl;
-    std::cout << ((M - Q * R).l_2_norm() < VAR_MLIB_ZERO_TOLERANCE ? "[OK]" : "[Fail]")
+    std::cout << ((M - Q * R).l_2_norm() < VAR_NUMERIX_ZERO_TOLERANCE ? "[OK]" : "[Fail]")
               << std::endl;
 }

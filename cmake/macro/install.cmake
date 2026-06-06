@@ -1,11 +1,11 @@
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cmake/mlibConfig.cmake
-        DESTINATION ./mlib/cmake )
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cmake/numerixConfig.cmake
+        DESTINATION ./numerix/cmake )
 install(FILES ./VERSION
-        DESTINATION ./mlib/ )
+        DESTINATION ./numerix/ )
 install(DIRECTORY ./include/
-        DESTINATION ./mlib/include/)
+        DESTINATION ./numerix/include/)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/lib
-        DESTINATION ./mlib)
+        DESTINATION ./numerix)
 
 install(FILES ./README.md
         DESTINATION ./)

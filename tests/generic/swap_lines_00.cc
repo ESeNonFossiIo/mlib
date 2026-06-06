@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/math/matrix/utility.h"
+#include "numerix/math/matrix/utility.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

@@ -1,8 +1,8 @@
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
 
-#include "mlib/pcl/math.h"
+#include "numerix/pcl/math.h"
 
-namespace mlib {
+namespace numerix {
 double points_distance(const pcl::PointXYZI& p1, const pcl::PointXYZI& p2)
 {
     Eigen::Vector3f diff = Eigen::Vector3f(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z);
@@ -119,6 +119,6 @@ bool get_closest_points(const pcl::PointCloud<pcl::PointXYZI>::Ptr& cloud1,
     return status;
 }
 
-} // namespace mlib
+} // namespace numerix
 
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL

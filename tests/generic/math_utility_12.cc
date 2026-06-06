@@ -1,12 +1,12 @@
 #include "../test.h"
 
-#include "mlib/math/utility.h"
+#include "numerix/math/utility.h"
 
 #include <iomanip>
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 // Instantiate sgn<float>, truncate<float>, truncate_vec<float> — the existing
 // math_utility_* tests only exercise the double variants.

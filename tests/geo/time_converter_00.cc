@@ -1,12 +1,12 @@
 #include "../test.h"
 #include "../test_compare.h"
 
-#include "mlib/geo/time_converter.h"
+#include "numerix/geo/time_converter.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

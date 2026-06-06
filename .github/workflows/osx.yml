@@ -49,7 +49,7 @@ jobs:
 
     - name: Install conda dependencies
       run: |
-        $CONDA/bin/conda env update --file ${{ github.workspace }}/python/mlibpy_env.yml --name mlibpy_env
+        $CONDA/bin/conda env update --file ${{ github.workspace }}/python/numerixpy_env.yml --name numerixpy_env
 
     - name: CPP Test
       working-directory: ${{ github.workspace }}/build

@@ -1,8 +1,8 @@
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
 
-#include "mlib/pcl/polyline.h"
+#include "numerix/pcl/polyline.h"
 
-namespace mlib {
+namespace numerix {
 void remove_angles(pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud, const double& min_degree_angle)
 {
     auto it = input_cloud->begin();
@@ -74,6 +74,6 @@ void remove_extra_points(pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud,
     }
 }
 
-} // namespace mlib
+} // namespace numerix
 
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL

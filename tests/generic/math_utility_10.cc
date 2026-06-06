@@ -1,9 +1,9 @@
 #include "../test.h"
 
-#include "mlib/math/utility.h"
-#include "mlib/utility/output.h"
+#include "numerix/math/utility.h"
+#include "numerix/utility/output.h"
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

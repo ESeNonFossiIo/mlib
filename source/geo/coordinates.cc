@@ -1,6 +1,6 @@
-#include "mlib/geo/coordinates.h"
+#include "numerix/geo/coordinates.h"
 
-namespace mlib {
+namespace numerix {
 double arclen_of_a_meridian(const double& lat, const ModelConstants& model)
 {
     double sum = model.sm_a + model.sm_b;
@@ -230,4 +230,4 @@ void UTM_xy_to_latlon(const Point& p,
     double cm = UTM_central_meridian(zone);
     xy_to_latlon(new_p, cm, lat, lon);
 }
-} // namespace mlib
+} // namespace numerix

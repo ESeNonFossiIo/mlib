@@ -1,16 +1,14 @@
-#include "mlib/math/kalman_filter.h"
+#include "numerix/math/kalman_filter.h"
 
-namespace mlib {
+namespace numerix {
 
 // ----------------------------------------------------------------------------
-KalmanFilter::KalmanFilter(
-    const Matrixd& F,
-    const Matrixd& H,
-    const Matrixd& Q,
-    const Matrixd& R,
-    const Matrixd& x0,
-    const Matrixd& P0
-)
+KalmanFilter::KalmanFilter(const Matrixd& F,
+                           const Matrixd& H,
+                           const Matrixd& Q,
+                           const Matrixd& R,
+                           const Matrixd& x0,
+                           const Matrixd& P0)
     : F(F), H(H), Q(Q), R(R), x(x0), P(P0)
 {
 }
@@ -56,7 +54,7 @@ void KalmanFilter::update(const Matrixd& z)
 Matrixd KalmanFilter::innovation(const Matrixd& z) const
 {
     return z - H * x;
-}
+} // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of value-returning function
 
 // ----------------------------------------------------------------------------
 const Matrixd& KalmanFilter::state() const
@@ -70,4 +68,4 @@ const Matrixd& KalmanFilter::covariance() const
     return P;
 }
 
-} // namespace mlib
+} // namespace numerix

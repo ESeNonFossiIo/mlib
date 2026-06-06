@@ -1,7 +1,7 @@
-#include <mlib/core/unused.h>
-#include <mlib/math/spline.h>
+#include <numerix/core/unused.h>
+#include <numerix/math/spline.h>
 
-namespace mlib {
+namespace numerix {
 
 template <int dim>
 BaseInterpolation<dim>::BaseInterpolation(const double& t1_, const double& t2_)
@@ -12,7 +12,7 @@ BaseInterpolation<dim>::BaseInterpolation(const double& t1_, const double& t2_)
 template <int dim>
 void BaseInterpolation<dim>::is_valid_time(const double& t_) const
 {
-    MLIB_UNUSED(t_);
+    NUMERIX_UNUSED(t_);
     assert(t_ >= t1);
     assert(t_ <= t2);
 }
@@ -191,4 +191,4 @@ Point HermiteSpline5<dim>::a(const double& t_) const
 template class HermiteSpline5<1>;
 template class HermiteSpline5<2>;
 template class HermiteSpline5<3>;
-} // namespace mlib
+} // namespace numerix

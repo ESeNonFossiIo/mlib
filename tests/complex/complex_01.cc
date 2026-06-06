@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/math/complex.h"
+#include "numerix/math/complex.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

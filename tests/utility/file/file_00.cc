@@ -1,9 +1,9 @@
-#include "mlib/utility/file.h"
+#include "numerix/utility/file.h"
 
 #include <iostream>
 #include <map>
 
-using namespace mlib;
+using namespace numerix;
 
 void test(std::string filename)
 {

@@ -1,4 +1,4 @@
-from mlibpy.core import *
+from numerixpy.core import *
 
 
 def test_version():

@@ -1,13 +1,13 @@
 #include "../test.h"
 
-#include "mlib/math/angle.h"
-#include "mlib/math/constants.h"
-#include "mlib/math/matrix/utility.h"
+#include "numerix/math/angle.h"
+#include "numerix/math/constants.h"
+#include "numerix/math/matrix/utility.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

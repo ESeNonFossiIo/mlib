@@ -1,8 +1,8 @@
 #include "../test.h"
 
-#include "mlib/coding/huffman.h"
+#include "numerix/coding/huffman.h"
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

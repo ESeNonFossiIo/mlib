@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/math/matrix/matrix.h"
+#include "numerix/math/matrix/matrix.h"
 
 #include <iostream>
 #include <stdexcept>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

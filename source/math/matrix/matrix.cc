@@ -1,11 +1,11 @@
-#include "mlib/math/matrix/matrix.h"
+#include "numerix/math/matrix/matrix.h"
 
 #include <cassert>
 #include <cmath>
 #include <iomanip> // std::setprecision
 #include <stdexcept>
 
-namespace mlib {
+namespace numerix {
 
 template <typename T>
 void Matrix<T>::range_check(size_t i, size_t j) const
@@ -340,7 +340,7 @@ Matrix<T> Matrix<T>::inv() const
 {
     assert(cols == rows);
     auto det = this->det();
-    // assert(std::abs(det) > VAR_MLIB_ZERO_TOLERANCE);
+    // assert(std::abs(det) > VAR_NUMERIX_ZERO_TOLERANCE);
 
     // A 1x1 matrix has no minors: its inverse is just the reciprocal. The
     // generic cofactor loop below would build a degenerate 0x0 matrix and
@@ -416,4 +416,4 @@ template class Matrix<double>;
 template std::ostream& operator<<(std::ostream&, const Matrix<double>&);
 template Matrix<double> operator*(const double&, const Matrix<double>&);
 
-} // namespace mlib
+} // namespace numerix

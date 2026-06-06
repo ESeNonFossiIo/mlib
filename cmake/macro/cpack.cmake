@@ -3,7 +3,7 @@ MESSAGE(STATUS "Configuring CPack")
 
 INCLUDE(InstallRequiredSystemLibraries)
 
-SET(CPACK_PACKAGE_VENDOR "MLib")
+SET(CPACK_PACKAGE_VENDOR "Numerix")
 SET(CPACK_PACKAGE_CONTACT "ESeNonFossiIo <esenonfossiio@gmail.com")
 SET(HOMEPAGE "")
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY)
@@ -26,7 +26,7 @@ LIST(GET _version 2 CPACK_PACKAGE_VERSION_PATCH)
 SET(CPACK_PACKAGE_INSTALL_DIRECTORY "${CMAKE_PROJECT_NAME}")
 SET(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}/package")
 
-SET(CPACK_PACKAGE_EXECUTABLES  "${_project}" "mlib - MLIB Library")
+SET(CPACK_PACKAGE_EXECUTABLES  "${_project}" "numerix - Numerix Library")
 SET(CPACK_CREATE_DESKTOP_LINKS "${_project}")
 set(CPACK_PACKAGE_NAME 				 "${_project}")
 set(CPACK_BUNDLE_NAME  				 "${_project}")
@@ -44,9 +44,9 @@ IF(APPLE)
 
 	  SET(MACOSX_BUNDLE_BUNDLE_NAME "${_project}")
 	  SET(MACOSX_BUNDLE_BUNDLE_GUI_IDENTIFIER "com.${_project}.${_project}")
-	  SET(MACOSX_BUNDLE_ICON_FILE ${PROJECT_SOURCE_DIR}/packaging/MLIB.icns)
+	  SET(MACOSX_BUNDLE_ICON_FILE ${PROJECT_SOURCE_DIR}/packaging/NUMERIX.icns)
 	  SET(MACOSX_BUNDLE_INFO_PLIST ${PROJECT_SOURCE_DIR}/packaging/MacOSXBundleInfo.plist.in)
-		SET_SOURCE_FILES_PROPERTIES(${PROJECT_SOURCE_DIR}/packaging/MLIB.icns
+		SET_SOURCE_FILES_PROPERTIES(${PROJECT_SOURCE_DIR}/packaging/NUMERIX.icns
 				PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 
 	  SET(CPACK_DMG_VOLUME_NAME "${_project}")
@@ -67,9 +67,9 @@ IF(WIN32)
   #   message(STATUS "   + NSIS                                 YES ")
   #   # Note: There is a bug in NSI that does not handle full unix paths properly. Make
   #   # sure there is at least one set of four (4) backlasshes.
-  #   set(CPACK_NSIS_DISPLAY_NAME "mlib")
+  #   set(CPACK_NSIS_DISPLAY_NAME "numerix")
   #   # Icon of the installer
-  #   set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\package\\\\MLIB.ico")
+  #   set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\package\\\\NUMERIX.ico")
   #   # set(CPACK_NSIS_HELP_LINK "http:\\\\\\\\www.my-project-home-page.org")
   #   # set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\www.my-personal-home-page.com")
   #   set(CPACK_NSIS_CONTACT "${CPACK_PACKAGE_CONTACT}")
@@ -78,7 +78,7 @@ IF(WIN32)
   #   message(STATUS "   + NSIS                                 NO ")
   # endif()
 
-  set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\package\\\\MLIB.png")
+  set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\package\\\\NUMERIX.png")
 ENDIF(WIN32)
 
 INCLUDE(CPack)

@@ -42,8 +42,8 @@ jobs:
     - name: configure
       shell: bash
       run: |
-        cmake -B D:\\a\\mlib\\mlib\\build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -D ENABLE_ALL_TESTS=ON
-        cmake --build D:\\a\\mlib\\mlib\\build --config ${{ matrix.build_type }}
+        cmake -B D:\\a\\numerix\\numerix\\build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -D ENABLE_ALL_TESTS=ON
+        cmake --build D:\\a\\numerix\\numerix\\build --config ${{ matrix.build_type }}
 
     - name: archive logs
       uses: actions/upload-artifact@v4
@@ -54,14 +54,14 @@ jobs:
     - name: test library
       shell: bash
       run: |
-        ctest -C D:\\a\\mlib\\mlib\\build --output-on-failure > test_output.txt 2>&1 || true
+        ctest -C D:\\a\\numerix\\numerix\\build --output-on-failure > test_output.txt 2>&1 || true
 
     - name: Extract and save test count
       shell: bash
       run: |
         TEST_COUNT=$(grep -c "^[0-9]*: Test " test_output.txt || echo "0")
         if [ "$TEST_COUNT" -eq 0 ]; then
-          TEST_COUNT=$(ctest --test-dir D:\\a\\mlib\\mlib\\build -N --quiet 2>/dev/null | wc -l || echo "0")
+          TEST_COUNT=$(ctest --test-dir D:\\a\\numerix\\numerix\\build -N --quiet 2>/dev/null | wc -l || echo "0")
         fi
         echo "Current test count: $TEST_COUNT"
         echo "$TEST_COUNT" > test_count.txt
@@ -99,7 +99,7 @@ jobs:
       continue-on-error: true
       with:
         name: windows-${{ matrix.artifact_suffix }}-CMakeOutput.log
-        path: D:\\a\\mlib\\mlib\\build\\CMakeFiles\\CMakeOutput.log
+        path: D:\\a\\numerix\\numerix\\build\\CMakeFiles\\CMakeOutput.log
 
     - name: archive error 2
       uses: actions/upload-artifact@v4
@@ -107,4 +107,4 @@ jobs:
       continue-on-error: true
       with:
         name: windows-${{ matrix.artifact_suffix }}-CMakeError.log
-        path: D:\\a\\mlib\\mlib\\build\\CMakeFiles\\CMakeError.log
+        path: D:\\a\\numerix\\numerix\\build\\CMakeFiles\\CMakeError.log

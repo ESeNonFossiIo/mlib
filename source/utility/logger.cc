@@ -1,4 +1,4 @@
-#include "mlib/utility/logger.h"
+#include "numerix/utility/logger.h"
 
 #include <iomanip> // std::setprecision
 #include <iostream>
@@ -10,9 +10,9 @@
 #endif
 #endif
 
-namespace mlib {
+namespace numerix {
 
-using namespace mlib::Color;
+using namespace numerix::Color;
 
 Logger::Logger(const std::string& filename_, const bool& write_on_stdcout_)
     : filename(filename_), write_on_stdcout(write_on_stdcout_)
@@ -129,4 +129,4 @@ void Logger::msg(const std::string& str)
     write("MSG", str, white);
 }
 
-} // namespace mlib
+} // namespace numerix

@@ -1,6 +1,6 @@
-#include "mlib/geo/time_converter.h"
+#include "numerix/geo/time_converter.h"
 
-namespace mlib {
+namespace numerix {
 TimeConverter::TimeConverter(double secs_, int mins_, int hours_, int day_, int month_, int year_)
     : secs(secs_), mins(mins_), hours(hours_), day(day_), month(month_), year(year_)
 {
@@ -25,4 +25,4 @@ double TimeConverter::getUTCWeek()
         timeinfosynth->tm_wday * 86400 + (hours * 3600 + mins * 60 + secs);
     return timestampWeekSeconds;
 }
-} // namespace mlib
+} // namespace numerix

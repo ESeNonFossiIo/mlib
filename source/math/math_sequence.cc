@@ -1,6 +1,6 @@
-#include "mlib/math/math_sequence.h"
+#include "numerix/math/math_sequence.h"
 
-namespace mlib {
+namespace numerix {
 
 template <typename T>
 MathSeq<T>::MathSeq(const std::vector<T>& init_sequence,
@@ -58,4 +58,4 @@ typename std::vector<T>::iterator MathSeq<T>::end()
 
 template class MathSeq<int>;
 template class MathSeq<double>;
-} // namespace mlib
+} // namespace numerix

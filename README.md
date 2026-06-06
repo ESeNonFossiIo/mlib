@@ -1,14 +1,14 @@
-# mlib
+# numerix
 
-[![CodeQL](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/codeql.yml)
-[![Ubuntu](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-ubuntu.yml)
-[![Fedora](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-fedora.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/linux-fedora.yml)
-[![OSX](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/osx.yml)
-[![Windows](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/windows.yml)
-[![Style](https://github.com/ESeNonFossiIo/mlib/actions/workflows/style-check.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/style-check.yml)
+[![CodeQL](https://github.com/ESeNonFossiIo/numerix/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/codeql.yml)
+[![Ubuntu](https://github.com/ESeNonFossiIo/numerix/actions/workflows/linux-ubuntu.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/linux-ubuntu.yml)
+[![Fedora](https://github.com/ESeNonFossiIo/numerix/actions/workflows/linux-fedora.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/linux-fedora.yml)
+[![OSX](https://github.com/ESeNonFossiIo/numerix/actions/workflows/osx.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/osx.yml)
+[![Windows](https://github.com/ESeNonFossiIo/numerix/actions/workflows/windows.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/windows.yml)
+[![Style](https://github.com/ESeNonFossiIo/numerix/actions/workflows/style-check.yml/badge.svg?branch=master)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/style-check.yml)
 
-[![C++ Coverage](https://raw.githubusercontent.com/ESeNonFossiIo/mlib/badges/coverage-cpp.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/coverage.yml)
-[![Python Coverage](https://raw.githubusercontent.com/ESeNonFossiIo/mlib/badges/coverage-python.svg)](https://github.com/ESeNonFossiIo/mlib/actions/workflows/coverage.yml)
+[![C++ Coverage](https://raw.githubusercontent.com/ESeNonFossiIo/numerix/badges/coverage-cpp.svg)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/coverage.yml)
+[![Python Coverage](https://raw.githubusercontent.com/ESeNonFossiIo/numerix/badges/coverage-python.svg)](https://github.com/ESeNonFossiIo/numerix/actions/workflows/coverage.yml)
 
 ## Build
 
@@ -48,7 +48,7 @@ ninja -j4
 Add to `.bash_profile`:
 
 ```bash
-export LIBMLIB_DIR="path_to_installation_dir"
+export LIBNUMERIX_DIR="path_to_installation_dir"
 ```
 
 ## Notes
@@ -115,9 +115,9 @@ pre-commit run black --all-files
 
 #### Precompiler FLAGS
 
-- `MLIB_USE_PCL_WITH_VTK` - PCL with VTK support
-- `MLIB_USE_PCL` - Point Cloud Library support
-- `MLIB_USE_EIGEN3` - Eigen3 linear algebra
+- `NUMERIX_USE_PCL_WITH_VTK` - PCL with VTK support
+- `NUMERIX_USE_PCL` - Point Cloud Library support
+- `NUMERIX_USE_EIGEN3` - Eigen3 linear algebra
 - `BUILD_PY_ENV` - Python bindings
 
 #### Recent Improvements (May 2026)

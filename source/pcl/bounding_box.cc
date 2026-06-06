@@ -1,7 +1,7 @@
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
 
-#include "mlib/pcl/bounding_box.h"
-#include "mlib/pcl/math.h"
+#include "numerix/pcl/bounding_box.h"
+#include "numerix/pcl/math.h"
 
 #include <Eigen/Eigenvalues>
 #include <pcl/common/centroid.h>
@@ -10,7 +10,7 @@
 
 #include <pcl/common/io.h>
 
-namespace mlib {
+namespace numerix {
 
 BoundingBox::BoundingBox()
     : bounding_box(new pcl::PointCloud<pcl::PointXYZI>),
@@ -197,10 +197,10 @@ BoundingBox::is_flat(double tolerance)
     }
     for (std::size_t i = 0; i < 8; i++) {
         if (counter[i] != 1)
-            return STATUS::MLIB_ERROR;
+            return STATUS::NUMERIX_ERROR;
     }
-    return STATUS::MLIB_SUCCEED;
+    return STATUS::NUMERIX_SUCCEED;
 }
-} // namespace mlib
+} // namespace numerix
 
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL

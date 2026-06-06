@@ -1,8 +1,8 @@
 #include "../test.h"
 
-#include "mlib/math/complex.h"
+#include "numerix/math/complex.h"
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

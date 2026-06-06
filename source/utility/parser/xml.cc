@@ -1,9 +1,9 @@
 #include <algorithm>
 
-#include "mlib/utility/parser/xml.h"
-#include "mlib/utility/string.h"
+#include "numerix/utility/parser/xml.h"
+#include "numerix/utility/string.h"
 
-namespace mlib {
+namespace numerix {
 XMLEntry process_XML_text(const std::string& str)
 {
     XMLEntry ret;
@@ -356,4 +356,4 @@ std::string XMLHandler::operator()()
 {
     return this->val_text;
 }
-} // namespace mlib
+} // namespace numerix

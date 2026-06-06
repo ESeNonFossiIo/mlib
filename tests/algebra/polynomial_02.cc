@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/math/algebra.h"
+#include "numerix/math/algebra.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

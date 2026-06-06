@@ -1,12 +1,12 @@
 #include "../test.h"
 
-#include "mlib/math/geometry.h"
+#include "numerix/math/geometry.h"
 
 #include <iomanip>
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 namespace {
 

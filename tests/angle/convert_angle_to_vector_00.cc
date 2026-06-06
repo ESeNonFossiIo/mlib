@@ -1,10 +1,10 @@
-#include "mlib/math/angle.h"
+#include "numerix/math/angle.h"
 #include <iostream>
 
 // per std::setw
 #include <iomanip>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

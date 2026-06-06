@@ -1,6 +1,6 @@
-#include "mlib/utility/config_file.h"
+#include "numerix/utility/config_file.h"
 
-namespace mlib {
+namespace numerix {
 
 // ParsedParameters
 ////////////////////////////////////////////////////////////////////////////////
@@ -104,4 +104,4 @@ bool ParsedParameters::add_new_entry(const std::string& section,
 
     return from_str_to_bool(val);
 }
-} // namespace mlib
+} // namespace numerix

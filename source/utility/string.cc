@@ -1,4 +1,4 @@
-#include "mlib/utility/string.h"
+#include "numerix/utility/string.h"
 
 // per std::stold
 #include <cstdlib>
@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 
-namespace mlib {
+namespace numerix {
 std::string lower_case(const std::string& in)
 {
     std::string out(in);
@@ -101,7 +101,7 @@ std::vector<std::string> split(const std::string& str,
         std::string token = str.substr(prev, pos - prev);
 
         if (remove_white_space)
-            mlib::remove_white_spaces(token);
+            numerix::remove_white_spaces(token);
 
         if (!token.empty() || allow_empty_fields)
             tokens.push_back(token);
@@ -124,4 +124,4 @@ std::string get_file_content(std::string& filename)
     std::string output((std::istreambuf_iterator<char>(myfile)), std::istreambuf_iterator<char>());
     return output;
 }
-} // namespace mlib
+} // namespace numerix

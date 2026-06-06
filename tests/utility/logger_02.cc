@@ -1,12 +1,12 @@
 #include "../test.h"
 
-#include "mlib/utility/logger.h"
+#include "numerix/utility/logger.h"
 
 #include <fstream>
 #include <iostream>
 
-using namespace mlib;
-using namespace mlib::Color;
+using namespace numerix;
+using namespace numerix::Color;
 
 int main()
 {
