@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>numerix — a modern C++11 numerical toolkit</title>
+  <meta name="description" content="numerix is a header-mostly C++11 numerical library with Python bindings: complex numbers, linear algebra, geometry, statistics, finance, geo and more." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2300d1b2'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='700' text-anchor='middle' fill='%230b0e14'%3En%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">n</span>
+        <span class="brand-name">numerix</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#modules">Modules</a>
+        <a href="#quickstart">Quick start</a>
+        <a href="#python">Python</a>
+        <a class="nav-cta" href="https://github.com/ESeNonFossiIo/numerix" rel="noopener">GitHub →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ───────────────────────────── Hero ───────────────────────────── -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">C++11 · header-mostly · Python bindings</p>
+        <h1>A modern numerical toolkit<br />for C++ and Python.</h1>
+        <p class="lede">
+          <strong>numerix</strong> bundles the building blocks of scientific
+          computing — complex numbers, linear algebra, geometry, statistics,
+          finance and geospatial math — behind one clean, well-tested,
+          cross-platform API.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#quickstart">Get started</a>
+          <a class="btn btn-ghost" href="https://github.com/ESeNonFossiIo/numerix" rel="noopener">View on GitHub</a>
+        </div>
+
+        <div class="badges">
+          <img alt="Ubuntu build" src="https://github.com/ESeNonFossiIo/numerix/actions/workflows/linux-ubuntu.yml/badge.svg?branch=master" />
+          <img alt="Fedora build" src="https://github.com/ESeNonFossiIo/numerix/actions/workflows/linux-fedora.yml/badge.svg?branch=master" />
+          <img alt="macOS build" src="https://github.com/ESeNonFossiIo/numerix/actions/workflows/osx.yml/badge.svg?branch=master" />
+          <img alt="Windows build" src="https://github.com/ESeNonFossiIo/numerix/actions/workflows/windows.yml/badge.svg?branch=master" />
+          <img alt="C++ coverage" src="https://raw.githubusercontent.com/ESeNonFossiIo/numerix/badges/coverage-cpp.svg" />
+          <img alt="Python coverage" src="https://raw.githubusercontent.com/ESeNonFossiIo/numerix/badges/coverage-python.svg" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── Highlights ────────────────────────── -->
+    <section class="strip">
+      <div class="wrap strip-grid">
+        <div class="stat">
+          <span class="stat-k">Header-mostly</span>
+          <span class="stat-v">Templates live in <code>include/numerix/</code> — drop in and go.</span>
+        </div>
+        <div class="stat">
+          <span class="stat-k">Cross-platform</span>
+          <span class="stat-v">CI on Linux, macOS &amp; Windows, every push.</span>
+        </div>
+        <div class="stat">
+          <span class="stat-k">Tested</span>
+          <span class="stat-v">Golden-output test suite with C++ &amp; Python coverage.</span>
+        </div>
+        <div class="stat">
+          <span class="stat-k">Python ready</span>
+          <span class="stat-v">ctypes bindings expose the C++ core to Python.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────── Modules ──────────────────────────── -->
+    <section id="modules" class="section">
+      <div class="wrap">
+        <h2>What's inside</h2>
+        <p class="section-sub">One namespace, <code>numerix::</code>, organised into focused modules.</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Math core</h3>
+            <p>Templated <code>Complex&lt;T&gt;</code>, algebra helpers and numeric utilities with sane <code>double</code> defaults.</p>
+          </article>
+          <article class="card">
+            <h3>Matrix &amp; algebra</h3>
+            <p>Matrices, rotations, decompositions and a Kalman filter for state estimation.</p>
+          </article>
+          <article class="card">
+            <h3>Geometry</h3>
+            <p>Segments and clothoids for path and curve modelling.</p>
+          </article>
+          <article class="card">
+            <h3>Statistics</h3>
+            <p>Normal distribution PDF/CDF and the primitives that build on them.</p>
+          </article>
+          <article class="card">
+            <h3>Finance</h3>
+            <p>Black–Scholes option pricing, exposed to both C++ and Python.</p>
+          </article>
+          <article class="card">
+            <h3>Geo</h3>
+            <p>Coordinate conversion (lat/lon ↔ UTM) and time converters.</p>
+          </article>
+          <article class="card">
+            <h3>Coding</h3>
+            <p>Huffman coding for compact, prefix-free encoding.</p>
+          </article>
+          <article class="card">
+            <h3>Utility</h3>
+            <p>Logger, INI / CSV / XML parsers, progress bar, colour output and more.</p>
+          </article>
+          <article class="card card-opt">
+            <h3>Integrations <span class="tag">optional</span></h3>
+            <p>Wrappers for the Point Cloud Library (PCL) and Eigen3, behind CMake feature flags.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────── Quick start ────────────────────────── -->
+    <section id="quickstart" class="section section-alt">
+      <div class="wrap">
+        <h2>Quick start</h2>
+        <p class="section-sub">Build the library and run the test suite — Ninja is the default generator.</p>
+        <pre class="code"><code><span class="c-c"># clone</span>
+git clone https://github.com/ESeNonFossiIo/numerix.git
+cd numerix
+
+<span class="c-c"># configure &amp; build</span>
+mkdir -p build &amp;&amp; cd build
+cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_ALL_TESTS=ON ..
+ninja -j4
+
+<span class="c-c"># run the tests</span>
+ctest --output-on-failure</code></pre>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────── Python ───────────────────────────── -->
+    <section id="python" class="section">
+      <div class="wrap">
+        <h2>Python bindings</h2>
+        <p class="section-sub">The <code>numerixpy</code> package calls into the compiled core via ctypes.</p>
+        <pre class="code"><code><span class="c-c"># build the shared library and a conda-backed env</span>
+cmake -D BUILD_PY_ENV=ON .. &amp;&amp; ninja -j4
+
+<span class="c-c"># run the Python test suite</span>
+build/numerixpy_env/bin/python -m pytest python/tests/ -v</code></pre>
+        <pre class="code"><code><span class="c-k">from</span> numerixpy.finance.black_scholes <span class="c-k">import</span> call_price
+
+price = call_price(spot=<span class="c-n">100</span>, strike=<span class="c-n">100</span>, rate=<span class="c-n">0.05</span>,
+                   vol=<span class="c-n">0.2</span>, maturity=<span class="c-n">1.0</span>)
+<span class="c-k">print</span>(price)</code></pre>
+        <p class="note">Function signatures may vary by version — see the package under <code>python/numerixpy/</code>.</p>
+      </div>
+    </section>
+
+    <!-- ───────────────────────────── CTA ─────────────────────────────── -->
+    <section class="section section-alt closing">
+      <div class="wrap">
+        <h2>Build something exact.</h2>
+        <p class="section-sub">Clone the repo, open an issue, or read the source — it's all on GitHub.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/ESeNonFossiIo/numerix" rel="noopener">Open the repository</a>
+          <a class="btn btn-ghost" href="https://github.com/ESeNonFossiIo/numerix/blob/master/README.md" rel="noopener">Read the docs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span class="brand">
+        <span class="brand-mark">n</span>
+        <span class="brand-name">numerix</span>
+      </span>
+      <span class="footer-meta">
+        © <span id="year">2026</span> ESeNonFossiIo · Published automatically with GitHub Pages
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
