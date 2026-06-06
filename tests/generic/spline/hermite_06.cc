@@ -1,11 +1,11 @@
 #include "../../test.h"
 
-#include "mlib/math/spline.h"
+#include "numerix/math/spline.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // HermiteSpline<1> is not instantiated by any other test; this test also
 // exercises HermiteSpline<3>::a() which hermite_03 does not call.

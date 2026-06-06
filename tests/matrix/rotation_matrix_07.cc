@@ -1,12 +1,12 @@
 #include "../test.h"
 
-#include "mlib/math/angle.h"
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/angle.h"
+#include "numerix/math/matrix/rotation.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

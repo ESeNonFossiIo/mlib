@@ -1,6 +1,6 @@
-#include "mlib/utility/progress_bar.h"
+#include "numerix/utility/progress_bar.h"
 
-namespace mlib {
+namespace numerix {
 
 ProgressBar::ProgressBar(std::size_t length_, std::string c_) : c(c_), length(length_)
 {
@@ -29,4 +29,4 @@ void ProgressBar::operator()(std::size_t pos)
 {
     print_bar(pos);
 }
-} // namespace mlib
+} // namespace numerix

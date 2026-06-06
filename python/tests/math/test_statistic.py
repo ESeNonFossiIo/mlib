@@ -1,7 +1,7 @@
 import math
 import pytest
 
-from mlibpy.math.statistic import mean, moment, stddev, var
+from numerixpy.math.statistic import mean, moment, stddev, var
 
 
 _DATA = [2.0, 4.0, 4.0, 4.0, 5.0, 5.0, 7.0, 9.0]

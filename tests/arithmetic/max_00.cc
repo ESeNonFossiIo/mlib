@@ -1,8 +1,8 @@
 #include "../test.h"
 
-#include "mlib/math/arithmetic.h"
+#include "numerix/math/arithmetic.h"
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

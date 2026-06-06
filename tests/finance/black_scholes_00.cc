@@ -1,14 +1,14 @@
 #include "../test.h"
 
-#include <mlib/finance/black_scholes.h>
+#include <numerix/finance/black_scholes.h>
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
-    using namespace mlib::finance;
+    using namespace numerix::finance;
 
     print_title("Black-Scholes");
 

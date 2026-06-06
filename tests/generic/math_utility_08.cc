@@ -1,10 +1,10 @@
-#include "mlib/math/utility.h"
+#include "numerix/math/utility.h"
 #include <iostream>
 
 // per std::setw
 #include <iomanip>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

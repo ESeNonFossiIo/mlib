@@ -8,7 +8,7 @@ IF(TARGET Eigen3::Eigen)
     GET_TARGET_PROPERTY(_eigen3_inc Eigen3::Eigen INTERFACE_INCLUDE_DIRECTORIES)
     IF(_eigen3_inc)
         INCLUDE_DIRECTORIES(${_eigen3_inc})
-        # `mlib/eigen/conversion.h` uses `#include <eigen3/Eigen/Dense>`, so
+        # `numerix/eigen/conversion.h` uses `#include <eigen3/Eigen/Dense>`, so
         # the parent of the eigen3/ subdir must also be on the include path.
         FOREACH(_inc ${_eigen3_inc})
             GET_FILENAME_COMPONENT(_inc_parent ${_inc} DIRECTORY)

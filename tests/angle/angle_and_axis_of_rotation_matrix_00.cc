@@ -1,10 +1,10 @@
-#include "mlib/math/constants.h"
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/constants.h"
+#include "numerix/math/matrix/rotation.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
@@ -21,7 +21,7 @@ int main()
     std::cout << "-------------------------" << std::endl;
 
     RotationMatrix R2(result.first, result.second);
-    if ((R - R2).l_inf_norm() < VAR_MLIB_ZERO_TOLERANCE)
+    if ((R - R2).l_inf_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
         std::cout << "OK!" << std::endl;
     std::cout << "-------------------------" << std::endl;
 }

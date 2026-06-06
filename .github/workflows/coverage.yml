@@ -104,7 +104,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/python:${{ github.workspace }}/build/lib
         run: |
           pytest python/tests \
-            --cov=mlibpy \
+            --cov=numerixpy \
             --cov-report=html:python_coverage_html \
             --cov-report=xml:python_coverage.xml \
             --cov-report=term-missing

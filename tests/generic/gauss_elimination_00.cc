@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/math/matrix/utility.h"
+#include "numerix/math/matrix/utility.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
@@ -21,13 +21,13 @@ int main()
         auto s = solve_upper_triangular(T.first, T.second);
 
         std::cout << " Solve output ............ ";
-        if ((T.first * s - T.second).l_2_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((T.first * s - T.second).l_2_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << " [OK] " << std::endl;
         else
             std::cout << " [Error] " << std::endl;
 
         std::cout << " Compute output .......... ";
-        if ((m * s - p).l_2_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m * s - p).l_2_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << " [OK] " << std::endl;
         else
             std::cout << " [Error] " << std::endl;
@@ -62,19 +62,19 @@ int main()
         auto s = solve_upper_triangular(T.first, T.second);
 
         std::cout << " Solve output ............ ";
-        if ((T.first * s - T.second).l_2_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((T.first * s - T.second).l_2_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << " [OK] " << std::endl;
         else
             std::cout << " [Error] " << std::endl;
 
         std::cout << " Compute output .......... ";
-        if ((m * s - p).l_2_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m * s - p).l_2_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << " [OK] " << std::endl;
         else
             std::cout << " [Error] " << std::endl;
 
         std::cout << " Compute gauss ........... ";
-        if ((m * a - p).l_2_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m * a - p).l_2_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << " [OK] " << std::endl;
         else
             std::cout << " [Error] " << std::endl;

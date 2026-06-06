@@ -1,12 +1,12 @@
 #include "../test.h"
 #include "../test_compare.h"
 
-#include "mlib/geo/coordinates.h"
+#include "numerix/geo/coordinates.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

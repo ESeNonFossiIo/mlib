@@ -1,12 +1,12 @@
 #include "../../test.h"
 #include "../../test_compare.h"
 
-#include "mlib/math/point.h"
-#include "mlib/math/spline.h"
+#include "numerix/math/point.h"
+#include "numerix/math/spline.h"
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

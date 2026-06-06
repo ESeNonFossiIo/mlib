@@ -1,52 +1,52 @@
-#include <mlib/core/export.h>
-#include <mlib/math/statistic.h>
+#include <numerix/core/export.h>
+#include <numerix/math/statistic.h>
 
 #include "_python/status.h"
 
 #include <vector>
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Mean(const double* data, ///< [in]  array data
-                                 const MLIBInt n,    ///< [in]  length
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Mean(const double* data, ///< [in]  array data
+                                 const NUMERIXInt n,    ///< [in]  length
                                  double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = mlib::mean(v);
-    return MLIBStatus::Success;
+    *result = numerix::mean(v);
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Var(const double* data, ///< [in]  array data
-                                const MLIBInt n,    ///< [in]  length
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Var(const double* data, ///< [in]  array data
+                                const NUMERIXInt n,    ///< [in]  length
                                 double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = mlib::var(v);
-    return MLIBStatus::Success;
+    *result = numerix::var(v);
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Stddev(const double* data, ///< [in]  array data
-                                   const MLIBInt n,    ///< [in]  length
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Stddev(const double* data, ///< [in]  array data
+                                   const NUMERIXInt n,    ///< [in]  length
                                    double* result      ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = mlib::stddev(v);
-    return MLIBStatus::Success;
+    *result = numerix::stddev(v);
+    return NUMERIXStatus::Success;
 }
 
 // ----------------------------------------------------------------------------
-MLIB_EXPORT MLIBStatus MLIB_Moment(const double* data,    ///< [in]  array data
-                                   const MLIBInt n,       ///< [in]  length
-                                   const MLIBInt order,   ///< [in]  moment order
-                                   const MLIBInt central, ///< [in]  1 = central moment, 0 = raw
+NUMERIX_EXPORT NUMERIXStatus NUMERIX_Moment(const double* data,    ///< [in]  array data
+                                   const NUMERIXInt n,       ///< [in]  length
+                                   const NUMERIXInt order,   ///< [in]  moment order
+                                   const NUMERIXInt central, ///< [in]  1 = central moment, 0 = raw
                                    double* result         ///< [out]
 )
 {
     const std::vector<double> v(data, data + n);
-    *result = mlib::moment(v, static_cast<std::size_t>(order), central != 0);
-    return MLIBStatus::Success;
+    *result = numerix::moment(v, static_cast<std::size_t>(order), central != 0);
+    return NUMERIXStatus::Success;
 }

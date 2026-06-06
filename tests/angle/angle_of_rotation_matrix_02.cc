@@ -1,11 +1,11 @@
-#include "mlib/math/constants.h"
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/constants.h"
+#include "numerix/math/matrix/rotation.h"
 
 #include <cmath>
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 void test_1(double roll_angle, double pitch_angle, double yaw_angle)
 {
@@ -25,15 +25,15 @@ void test_1(double roll_angle, double pitch_angle, double yaw_angle)
 
     std::cout << "check .... ";
 
-    if (std::abs(roll.rad() - angles.roll()) > VAR_MLIB_ZERO_TOLERANCE) {
+    if (std::abs(roll.rad() - angles.roll()) > VAR_NUMERIX_ZERO_TOLERANCE) {
         std::cout << " roll  -> " << roll.rad() << std::endl;
         std::cout << "          " << angles.roll() << std::endl;
         std::cout << "          " << roll.rad() - angles.roll() << std::endl;
-    } else if (std::abs(pitch.rad() - angles.pitch()) > VAR_MLIB_ZERO_TOLERANCE) {
+    } else if (std::abs(pitch.rad() - angles.pitch()) > VAR_NUMERIX_ZERO_TOLERANCE) {
         std::cout << " pitch -> " << pitch.rad() << std::endl;
         std::cout << "          " << angles.pitch() << std::endl;
         std::cout << "          " << pitch.rad() - angles.pitch() << std::endl;
-    } else if (std::abs(yaw.rad() - angles.yaw()) > VAR_MLIB_ZERO_TOLERANCE) {
+    } else if (std::abs(yaw.rad() - angles.yaw()) > VAR_NUMERIX_ZERO_TOLERANCE) {
         std::cout << "   yaw -> " << yaw.rad() << std::endl;
         std::cout << "          " << angles.yaw() << std::endl;
         std::cout << "          " << yaw.rad() - angles.yaw() << std::endl;
@@ -60,15 +60,15 @@ void test_2(double roll_angle, double pitch_angle, double yaw_angle)
 
     std::cout << "check .... ";
 
-    if (std::abs(roll.rad() - angles.roll()) > VAR_MLIB_ZERO_TOLERANCE) {
+    if (std::abs(roll.rad() - angles.roll()) > VAR_NUMERIX_ZERO_TOLERANCE) {
         std::cout << " roll  -> " << roll.rad() << std::endl;
         std::cout << "          " << angles.roll() << std::endl;
         std::cout << "          " << roll.rad() - angles.roll() << std::endl;
-    } else if (std::abs(pitch.rad() - angles.pitch()) > VAR_MLIB_ZERO_TOLERANCE) {
+    } else if (std::abs(pitch.rad() - angles.pitch()) > VAR_NUMERIX_ZERO_TOLERANCE) {
         std::cout << " pitch -> " << pitch.rad() << std::endl;
         std::cout << "          " << angles.pitch() << std::endl;
         std::cout << "          " << pitch.rad() - angles.pitch() << std::endl;
-    } else if (std::abs(yaw.rad() - angles.yaw()) > VAR_MLIB_ZERO_TOLERANCE) {
+    } else if (std::abs(yaw.rad() - angles.yaw()) > VAR_NUMERIX_ZERO_TOLERANCE) {
         std::cout << "   yaw -> " << yaw.rad() << std::endl;
         std::cout << "          " << angles.yaw() << std::endl;
         std::cout << "          " << yaw.rad() - angles.yaw() << std::endl;

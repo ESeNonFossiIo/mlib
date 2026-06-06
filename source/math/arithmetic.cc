@@ -1,9 +1,9 @@
-#include "mlib/math/arithmetic.h"
+#include "numerix/math/arithmetic.h"
 
 #include <cmath>
 #include <iostream>
 
-namespace mlib {
+namespace numerix {
 
 size_t argmax(const std::vector<double>& x)
 {
@@ -99,4 +99,4 @@ double pythagoras(const double& a, const double& b)
     else
         return (absb == 0.0 ? 0.0 : absb * sqrt(1.0 + (absa / absb) * (absa / absb)));
 }
-} // namespace mlib
+} // namespace numerix

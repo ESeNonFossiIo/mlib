@@ -1,14 +1,14 @@
 #include "../test.h"
 
-#include "mlib/math/matrix/decomposition.h"
+#include "numerix/math/matrix/decomposition.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // Coverage entry point for SVD in builds without Eigen3 — the function only
-// expands MLIB_UNUSED on its arguments and asserts(true), so the result
-// matrices are intentionally not inspected here. The MLIB_USE_EIGEN3 branch
+// expands NUMERIX_UNUSED on its arguments and asserts(true), so the result
+// matrices are intentionally not inspected here. The NUMERIX_USE_EIGEN3 branch
 // is already covered by decomposition_00.
 int main()
 {

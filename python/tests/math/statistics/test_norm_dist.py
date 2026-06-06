@@ -1,7 +1,7 @@
 import math
 import pytest
 
-from mlibpy.math.statistics.norm_dist import norm_cdf, norm_pdf
+from numerixpy.math.statistics.norm_dist import norm_cdf, norm_pdf
 
 _INV_SQRT_TWO_PI = 1.0 / math.sqrt(2.0 * math.pi)
 

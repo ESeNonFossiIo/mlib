@@ -1,10 +1,10 @@
-#include "mlib/math/angle.h"
-#include "mlib/math/constants.h"
+#include "numerix/math/angle.h"
+#include "numerix/math/constants.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

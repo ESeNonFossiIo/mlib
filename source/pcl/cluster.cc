@@ -1,6 +1,6 @@
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
 
-#include "mlib/pcl/cluster.h"
+#include "numerix/pcl/cluster.h"
 
 #include <pcl/filters/conditional_removal.h>
 #include <pcl/filters/radius_outlier_removal.h>
@@ -11,7 +11,7 @@
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/segmentation/sac_segmentation.h>
 
-namespace mlib {
+namespace numerix {
 
 std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr>
 get_clusters(const pcl::PointCloud<pcl::PointXYZI>::Ptr& cloud,
@@ -54,6 +54,6 @@ get_clusters(const pcl::PointCloud<pcl::PointXYZI>::Ptr& cloud,
     return result;
 }
 
-} // namespace mlib
+} // namespace numerix
 
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL

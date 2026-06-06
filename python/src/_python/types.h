@@ -1,11 +1,11 @@
-#ifndef _MLIB_PYTHON_TYPES_
-#define _MLIB_PYTHON_TYPES_
+#ifndef _NUMERIX_PYTHON_TYPES_
+#define _NUMERIX_PYTHON_TYPES_
 
 #include <cstddef>
 #include <cstdint>
 
 /// ----------------------------------------------------------------------------
 /// Type used for intergers
-using MLIBInt = std::uint64_t;
+using NUMERIXInt = std::uint64_t;
 
-#endif // _MLIB_PYTHON_TYPES_
+#endif // _NUMERIX_PYTHON_TYPES_

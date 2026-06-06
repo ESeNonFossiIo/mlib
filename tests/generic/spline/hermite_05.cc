@@ -1,11 +1,11 @@
 #include "../../test.h"
 
-#include "mlib/math/spline.h"
+#include "numerix/math/spline.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

@@ -1,20 +1,20 @@
 #include "../test.h"
 #include "../test_compare.h"
 
-#include "mlib/math/angle.h"
-#include "mlib/math/constants.h"
-#include "mlib/math/matrix/utility.h"
+#include "numerix/math/angle.h"
+#include "numerix/math/constants.h"
+#include "numerix/math/matrix/utility.h"
 
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/matrix/rotation.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
-#ifdef MLIB_USE_EIGEN3
+#ifdef NUMERIX_USE_EIGEN3
     print_title("Roto-Translation Matrix");
 
     std::vector<Point> u, v;
@@ -57,7 +57,7 @@ int main()
     std::cout << " Vector ......... " << are_equal((b - rtmh.get_translation()).l_2_norm())
               << std::endl;
 
-#else  // MLIB_USE_EIGEN3
+#else  // NUMERIX_USE_EIGEN3
     make_test_pass("matrix/rototranslation_matrix_handler_00");
-#endif // MLIB_USE_EIGEN3 -rtmh.get_translation()).l_2_norm()) << std::endl;
+#endif // NUMERIX_USE_EIGEN3 -rtmh.get_translation()).l_2_norm()) << std::endl;
 }

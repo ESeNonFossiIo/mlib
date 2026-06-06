@@ -1,14 +1,14 @@
 #include "../test.h"
 
-#include "mlib/pcl/math.h"
+#include "numerix/pcl/math.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
     print_title("PCL Math utility");
 
     pcl::PointXYZI p;
@@ -18,7 +18,7 @@ int main()
     q.x = 2.0;
 
     std::cout << points_distance(p, q) << std::endl;
-#else  // MLIB_USE_PCL
+#else  // NUMERIX_USE_PCL
     make_test_pass("pcl/pcl_math_00");
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL
 }

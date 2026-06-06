@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/math/point.h"
+#include "numerix/math/point.h"
 
 #include <iostream>
 #include <tuple>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

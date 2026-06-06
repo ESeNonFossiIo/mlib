@@ -1,10 +1,10 @@
 #include "../test.h"
 
-#include "mlib/math/integral.h"
+#include "numerix/math/integral.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

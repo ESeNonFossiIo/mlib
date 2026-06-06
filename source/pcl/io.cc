@@ -1,21 +1,21 @@
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
 
-#include "mlib/pcl/io.h"
+#include "numerix/pcl/io.h"
 
-#include "mlib/utility/string.h"
+#include "numerix/utility/string.h"
 
-#ifdef MLIB_USE_PCL_WITH_VTK
+#ifdef NUMERIX_USE_PCL_WITH_VTK
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
-#endif // MLIB_USE_PCL_WITH_VTK
+#endif // NUMERIX_USE_PCL_WITH_VTK
 
 #include <fstream>
 #include <iomanip> // std::setprecision
 #include <iostream>
 
-namespace mlib {
+namespace numerix {
 
-#ifdef MLIB_USE_PCL_WITH_VTK
+#ifdef NUMERIX_USE_PCL_WITH_VTK
 void save_pcd(const std::string& filename, pcl::PointCloud<pcl::PointXYZI>& cloud)
 {
     if (pcl::io::savePCDFileASCII(filename, cloud) == -1) {
@@ -31,7 +31,7 @@ void save_ply(const std::string& filename, pcl::PointCloud<pcl::PointXYZI>& clou
     }
     return;
 }
-#endif // MLIB_USE_PCL_WITH_VTK
+#endif // NUMERIX_USE_PCL_WITH_VTK
 
 void load_TXT_file(const std::string& filename,
                    pcl::PointCloud<pcl::PointXYZI>& cloud,
@@ -40,9 +40,9 @@ void load_TXT_file(const std::string& filename,
     std::ifstream fs;
     fs.open(filename.c_str(), std::ios::binary);
     if (!fs.is_open() || fs.fail()) {
-#ifdef MLIB_USE_PCL_WITH_VTK
+#ifdef NUMERIX_USE_PCL_WITH_VTK
         PCL_ERROR("Could not open file '%s'! Error : %s\n", filename.c_str(), strerror(errno));
-#endif // MLIB_USE_PCL_WITH_VTK
+#endif // NUMERIX_USE_PCL_WITH_VTK
         fs.close();
         return;
     }
@@ -54,7 +54,7 @@ void load_TXT_file(const std::string& filename,
 
         if (line == "")
             continue;
-        st = mlib::split(line, separator, true);
+        st = numerix::split(line, separator, true);
 
         // This allows to read RGB, too
         if (st.size() < 4)
@@ -107,6 +107,6 @@ void save_txt(const std::string& qs_filename,
     filename_out.close();
     return;
 }
-} // namespace mlib
+} // namespace numerix
 
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL

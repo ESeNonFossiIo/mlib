@@ -1,11 +1,11 @@
-#ifndef _MLIB_PYTHON_STATUS_
-#define _MLIB_PYTHON_STATUS_
+#ifndef _NUMERIX_PYTHON_STATUS_
+#define _NUMERIX_PYTHON_STATUS_
 
 #include "_python/types.h"
 
 /// ----------------------------------------------------------------------------
 /// Return the status of the call to the c function
-enum class MLIBStatus : MLIBInt {
+enum class NUMERIXStatus : NUMERIXInt {
     None,    //< Status not set yet
     Success, //< No error occurred
     Failed   //< Generic error found
@@ -13,14 +13,14 @@ enum class MLIBStatus : MLIBInt {
 
 /// ----------------------------------------------------------------------------
 /// Try-catch block for c++ exceptions.
-#define MLIB_TRY try {
+#define NUMERIX_TRY try {
 
 /// ----------------------------------------------------------------------------
 /// Try-catch block for c++ exceptions.
-#define MLIB_CATCH                                                                                 \
+#define NUMERIX_CATCH                                                                                 \
     }                                                                                              \
     catch (...)                                                                                    \
     {                                                                                              \
     }
 
-#endif // _MLIB_PYTHON_STATUS_
+#endif // _NUMERIX_PYTHON_STATUS_

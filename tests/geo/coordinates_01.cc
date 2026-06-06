@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/geo/coordinates.h"
+#include "numerix/geo/coordinates.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // Coverage entry point for the geo/coordinates module.  Exercises the
 // helper conversions (zone, central meridian, footpoint latitude,

@@ -1,11 +1,11 @@
-#include "mlib/math/geometry/segment.h"
+#include "numerix/math/geometry/segment.h"
 
-#include "mlib/math/constants.h"
+#include "numerix/math/constants.h"
 
 #include <cassert> // std::assert
 #include <cmath>
 
-namespace mlib {
+namespace numerix {
 
 Segment::Segment() : p1(), p2(), length(-1.0)
 {
@@ -128,10 +128,10 @@ are_aligned(const Segment& a, const Segment& b, const double& tolerance)
     double angle_cb = M_PI / 2.0 - std::abs(M_PI / 2.0 - get_angle(b, c));
 
     if (angle_ac < tolerance && angle_cb < tolerance) {
-        return STATUS::MLIB_SUCCEED;
+        return STATUS::NUMERIX_SUCCEED;
     } else {
-        return STATUS::MLIB_ERROR;
+        return STATUS::NUMERIX_ERROR;
     }
 }
 
-} // namespace mlib
+} // namespace numerix

@@ -1,9 +1,9 @@
 #include "../../test.h"
 
-#include "mlib/utility/parser/xml.h"
+#include "numerix/utility/parser/xml.h"
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 void test(std::string&& str)
 {

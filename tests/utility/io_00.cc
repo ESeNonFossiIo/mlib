@@ -1,6 +1,6 @@
 #include "../test.h"
 
-#include "mlib/utility/io.h"
+#include "numerix/utility/io.h"
 
 #include <cstdio>
 #include <fcntl.h>
@@ -21,7 +21,7 @@ static const char* k_null_dev = "/dev/null";
 #define fd_close close
 #endif
 
-using namespace mlib;
+using namespace numerix;
 
 // Calls clean_screen() while routing stdout to the null device so the
 // terminal escape sequence does not pollute the captured test output.

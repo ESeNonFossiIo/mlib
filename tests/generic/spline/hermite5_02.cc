@@ -1,11 +1,11 @@
 #include "../../test.h"
 
-#include "mlib/math/spline.h"
+#include "numerix/math/spline.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // HermiteSpline5<1> and HermiteSpline5<2> are not instantiated by any other
 // test; existing hermite5_* tests use HermiteSpline5<3>.

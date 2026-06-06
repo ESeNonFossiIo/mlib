@@ -1,9 +1,9 @@
 #include "../../test.h"
 
-#include "mlib/utility/parser/ini.h"
+#include "numerix/utility/parser/ini.h"
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

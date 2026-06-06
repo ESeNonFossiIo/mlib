@@ -1,8 +1,8 @@
-#include "mlib/math/convolution.h"
-#include "mlib/math/constants.h"
+#include "numerix/math/convolution.h"
+#include "numerix/math/constants.h"
 #include <assert.h> /* assert */
 
-namespace mlib {
+namespace numerix {
 
 std::vector<double> convolve(std::vector<double>& in, int sizeh, double sigma)
 {
@@ -105,4 +105,4 @@ std::vector<double> Convolution::operator()(const std::vector<double>& v) const
     return compute(v);
 } // for const objects
 
-} // namespace mlib
+} // namespace numerix

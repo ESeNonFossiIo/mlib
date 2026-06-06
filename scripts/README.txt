@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/ESeNonFossiIo/mlib.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+[![Build Status](https://travis-ci.org/ESeNonFossiIo/numerix.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
 
 # Configuration:
 
@@ -11,7 +11,7 @@
 
 add to `.bash_profile`
 ```
-  export LIBMLIB_DIR="path_to_installation_dir"
+  export LIBNUMERIX_DIR="path_to_installation_dir"
 ```
 #Note
 
@@ -27,6 +27,6 @@ add to `.bash_profile`
 
 ### Precompiler FLAGS:
 
-- MLIB_USE_PCL_WITH_VTK
-- MLIB_USE_PCL
-- MLIB_USE_EIGEN3
+- NUMERIX_USE_PCL_WITH_VTK
+- NUMERIX_USE_PCL
+- NUMERIX_USE_EIGEN3

@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/math/geometry/clothoid.h"
+#include "numerix/math/geometry/clothoid.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 // Hits Clothoid::l, Clothoid::k and the ApproximatedClothoid counterparts
 // which the other clothoid_* tests do not call.

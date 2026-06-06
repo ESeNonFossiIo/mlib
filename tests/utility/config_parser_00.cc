@@ -1,9 +1,9 @@
 #include "../test.h"
 
-#include "mlib/utility/config_file.h"
+#include "numerix/utility/config_file.h"
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

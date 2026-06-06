@@ -1,12 +1,12 @@
 from ctypes import addressof, create_string_buffer
 
-from mlibpy.bind.types import from_ccharp_to_str
+from numerixpy.bind.types import from_ccharp_to_str
 
 
 def test_from_ccharp_to_str_ascii():
     """Decode a raw C string pointer holding ASCII text."""
-    buf = create_string_buffer(b"mlib")
-    assert from_ccharp_to_str(addressof(buf)) == "mlib"
+    buf = create_string_buffer(b"numerix")
+    assert from_ccharp_to_str(addressof(buf)) == "numerix"
 
 
 def test_from_ccharp_to_str_utf8():

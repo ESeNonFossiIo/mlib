@@ -1,9 +1,9 @@
 #include "../test.h"
 
-#include "mlib/math/geometry/clothoid.h"
-#include "mlib/math/matrix/utility.h"
+#include "numerix/math/geometry/clothoid.h"
+#include "numerix/math/matrix/utility.h"
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

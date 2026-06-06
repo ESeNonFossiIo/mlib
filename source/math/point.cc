@@ -1,9 +1,9 @@
-#include "mlib/math/point.h"
+#include "numerix/math/point.h"
 
 // std::sqrt
 #include <cmath>
 
-namespace mlib {
+namespace numerix {
 Point::Point(bool normalize) : Matrix<double>(1, 1), is_normalized(normalize)
 {
     if (is_normalized)
@@ -34,7 +34,7 @@ Point::Point(double x_, double y_, double z_, double t_) : Point({x_, y_, z_, t_
 {
 }
 
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
 Point::Point(const pcl::PointXYZ& p) : Point(p.x, p.y, p.z)
 {
 }
@@ -65,7 +65,7 @@ Point::Point(const pcl::PointXYZI& p) : Point(p.x, p.y, p.z)
 //   return *this;
 // }
 
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL
 
 Point::Point(const Matrix<double>& M) : Matrix<double>(M)
 {
@@ -200,4 +200,4 @@ Point centroid(const std::vector<Point>& p, const std::vector<double>& w)
     return (1.0 / sum_w) * sum_p;
 }
 
-} // namespace mlib
+} // namespace numerix

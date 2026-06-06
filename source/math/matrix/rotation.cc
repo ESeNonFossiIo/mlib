@@ -1,14 +1,14 @@
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/matrix/rotation.h"
 #include <cmath>
 
-namespace mlib {
+namespace numerix {
 
 std::pair<Point, Angle> get_axis_and_angle(const Matrixd& m)
 {
     double theta = acos(0.5 * (m.trace() - 1));
     Point axis;
     axis.resize(3);
-    if (std::abs(sin(theta)) > VAR_MLIB_ZERO_TOLERANCE) {
+    if (std::abs(sin(theta)) > VAR_NUMERIX_ZERO_TOLERANCE) {
         axis[0] = (m(2, 1) - m(1, 2)) / (2 * sin(theta));
         axis[1] = (m(0, 2) - m(2, 0)) / (2 * sin(theta));
         axis[2] = (m(1, 0) - m(0, 1)) / (2 * sin(theta));
@@ -96,7 +96,7 @@ get_roll_pitch_yaw(const Matrixd& m, const RotationType type, const double& defa
     Angle pitch(0);
 
     if (type == RotationType::ZYX) {
-        if (std::abs(m(2, 0)) < 1 - VAR_MLIB_ZERO_TOLERANCE) {
+        if (std::abs(m(2, 0)) < 1 - VAR_NUMERIX_ZERO_TOLERANCE) {
             pitch = asin(-m(2, 0));
             roll = atan2(m(2, 1) / cos(pitch.rad()), m(2, 2) / cos(pitch.rad()));
             yaw = atan2(m(1, 0) / cos(pitch.rad()), m(0, 0) / cos(pitch.rad()));
@@ -112,7 +112,7 @@ get_roll_pitch_yaw(const Matrixd& m, const RotationType type, const double& defa
             }
         }
     } else {
-        if (std::abs(m(0, 2)) < 1 - VAR_MLIB_ZERO_TOLERANCE) {
+        if (std::abs(m(0, 2)) < 1 - VAR_NUMERIX_ZERO_TOLERANCE) {
             pitch = asin(m(0, 2));
             roll = atan2(-m(1, 2) / cos(pitch.rad()), m(2, 2) / cos(pitch.rad()));
             yaw = atan2(-m(0, 1) / cos(pitch.rad()), m(0, 0) / cos(pitch.rad()));
@@ -132,4 +132,4 @@ get_roll_pitch_yaw(const Matrixd& m, const RotationType type, const double& defa
     return TaitBryanAngles(roll, pitch, yaw);
 }
 
-} // namespace mlib
+} // namespace numerix

@@ -1,11 +1,11 @@
 #include "../test.h"
 
-#include "mlib/math/euclidean_geometry.h"
+#include "numerix/math/euclidean_geometry.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

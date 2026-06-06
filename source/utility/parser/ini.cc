@@ -1,9 +1,9 @@
-#include "mlib/utility/parser/ini.h"
-#include "mlib/utility/string.h"
+#include "numerix/utility/parser/ini.h"
+#include "numerix/utility/string.h"
 
 #include <algorithm>
 
-namespace mlib {
+namespace numerix {
 
 INIHandler::INIHandler()
 {
@@ -218,4 +218,4 @@ std::map<std::string, std::string>& INIHandler::operator[](const std::string& la
 {
     return conf[label];
 }
-} // namespace mlib
+} // namespace numerix

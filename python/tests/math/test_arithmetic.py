@@ -1,7 +1,7 @@
 import math
 import pytest
 
-from mlibpy.math.arithmetic import argmax, argmin, max, min, normalize, pythagoras
+from numerixpy.math.arithmetic import argmax, argmin, max, min, normalize, pythagoras
 
 
 def test_pythagoras_3_4():
@@ -48,6 +48,6 @@ def test_normalize_range():
 
 
 def test_normalize_constant_vector():
-    # All equal → max==min → 0/0 → NaN; this is the defined behaviour of mlib::normalize
+    # All equal → max==min → 0/0 → NaN; this is the defined behaviour of numerix::normalize
     result = normalize([3.0, 3.0, 3.0])
     assert all(math.isnan(v) for v in result)

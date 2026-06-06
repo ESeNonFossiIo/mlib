@@ -1,12 +1,12 @@
-#include "mlib/math/angle.h"
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/angle.h"
+#include "numerix/math/matrix/rotation.h"
 
 #include <cassert>
 
 /// Angle
 ////////////////////////////////////////////////////////////////////////////////
 
-namespace mlib {
+namespace numerix {
 
 Angle::Angle()
 {
@@ -178,4 +178,4 @@ Angle get_angle_from_points(const Point& a, const Point& o, const Point& b)
         std::acos(((a - o).t() * (b - o))[0] / ((a - o).l_2_norm() * (b - o).l_2_norm()));
     return Angle(angle);
 } // GCOVR_EXCL_LINE — gcov phantom-line on closing brace of value-returning function
-} // namespace mlib
+} // namespace numerix

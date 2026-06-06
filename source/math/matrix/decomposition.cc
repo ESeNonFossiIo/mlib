@@ -1,19 +1,19 @@
-#include <mlib/core/unused.h>
-#include <mlib/math/matrix/decomposition.h>
-#include <mlib/math/point.h>
+#include <numerix/core/unused.h>
+#include <numerix/math/matrix/decomposition.h>
+#include <numerix/math/point.h>
 
-#ifdef MLIB_USE_EIGEN3
-#include "mlib/eigen/conversion.h"
-#endif // MLIB_USE_EIGEN3
+#ifdef NUMERIX_USE_EIGEN3
+#include "numerix/eigen/conversion.h"
+#endif // NUMERIX_USE_EIGEN3
 #
 #include <cassert>
 #include <cmath>
 
-namespace mlib {
+namespace numerix {
 
 void SVD(const Matrixd& A, Matrixd& U, Matrixd& W, Matrixd& V)
 {
-#ifdef MLIB_USE_EIGEN3
+#ifdef NUMERIX_USE_EIGEN3
     // Eigen JacobiSVD works fine with square matrix. In the case of rectangular
     // matrix you can get only thin U and V.
     assert(A.r() == A.c());
@@ -35,14 +35,14 @@ void SVD(const Matrixd& A, Matrixd& U, Matrixd& W, Matrixd& V)
         W(i, i) = svd.singularValues()(i);
     }
 
-#else  // MLIB_USE_EIGEN3
+#else  // NUMERIX_USE_EIGEN3
     // TODO
-    MLIB_UNUSED(A);
-    MLIB_UNUSED(U);
-    MLIB_UNUSED(W);
-    MLIB_UNUSED(V);
+    NUMERIX_UNUSED(A);
+    NUMERIX_UNUSED(U);
+    NUMERIX_UNUSED(W);
+    NUMERIX_UNUSED(V);
     assert(true);
-#endif // MLIB_USE_EIGEN3
+#endif // NUMERIX_USE_EIGEN3
 }
 
 void QR(const Matrixd& A, Matrixd& Q, Matrixd& R)
@@ -65,4 +65,4 @@ void QR(const Matrixd& A, Matrixd& Q, Matrixd& R)
         for (size_t i = 0; i <= j; ++i)
             R(i, j) = (Q.c(i).t() * A.c(j))[0];
 }
-} // namespace mlib
+} // namespace numerix

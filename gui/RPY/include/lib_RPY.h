@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/matrix/rotation.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -30,8 +30,8 @@ private slots:
 private:
     void reset();
     Ui::MainWindow* ui;
-    mlib::RotationType rotation_type;
-    mlib::AngleType angle_type;
+    numerix::RotationType rotation_type;
+    numerix::AngleType angle_type;
 }
 
 #endif // MAINWINDOW_H

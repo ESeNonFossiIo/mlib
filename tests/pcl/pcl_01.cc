@@ -1,14 +1,14 @@
 #include "../test.h"
 
-#include "mlib/pcl/io.h"
+#include "numerix/pcl/io.h"
 
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
-#ifdef MLIB_USE_PCL_WITH_VTK
+#ifdef NUMERIX_USE_PCL_WITH_VTK
     print_title("PCL Wrapper");
     {
         pcl::PointCloud<pcl::PointXYZI> cloud;
@@ -30,7 +30,7 @@ int main()
         std::cerr << "Saved " << cloud.points.size() << " data points to test_pcd.txt."
                   << std::endl;
     }
-#else  // MLIB_USE_PCL_WITH_VTK
+#else  // NUMERIX_USE_PCL_WITH_VTK
     make_test_pass("pcl/pcl_01");
-#endif // MLIB_USE_PCL_WITH_VTK
+#endif // NUMERIX_USE_PCL_WITH_VTK
 }

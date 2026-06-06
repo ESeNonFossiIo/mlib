@@ -1,14 +1,14 @@
 #include "../test.h"
 
-#include <mlib/finance/black_scholes.h>
-#include "mlib/math/statistics/norm_dist.h"
+#include <numerix/finance/black_scholes.h>
+#include "numerix/math/statistics/norm_dist.h"
 
 #include <iomanip>
 #include <iostream>
 
-using namespace mlib;
-using namespace mlib::finance;
-using namespace mlib::math::statistics;
+using namespace numerix;
+using namespace numerix::finance;
+using namespace numerix::math::statistics;
 
 int main()
 {

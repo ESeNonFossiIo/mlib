@@ -1,10 +1,10 @@
-#include "mlib/math/utility.h"
+#include "numerix/math/utility.h"
 #include <iostream>
 // std::abs
 #include <assert.h> /* assert */
 #include <cmath>
 
-namespace mlib {
+namespace numerix {
 
 template <typename T>
 int sgn(T val)
@@ -25,7 +25,7 @@ std::vector<double> truncate_decimals_vec(std::vector<double>& vec, double size)
 {
     std::vector<double> v(vec);
     for (auto it = v.begin(); it != v.end(); ++it) {
-        *it = mlib::truncate_decimals(*it, size);
+        *it = numerix::truncate_decimals(*it, size);
     }
     return v;
 }
@@ -46,7 +46,7 @@ std::vector<T> truncate_vec(std::vector<T>& vec, T min, T max)
 {
     std::vector<T> v(vec);
     for (std::size_t i = 0; i < vec.size(); ++i) {
-        v[i] = mlib::truncate<T>(vec[i], min, max);
+        v[i] = numerix::truncate<T>(vec[i], min, max);
     }
     return v;
 }
@@ -271,4 +271,4 @@ std::vector<double> remove_singularities(std::vector<double>& vec,
     }
     return v;
 }
-} // namespace mlib
+} // namespace numerix

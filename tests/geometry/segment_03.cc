@@ -1,8 +1,8 @@
 #include "../test.h"
 
-#include "mlib/math/geometry/segment.h"
+#include "numerix/math/geometry/segment.h"
 
-using namespace mlib;
+using namespace numerix;
 
 // Coverage helper for Segment scalar operators, get_length() and
 // min_distance().  The numeric outputs are deterministic.

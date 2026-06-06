@@ -1,9 +1,9 @@
 #include "../test.h"
 #include "../test_compare.h"
 
-#include "mlib/math/angle.h"
+#include "numerix/math/angle.h"
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

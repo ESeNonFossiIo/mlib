@@ -1,10 +1,10 @@
-#include "mlib/math/angle.h"
+#include "numerix/math/angle.h"
 #include <iostream>
 
 // per std::setw
 #include <iomanip>
 
-using namespace mlib;
+using namespace numerix;
 
 void test(const double& angle,
           const double& x,
@@ -19,12 +19,12 @@ void test(const double& angle,
     Point r = convert_angle_to_vector(convert_vector_to_angle(q, p, clockwise), p, clockwise);
     Angle b = convert_vector_to_angle(convert_angle_to_vector(a, p, clockwise), p, clockwise);
 
-    if ((q - r).l_2_norm() < VAR_MLIB_ZERO_TOLERANCE)
+    if ((q - r).l_2_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
         std::cout << "[OK]";
     else
         std::cout << "[Fail]";
     std::cout << " - ";
-    if (std::fmod(a.deg() - b.deg(), 360.0) < VAR_MLIB_ZERO_TOLERANCE)
+    if (std::fmod(a.deg() - b.deg(), 360.0) < VAR_NUMERIX_ZERO_TOLERANCE)
         std::cout << "[OK]";
     else
         std::cout << "[Fail]";

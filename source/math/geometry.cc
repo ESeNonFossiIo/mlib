@@ -1,9 +1,9 @@
-#include "mlib/math/geometry.h"
+#include "numerix/math/geometry.h"
 
 #include <cmath>
 #include <iostream>
 
-namespace mlib {
+namespace numerix {
 
 std::vector<std::size_t> rectify(const std::vector<double>& x,
                                  const std::vector<double>& y,
@@ -164,4 +164,4 @@ interpolate_straight_parts(const std::vector<double>& x,
 
     return v;
 }
-} // namespace mlib
+} // namespace numerix

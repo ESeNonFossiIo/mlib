@@ -1,8 +1,8 @@
-#ifdef MLIB_USE_PCL
+#ifdef NUMERIX_USE_PCL
 
-#include "mlib/pcl/downsampling.h"
+#include "numerix/pcl/downsampling.h"
 
-#include "mlib/pcl/bounding_box.h"
+#include "numerix/pcl/bounding_box.h"
 
 #include <pcl/ModelCoefficients.h>
 #include <pcl/common/centroid.h>
@@ -23,7 +23,7 @@
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/segmentation/sac_segmentation.h>
 
-namespace mlib {
+namespace numerix {
 void voxel_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
                         pcl::PointCloud<pcl::PointXYZI>::Ptr downsampled,
                         float cube_size)
@@ -134,6 +134,6 @@ void horizontal_section_cloud_downsampling(pcl::PointCloud<pcl::PointXYZI>::Ptr 
     }
     return;
 }
-} // namespace mlib
+} // namespace numerix
 
-#endif // MLIB_USE_PCL
+#endif // NUMERIX_USE_PCL

@@ -1,6 +1,6 @@
-#include "mlib/utility/color.h"
+#include "numerix/utility/color.h"
 
-namespace mlib {
+namespace numerix {
 GeneralColor::GeneralColor(const int& color_, const int& style_) : color(color_), style(style_)
 {
 }
@@ -23,4 +23,4 @@ std::string GeneralColor::end() const
     // #endif
 } // GCOVR_EXCL_LINE — gcov phantom-line on return-by-value
 
-} // namespace mlib
+} // namespace numerix

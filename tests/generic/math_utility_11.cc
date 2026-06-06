@@ -1,13 +1,13 @@
 #include "../test.h"
 
-#include "mlib/math/utility.h"
+#include "numerix/math/utility.h"
 
 #include <functional>
 #include <iomanip>
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 namespace {
 

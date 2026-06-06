@@ -2,7 +2,7 @@ import os
 import tempfile
 import pytest
 
-from mlibpy.utility.file_utils import file_exists, get_number_of_lines
+from numerixpy.utility.file_utils import file_exists, get_number_of_lines
 
 
 def test_file_exists_true(tmp_path):
@@ -12,7 +12,7 @@ def test_file_exists_true(tmp_path):
 
 
 def test_file_exists_false():
-    assert file_exists("/tmp/mlib_nonexistent_file_xyz.txt") is False
+    assert file_exists("/tmp/numerix_nonexistent_file_xyz.txt") is False
 
 
 def test_get_number_of_lines(tmp_path):

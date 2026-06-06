@@ -1,7 +1,7 @@
 import math
 import pytest
 
-from mlibpy.utility.string_utils import (
+from numerixpy.utility.string_utils import (
     double_to_str,
     lower_case,
     str_to_bool,

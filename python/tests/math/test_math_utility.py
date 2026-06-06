@@ -1,7 +1,7 @@
 import math
 import pytest
 
-from mlibpy.math.math_utility import truncate_decimals
+from numerixpy.math.math_utility import truncate_decimals
 
 
 def test_truncate_one_decimal():

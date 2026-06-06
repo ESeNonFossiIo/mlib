@@ -1,8 +1,8 @@
-#include "mlib/math/algebra.h"
+#include "numerix/math/algebra.h"
 
 #include <cassert> // std::assert
 
-namespace mlib {
+namespace numerix {
 
 Polynomial::Polynomial(const std::initializer_list<double>& list) : c(list.size(), 0.0)
 {
@@ -74,4 +74,4 @@ std::ostream& operator<<(std::ostream& output, const Polynomial& p)
     return output;
 }
 
-} // namespace mlib
+} // namespace numerix

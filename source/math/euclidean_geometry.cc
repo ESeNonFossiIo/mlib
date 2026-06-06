@@ -1,6 +1,6 @@
-#include "mlib/math/euclidean_geometry.h"
+#include "numerix/math/euclidean_geometry.h"
 
-namespace mlib {
+namespace numerix {
 
 HyperPlane::HyperPlane() : Point()
 {
@@ -68,7 +68,7 @@ HyperPlane middle_hyperplane_between_points(const Point& p, const Point& q)
         hp[i] = p[i] - q[i];
     for (std::size_t i = 0; i < p.dim(); ++i)
         hp[p.dim()] -= hp[i] * (p[i] + q[i]) / 2;
-    if (hp[0] * hp[0] > VAR_MLIB_ZERO_TOLERANCE) {
+    if (hp[0] * hp[0] > VAR_NUMERIX_ZERO_TOLERANCE) {
         for (std::size_t i = 1; i < p.dim() + 1; ++i)
             hp[i] /= hp[0];
         hp[0] /= hp[0];
@@ -78,10 +78,10 @@ HyperPlane middle_hyperplane_between_points(const Point& p, const Point& q)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-mlib::Point get_hyperplanes_intersection(const mlib::HyperPlane& p, const mlib::HyperPlane& q)
+numerix::Point get_hyperplanes_intersection(const numerix::HyperPlane& p, const numerix::HyperPlane& q)
 {
-    mlib::Matrix<double> m(2, 2);
-    mlib::Point b;
+    numerix::Matrix<double> m(2, 2);
+    numerix::Point b;
     b.resize(2);
 
     for (std::size_t i = 0; i < 2; ++i)
@@ -92,7 +92,7 @@ mlib::Point get_hyperplanes_intersection(const mlib::HyperPlane& p, const mlib::
     b[0] = -p[2];
     b[1] = -q[2];
 
-    assert(m.det() * m.det() > VAR_MLIB_ZERO_TOLERANCE);
+    assert(m.det() * m.det() > VAR_NUMERIX_ZERO_TOLERANCE);
 
     return m.inv() * b;
 }
@@ -114,7 +114,7 @@ Point get_hyperplanes_intersection(const HyperPlane& p, const HyperPlane& q, con
     b[1] = -q[3];
     b[2] = -r[3];
 
-    assert(m.det() * m.det() > VAR_MLIB_ZERO_TOLERANCE);
+    assert(m.det() * m.det() > VAR_NUMERIX_ZERO_TOLERANCE);
 
     return m.inv() * b;
 }
@@ -153,9 +153,9 @@ Point circumference_center(const Point& a, const Point& b, const Point& c)
         HyperPlane l3 = hyperplane_passing_through_three_points(a, b, c);
         return get_hyperplanes_intersection(l1, l2, l3);
     } else {
-        HyperPlane l1 = mlib::middle_hyperplane_between_points(a, b);
-        HyperPlane l2 = mlib::middle_hyperplane_between_points(b, c);
-        return mlib::get_hyperplanes_intersection(l1, l2);
+        HyperPlane l1 = numerix::middle_hyperplane_between_points(a, b);
+        HyperPlane l2 = numerix::middle_hyperplane_between_points(b, c);
+        return numerix::get_hyperplanes_intersection(l1, l2);
     }
 }
-} // namespace mlib
+} // namespace numerix

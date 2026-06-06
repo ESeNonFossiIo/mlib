@@ -1,10 +1,10 @@
-#include "mlib/math/constants.h"
-#include "mlib/math/matrix/rotation.h"
+#include "numerix/math/constants.h"
+#include "numerix/math/matrix/rotation.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {
@@ -24,7 +24,7 @@ int main()
         auto angles = get_roll_pitch_yaw(m, RotationType::ZYX);
         RotationMatrix T(angles, RotationType::ZYX);
         std::cout << "check .... ";
-        if ((m - T).l_inf_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m - T).l_inf_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << "OK!" << std::endl;
         else
             std::cout << (m - T).l_inf_norm() << std::endl;
@@ -43,7 +43,7 @@ int main()
         auto angles = get_roll_pitch_yaw(m, RotationType::ZYX);
         RotationMatrix T(angles, RotationType::ZYX);
         std::cout << "check .... ";
-        if ((m - T).l_inf_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m - T).l_inf_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << "OK!" << std::endl;
         else
             std::cout << (m - T).l_inf_norm() << std::endl;
@@ -63,7 +63,7 @@ int main()
         auto angles = get_roll_pitch_yaw(m, RotationType::ZYX);
         RotationMatrix T(angles, RotationType::ZYX);
         std::cout << "check .... ";
-        if ((m - T).l_inf_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m - T).l_inf_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << "OK!" << std::endl;
         else
             std::cout << (m - T).l_inf_norm() << std::endl;
@@ -82,7 +82,7 @@ int main()
         auto angles = get_roll_pitch_yaw(m, RotationType::ZYX);
         RotationMatrix T(angles, RotationType::ZYX);
         std::cout << "check .... ";
-        if ((m - T).l_inf_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m - T).l_inf_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << "OK!" << std::endl;
         else
             std::cout << (m - T).l_inf_norm() << std::endl;
@@ -101,7 +101,7 @@ int main()
         auto angles = get_roll_pitch_yaw(m, RotationType::ZYX);
         RotationMatrix T(angles, RotationType::ZYX);
         std::cout << "check .... ";
-        if ((m - T).l_inf_norm() < VAR_MLIB_ZERO_TOLERANCE)
+        if ((m - T).l_inf_norm() < VAR_NUMERIX_ZERO_TOLERANCE)
             std::cout << "OK!" << std::endl;
         else
             std::cout << (m - T).l_inf_norm() << std::endl;

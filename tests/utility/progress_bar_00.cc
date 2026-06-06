@@ -1,7 +1,7 @@
-#include "mlib/utility/progress_bar.h"
+#include "numerix/utility/progress_bar.h"
 #include <iostream>
 
-using namespace mlib;
+using namespace numerix;
 
 int main()
 {

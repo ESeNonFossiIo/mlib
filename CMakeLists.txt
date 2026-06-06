@@ -19,7 +19,7 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/utility.cmake)
 
 ################################################################################
 ################################################################################
-SET(_project "mlib")
+SET(_project "numerix")
 FILE (READ "VERSION" VERSION_TXT)
 STRING(REPLACE "\n" "\n      " _version ${VERSION_TXT})
 PROJECT(${_project} CXX)
@@ -114,9 +114,9 @@ OPTION( WITH_PCL
 IF(WITH_PCL)
     IF(WITH_VTK)
       SET(PCL_WITH_VTK TRUE)
-      ADD_DEFINITIONS(-DMLIB_USE_PCL_WITH_VTK=ON)
+      ADD_DEFINITIONS(-DNUMERIX_USE_PCL_WITH_VTK=ON)
     ENDIF(WITH_VTK)
-    ADD_DEFINITIONS(-DMLIB_USE_PCL=ON)
+    ADD_DEFINITIONS(-DNUMERIX_USE_PCL=ON)
     INCLUDE(${CMAKE_SOURCE_DIR}/cmake/libraries/pcl.cmake)
     IF(PCL_WITH_VTK)
       SET(external_libraries_names ${external_libraries_names} "PCL")
@@ -132,7 +132,7 @@ endif(WITH_PCL)
 OPTION( WITH_EIGEN3
         "Use Eigen3 Libraries" OFF)
 IF(WITH_EIGEN3)
-    ADD_DEFINITIONS(-DMLIB_USE_EIGEN3=ON)
+    ADD_DEFINITIONS(-DNUMERIX_USE_EIGEN3=ON)
     SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/libraries/find/FindEigen3.cmake)
     INCLUDE(${CMAKE_SOURCE_DIR}/cmake/libraries/eigen.cmake)
     SET(external_libraries_names ${external_libraries_names} "EIGEN3")
@@ -201,7 +201,7 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/macro/targets.cmake)
 INCLUDE(tests/tests.cmake)
 
 # Pyhon
-INCLUDE(python/mlibpy.cmake)
+INCLUDE(python/numerixpy.cmake)
 
 # Documentation
 INCLUDE(doxygen/doxygen.cmake)
